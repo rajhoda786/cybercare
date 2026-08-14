@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const helpButtons = document.querySelectorAll(".help-btn");
-    const emergencyButton = document.getElementById("emergencyBtn");
-
     const helpData = {
 
         "Hacked Account": {
             title: "🔐 Hacked Account",
+            description: "Secure or recover an account that may have been compromised.",
 
             situations: [
                 {
@@ -14,17 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Secure your account",
 
                     steps: [
-                        "Change your password immediately.",
+                        "Change your password immediately from the official website or app.",
                         "Sign out of unknown or suspicious devices.",
                         "Enable two-factor authentication (2FA).",
                         "Check your recovery email and phone number.",
-                        "Review recent account activity.",
+                        "Review recent login and account activity.",
                         "Remove unknown connected apps or services."
                     ],
 
                     dont: [
                         "Never share your password, OTP or recovery codes.",
-                        "Do not use suspicious recovery links."
+                        "Do not use recovery links sent by strangers."
                     ]
                 },
 
@@ -33,9 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Recover your account",
 
                     steps: [
-                        "Use the official account recovery page.",
+                        "Use the service's official account recovery page.",
                         "Try your recovery email or phone number.",
-                        "Follow the provider's identity verification process.",
+                        "Complete the provider's identity verification process.",
                         "Secure your recovery email account.",
                         "After recovery, change your password and enable 2FA."
                     ],
@@ -52,15 +50,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     steps: [
                         "Check your original email for security alerts.",
-                        "Use the official recovery process.",
-                        "Try to reverse the unauthorized change.",
+                        "Use the official account recovery process.",
+                        "Look for an option to reverse an unauthorized change.",
                         "Secure your email account.",
-                        "Review your account settings after recovery."
+                        "Review all account settings after recovery."
                     ],
 
                     dont: [
                         "Do not trust strangers claiming to be support.",
                         "Never share verification codes."
+                    ]
+                },
+
+                {
+                    name: "💰 My account was used for fraud",
+                    title: "Possible account misuse",
+
+                    steps: [
+                        "Secure the account immediately.",
+                        "Change the password from a trusted device.",
+                        "Sign out unknown sessions.",
+                        "Enable 2FA.",
+                        "Save screenshots and suspicious messages.",
+                        "Contact the affected platform.",
+                        "If money is involved, contact your bank or payment provider."
+                    ],
+
+                    dont: [
+                        "Do not delete important evidence.",
+                        "Do not send money to account-recovery scammers."
                     ]
                 }
             ]
@@ -69,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         "Scam & Phishing": {
             title: "🎣 Scam & Phishing",
+            description: "Identify suspicious messages, links and payment requests.",
 
             situations: [
                 {
@@ -76,15 +95,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Suspicious message",
 
                     steps: [
-                        "Do not click suspicious links.",
-                        "Check the sender's email address or phone number.",
-                        "Look for urgency, threats or unrealistic offers.",
+                        "Do not click links or download attachments.",
+                        "Check the sender's email address or phone number carefully.",
+                        "Look for urgency, threats, unusual spelling or unrealistic offers.",
                         "Verify the request through the organisation's official website or app.",
-                        "Report or block the sender when appropriate."
+                        "Report or block the suspicious sender when appropriate."
                     ],
 
                     dont: [
-                        "Never share passwords or OTPs.",
+                        "Never share passwords, OTPs or recovery codes.",
                         "Do not trust a message simply because it uses a company logo."
                     ]
                 },
@@ -113,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     steps: [
                         "Change the affected password immediately.",
-                        "Sign out unknown sessions.",
+                        "Sign out of unknown sessions.",
                         "Enable two-factor authentication.",
                         "Contact your bank if financial information was involved.",
                         "Monitor the account for suspicious activity."
@@ -148,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         "Phone Privacy": {
             title: "📱 Phone Privacy",
+            description: "Protect your device, apps, camera, microphone and location.",
 
             situations: [
                 {
@@ -163,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ],
 
                     dont: [
-                        "Do not install random security applications from pop-ups."
+                        "Do not install random security apps from pop-ups."
                     ]
                 },
 
@@ -180,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ],
 
                     dont: [
-                        "Do not give unknown applications unnecessary permissions."
+                        "Do not give unknown apps unnecessary permissions."
                     ]
                 },
 
@@ -205,6 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         "Account Security": {
             title: "🔒 Account Security",
+            description: "Improve passwords, 2FA and account protection.",
 
             situations: [
                 {
@@ -212,31 +233,31 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Password security",
 
                     steps: [
-                        "Create a unique password for your account.",
-                        "Avoid reusing passwords.",
+                        "Create a unique password.",
+                        "Do not reuse it on other accounts.",
                         "Use a reputable password manager if useful.",
                         "Change passwords that may have been exposed."
                     ],
 
                     dont: [
                         "Never share your password.",
-                        "Avoid obvious personal information in passwords."
+                        "Avoid obvious personal information."
                     ]
                 },
 
                 {
                     name: "🛡️ I don't have 2FA",
-                    title: "Enable two-factor authentication",
+                    title: "Enable 2FA",
 
                     steps: [
                         "Open the official account security settings.",
                         "Enable two-factor authentication.",
                         "Prefer an authenticator app or passkey when available.",
-                        "Store recovery codes somewhere secure."
+                        "Store recovery codes securely."
                     ],
 
                     dont: [
-                        "Never send recovery codes to another person."
+                        "Never send recovery codes to anyone."
                     ]
                 }
             ]
@@ -245,6 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         "Online Fraud": {
             title: "💳 Online Fraud",
+            description: "Get guidance if money or financial information may be at risk.",
 
             situations: [
                 {
@@ -288,6 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         "Malware": {
             title: "🦠 Malware",
+            description: "Steps for suspicious apps, files and unusual device behaviour.",
 
             situations: [
                 {
@@ -329,6 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         "Emergency Help": {
             title: "🚨 Emergency Cyber Help",
+            description: "Immediate steps for serious cybersecurity incidents.",
 
             situations: [
                 {
@@ -373,6 +397,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         "Learn Cybersecurity": {
             title: "🎓 Learn Cybersecurity",
+            description: "Learn simple habits that can improve your online safety.",
 
             situations: [
                 {
@@ -412,6 +437,20 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
+    // ==========================================
+    // FIND BUTTONS
+    // ==========================================
+
+    const helpButtons = document.querySelectorAll(".help-btn");
+
+    const emergencyButton =
+        document.getElementById("emergencyBtn");
+
+
+    // ==========================================
+    // OPEN HELP
+    // ==========================================
+
     function openHelp(service) {
 
         const info = helpData[service];
@@ -421,27 +460,72 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const oldModal = document.querySelector(".help-overlay");
+
+        // Remove old modal
+
+        const oldModal =
+            document.getElementById("cybercare-modal");
 
         if (oldModal) {
             oldModal.remove();
         }
 
 
-        const overlay = document.createElement("div");
+        // Create overlay
 
-        overlay.className = "help-overlay";
+        const overlay =
+            document.createElement("div");
+
+        overlay.id =
+            "cybercare-modal";
+
+        overlay.className =
+            "help-overlay";
 
 
-        const modal = document.createElement("div");
+        // Create modal
 
-        modal.className = "help-modal";
+        const modal =
+            document.createElement("div");
 
+        modal.className =
+            "help-modal";
+
+
+        // Create situation buttons
+
+        let situationsHTML = "";
+
+        info.situations.forEach(
+            function (item, index) {
+
+                situationsHTML += `
+                    <button
+                        type="button"
+                        class="situation-btn"
+                        data-index="${index}">
+
+                        ${item.name}
+
+                    </button>
+                `;
+            }
+        );
+
+
+        // Modal HTML
 
         modal.innerHTML = `
-            <button class="close-help" aria-label="Close">
+
+            <button
+                type="button"
+                class="close-help"
+                aria-label="Close">
+
                 ✕
+
             </button>
+
 
             <div class="help-header">
 
@@ -449,49 +533,51 @@ document.addEventListener("DOMContentLoaded", function () {
                     CYBERCARE HELP
                 </span>
 
-                <h2>${info.title}</h2>
+                <h2>
+                    ${info.title}
+                </h2>
 
                 <p>
-                    Choose your situation and get
-                    step-by-step guidance.
+                    ${info.description}
                 </p>
 
             </div>
 
+
             <div class="situation-section">
 
-                <h3>👇 What happened?</h3>
+                <h3>
+                    👇 What happened?
+                </h3>
 
                 <div class="situation-grid">
 
-                    ${info.situations.map(function (item, index) {
-                        return `
-                            <button
-                                class="situation-btn"
-                                data-index="${index}">
-                                ${item.name}
-                            </button>
-                        `;
-                    }).join("")}
+                    ${situationsHTML}
 
                 </div>
 
             </div>
 
-            <div class="help-result">
+
+            <div
+                class="help-result"
+                id="cybercare-result">
 
                 <div class="empty-help">
 
-                    🛡️
+                    <div class="empty-icon">
+                        🛡️
+                    </div>
 
                     <p>
                         Select an option above
-                        to get help.
+                        to get step-by-step help.
                     </p>
 
                 </div>
 
             </div>
+
         `;
 
 
@@ -500,6 +586,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.appendChild(overlay);
 
 
+        // ==========================================
+        // CLOSE BUTTON
+        // ==========================================
+
         const closeButton =
             modal.querySelector(".close-help");
 
@@ -507,10 +597,16 @@ document.addEventListener("DOMContentLoaded", function () {
         closeButton.addEventListener(
             "click",
             function () {
+
                 overlay.remove();
+
             }
         );
 
+
+        // ==========================================
+        // CLICK OUTSIDE
+        // ==========================================
 
         overlay.addEventListener(
             "click",
@@ -524,26 +620,39 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        modal
-            .querySelectorAll(".situation-btn")
-            .forEach(function (button) {
+        // ==========================================
+        // SITUATION BUTTONS
+        // ==========================================
+
+        const situationButtons =
+            modal.querySelectorAll(".situation-btn");
+
+
+        situationButtons.forEach(
+            function (button) {
 
                 button.addEventListener(
                     "click",
                     function () {
 
-                        modal
-                            .querySelectorAll(".situation-btn")
-                            .forEach(function (btn) {
-                                btn.classList.remove("active");
-                            });
+                        situationButtons.forEach(
+                            function (btn) {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
 
 
                         button.classList.add("active");
 
 
                         const index =
-                            Number(button.dataset.index);
+                            Number(
+                                button.dataset.index
+                            );
 
 
                         showResult(
@@ -554,901 +663,48 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 );
 
-            });
+            }
+        );
 
     }
 
+
+    // ==========================================
+    // SHOW RESULT
+    // ==========================================
 
     function showResult(modal, situation) {
 
         const result =
-            modal.querySelector(".help-result");
+            modal.querySelector("#cybercare-result");
 
 
-        const steps =
-            situation.steps.map(function (step) {
-                return `<li>${step}</li>`;
-            }).join("");
+        const stepsHTML =
+            situation.steps.map(
+                function (step) {
 
-
-        const dont =
-            situation.dont.map(function (item) {
-                return `<li>${item}</li>`;
-            }).join("");
-
-
-        result.innerHTML = `
-
-            <div class="result-panel">
-
-                <div class="help-section">
-
-                    <h3>
-                        ⚡ ${situation.title}
-                    </h3>
-
-                </div>
-
-                <div class="help-section">
-
-                    <h3>
-                        ✅ What you should do
-                    </h3>
-
-                    <ol>
-                        ${steps}
-                    </ol>
-
-                </div>
-
-                <div class="help-section danger-section">
-
-                    <h3>
-                        ⚠️ What you should NOT do
-                    </h3>
-
-                    <ul>
-                        ${dont}
-                    </ul>
-
-                </div>
-
-                <div class="help-section evidence-section">
-
-                    <h3>
-                        📸 Save useful evidence
-                    </h3>
-
-                    <p>
-                        Keep relevant screenshots,
-                        messages, emails or transaction
-                        details when appropriate.
-                    </p>
-
-                </div>
-
-                <div class="help-footer">
-
-                    🛡️ CyberCare provides general
-                    cybersecurity safety guidance.
-
-                </div>
-
-            </div>
-        `;
-    }
-
-
-    /* Get Help buttons */
-
-    helpButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const service =
-                button.getAttribute("data-service");
-
-            openHelp(service);
-
-        });
-
-    });
-
-
-    /* I Need Help Now */
-
-    if (emergencyButton) {
-
-        emergencyButton.addEventListener(
-            "click",
-            function () {
-
-                openHelp("Emergency Help");
-
-            }
-        );
-
-    }
-
-});                        "Follow the service's identity verification process.",
-                        "Secure your recovery email account.",
-                        "After recovery, change your password and enable 2FA."
-                    ],
-
-                    warning: [
-                        "Do not pay strangers who promise guaranteed account recovery.",
-                        "Never share recovery codes."
-                    ]
-                }
-            ]
-        },
-
-
-        "Scam & Phishing": {
-            title: "🎣 Scam & Phishing",
-
-            situations: [
-                {
-                    name: "📩 I received a suspicious message",
-
-                    steps: [
-                        "Do not click suspicious links.",
-                        "Check the sender's address or phone number carefully.",
-                        "Look for urgency, threats, unusual spelling or unrealistic offers.",
-                        "Verify the request through the organisation's official website or app.",
-                        "Report or block the sender when appropriate."
-                    ],
-
-                    warning: [
-                        "Never share passwords, OTPs or recovery codes.",
-                        "Do not trust a message simply because it uses a company logo."
-                    ]
-                },
-
-                {
-                    name: "🔗 I clicked a suspicious link",
-
-                    steps: [
-                        "Close the suspicious page.",
-                        "Do not enter any more information.",
-                        "If you entered a password
-            title: "🔐 Hacked Account",
-
-            situations: [
-
-                {
-                    name: "🔓 I can still access my account",
-
-                    title: "Secure your account",
-
-                    steps: [
-                        "Change your password immediately.",
-                        "Sign out unknown devices.",
-                        "Enable two-factor authentication.",
-                        "Check recovery email and phone number.",
-                        "Review recent account activity."
-                    ],
-
-                    dont: [
-                        "Never share your password or OTP.",
-                        "Do not use suspicious recovery links."
-                    ]
-                },
-
-                {
-                    name: "🚫 I cannot log in",
-
-                    title: "Recover your account",
-
-                    steps: [
-                        "Use the official account recovery page.",
-                        "Try your recovery email or phone number.",
-                        "Complete the provider's verification process.",
-                        "Secure your recovery email account.",
-                        "After recovery, change your password and enable 2FA."
-                    ],
-
-                    dont: [
-                        "Do not pay strangers promising guaranteed recovery.",
-                        "Never share recovery codes."
-                    ]
-                },
-
-                {
-                    name: "📧 My email or phone was changed",
-
-                    title: "Recovery information was changed",
-
-                    steps: [
-                        "Check your original email for security alerts.",
-                        "Use the official recovery process.",
-                        "Try to reverse the unauthorized change.",
-                        "Secure your email account.",
-                        "Review account settings after recovery."
-                    ],
-
-                    dont: [
-                        "Do not trust random people claiming to be support.",
-                        "Never share verification codes."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Scam & Phishing": {
-
-            title: "🎣 Scam & Phishing",
-
-            situations: [
-
-                {
-                    name: "📩 I received a suspicious message",
-
-                    title: "Suspicious message",
-
-                    steps: [
-                        "Do not click suspicious links.",
-                        "Check the sender's address or number.",
-                        "Look for urgency, threats or unrealistic offers.",
-                        "Verify the request through the organisation's official website.",
-                        "Report or block the sender if appropriate."
-                    ],
-
-                    dont: [
-                        "Do not share passwords or OTPs.",
-                        "Do not trust a message just because it has a company logo."
-                    ]
-                },
-
-                {
-                    name: "🔗 I clicked a suspicious link",
-
-                    title: "You clicked a suspicious link",
-
-                    steps: [
-                        "Close the suspicious page.",
-                        "Do not enter any further information.",
-                        "If you entered a password, change it immediately.",
-                        "Enable 2FA.",
-                        "If financial information was entered, contact your bank."
-                    ],
-
-                    dont: [
-                        "Do not return to the suspicious website.",
-                        "Do not download anything it recommends."
-                    ]
-                },
-
-                {
-                    name: "🔑 I shared an OTP or password",
-
-                    title: "Sensitive information was shared",
-
-                    steps: [
-                        "Change the affected password immediately.",
-                        "Sign out unknown sessions.",
-                        "Enable 2FA.",
-                        "Contact your bank if financial information was involved.",
-                        "Monitor the account for suspicious activity."
-                    ],
-
-                    dont: [
-                        "Never share another OTP.",
-                        "Do not trust anyone asking for another verification code."
-                    ]
-                },
-
-                {
-                    name: "💳 I sent money",
-
-                    title: "Possible payment scam",
-
-                    steps: [
-                        "Contact your bank or payment provider immediately.",
-                        "Save the transaction ID.",
-                        "Save screenshots and messages.",
-                        "Secure the account used for payment.",
-                        "Report the incident through the appropriate official channel."
-                    ],
-
-                    dont: [
-                        "Do not send more money.",
-                        "Do not trust anyone promising guaranteed recovery."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Phone Privacy": {
-
-            title: "📱 Phone Privacy",
-
-            situations: [
-
-                {
-                    name: "📦 I found an unknown app",
-
-                    title: "Unknown application",
-
-                    steps: [
-                        "Check the app and its installation source.",
-                        "Review its permissions.",
-                        "Uninstall it if you do not recognize it.",
-                        "Update your phone.",
-                        "Run a trusted security scan."
-                    ],
-
-                    dont: [
-                        "Do not install random security apps from pop-ups."
-                    ]
-                },
-
-                {
-                    name: "🎤 Camera or microphone seems suspicious",
-
-                    title: "Camera & microphone privacy",
-
-                    steps: [
-                        "Review camera and microphone permissions.",
-                        "Remove unnecessary permissions.",
-                        "Uninstall suspicious apps.",
-                        "Update the operating system.",
-                        "Restart your device."
-                    ],
-
-                    dont: [
-                        "Do not give unknown apps unnecessary permissions."
-                    ]
-                },
-
-                {
-                    name: "📍 I am worried about location tracking",
-
-                    title: "Location privacy",
-
-                    steps: [
-                        "Review location permissions.",
-                        "Disable unnecessary location access.",
-                        "Check account location-sharing settings.",
-                        "Review unfamiliar apps and services."
-                    ],
-
-                    dont: [
-                        "Do not leave location sharing enabled for unknown services."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Account Security": {
-
-            title: "🔒 Account Security",
-
-            situations: [
-
-                {
-                    name: "🔑 My password is weak or reused",
-
-                    title: "Password security",
-
-                    steps: [
-                        "Create a unique password.",
-                        "Do not reuse it on other accounts.",
-                        "Use a reputable password manager if useful.",
-                        "Change passwords that may have been exposed."
-                    ],
-
-                    dont: [
-                        "Never share your password.",
-                        "Avoid obvious personal information."
-                    ]
-                },
-
-                {
-                    name: "🛡️ I don't have 2FA",
-
-                    title: "Enable 2FA",
-
-                    steps: [
-                        "Open the official account security settings.",
-                        "Enable two-factor authentication.",
-                        "Prefer an authenticator app or passkey when available.",
-                        "Store recovery codes securely."
-                    ],
-
-                    dont: [
-                        "Never send recovery codes to anyone."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Online Fraud": {
-
-            title: "💳 Online Fraud",
-
-            situations: [
-
-                {
-                    name: "💸 I lost money",
-
-                    title: "Possible financial fraud",
-
-                    steps: [
-                        "Contact your bank or payment provider immediately.",
-                        "Save the transaction ID and receipt.",
-                        "Secure the account used for payment.",
-                        "Change compromised passwords.",
-                        "Save relevant screenshots and messages."
-                    ],
-
-                    dont: [
-                        "Do not send more money.",
-                        "Do not delete transaction evidence."
-                    ]
-                },
-
-                {
-                    name: "🏦 My banking information was shared",
-
-                    title: "Financial information exposed",
-
-                    steps: [
-                        "Contact your bank immediately.",
-                        "Ask what security measures should be taken.",
-                        "Monitor your transactions.",
-                        "Change affected credentials.",
-                        "Secure your email account."
-                    ],
-
-                    dont: [
-                        "Never share another OTP or PIN.",
-                        "Do not trust unsolicited callers."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Malware": {
-
-            title: "🦠 Malware",
-
-            situations: [
-
-                {
-                    name: "📱 My device is behaving strangely",
-
-                    title: "Unusual device behaviour",
-
-                    steps: [
-                        "Check recently installed applications.",
-                        "Remove apps you do not recognize.",
-                        "Update the operating system.",
-                        "Run a trusted security scan.",
-                        "Review browser extensions."
-                    ],
-
-                    dont: [
-                        "Do not install random security software from pop-ups."
-                    ]
-                },
-
-                {
-                    name: "⬇️ I installed a suspicious app",
-
-                    title: "Suspicious application",
-
-                    steps: [
-                        "Disconnect from the internet if active compromise is suspected.",
-                        "Uninstall the suspicious application if possible.",
-                        "Run a trusted security scan.",
-                        "Update your device.",
-                        "Change important passwords from a trusted device."
-                    ],
-
-                    dont: [
-                        "Do not enter passwords into suspicious applications."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Emergency Help": {
-
-            title: "🚨 Emergency Cyber Help",
-
-            situations: [
-
-                {
-                    name: "🚨 My account is actively compromised",
-
-                    title: "Active compromise",
-
-                    steps: [
-                        "Secure your email account first.",
-                        "Change compromised passwords.",
-                        "Sign out unknown devices.",
-                        "Enable 2FA.",
-                        "Save important evidence.",
-                        "Contact the affected service through its official support."
-                    ],
-
-                    dont: [
-                        "Do not communicate with the suspected attacker.",
-                        "Never share OTPs or recovery codes."
-                    ]
-                },
-
-                {
-                    name: "💳 My money is at risk",
-
-                    title: "Financial emergency",
-
-                    steps: [
-                        "Contact your bank or payment provider immediately.",
-                        "Ask how to secure your account.",
-                        "Save transaction details.",
-                        "Secure your email account.",
-                        "Report the incident through the appropriate official channel."
-                    ],
-
-                    dont: [
-                        "Do not send additional money.",
-                        "Do not trust recovery scammers."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Learn Cybersecurity": {
-
-            title: "🎓 Learn Cybersecurity",
-
-            situations: [
-
-                {
-                    name: "🎣 Learn about phishing",
-
-                    title: "Phishing basics",
-
-                    steps: [
-                        "Check sender addresses carefully.",
-                        "Avoid unexpected links and attachments.",
-                        "Verify requests through official channels.",
-                        "Never share authentication codes."
-                    ],
-
-                    dont: [
-                        "Do not test suspicious links using real accounts."
-                    ]
-                },
-
-                {
-                    name: "🔐 Learn account protection",
-
-                    title: "Account security basics",
-
-                    steps: [
-                        "Use unique passwords.",
-                        "Enable 2FA.",
-                        "Review active sessions.",
-                        "Keep recovery information updated.",
-                        "Keep devices and applications updated."
-                    ],
-
-                    dont: [
-                        "Do not reuse passwords across important accounts."
-                    ]
-                }
-
-            ]
-        }
-
-    };
-
-
-    // ================================
-    // OPEN HELP
-    // ================================
-
-    const buttons =
-        document.querySelectorAll(".help-btn");
-
-
-    buttons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const service =
-                button.getAttribute("data-service");
-
-            openHelp(service);
-
-        });
-
-    });
-
-
-    // ================================
-    // EMERGENCY
-    // ================================
-
-    const emergency =
-        document.getElementById("emergencyBtn");
-
-
-    if (emergency) {
-
-        emergency.addEventListener(
-            "click",
-            function () {
-
-                openHelp("Emergency Help");
-
-            }
-        );
-
-    }
-
-
-    // ================================
-    // OPEN HELP FUNCTION
-    // ================================
-
-    function openHelp(service) {
-
-        const info = data[service];
-
-        if (!info) {
-            alert("CyberCare help service is unavailable.");
-            return;
-        }
-
-
-        const old =
-            document.getElementById(
-                "cybercare-modal"
-            );
-
-        if (old) {
-            old.remove();
-        }
-
-
-        const modal =
-            document.createElement("div");
-
-        modal.id =
-            "cybercare-modal";
-
-        modal.className =
-            "help-overlay";
-
-
-        let choices = "";
-
-
-        info.situations.forEach(
-            function (item, index) {
-
-                choices += `
-                    <button
-                        class="situation-btn"
-                        data-index="${index}">
-
-                        ${item.name}
-
-                    </button>
-                `;
-
-            }
-        );
-
-
-        modal.innerHTML = `
-
-            <div class="help-modal">
-
-                <button
-                    class="close-help">
-
-                    ✕
-
-                </button>
-
-
-                <div class="help-header">
-
-                    <span class="help-badge">
-                        CYBERCARE HELP
-                    </span>
-
-                    <h2>
-                        ${info.title}
-                    </h2>
-
-                    <p>
-                        Choose your situation
-                        and get step-by-step guidance.
-                    </p>
-
-                </div>
-
-
-                <div class="situation-section">
-
-                    <h3>
-                        👇 What happened?
-                    </h3>
-
-                    <div class="situation-grid">
-
-                        ${choices}
-
-                    </div>
-
-                </div>
-
-
-                <div id="cybercare-result">
-
-                    <div class="empty-help">
-
-                        🛡️
-
-                        <p>
-                            Select an option above
-                            to get help.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        `;
-
-
-        document.body.appendChild(modal);
-
-
-        // CLOSE
-
-        modal
-            .querySelector(".close-help")
-            .addEventListener(
-                "click",
-                function () {
-
-                    modal.remove();
+                    return `
+                        <li>
+                            ${step}
+                        </li>
+                    `;
 
                 }
-            );
+            ).join("");
 
 
-        // OUTSIDE CLICK
+        const dontHTML =
+            situation.dont.map(
+                function (item) {
 
-        modal.addEventListener(
-            "click",
-            function (event) {
-
-                if (event.target === modal) {
-                    modal.remove();
-                }
-
-            }
-        );
-
-
-        // SITUATION BUTTONS
-
-        modal
-            .querySelectorAll(".situation-btn")
-            .forEach(
-                function (btn) {
-
-                    btn.addEventListener(
-                        "click",
-                        function () {
-
-                            modal
-                                .querySelectorAll(
-                                    ".situation-btn"
-                                )
-                                .forEach(
-                                    function (b) {
-                                        b.classList.remove(
-                                            "active"
-                                        );
-                                    }
-                                );
-
-
-                            btn.classList.add(
-                                "active"
-                            );
-
-
-                            const index =
-                                Number(
-                                    btn.getAttribute(
-                                        "data-index"
-                                    )
-                                );
-
-
-                            showResult(
-                                modal,
-                                info.situations[index]
-                            );
-
-                        }
-                    );
+                    return `
+                        <li>
+                            ${item}
+                        </li>
+                    `;
 
                 }
-            );
-
-    }
-
-
-    // ================================
-    // SHOW RESULT
-    // ================================
-
-    function showResult(
-        modal,
-        situation
-    ) {
-
-        const result =
-            modal.querySelector(
-                "#cybercare-result"
-            );
-
-
-        let steps = "";
-
-        situation.steps.forEach(
-            function (step) {
-
-                steps += `
-                    <li>
-                        ${step}
-                    </li>
-                `;
-
-            }
-        );
-
-
-        let dont = "";
-
-        situation.dont.forEach(
-            function (item) {
-
-                dont += `
-                    <li>
-                        ${item}
-                    </li>
-                `;
-
-            }
-        );
+            ).join("");
 
 
         result.innerHTML = `
@@ -1457,7 +713,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <div class="result-title">
 
-                    <span>⚡</span>
+                    <span>
+                        ⚡
+                    </span>
 
                     <h3>
                         ${situation.title}
@@ -1473,7 +731,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </h3>
 
                     <ol>
-                        ${steps}
+                        ${stepsHTML}
                     </ol>
 
                 </div>
@@ -1486,7 +744,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </h3>
 
                     <ul>
-                        ${dont}
+                        ${dontHTML}
                     </ul>
 
                 </div>
@@ -1499,8 +757,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     </h3>
 
                     <p>
-                        Keep relevant screenshots,
-                        messages, emails or transaction
+                        Keep screenshots, messages,
+                        emails, receipts or transaction
                         details when appropriate.
                     </p>
 
@@ -1518,116 +776,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
         `;
 
+
+        // Scroll result into view
+
+        result.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+
     }
 
-});            "Choose what happened to your account and get step-by-step guidance.",
 
-        situations: [
+    // ==========================================
+    // GET HELP BUTTONS
+    // ==========================================
 
-            {
-                name: "🔓 I can still access my account",
+    helpButtons.forEach(
+        function (button) {
 
-                title: "You still have access",
+            button.addEventListener(
+                "click",
+                function () {
 
-                steps: [
-                    "Change your password immediately from the official website or app.",
-                    "Sign out of unfamiliar devices and active sessions.",
-                    "Enable two-factor authentication (2FA).",
-                    "Check your recovery email and phone number.",
-                    "Review recent account activity.",
-                    "Remove unknown connected apps or services."
-                ],
+                    const service =
+                        button.dataset.service;
 
-                dont: [
-                    "Never share your password or OTP.",
-                    "Do not use suspicious recovery links."
-                ]
-            },
+                    openHelp(service);
 
-            {
-                name: "🚫 I cannot log in",
+                }
+            );
 
-                title: "You cannot access the account",
+        }
+    );
 
-                steps: [
-                    "Use the service's official account recovery page.",
-                    "Try the recovery email or phone number connected to the account.",
-                    "Follow the provider's identity verification process.",
-                    "Secure your recovery email account.",
-                    "After recovery, change the password and enable 2FA."
-                ],
 
-                dont: [
-                    "Do not pay strangers promising guaranteed recovery.",
-                    "Never give recovery codes to another person."
-                ]
-            },
+    // ==========================================
+    // EMERGENCY HELP BUTTON
+    // ==========================================
 
-            {
-                name: "📧 My email or phone was changed",
+    if (emergencyButton) {
 
-                title: "Recovery information was changed",
+        emergencyButton.addEventListener(
+            "click",
+            function () {
 
-                steps: [
-                    "Check your original email for security alerts.",
-                    "Use the official account recovery process.",
-                    "Look for an option to reverse an unauthorized change.",
-                    "Secure your email account.",
-                    "After recovery, review all account settings."
-                ],
+                openHelp("Emergency Help");
 
-                dont: [
-                    "Do not trust strangers claiming to be account support.",
-                    "Never share verification codes."
-                ]
-            },
-
-            {
-                name: "💰 My account was used for fraud",
-
-                title: "Your account may be involved in fraud",
-
-                steps: [
-                    "Secure the account immediately.",
-                    "Change the password from a trusted device.",
-                    "Sign out unknown sessions.",
-                    "Enable 2FA.",
-                    "Save screenshots and suspicious messages.",
-                    "Contact the affected platform.",
-                    "If money is involved, contact your bank or payment provider."
-                ],
-
-                dont: [
-                    "Do not delete important evidence.",
-                    "Do not send money to account-recovery scammers."
-                ]
             }
+        );
 
-        ]
-    },
+    }
 
-
-    // ========================================
-    // SCAM & PHISHING
-    // ========================================
-
-    "Scam & Phishing": {
-
-        title: "🎣 Scam & Phishing",
-
-        intro:
-            "Choose what happened and CyberCare will show you what to do next.",
-
-        situations: [
-
-            {
-                name: "📩 I received a suspicious message",
-
-                title: "Suspicious message",
-
-                steps: [
-                    "Do not click links or download attachments.",
-                    "Check the sender's email address or phone number.",
-                    "Look for unusual spelling, threats or unrealistic offers.",
-                    "Verify the request through the organisation's official website or app.",
-                    "Report or block the suspicious sender when
+});
