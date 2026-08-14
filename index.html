@@ -5,36 +5,408 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CyberCare | Stay Safe. Stay Secure.</title>
+    <title>CyberCare | Digital Safety & Cyber Help</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header class="navbar">
-        <div class="logo">🛡️ CyberCare</div>
+    <!-- Navigation -->
 
-        <button id="themeBtn" class="theme-btn">🌙</button>
+    <header class="navbar">
+
+        <div class="logo">
+            🛡️ CyberCare
+        </div>
+
+        <button id="themeBtn" class="theme-btn">
+            🌙
+        </button>
+
     </header>
+
 
     <main>
 
-        <!-- Hero Section -->
+        <!-- Hero -->
+
         <section class="hero">
 
-            <div class="hero-icon">🛡️</div>
+            <div class="hero-icon">
+                🛡️
+            </div>
 
-            <h1>CyberCare</h1>
+            <h1>
+                CyberCare
+            </h1>
 
-            <h2>Protecting People. Securing Digital Lives.</h2>
+            <h2>
+                Protecting People. Securing Digital Lives.
+            </h2>
 
             <p>
-                Your digital safety matters.
-                Get simple, practical guidance when you need it.
+                Practical cybersecurity guidance for hacked accounts,
+                scams, fraud, privacy problems and other digital threats.
             </p>
 
             <button id="emergencyBtn" class="emergency-btn">
+                🚨 I Need Help Now
+            </button>
+
+        </section>
+
+
+        <!-- Services -->
+
+        <section class="services">
+
+            <h2>
+                How Can We Help You?
+            </h2>
+
+            <p class="section-text">
+                Choose your situation and get step-by-step guidance.
+            </p>
+
+
+            <div class="service-grid">
+
+
+                <!-- Hacked Account -->
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        🔐
+                    </div>
+
+                    <h3>
+                        Hacked Account
+                    </h3>
+
+                    <p>
+                        Recover and secure an account that may have been compromised.
+                    </p>
+
+                    <button
+                        class="help-btn"
+                        data-service="Hacked Account">
+
+                        Get Help →
+
+                    </button>
+
+                </div>
+
+
+                <!-- Scam -->
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        🎣
+                    </div>
+
+                    <h3>
+                        Scam & Phishing
+                    </h3>
+
+                    <p>
+                        Identify suspicious messages, links and fake requests.
+                    </p>
+
+                    <button
+                        class="help-btn"
+                        data-service="Scam & Phishing">
+
+                        Get Help →
+
+                    </button>
+
+                </div>
+
+
+                <!-- Phone Privacy -->
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        📱
+                    </div>
+
+                    <h3>
+                        Phone Privacy
+                    </h3>
+
+                    <p>
+                        Check apps, permissions and privacy settings.
+                    </p>
+
+                    <button
+                        class="help-btn"
+                        data-service="Phone Privacy">
+
+                        Get Help →
+
+                    </button>
+
+                </div>
+
+
+                <!-- Account Security -->
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        🔒
+                    </div>
+
+                    <h3>
+                        Account Security
+                    </h3>
+
+                    <p>
+                        Improve passwords, 2FA and account protection.
+                    </p>
+
+                    <button
+                        class="help-btn"
+                        data-service="Account Security">
+
+                        Get Help →
+
+                    </button>
+
+                </div>
+
+
+                <!-- Online Fraud -->
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        💳
+                    </div>
+
+                    <h3>
+                        Online Fraud
+                    </h3>
+
+                    <p>
+                        Take action if money or financial information is involved.
+                    </p>
+
+                    <button
+                        class="help-btn"
+                        data-service="Online Fraud">
+
+                        Get Help →
+
+                    </button>
+
+                </div>
+
+
+                <!-- Malware -->
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        🦠
+                    </div>
+
+                    <h3>
+                        Malware & Suspicious Apps
+                    </h3>
+
+                    <p>
+                        Learn what to do when a device behaves suspiciously.
+                    </p>
+
+                    <button
+                        class="help-btn"
+                        data-service="Malware">
+
+                        Get Help →
+
+                    </button>
+
+                </div>
+
+
+                <!-- Emergency -->
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        🚨
+                    </div>
+
+                    <h3>
+                        Emergency Help
+                    </h3>
+
+                    <p>
+                        Get immediate safety steps during an urgent cyber incident.
+                    </p>
+
+                    <button
+                        class="help-btn"
+                        data-service="Emergency Help">
+
+                        Get Help →
+
+                    </button>
+
+                </div>
+
+
+                <!-- Learn -->
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Learn Cybersecurity
+                    </h3>
+
+                    <p>
+                        Learn practical cybersecurity from the basics.
+                    </p>
+
+                    <button
+                        class="help-btn"
+                        data-service="Learn Cybersecurity">
+
+                        Learn →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CyberCare Tools -->
+
+        <section class="tools">
+
+            <h2>
+                🛠️ CyberCare Tools
+            </h2>
+
+            <p class="section-text">
+                Interactive tools to improve your digital safety.
+            </p>
+
+
+            <div class="tool-grid">
+
+
+                <div class="tool-card">
+
+                    <h3>
+                        🔎 Scam Checker
+                    </h3>
+
+                    <p>
+                        Check suspicious messages for common warning signs.
+                    </p>
+
+                    <button class="tool-btn">
+                        Coming Soon
+                    </button>
+
+                </div>
+
+
+                <div class="tool-card">
+
+                    <h3>
+                        🔐 Password Checker
+                    </h3>
+
+                    <p>
+                        Learn how strong your password is.
+                    </p>
+
+                    <button class="tool-btn">
+                        Coming Soon
+                    </button>
+
+                </div>
+
+
+                <div class="tool-card">
+
+                    <h3>
+                        📱 Privacy Checklist
+                    </h3>
+
+                    <p>
+                        Review important privacy and security settings.
+                    </p>
+
+                    <button class="tool-btn">
+                        Coming Soon
+                    </button>
+
+                </div>
+
+
+                <div class="tool-card">
+
+                    <h3>
+                        🛡️ Cyber Safety Score
+                    </h3>
+
+                    <p>
+                        Check your overall cybersecurity habits.
+                    </p>
+
+                    <button class="tool-btn">
+                        Coming Soon
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <h3>
+            🛡️ CyberCare
+        </h3>
+
+        <p>
+            Stay Safe. Stay Secure.
+        </p>
+
+        <p class="copyright">
+            © 2026 CyberCare. Built for a safer digital world.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>            <button id="emergencyBtn" class="emergency-btn">
                 🚨 I Need Help Now
             </button>
 
