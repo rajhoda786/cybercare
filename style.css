@@ -11,7 +11,6 @@
     --text: #f8fafc;
     --muted: #9fb0c3;
     --primary: #38bdf8;
-    --primary-dark: #0ea5e9;
     --green: #22c55e;
     --danger: #ef4444;
     --border: rgba(148, 163, 184, 0.18);
@@ -30,11 +29,99 @@ body {
     line-height: 1.6;
 }
 
+/* NAVBAR */
 
-/* =========================
-   NAVBAR
-========================= */
+.navbar {
+    width: 100%;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(7, 17, 31, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.theme-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--card);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    transform: rotate(20deg);
+    border-color: var(--primary);
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 90px 20px 80px;
+    max-width: 950px;
+    margin: auto;
+}
+
+.hero-icon {
+    font-size: 75px;
+    margin-bottom: 15px;
+    filter:
+        drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
+}
+
+.hero h1 {
+    font-size: clamp(50px, 9vw, 85px);
+    letter-spacing: -3px;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    color: var(--primary);
+    font-size: clamp(20px, 4vw, 30px);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 680px;
+    margin: 0 auto 35px;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+/* EMERGENCY */
+
+.emergency-btn {
+    background: var(--danger);
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow:
+        0 0 25px rgba(239, 68, 68, 0.25);
+    transition: 0.3s;
+}
+
+.emergency-btn:hover {
+    transform: translateY(-4px);
+    box
 .navbar {
     width: 100%;
     padding: 18px 7%;
