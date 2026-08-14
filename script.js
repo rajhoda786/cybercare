@@ -1,15 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================================
-       CYBERCARE
-       COMPLETE DIGITAL SAFETY SYSTEM
-       Version: 2026
-    ========================================================= */
+       CYBERCARE - FINAL COMPLETE SCRIPT
+       =========================================================
+       Includes:
+       • English / বাংলা
+       • Dark / Light mode
+       • Side menu
+       • Account Recovery
+       • Facebook / Instagram / WhatsApp / Google
+       • Scam & Phishing
+       • OTP / suspicious links
+       • Phone Security
+       • Online / UPI Fraud
+       • Suspicious Activity
+       • Emergency Help
+       • Women’s Digital Safety
+       • Harassment / stalking / blackmail guidance
+       • Fake account / abusive messages
+       • Evidence preservation
+       • Scam Checker
+       • Password Checker
+       • Privacy Checklist
+       • Cyber Safety Score
+       • Cybersecurity Learning
+       • India Cybercrime quick access
+       • Responsive modals
+       ========================================================= */
 
 
     /* =========================================================
-       1. ELEMENTS
-    ========================================================= */
+       1. BASIC ELEMENTS
+       ========================================================= */
 
     const menuBtn = document.getElementById("menuBtn");
     const sideMenu = document.getElementById("sideMenu");
@@ -26,8 +48,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       2. MENU
-    ========================================================= */
+       2. SAFE HTML ESCAPE
+       ========================================================= */
+
+    function escapeHTML(value) {
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    /* =========================================================
+       3. SIDE MENU
+       ========================================================= */
 
     function openMenu() {
 
@@ -48,15 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     menuBtn?.addEventListener("click", openMenu);
-
     closeMenu?.addEventListener("click", closeSideMenu);
-
     menuOverlay?.addEventListener("click", closeSideMenu);
 
 
     /* =========================================================
-       3. DARK / LIGHT MODE
-    ========================================================= */
+       4. DARK / LIGHT MODE
+       ========================================================= */
 
     let savedTheme =
         localStorage.getItem("cybercare-theme") || "light";
@@ -68,17 +103,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.body.classList.add("dark-mode");
 
-            if (themeBtn) {
+            if (themeBtn)
                 themeBtn.textContent = "☀️";
-            }
 
         } else {
 
             document.body.classList.remove("dark-mode");
 
-            if (themeBtn) {
+            if (themeBtn)
                 themeBtn.textContent = "🌙";
-            }
         }
     }
 
@@ -88,10 +121,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     themeBtn?.addEventListener("click", () => {
 
+        document.body.classList.toggle("dark-mode");
+
         savedTheme =
             document.body.classList.contains("dark-mode")
-                ? "light"
-                : "dark";
+                ? "dark"
+                : "light";
 
         localStorage.setItem(
             "cybercare-theme",
@@ -103,8 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       4. LANGUAGE
-    ========================================================= */
+       5. LANGUAGE SYSTEM
+       ========================================================= */
 
     const translations = {
 
@@ -116,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Protecting People. Securing Digital Lives.",
 
             heroText:
-                "Practical cybersecurity guidance for hacked accounts, scams, fraud, harassment, blackmail, privacy problems and digital threats.",
+                "Practical cybersecurity guidance for hacked accounts, scams, fraud, privacy problems, harassment and digital threats.",
 
             emergency:
                 "🚨 I Need Help Now",
@@ -168,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "মানুষকে সুরক্ষিত রাখা। ডিজিটাল জীবনকে নিরাপদ রাখা।",
 
             heroText:
-                "হ্যাক হওয়া অ্যাকাউন্ট, প্রতারণা, ফিশিং, হয়রানি, ব্ল্যাকমেইল, গোপনীয়তা ও ডিজিটাল সমস্যায় ধাপে ধাপে নিরাপত্তা সহায়তা।",
+                "হ্যাক হওয়া অ্যাকাউন্ট, প্রতারণা, ফিশিং, গোপনীয়তা, হয়রানি ও ডিজিটাল সমস্যায় সহজ ধাপে ধাপে নিরাপত্তা সহায়তা।",
 
             emergency:
                 "🚨 এখনই সাহায্য চাই",
@@ -218,16 +253,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function applyLanguage() {
 
-        const t =
-            translations[currentLanguage];
+        const t = translations[currentLanguage];
 
         if (!t) return;
 
 
-        if (languageText) {
-            languageText.textContent =
-                currentLanguage;
-        }
+        if (languageText)
+            languageText.textContent = currentLanguage;
 
 
         const logo =
@@ -259,45 +291,28 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".services > h2");
 
         if (servicesH2)
-            servicesH2.textContent =
-                t.servicesTitle;
+            servicesH2.textContent = t.servicesTitle;
 
 
         const servicesText =
-            document.querySelector(
-                ".services .section-text"
-            );
+            document.querySelector(".services .section-text");
 
         if (servicesText)
-            servicesText.textContent =
-                t.servicesText;
+            servicesText.textContent = t.servicesText;
 
 
         const cards =
-            document.querySelectorAll(
-                ".service-card"
-            );
+            document.querySelectorAll(".service-card");
 
 
         if (cards.length >= 6) {
 
-            cards[0].querySelector("h3").textContent =
-                t.account;
-
-            cards[1].querySelector("h3").textContent =
-                t.scam;
-
-            cards[2].querySelector("h3").textContent =
-                t.phone;
-
-            cards[3].querySelector("h3").textContent =
-                t.fraud;
-
-            cards[4].querySelector("h3").textContent =
-                t.suspicious;
-
-            cards[5].querySelector("h3").textContent =
-                t.emergencyHelp;
+            cards[0].querySelector("h3").textContent = t.account;
+            cards[1].querySelector("h3").textContent = t.scam;
+            cards[2].querySelector("h3").textContent = t.phone;
+            cards[3].querySelector("h3").textContent = t.fraud;
+            cards[4].querySelector("h3").textContent = t.suspicious;
+            cards[5].querySelector("h3").textContent = t.emergencyHelp;
 
 
             cards.forEach(card => {
@@ -312,27 +327,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const learnH2 =
-            document.querySelector(
-                ".extra-section > h2"
-            );
+            document.querySelector(".extra-section > h2");
 
         if (learnH2)
             learnH2.textContent = t.learn;
 
 
         const toolsH2 =
-            document.querySelector(
-                ".tools > h2"
-            );
+            document.querySelector(".tools > h2");
 
         if (toolsH2)
             toolsH2.textContent = t.tools;
 
 
         const aboutH2 =
-            document.querySelector(
-                ".about-section > h2"
-            );
+            document.querySelector(".about-section > h2");
 
         if (aboutH2)
             aboutH2.textContent = t.about;
@@ -349,20 +358,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? "BN"
                 : "EN";
 
-
         localStorage.setItem(
             "cybercare-language",
             currentLanguage
         );
-
 
         applyLanguage();
     });
 
 
     /* =========================================================
-       5. OFFICIAL LINKS
-    ========================================================= */
+       6. OFFICIAL LINKS
+       ========================================================= */
 
     const officialLinks = {
 
@@ -387,15 +394,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       6. COMPLETE HELP DATABASE
-    ========================================================= */
+       7. HELP DATABASE
+       ========================================================= */
 
     const helpData = {
 
 
         /* =====================================================
            ACCOUNT RECOVERY
-        ===================================================== */
+           ===================================================== */
 
         "Account Recovery": {
 
@@ -403,7 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "🔐 Account Recovery",
 
             description:
-                "Choose the account problem you are facing.",
+                "Select the account problem you are facing.",
 
             situations: [
 
@@ -419,23 +426,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     steps: [
 
-                        "Do not panic and do not pay anyone promising instant recovery.",
+                        "Do not panic and do not pay anyone who promises instant recovery.",
 
                         "Open Facebook's official hacked-account recovery page.",
 
-                        "Follow the identity and security verification steps.",
+                        "Choose the option that best describes what happened.",
 
-                        "If you still have access, change your password immediately.",
+                        "Complete Facebook's identity and security verification.",
 
-                        "Check your email address and phone number.",
+                        "If you still have access, change the password immediately.",
 
-                        "Remove recovery information you do not recognise.",
+                        "Check the email address and phone number connected to the account.",
 
-                        "Review logged-in devices and sign out unknown devices.",
+                        "Remove anything you do not recognise.",
 
-                        "Enable two-factor authentication.",
+                        "Review logged-in devices and log out unknown devices.",
 
-                        "Check posts, messages, profile information and payment settings for changes.",
+                        "Turn on two-factor authentication.",
+
+                        "Check recent posts, messages and profile changes.",
 
                         "Secure the email account connected to Facebook."
                     ],
@@ -446,9 +455,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Never share OTPs, login codes or recovery codes.",
 
-                        "Do not pay unofficial recovery agents.",
+                        "Do not pay random people claiming they can recover your account.",
 
-                        "Do not use random recovery websites."
+                        "Do not use unofficial recovery websites."
                     ]
                 },
 
@@ -467,21 +476,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Open Instagram's official hacked-account recovery page.",
 
-                        "Follow the recovery instructions.",
+                        "Choose the option describing your problem.",
 
-                        "Check the original email account for Instagram security messages.",
+                        "Check your original email for security messages.",
 
-                        "Change your password if you still have access.",
+                        "If you still have access, change your password immediately.",
 
-                        "Review Login Activity.",
+                        "Check Login Activity.",
 
                         "Remove unknown devices.",
 
-                        "Check email and phone information.",
+                        "Check your email and phone number.",
 
                         "Enable two-factor authentication.",
 
-                        "Review profile, posts and messages for unauthorised changes.",
+                        "Review profile information, posts and messages.",
 
                         "Secure your email account."
                     ],
@@ -492,7 +501,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Do not pay unofficial recovery agents.",
 
-                        "Never give your password to anyone."
+                        "Do not give your password to anyone."
                     ]
                 },
 
@@ -509,7 +518,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     steps: [
 
-                        "Open the official WhatsApp application.",
+                        "Use the official WhatsApp application.",
 
                         "Register your phone number again.",
 
@@ -517,13 +526,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Open Settings → Linked Devices.",
 
-                        "Log out every device you do not recognise.",
+                        "Log out devices you do not recognise.",
 
                         "Open Settings → Account → Two-step verification.",
 
                         "Enable two-step verification.",
 
-                        "Check your profile and important conversations."
+                        "Check your profile and conversations for suspicious activity."
                     ],
 
                     dont: [
@@ -539,7 +548,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 {
                     name:
-                        "▶️ Google / YouTube Account",
+                        "▶️ Google / YouTube Account Hacked",
 
                     title:
                         "Google Account Recovery",
@@ -551,9 +560,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Open Google's official account recovery page.",
 
+                        "Enter your Google email address or phone number.",
+
                         "Complete Google's verification process.",
 
-                        "Change the password after recovery.",
+                        "Change your password immediately after recovery.",
 
                         "Open Google Account → Security.",
 
@@ -567,7 +578,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Enable 2-Step Verification.",
 
-                        "Review YouTube settings if the channel was affected."
+                        "Review YouTube channel information if affected."
                     ],
 
                     dont: [
@@ -588,19 +599,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     steps: [
 
-                        "Use only the service's official recovery system.",
+                        "Use only the official recovery page of the service.",
 
                         "Try your recovery email or phone number.",
 
                         "Complete identity verification.",
 
-                        "Secure your email account if necessary.",
+                        "Secure your email account first if necessary.",
 
-                        "Change the password after recovery.",
+                        "Change your password after recovery.",
 
                         "Sign out unknown devices.",
 
-                        "Enable 2FA."
+                        "Enable two-factor authentication."
                     ],
 
                     dont: [
@@ -615,8 +626,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* =====================================================
-           SCAM & PHISHING
-        ===================================================== */
+           SCAM
+           ===================================================== */
 
         "Scam & Phishing": {
 
@@ -639,13 +650,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Do not click the link again.",
 
-                        "Do not enter your password, OTP, PIN or bank details.",
+                        "Do not enter your password, OTP, PIN or banking information.",
 
-                        "Take a screenshot.",
+                        "Take a screenshot of the message.",
 
-                        "Check who sent the message.",
+                        "Check who sent it.",
 
-                        "Block and report the sender when appropriate.",
+                        "Block and report the sender if necessary.",
 
                         "If you entered a password, change it immediately.",
 
@@ -656,7 +667,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Do not forward the suspicious link.",
 
-                        "Do not download files from the link."
+                        "Do not download files from it."
                     ]
                 },
 
@@ -672,15 +683,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Close the website.",
 
-                        "Do not enter any more information.",
+                        "Do not enter additional information.",
 
-                        "Change any password you entered using the official website/app.",
+                        "If you entered a password, change it from the official website.",
 
                         "Enable 2FA.",
 
-                        "Do not open suspicious downloaded files.",
+                        "If a file was downloaded, do not open it.",
 
-                        "Delete suspicious downloads.",
+                        "Delete suspicious downloaded files.",
 
                         "Update your device.",
 
@@ -707,11 +718,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Check the sender carefully.",
 
-                        "Look for urgency, threats or unrealistic rewards.",
+                        "Look for urgency or threats.",
 
                         "Do not click unexpected links.",
 
-                        "Open the company's official app or website manually.",
+                        "Open the company's official app or manually type its official website.",
 
                         "Verify the request there.",
 
@@ -738,24 +749,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     steps: [
 
-                        "Identify which service the OTP belonged to.",
+                        "Identify which account or service the OTP belonged to.",
 
-                        "Change that account's password immediately.",
+                        "Change that account password.",
 
                         "Sign out unknown devices.",
 
                         "Enable 2FA.",
 
-                        "If banking/payment was involved, contact the bank/payment provider immediately.",
+                        "If it involved banking/payment, contact the bank immediately.",
 
-                        "Monitor the account for suspicious activity."
+                        "Monitor the account and transactions."
                     ],
 
                     dont: [
 
                         "Do not share another OTP.",
 
-                        "Do not trust anyone requesting another verification code."
+                        "Do not trust anyone asking for another verification code."
                     ]
                 }
             ]
@@ -764,7 +775,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* =====================================================
            PHONE SECURITY
-        ===================================================== */
+           ===================================================== */
 
         "Phone Security": {
 
@@ -793,16 +804,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Review its permissions.",
 
-                        "Uninstall suspicious apps you do not need.",
+                        "Uninstall suspicious applications you do not need.",
 
                         "Update your operating system.",
 
-                        "Run your device's built-in security scan if available."
+                        "Run the phone's built-in security scan if available."
                     ],
 
                     dont: [
 
-                        "Do not install antivirus apps from random pop-ups.",
+                        "Do not install antivirus applications from random pop-ups.",
 
                         "Do not give unknown apps unnecessary permissions."
                     ]
@@ -820,13 +831,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Open Settings → Privacy/Security.",
 
-                        "Review Camera permissions.",
+                        "Open Camera permissions.",
 
-                        "Remove access from apps that do not need it.",
-
-                        "Review Microphone permissions.",
+                        "Review apps with camera access.",
 
                         "Remove unnecessary access.",
+
+                        "Repeat for Microphone permissions.",
 
                         "Uninstall suspicious applications.",
 
@@ -835,7 +846,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     dont: [
 
-                        "Do not allow unknown apps to use your camera or microphone."
+                        "Do not allow unknown apps to access your camera or microphone."
                     ]
                 },
 
@@ -851,13 +862,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Open Settings → Location.",
 
-                        "Review apps with location access.",
+                        "Review applications with location access.",
 
-                        "Change unnecessary permissions to Deny or Ask every time.",
+                        "Change unnecessary access to Deny or Ask every time.",
 
-                        "Review location sharing in social apps.",
+                        "Review location sharing in Google, Apple and social applications.",
 
-                        "Remove location access from apps you do not trust."
+                        "Remove access from apps you do not trust."
                     ],
 
                     dont: [
@@ -871,7 +882,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* =====================================================
            ONLINE FRAUD
-        ===================================================== */
+           ===================================================== */
 
         "Online Fraud": {
 
@@ -892,11 +903,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     steps: [
 
-                        "Contact your bank/payment provider immediately using an official channel.",
+                        "Contact your bank or payment provider immediately.",
 
                         "Tell them the transaction may be fraudulent.",
 
-                        "Save the transaction/reference number.",
+                        "Save the transaction ID/reference number.",
 
                         "Take screenshots of messages and payment records.",
 
@@ -904,9 +915,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Change compromised passwords.",
 
-                        "Monitor your account.",
+                        "Monitor your bank/payment account.",
 
-                        "If you are in India, report suspected cyber financial fraud through the official government cybercrime system as quickly as possible."
+                        "In India, report suspected financial cyber fraud through the official cybercrime system as quickly as possible."
                     ],
 
                     dont: [
@@ -929,7 +940,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     steps: [
 
-                        "Contact your bank through its official app, website or number.",
+                        "Contact your bank using its official app, website or number.",
 
                         "Tell the bank what information was exposed.",
 
@@ -970,7 +981,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Report the transaction through the official app.",
 
-                        "Report suspected cyber financial fraud through the official Indian cybercrime system.",
+                        "Report suspected cyber financial fraud through the official Indian cybercrime channel.",
 
                         "Secure your UPI-linked accounts.",
 
@@ -992,7 +1003,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* =====================================================
            SUSPICIOUS ACTIVITY
-        ===================================================== */
+           ===================================================== */
 
         "Suspicious Activity": {
 
@@ -1021,9 +1032,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Check recent security activity.",
 
-                        "Check recovery email and phone.",
+                        "Check recovery email and phone number.",
 
-                        "Secure your email account if necessary."
+                        "Secure your email account."
                     ],
 
                     dont: [
@@ -1042,7 +1053,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     steps: [
 
-                        "Disconnect from the internet if active compromise is suspected.",
+                        "If active compromise is suspected, disconnect the device from the internet.",
 
                         "Check recently installed applications.",
 
@@ -1057,7 +1068,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     dont: [
 
-                        "Do not install security software from random pop-ups."
+                        "Do not install antivirus software from random pop-ups."
                     ]
                 },
 
@@ -1075,13 +1086,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Do not enter credentials.",
 
-                        "If you entered a password, change it using the real official website/app.",
+                        "If you entered a password, change it through the real official website/app.",
 
                         "Enable 2FA.",
 
-                        "Review account login activity.",
+                        "Review login activity.",
 
-                        "Save evidence if you need to report the incident."
+                        "Save a screenshot if reporting is necessary."
                     ],
 
                     dont: [
@@ -1095,7 +1106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* =====================================================
            EMERGENCY
-        ===================================================== */
+           ===================================================== */
 
         "Emergency Help": {
 
@@ -1103,7 +1114,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "🚨 Emergency Cyber Help",
 
             description:
-                "Immediate actions for urgent digital safety incidents.",
+                "Immediate actions for urgent cyber incidents.",
 
             situations: [
 
@@ -1126,7 +1137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Check recovery information.",
 
-                        "Save screenshots and security alerts.",
+                        "Save screenshots, emails and other evidence.",
 
                         "Use only the affected service's official recovery/support channel."
                     ],
@@ -1151,7 +1162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Contact your bank/payment provider immediately.",
 
-                        "Ask them to secure the account/transaction.",
+                        "Ask them to secure the account or transaction.",
 
                         "Save transaction details.",
 
@@ -1159,7 +1170,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Change compromised passwords.",
 
-                        "Report through the appropriate official channel.",
+                        "Report the incident through the appropriate official channel.",
 
                         "In India, report suspected cyber financial fraud as quickly as possible."
                     ],
@@ -1168,7 +1179,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         "Do not send additional money.",
 
-                        "Do not trust anyone promising guaranteed recovery."
+                        "Do not trust anyone promising guaranteed money recovery."
                     ]
                 }
             ]
@@ -1176,251 +1187,297 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* =====================================================
-           WOMEN SAFETY
-        ===================================================== */
+           WOMEN'S DIGITAL SAFETY
+           ===================================================== */
 
-        "Women Safety": {
+        "Women's Digital Safety": {
 
             title:
-                "👩 Women & Digital Safety",
+                "👩‍🦰 Women's Digital Safety",
 
             description:
-                "Guidance for online harassment, stalking, threats, blackmail and unwanted contact.",
+                "If someone is harassing, stalking, threatening, blackmailing or repeatedly disturbing you online, start with the safest steps below.",
 
             situations: [
 
-                {
-                    name:
-                        "📵 Someone Keeps Calling Me",
-
-                    title:
-                        "Unwanted Calls / Harassment",
-
-                    steps: [
-
-                        "Do not feel pressured to answer or continue the conversation.",
-
-                        "Block the number if appropriate.",
-
-                        "Use your phone's spam/unknown caller controls.",
-
-                        "Save call logs and screenshots if the behaviour continues.",
-
-                        "Tell someone you trust if you feel unsafe.",
-
-                        "If the caller is threatening you, preserve the evidence and consider reporting it to the appropriate authority.",
-
-                        "Review your social-media privacy settings so your phone number is not publicly visible."
-                    ],
-
-                    dont: [
-
-                        "Do not share your address, live location or private information.",
-
-                        "Do not meet a threatening person alone.",
-
-                        "Do not delete evidence if you may need to report the behaviour."
-                    ]
-                },
-
 
                 {
                     name:
-                        "💬 Bad / Abusive Messages",
+                        "📩 Repeated Bad / Abusive Messages",
 
                     title:
                         "Online Harassment",
 
                     steps: [
 
-                        "Do not engage in a prolonged argument.",
+                        "Do not argue with the person if doing so may increase the risk.",
 
-                        "Take screenshots showing the username, date and message.",
+                        "Do not delete the messages before saving evidence.",
 
-                        "Block the account.",
+                        "Take screenshots showing the username/number, date and time.",
 
-                        "Report the message/account using the platform's official reporting system.",
+                        "Save the profile URL or account information when possible.",
 
-                        "Review who can message, mention or tag you.",
+                        "Block the person after preserving evidence if you feel unsafe.",
 
-                        "Tell a trusted person if the harassment is persistent.",
+                        "Use the platform's Report function for harassment, threats or abusive behaviour.",
 
-                        "If there are credible threats, preserve evidence and seek appropriate local help."
+                        "Review privacy settings and limit who can message, tag or mention you.",
+
+                        "Tell someone you trust if the harassment is continuing.",
+
+                        "If there are threats of physical harm, contact appropriate local authorities or emergency services.",
+
+                        "If the incident involves cybercrime in India, use the official cybercrime reporting channel."
                     ],
 
                     dont: [
 
-                        "Do not send personal information in response.",
+                        "Do not send your personal address or live location.",
 
-                        "Do not share your OTP or password.",
+                        "Do not meet the person alone.",
 
-                        "Do not retaliate with threats."
+                        "Do not send OTPs or passwords.",
+
+                        "Do not delete evidence before saving it."
                     ]
                 },
 
 
                 {
                     name:
-                        "🚨 Someone Is Threatening Me",
+                        "👀 Someone Is Stalking Me Online",
 
                     title:
-                        "Threats / Stalking",
+                        "Online Stalking",
 
                     steps: [
 
-                        "Prioritise your physical safety first.",
+                        "Save evidence of repeated unwanted contact.",
 
-                        "Avoid meeting the person alone.",
+                        "Record usernames, phone numbers, profile URLs and dates.",
 
-                        "Save messages, profiles, call logs and other evidence.",
+                        "Review active sessions and logged-in devices on important accounts.",
 
-                        "Block the person when safe to do so.",
-
-                        "Tell a trusted family member, friend or other support person.",
-
-                        "If you believe you are in immediate physical danger, contact local emergency services or law enforcement.",
-
-                        "Do not share your current location publicly."
-                    ],
-
-                    dont: [
-
-                        "Do not meet the person privately to 'solve' the issue.",
-
-                        "Do not delete important evidence.",
-
-                        "Do not give the person more personal information."
-                    ]
-                },
-
-
-                {
-                    name:
-                        "📍 Someone Is Tracking My Location",
-
-                    title:
-                        "Location / Stalking Concern",
-
-                    steps: [
-
-                        "Review location permissions on your phone.",
-
-                        "Review live-location sharing in messaging apps.",
-
-                        "Stop location sharing with people you do not trust.",
-
-                        "Review logged-in devices on important accounts.",
-
-                        "Change passwords if an account may be compromised.",
+                        "Change passwords if you suspect account access.",
 
                         "Enable 2FA.",
 
-                        "Check whether unknown apps have location access.",
+                        "Turn off unnecessary location sharing.",
 
-                        "If you suspect physical stalking, prioritise personal safety and seek trusted/local assistance."
+                        "Check whether social media posts reveal your home, workplace, routine or live location.",
+
+                        "Restrict or block the account.",
+
+                        "Tell a trusted person about the situation.",
+
+                        "If there is a credible threat to your physical safety, seek immediate real-world help."
                     ],
 
                     dont: [
 
-                        "Do not publicly post your real-time location.",
+                        "Do not meet the person to 'sort it out'.",
 
-                        "Do not confront a suspected stalker alone."
-                    ]
-                }
-            ]
-        },
+                        "Do not reveal your routine or location.",
 
-
-        /* =====================================================
-           BLACKMAIL
-        ===================================================== */
-
-        "Blackmail": {
-
-            title:
-                "🚨 Blackmail & Extortion",
-
-            description:
-                "If someone is threatening you with private photos, videos, messages or information.",
-
-            situations: [
-
-                {
-                    name:
-                        "📸 Threatening to Share Private Photos",
-
-                    title:
-                        "Image-Based Blackmail",
-
-                    steps: [
-
-                        "Stop negotiating with the blackmailer if possible.",
-
-                        "Do not send additional photos, money or personal information.",
-
-                        "Save screenshots of threats, usernames, profile URLs and payment requests.",
-
-                        "Do not delete the conversation before preserving evidence.",
-
-                        "Block and report the account when appropriate.",
-
-                        "Secure your social-media and email accounts.",
-
-                        "Change passwords and enable 2FA.",
-
-                        "Tell a trusted person so you are not dealing with the situation alone.",
-
-                        "If money or threats are involved, report the incident through the appropriate official authority/channel.",
-
-                        "If you are in India, you can use the official cybercrime reporting system."
-                    ],
-
-                    dont: [
-
-                        "Do not pay simply because they threaten to publish something.",
-
-                        "Do not send more private material.",
-
-                        "Do not trust someone promising to 'hack the blackmailer' for money.",
-
-                        "Do not meet the blackmailer."
+                        "Do not give them additional personal information."
                     ]
                 },
 
 
                 {
                     name:
-                        "💰 They Are Demanding Money",
+                        "⚠️ Someone Is Blackmailing Me",
 
                     title:
-                        "Extortion / Money Demand",
+                        "Online Blackmail",
 
                     steps: [
 
-                        "Do not send additional money impulsively.",
+                        "Stay calm and do not panic.",
 
-                        "Save the payment demand and transaction details.",
+                        "Do not send money simply because the person threatens you.",
 
-                        "Take screenshots.",
+                        "Do not send additional photos, videos or personal information.",
 
-                        "Secure affected accounts.",
+                        "Save screenshots of the threats and the account details.",
 
-                        "Tell someone you trust.",
+                        "Save payment requests, phone numbers and profile URLs.",
 
-                        "Report the incident through the appropriate official channel.",
+                        "Do not delete the conversation before preserving evidence.",
 
-                        "If money has already been sent, contact the bank/payment provider immediately.",
+                        "Block and report the account when it is safe to do so.",
 
-                        "In India, report suspected cyber financial fraud quickly through the official cybercrime system."
+                        "Change passwords if the person may have access to an account.",
+
+                        "Enable 2FA.",
+
+                        "Tell a trusted person rather than dealing with the situation completely alone.",
+
+                        "For serious threats or suspected cybercrime in India, use the official cybercrime reporting channel."
                     ],
 
                     dont: [
 
-                        "Do not believe guaranteed recovery promises.",
+                        "Do not pay a blackmailer as a guarantee that they will stop.",
 
-                        "Do not delete evidence.",
+                        "Do not send more material.",
 
-                        "Do not give the attacker your OTP or password."
+                        "Do not threaten the person back.",
+
+                        "Do not delete evidence."
+                    ]
+                },
+
+
+                {
+                    name:
+                        "🖼️ Private Photo / Video Threat",
+
+                    title:
+                        "Threat Involving Private Images",
+
+                    steps: [
+
+                        "Do not send additional images or videos.",
+
+                        "Do not pay or negotiate alone.",
+
+                        "Preserve screenshots and account information.",
+
+                        "Record the profile URL, username and relevant messages.",
+
+                        "Report the account/content using the platform's reporting tools.",
+
+                        "Block the account after preserving evidence if appropriate.",
+
+                        "Secure your social media and email accounts.",
+
+                        "Change passwords and enable 2FA.",
+
+                        "Tell someone you trust.",
+
+                        "If content has already been posted, report the specific content and account immediately.",
+
+                        "If there are threats or serious harm, report the incident through the appropriate official channel."
+                    ],
+
+                    dont: [
+
+                        "Do not send more content.",
+
+                        "Do not pay a stranger promising guaranteed removal.",
+
+                        "Do not share the material further."
+                    ]
+                },
+
+
+                {
+                    name:
+                        "🎭 Fake Instagram / Facebook Account",
+
+                    title:
+                        "Fake Account Using My Name or Photos",
+
+                    steps: [
+
+                        "Take screenshots of the fake profile.",
+
+                        "Copy or save the profile URL.",
+
+                        "Record the username and visible information.",
+
+                        "Report the profile as impersonation/fake account.",
+
+                        "Ask trusted friends not to interact with the fake account.",
+
+                        "Review your own account privacy settings.",
+
+                        "Remove unnecessary public personal information.",
+
+                        "Enable 2FA.",
+
+                        "Warn close contacts if the fake account is contacting them."
+                    ],
+
+                    dont: [
+
+                        "Do not give the fake account more information.",
+
+                        "Do not threaten the person behind it.",
+
+                        "Do not delete evidence before saving it."
+                    ]
+                },
+
+
+                {
+                    name:
+                        "📞 Unknown Person Keeps Calling",
+
+                    title:
+                        "Repeated Unwanted Calls",
+
+                    steps: [
+
+                        "Do not share personal information.",
+
+                        "Use your phone's block feature.",
+
+                        "Save call logs and screenshots if the calls are threatening or abusive.",
+
+                        "Use spam/unknown caller protection where available.",
+
+                        "Report repeated harassment through the relevant platform or telecom process.",
+
+                        "Review who can see your phone number on social media.",
+
+                        "If the caller makes serious threats, preserve evidence and seek appropriate help."
+                    ],
+
+                    dont: [
+
+                        "Do not reveal your address.",
+
+                        "Do not share your live location.",
+
+                        "Do not meet the caller."
+                    ]
+                },
+
+
+                {
+                    name:
+                        "🔐 Someone Knows My Password",
+
+                    title:
+                        "Account Privacy May Be Compromised",
+
+                    steps: [
+
+                        "Change the password immediately.",
+
+                        "Use a new password that is not used anywhere else.",
+
+                        "Sign out other devices/sessions.",
+
+                        "Enable 2FA.",
+
+                        "Check recovery email and phone number.",
+
+                        "Review recent login/security activity.",
+
+                        "Check email forwarding rules if the email account may be compromised.",
+
+                        "Secure your primary email account."
+                    ],
+
+                    dont: [
+
+                        "Do not reuse the compromised password.",
+
+                        "Do not share the new password with anyone."
                     ]
                 }
             ]
@@ -1429,94 +1486,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       7. ADD WOMEN SAFETY + BLACKMAIL TO MENU IF POSSIBLE
-    ========================================================= */
+       8. ADD WOMEN'S SAFETY TO MENU
+       ========================================================= */
 
-    function addExtraSafetyCards() {
+    function addWomenSafetyMenuItem() {
 
-        const serviceGrid =
-            document.querySelector(".service-grid");
+        if (!sideMenu) return;
 
-        if (!serviceGrid) return;
-
-
-        const existing =
-            serviceGrid.querySelectorAll(".service-card");
-
-
-        if (existing.length >= 6) {
-
-            const womenCard =
-                document.createElement("article");
-
-            womenCard.className =
-                "service-card";
-
-            womenCard.innerHTML = `
-                <div class="service-icon">
-                    👩
-                </div>
-
-                <h3>
-                    Women & Digital Safety
-                </h3>
-
-                <p>
-                    Help with harassment, unwanted calls,
-                    stalking, threats and online abuse.
-                </p>
-
-                <button
-                    class="help-btn"
-                    data-service="Women Safety"
-                    type="button">
-                    Get Help →
-                </button>
-            `;
-
-
-            const blackmailCard =
-                document.createElement("article");
-
-            blackmailCard.className =
-                "service-card emergency-card";
-
-            blackmailCard.innerHTML = `
-                <div class="service-icon">
-                    🚨
-                </div>
-
-                <h3>
-                    Blackmail & Extortion
-                </h3>
-
-                <p>
-                    Guidance when someone threatens to share
-                    private photos, videos or information.
-                </p>
-
-                <button
-                    class="help-btn"
-                    data-service="Blackmail"
-                    type="button">
-                    Get Help →
-                </button>
-            `;
-
-
-            serviceGrid.appendChild(womenCard);
-
-            serviceGrid.appendChild(blackmailCard);
+        if (
+            sideMenu.querySelector(
+                '[data-menu="women-safety"]'
+            )
+        ) {
+            return;
         }
+
+
+        const item =
+            document.createElement("button");
+
+        item.className = "menu-item";
+
+        item.setAttribute(
+            "data-menu",
+            "women-safety"
+        );
+
+        item.type = "button";
+
+        item.textContent =
+            "👩‍🦰 Women's Digital Safety";
+
+
+        sideMenu.appendChild(item);
+
+
+        item.addEventListener("click", () => {
+
+            closeSideMenu();
+
+            setTimeout(() => {
+
+                openHelp(
+                    "Women's Digital Safety"
+                );
+
+            }, 200);
+        });
     }
 
 
-    addExtraSafetyCards();
+    addWomenSafetyMenuItem();
 
 
     /* =========================================================
-       8. HELP MODAL
-    ========================================================= */
+       9. HELP MODAL
+       ========================================================= */
 
     function openHelp(service) {
 
@@ -1570,9 +1595,14 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
 
-        const buttons =
-            info.situations
-                .map((item, index) => `
+        let buttons = "";
+
+
+        info.situations.forEach(
+            (item, index) => {
+
+                buttons += `
+
                     <button
                         class="cyber-situation"
                         data-index="${index}"
@@ -1590,10 +1620,11 @@ document.addEventListener("DOMContentLoaded", () => {
                             cursor:pointer;
                         "
                     >
-                        ${item.name}
+                        ${escapeHTML(item.name)}
                     </button>
-                `)
-                .join("");
+                `;
+            }
+        );
 
 
         modal.innerHTML = `
@@ -1630,12 +1661,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     CYBERCARE HELP
                 </div>
 
-                <h2>
-                    ${info.title}
+                <h2 style="margin:0 0 8px;">
+                    ${escapeHTML(info.title)}
                 </h2>
 
                 <p style="color:#64748b;">
-                    ${info.description}
+                    ${escapeHTML(info.description)}
                 </p>
 
             </div>
@@ -1644,7 +1675,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <h3 style="margin-top:25px;">
                 👇 What happened?
             </h3>
-
 
             ${buttons}
 
@@ -1673,9 +1703,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.appendChild(overlay);
 
 
-        modal
-            .querySelector("#closeCyberCare")
-            .addEventListener(
+        document
+            .getElementById("closeCyberCare")
+            ?.addEventListener(
                 "click",
                 () => overlay.remove()
             );
@@ -1692,7 +1722,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         modal
-            .querySelectorAll(".cyber-situation")
+            .querySelectorAll(
+                ".cyber-situation"
+            )
             .forEach(button => {
 
                 button.addEventListener(
@@ -1716,10 +1748,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       9. SHOW RESULT
-    ========================================================= */
+       10. SHOW HELP RESULT
+       ========================================================= */
 
-    function showResult(modal, situation) {
+    function showResult(
+        modal,
+        situation
+    ) {
 
         const result =
             modal.querySelector(
@@ -1727,26 +1762,38 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
+        if (!result) return;
+
+
         const steps =
             situation.steps
-                .map((step, index) => `
-                    <li style="margin-bottom:12px;">
-                        <strong>
-                            Step ${index + 1}:
-                        </strong>
-                        ${step}
-                    </li>
-                `)
+                .map(
+                    (step, index) => `
+
+                        <li style="margin-bottom:12px;">
+
+                            <strong>
+                                Step ${index + 1}:
+                            </strong>
+
+                            ${escapeHTML(step)}
+
+                        </li>
+                    `
+                )
                 .join("");
 
 
         const dont =
             situation.dont
-                .map(item => `
-                    <li style="margin-bottom:10px;">
-                        ${item}
-                    </li>
-                `)
+                .map(
+                    item => `
+
+                        <li style="margin-bottom:10px;">
+                            ${escapeHTML(item)}
+                        </li>
+                    `
+                )
                 .join("");
 
 
@@ -1756,6 +1803,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (situation.official) {
 
             officialButton = `
+
                 <div style="
                     margin-top:20px;
                     padding:18px;
@@ -1769,13 +1817,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     </h4>
 
                     <p style="
+                        margin:8px 0 14px;
                         color:#475569;
                     ">
                         Use the official service website only.
                     </p>
 
                     <a
-                        href="${situation.official}"
+                        href="${escapeHTML(
+                            situation.official
+                        )}"
                         target="_blank"
                         rel="noopener noreferrer"
                         style="
@@ -1806,7 +1857,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ">
 
                 <h3>
-                    ⚡ ${situation.title}
+                    ⚡ ${escapeHTML(
+                        situation.title
+                    )}
                 </h3>
 
 
@@ -1853,11 +1906,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         📸 Save Evidence
                     </h4>
 
-                    <p style="color:#475569;">
-                        Keep screenshots, usernames,
-                        profile links, messages, emails,
-                        call logs, transaction IDs,
-                        receipts and security alerts.
+                    <p style="
+                        margin:8px 0 0;
+                        color:#475569;
+                    ">
+                        Keep screenshots, emails, messages,
+                        usernames, profile URLs, phone numbers,
+                        transaction IDs, receipts and relevant
+                        security alerts.
                     </p>
 
                 </div>
@@ -1874,11 +1930,37 @@ document.addEventListener("DOMContentLoaded", () => {
                         🛡️ Important
                     </h4>
 
-                    <p style="color:#475569;">
-                        CyberCare provides general safety
-                        guidance. Verify important instructions
-                        through the affected service's official
-                        website, app or appropriate authority.
+                    <p style="
+                        margin:8px 0 0;
+                        color:#475569;
+                    ">
+                        CyberCare provides general safety guidance.
+                        Always verify important instructions through
+                        the affected service's official website or app.
+                    </p>
+
+                </div>
+
+
+                <div style="
+                    margin-top:20px;
+                    padding:16px;
+                    background:#f0fdf4;
+                    border-radius:12px;
+                ">
+
+                    <h4>
+                        💚 You Don't Have to Handle Everything Alone
+                    </h4>
+
+                    <p style="
+                        margin:8px 0 0;
+                        color:#475569;
+                    ">
+                        If someone is threatening, harassing or
+                        blackmailing you, consider telling a trusted
+                        person and preserving evidence before taking
+                        further action.
                     </p>
 
                 </div>
@@ -1888,49 +1970,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         result.scrollIntoView({
-            behavior:"smooth",
-            block:"nearest"
+            behavior: "smooth",
+            block: "nearest"
         });
     }
 
 
     /* =========================================================
-       10. SERVICE BUTTONS
-    ========================================================= */
+       11. SERVICE BUTTONS
+       ========================================================= */
 
-    function attachHelpButtons() {
+    document
+        .querySelectorAll(".help-btn")
+        .forEach(button => {
 
-        document
-            .querySelectorAll(".help-btn")
-            .forEach(button => {
+            button.addEventListener(
+                "click",
+                () => {
 
-                if (
-                    button.dataset.cybercareAttached
-                ) return;
+                    const service =
+                        button.getAttribute(
+                            "data-service"
+                        );
 
-
-                button.dataset.cybercareAttached =
-                    "true";
-
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        const service =
-                            button.getAttribute(
-                                "data-service"
-                            );
-
-
-                        openHelp(service);
-                    }
-                );
-            });
-    }
-
-
-    attachHelpButtons();
+                    openHelp(service);
+                }
+            );
+        });
 
 
     emergencyBtn?.addEventListener(
@@ -1940,8 +2006,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       11. MENU NAVIGATION
-    ========================================================= */
+       12. MENU NAVIGATION
+       ========================================================= */
 
     document
         .querySelectorAll(".menu-item")
@@ -1957,17 +2023,44 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
 
 
+                    if (
+                        target ===
+                        "women-safety"
+                    ) {
+
+                        closeSideMenu();
+
+                        setTimeout(
+                            () => {
+
+                                openHelp(
+                                    "Women's Digital Safety"
+                                );
+
+                            },
+                            200
+                        );
+
+                        return;
+                    }
+
+
                     closeSideMenu();
 
 
                     if (
-                        target === "emergency"
+                        target ===
+                        "emergency"
                     ) {
 
                         setTimeout(
-                            () => openHelp(
-                                "Emergency Help"
-                            ),
+                            () => {
+
+                                openHelp(
+                                    "Emergency Help"
+                                );
+
+                            },
                             200
                         );
 
@@ -1987,8 +2080,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             () => {
 
                                 section.scrollIntoView({
-                                    behavior:"smooth",
-                                    block:"start"
+                                    behavior: "smooth",
+                                    block: "start"
                                 });
 
                             },
@@ -2001,8 +2094,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       12. TOOL MODAL
-    ========================================================= */
+       13. TOOL MODAL CREATOR
+       ========================================================= */
 
     function createToolModal(
         title,
@@ -2081,7 +2174,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div style="padding-right:45px;">
 
                 <h2>
-                    ${title}
+                    ${escapeHTML(title)}
                 </h2>
 
             </div>
@@ -2100,7 +2193,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         modal
             .querySelector("#closeTool")
-            .addEventListener(
+            ?.addEventListener(
                 "click",
                 () => overlay.remove()
             );
@@ -2121,8 +2214,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       13. SCAM CHECKER
-    ========================================================= */
+       14. SCAM CHECKER
+       ========================================================= */
+
+    const toolCards =
+        document.querySelectorAll(
+            ".tool-card"
+        );
+
 
     function openScamChecker() {
 
@@ -2131,48 +2230,52 @@ document.addEventListener("DOMContentLoaded", () => {
                 "🔎 Scam Checker",
 
                 `
-                    <p>
-                        Paste a suspicious message.
-                        This checker looks for common warning signs.
-                    </p>
+
+                <p>
+                    Paste a suspicious message below.
+                    CyberCare will check common warning signs.
+                </p>
 
 
-                    <textarea
-                        id="scamInput"
-                        placeholder="Paste suspicious message here..."
-                        style="
-                            width:100%;
-                            min-height:140px;
-                            padding:12px;
-                            border:1px solid #cbd5e1;
-                            border-radius:12px;
-                            resize:vertical;
-                            box-sizing:border-box;
-                        "
-                    ></textarea>
+                <textarea
+                    id="scamInput"
+                    placeholder="Paste suspicious message here..."
+                    style="
+                        width:100%;
+                        min-height:140px;
+                        padding:12px;
+                        border:1px solid #cbd5e1;
+                        border-radius:12px;
+                        resize:vertical;
+                        font-family:Arial;
+                        box-sizing:border-box;
+                    "
+                ></textarea>
 
 
-                    <button
-                        id="checkScam"
-                        style="
-                            margin-top:12px;
-                            padding:12px 18px;
-                            border:none;
-                            border-radius:10px;
-                            background:#2563eb;
-                            color:white;
-                            font-weight:bold;
-                            cursor:pointer;
-                        "
-                    >
-                        Check Message
-                    </button>
+                <button
+                    id="checkScam"
+                    type="button"
+                    style="
+                        margin-top:12px;
+                        padding:12px 18px;
+                        border:none;
+                        border-radius:10px;
+                        background:#2563eb;
+                        color:white;
+                        font-weight:bold;
+                        cursor:pointer;
+                    "
+                >
+                    Check Message
+                </button>
 
 
-                    <div
-                        id="scamResult"
-                        style="margin-top:18px;"
-                    ></div>
+                <div
+                    id="scamResult"
+                    style="margin-top:18px;"
+                ></div>
+
                 `
             );
 
@@ -2208,11 +2311,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         ],
 
                         [
-                            "pin",
-                            "Mentions or may request a PIN."
-                        ],
-
-                        [
                             "urgent",
                             "Uses urgency."
                         ],
@@ -2224,7 +2322,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         [
                             "click",
-                            "Requests that you click something."
+                            "Contains a request to click something."
                         ],
 
                         [
@@ -2244,7 +2342,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         [
                             "prize",
-                            "Mentions a prize/reward."
+                            "Mentions a prize or reward."
                         ],
 
                         [
@@ -2259,7 +2357,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         [
                             "investment",
-                            "Mentions an investment opportunity."
+                            "Mentions investment opportunities."
                         ],
 
                         [
@@ -2273,13 +2371,18 @@ document.addEventListener("DOMContentLoaded", () => {
                         ],
 
                         [
-                            "police",
-                            "Uses authority or threat language."
+                            "limited time",
+                            "Uses a limited-time pressure tactic."
                         ],
 
                         [
-                            "arrest",
-                            "Uses arrest/legal threats."
+                            "account suspended",
+                            "Claims your account is suspended."
+                        ],
+
+                        [
+                            "confirm",
+                            "Asks you to confirm something."
                         ]
                     ];
 
@@ -2308,6 +2411,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (!text.trim()) {
 
                         result.innerHTML = `
+
                             <div style="
                                 padding:15px;
                                 background:#fff7ed;
@@ -2324,6 +2428,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (warnings.length) {
 
                         result.innerHTML = `
+
                             <div style="
                                 padding:16px;
                                 background:#fff1f2;
@@ -2337,11 +2442,14 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <ul>
                                     ${warnings
                                         .map(
-                                            w =>
-                                                `<li>${w}</li>`
+                                            warning =>
+                                                `<li>${escapeHTML(
+                                                    warning
+                                                )}</li>`
                                         )
                                         .join("")}
                                 </ul>
+
 
                                 <strong>
                                     Never share OTPs,
@@ -2355,6 +2463,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else {
 
                         result.innerHTML = `
+
                             <div style="
                                 padding:16px;
                                 background:#ecfdf5;
@@ -2370,7 +2479,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 the message is safe.
 
                                 Verify the sender through
-                                the official website/app.
+                                the official website or app.
 
                             </div>
                         `;
@@ -2380,9 +2489,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    if (toolCards[0]) {
+
+        const button =
+            toolCards[0].querySelector(
+                ".tool-btn"
+            );
+
+        if (button) {
+
+            button.textContent =
+                "Open Tool";
+
+            button.style.cursor =
+                "pointer";
+
+            button.addEventListener(
+                "click",
+                openScamChecker
+            );
+        }
+    }
+
+
     /* =========================================================
-       14. PASSWORD CHECKER
-    ========================================================= */
+       15. PASSWORD CHECKER
+       ========================================================= */
 
     function openPasswordChecker() {
 
@@ -2391,54 +2523,59 @@ document.addEventListener("DOMContentLoaded", () => {
                 "🔐 Password Safety Checker",
 
                 `
-                    <p>
-                        This check runs locally in your browser.
-                        The password is not sent anywhere by this tool.
-                    </p>
+
+                <p>
+                    This checker runs locally in your browser.
+                    Your password is not sent anywhere by this tool.
+                </p>
 
 
-                    <input
-                        id="passwordInput"
-                        type="password"
-                        autocomplete="off"
-                        placeholder="Enter a password to test"
-                        style="
-                            width:100%;
-                            padding:13px;
-                            border:1px solid #cbd5e1;
-                            border-radius:10px;
-                            box-sizing:border-box;
-                        "
-                    >
+                <input
+                    id="passwordInput"
+                    type="password"
+                    placeholder="Enter a password to test"
+                    autocomplete="off"
+                    style="
+                        width:100%;
+                        padding:13px;
+                        border:1px solid #cbd5e1;
+                        border-radius:10px;
+                        box-sizing:border-box;
+                    "
+                >
 
 
-                    <button
-                        id="checkPassword"
-                        style="
-                            margin-top:12px;
-                            padding:12px 18px;
-                            border:none;
-                            border-radius:10px;
-                            background:#2563eb;
-                            color:white;
-                            font-weight:bold;
-                            cursor:pointer;
-                        "
-                    >
-                        Check Password
-                    </button>
+                <button
+                    id="checkPassword"
+                    type="button"
+                    style="
+                        margin-top:12px;
+                        padding:12px 18px;
+                        border:none;
+                        border-radius:10px;
+                        background:#2563eb;
+                        color:white;
+                        font-weight:bold;
+                        cursor:pointer;
+                    "
+                >
+                    Check Password
+                </button>
 
 
-                    <div
-                        id="passwordResult"
-                        style="margin-top:18px;"
-                    ></div>
+                <div
+                    id="passwordResult"
+                    style="margin-top:18px;"
+                ></div>
+
                 `
             );
 
 
         modal
-            .querySelector("#checkPassword")
+            .querySelector(
+                "#checkPassword"
+            )
             .addEventListener(
                 "click",
                 () => {
@@ -2460,12 +2597,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (!password) {
 
                         result.innerHTML = `
+
                             <div style="
                                 padding:15px;
                                 background:#fff7ed;
                                 border-radius:12px;
                             ">
-                                ⚠️ Enter a password to test.
+                                ⚠️ Enter a password first.
                             </div>
                         `;
 
@@ -2479,6 +2617,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (password.length >= 12)
                         score++;
 
+                    if (password.length >= 16)
+                        score++;
+
                     if (/[A-Z]/.test(password))
                         score++;
 
@@ -2488,78 +2629,121 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (/[0-9]/.test(password))
                         score++;
 
-                    if (
-                        /[^A-Za-z0-9]/.test(
-                            password
-                        )
-                    )
+                    if (/[^A-Za-z0-9]/.test(password))
                         score++;
 
 
-                    let message;
+                    if (
+                        password.toLowerCase()
+                            .includes("password")
+                    ) {
+                        score--;
+                    }
 
 
                     if (score <= 2) {
 
-                        message = `
+                        result.innerHTML = `
+
                             <div style="
                                 padding:16px;
                                 background:#fff1f2;
                                 border-radius:12px;
                             ">
-                                🔴 Weak password.
+
+                                🔴 <strong>
+                                Weak password
+                                </strong>
+
                                 <br><br>
-                                Use a longer,
-                                unique passphrase.
+
+                                Use a longer, unique
+                                password or passphrase.
+
                             </div>
                         `;
 
                     } else if (score <= 4) {
 
-                        message = `
+                        result.innerHTML = `
+
                             <div style="
                                 padding:16px;
                                 background:#fff7ed;
                                 border-radius:12px;
                             ">
-                                🟠 Moderate password.
+
+                                🟠 <strong>
+                                Moderate password
+                                </strong>
+
                                 <br><br>
-                                Make it longer and unique.
+
+                                Make it longer,
+                                unique and harder to guess.
+
                             </div>
                         `;
 
                     } else {
 
-                        message = `
+                        result.innerHTML = `
+
                             <div style="
                                 padding:16px;
                                 background:#ecfdf5;
                                 border-radius:12px;
                             ">
-                                🟢 Stronger password structure.
+
+                                🟢 <strong>
+                                Stronger password structure
+                                </strong>
+
                                 <br><br>
-                                Never reuse it elsewhere.
+
+                                Never reuse this password
+                                on another account.
+
                             </div>
                         `;
                     }
-
-
-                    result.innerHTML =
-                        message;
                 }
             );
     }
 
 
+    if (toolCards[1]) {
+
+        const button =
+            toolCards[1].querySelector(
+                ".tool-btn"
+            );
+
+        if (button) {
+
+            button.textContent =
+                "Open Tool";
+
+            button.style.cursor =
+                "pointer";
+
+            button.addEventListener(
+                "click",
+                openPasswordChecker
+            );
+        }
+    }
+
+
     /* =========================================================
-       15. PRIVACY CHECKLIST
-    ========================================================= */
+       16. PRIVACY CHECKLIST
+       ========================================================= */
 
     function openPrivacyChecklist() {
 
-        const items = [
+        const checklist = [
 
-            "I use unique passwords for important accounts.",
+            "I use a unique password for important accounts.",
 
             "I have enabled two-factor authentication.",
 
@@ -2573,82 +2757,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
             "I keep my phone updated.",
 
-            "My recovery email and phone are secure.",
+            "My important accounts have secure recovery information.",
 
             "I never share OTPs or recovery codes.",
 
             "I review logged-in devices regularly.",
 
-            "My social-media profiles do not expose unnecessary personal information.",
+            "My social media accounts are not unnecessarily public.",
 
-            "I know how to report/block unwanted accounts."
+            "I avoid posting my live location.",
+
+            "I know how to block and report unwanted contacts.",
+
+            "I keep evidence when online harassment occurs.",
+
+            "I do not reuse important passwords."
         ];
 
 
-        const modal =
-            createToolModal(
-                "📱 Privacy & Security Checklist",
+        createToolModal(
+            "📱 Privacy & Security Checklist",
 
-                `
-                    <div id="privacyList">
+            `
 
-                        ${items
-                            .map(
-                                (item, index) => `
-                                    <label style="
-                                        display:block;
-                                        padding:12px;
-                                        margin:7px 0;
-                                        background:#f8fafc;
-                                        border-radius:10px;
-                                    ">
+            <div id="privacyList">
 
-                                        <input
-                                            type="checkbox"
-                                            class="privacyCheck"
-                                        >
+                ${checklist
+                    .map(
+                        (item, index) => `
 
-                                        ${index + 1}.
-                                        ${item}
-
-                                    </label>
-                                `
-                            )
-                            .join("")}
-
-                    </div>
-
-
-                    <button
-                        id="privacyScore"
-                        style="
-                            margin-top:15px;
-                            padding:12px 18px;
-                            border:none;
+                        <label style="
+                            display:block;
+                            padding:12px;
+                            margin:7px 0;
+                            background:#f8fafc;
                             border-radius:10px;
-                            background:#2563eb;
-                            color:#fff;
-                            font-weight:bold;
-                            cursor:pointer;
-                        "
-                    >
-                        Calculate Safety Score
-                    </button>
+                        ">
+
+                            <input
+                                type="checkbox"
+                                class="privacyCheck"
+                            >
+
+                            ${index + 1}.
+                            ${escapeHTML(item)}
+
+                        </label>
+                    `
+                    )
+                    .join("")}
+
+            </div>
 
 
-                    <div
-                        id="privacyResult"
-                        style="margin-top:18px;"
-                    ></div>
-                `
+            <button
+                id="privacyScore"
+                type="button"
+                style="
+                    margin-top:15px;
+                    padding:12px 18px;
+                    border:none;
+                    border-radius:10px;
+                    background:#2563eb;
+                    color:#fff;
+                    font-weight:bold;
+                    cursor:pointer;
+                "
+            >
+                Calculate Safety Score
+            </button>
+
+
+            <div
+                id="privacyResult"
+                style="margin-top:18px;"
+            ></div>
+
+            `
+        );
+
+
+        const modal =
+            document.getElementById(
+                "cybercare-tool-modal"
             );
 
 
         modal
-            .querySelector(
+            ?.querySelector(
                 "#privacyScore"
             )
-            .addEventListener(
+            ?.addEventListener(
                 "click",
                 () => {
 
@@ -2678,6 +2877,27 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
 
 
+                    let message =
+                        "Keep improving your security habits.";
+
+
+                    if (percentage >= 80)
+                        message =
+                            "Excellent security habits.";
+
+                    else if (percentage >= 60)
+                        message =
+                            "Good progress. A few areas need attention.";
+
+                    else if (percentage >= 40)
+                        message =
+                            "Your security can be improved.";
+
+                    else
+                        message =
+                            "Start with passwords, 2FA and privacy settings.";
+
+
                     modal.querySelector(
                         "#privacyResult"
                     ).innerHTML = `
@@ -2688,7 +2908,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             border-radius:12px;
                         ">
 
-                            🛡️ Cyber Safety Score:
+                            🛡️ Your Cyber Safety Score:
 
                             <strong>
                                 ${percentage}%
@@ -2697,9 +2917,13 @@ document.addEventListener("DOMContentLoaded", () => {
                             <br><br>
 
                             ${completed}
-                            of
+                            out of
                             ${checks.length}
-                            safety checks completed.
+                            checks completed.
+
+                            <br><br>
+
+                            ${message}
 
                         </div>
                     `;
@@ -2708,9 +2932,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    if (toolCards[2]) {
+
+        const button =
+            toolCards[2].querySelector(
+                ".tool-btn"
+            );
+
+        if (button) {
+
+            button.textContent =
+                "Open Checklist";
+
+            button.style.cursor =
+                "pointer";
+
+            button.addEventListener(
+                "click",
+                openPrivacyChecklist
+            );
+        }
+    }
+
+
     /* =========================================================
-       16. CYBER SAFETY SCORE
-    ========================================================= */
+       17. CYBER SAFETY SCORE
+       ========================================================= */
 
     function openSafetyScore() {
 
@@ -2732,9 +2979,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             "Do you have a secure recovery email/phone?",
 
-            "Do you know how to block/report abusive accounts?",
+            "Do you avoid posting your live location?",
 
-            "Do you avoid sharing live location publicly?"
+            "Do you know how to block/report suspicious accounts?",
+
+            "Do you save evidence before deleting threatening messages?",
+
+            "Do you avoid meeting unknown online contacts alone?"
         ];
 
 
@@ -2743,60 +2994,64 @@ document.addEventListener("DOMContentLoaded", () => {
                 "🛡️ Cyber Safety Score",
 
                 `
-                    <p>
-                        Answer the questions honestly.
-                    </p>
+
+                <p>
+                    Answer these questions honestly.
+                </p>
 
 
-                    <div id="scoreQuestions">
+                <div id="scoreQuestions">
 
-                        ${questions
-                            .map(
-                                (q, i) => `
-                                    <label style="
-                                        display:block;
-                                        margin:12px 0;
-                                        padding:12px;
-                                        background:#f8fafc;
-                                        border-radius:10px;
-                                    ">
+                    ${questions
+                        .map(
+                            (q, i) => `
 
-                                        <input
-                                            type="checkbox"
-                                            class="scoreCheck"
-                                        >
+                            <label style="
+                                display:block;
+                                margin:12px 0;
+                                padding:12px;
+                                background:#f8fafc;
+                                border-radius:10px;
+                            ">
 
-                                        ${i + 1}.
-                                        ${q}
+                                <input
+                                    type="checkbox"
+                                    class="scoreCheck"
+                                >
 
-                                    </label>
-                                `
-                            )
-                            .join("")}
+                                ${i + 1}.
+                                ${escapeHTML(q)}
 
-                    </div>
+                            </label>
+                        `
+                        )
+                        .join("")}
 
-
-                    <button
-                        id="calculateScore"
-                        style="
-                            padding:12px 18px;
-                            border:none;
-                            border-radius:10px;
-                            background:#2563eb;
-                            color:white;
-                            font-weight:bold;
-                            cursor:pointer;
-                        "
-                    >
-                        Calculate Score
-                    </button>
+                </div>
 
 
-                    <div
-                        id="scoreResult"
-                        style="margin-top:18px;"
-                    ></div>
+                <button
+                    id="calculateScore"
+                    type="button"
+                    style="
+                        padding:12px 18px;
+                        border:none;
+                        border-radius:10px;
+                        background:#2563eb;
+                        color:white;
+                        font-weight:bold;
+                        cursor:pointer;
+                    "
+                >
+                    Calculate Score
+                </button>
+
+
+                <div
+                    id="scoreResult"
+                    style="margin-top:18px;"
+                ></div>
+
                 `
             );
 
@@ -2838,23 +3093,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     let level;
 
 
-                    if (percentage < 40) {
+                    if (percentage < 40)
 
                         level =
                             "🔴 Needs Improvement";
 
-                    } else if (
-                        percentage < 75
-                    ) {
+                    else if (percentage < 75)
 
                         level =
                             "🟠 Good, but can improve";
 
-                    } else {
+                    else
 
                         level =
                             "🟢 Strong Safety Habits";
-                    }
 
 
                     modal.querySelector(
@@ -2885,85 +3137,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================
-       17. CONNECT TOOLS IN EXISTING HTML
-    ========================================================= */
-
-    const toolCards =
-        document.querySelectorAll(
-            ".tool-card"
-        );
-
-
-    if (toolCards[0]) {
-
-        const button =
-            toolCards[0].querySelector(
-                ".tool-btn"
-            );
-
-        if (button) {
-
-            button.textContent =
-                "Open Tool";
-
-            button.style.cursor =
-                "pointer";
-
-            button.addEventListener(
-                "click",
-                openScamChecker
-            );
-        }
-    }
-
-
-    if (toolCards[1]) {
-
-        const button =
-            toolCards[1].querySelector(
-                ".tool-btn"
-            );
-
-        if (button) {
-
-            button.textContent =
-                "Open Tool";
-
-            button.style.cursor =
-                "pointer";
-
-            button.addEventListener(
-                "click",
-                openPasswordChecker
-            );
-        }
-    }
-
-
-    if (toolCards[2]) {
-
-        const button =
-            toolCards[2].querySelector(
-                ".tool-btn"
-            );
-
-        if (button) {
-
-            button.textContent =
-                "Open Checklist";
-
-            button.style.cursor =
-                "pointer";
-
-            button.addEventListener(
-                "click",
-                openPrivacyChecklist
-            );
-        }
-    }
-
-
     if (toolCards[3]) {
 
         const button =
@@ -2989,24 +3162,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================================
        18. LEARNING SECTION
-    ========================================================= */
+       ========================================================= */
 
     learnBtn?.addEventListener(
         "click",
         () => {
 
             createToolModal(
-
                 "🎓 Cybersecurity Basics",
 
                 `
+
+                <div>
+
                     <h3>
                         🔐 Password Safety
                     </h3>
 
                     <p>
-                        Use long, unique passwords.
-                        Never reuse important passwords.
+                        Use long, unique passwords and
+                        never reuse important passwords.
                     </p>
 
 
@@ -3015,8 +3190,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     </h3>
 
                     <p>
-                        Enable 2FA for email, social media,
-                        banking and important accounts.
+                        Turn on 2FA for email,
+                        social media, banking and
+                        other important accounts.
                     </p>
 
 
@@ -3025,8 +3201,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     </h3>
 
                     <p>
-                        Do not click unexpected links or
-                        share OTPs, passwords or recovery codes.
+                        Do not click unexpected links
+                        or share OTPs, passwords or
+                        recovery codes.
                     </p>
 
 
@@ -3035,8 +3212,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     </h3>
 
                     <p>
-                        Keep your device updated and review
-                        application permissions.
+                        Keep your operating system
+                        and applications updated.
+                        Review permissions regularly.
                     </p>
 
 
@@ -3045,30 +3223,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     </h3>
 
                     <p>
-                        Never share your UPI PIN, banking
-                        password or OTP.
+                        Never share your UPI PIN,
+                        banking password or OTP.
                     </p>
 
 
                     <h3 style="margin-top:18px;">
-                        👩 Women & Online Safety
+                        👩‍🦰 Digital Harassment
                     </h3>
 
                     <p>
-                        Block and report harassment, preserve
-                        evidence and avoid sharing personal
-                        information with unknown people.
+                        Save evidence, protect your
+                        accounts, block/report abusive
+                        accounts and tell someone you trust.
                     </p>
 
 
                     <h3 style="margin-top:18px;">
-                        🚨 Blackmail
+                        📸 Evidence
                     </h3>
 
                     <p>
-                        Do not send more money or private
-                        material. Preserve evidence and seek
-                        appropriate support/reporting channels.
+                        Screenshots, usernames, profile
+                        URLs, dates, phone numbers and
+                        transaction IDs can be important.
                     </p>
 
 
@@ -3077,10 +3255,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     </h3>
 
                     <p>
-                        Messages that create fear, urgency or
-                        promise unbelievable rewards deserve
-                        extra verification.
+                        If a message creates fear,
+                        urgency or promises an unbelievable
+                        reward, stop and verify it through
+                        the official website or app.
                     </p>
+
+                </div>
+
                 `
             );
         }
@@ -3088,16 +3270,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       19. OFFICIAL LINKS AVAILABLE GLOBALLY
-    ========================================================= */
+       19. INDIA CYBER FRAUD QUICK ACCESS
+       ========================================================= */
 
     window.CyberCareOfficial =
         officialLinks;
 
 
     /* =========================================================
-       20. ESCAPE KEY
-    ========================================================= */
+       20. GLOBAL QUICK HELP OBJECT
+       ========================================================= */
+
+    window.CyberCareHelp = {
+
+        open: openHelp,
+
+        services:
+            Object.keys(helpData),
+
+        official:
+            officialLinks
+    };
+
+
+    /* =========================================================
+       21. KEYBOARD ESCAPE
+       ========================================================= */
 
     document.addEventListener(
         "keydown",
@@ -3126,11 +3324,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       21. STARTUP
-    ========================================================= */
+       22. MOBILE TOUCH SAFETY
+       ========================================================= */
+
+    document.addEventListener(
+        "touchstart",
+        () => {},
+        { passive: true }
+    );
+
+
+    /* =========================================================
+       23. STARTUP
+       ========================================================= */
 
     console.log(
-        "🛡️ CyberCare complete safety system loaded."
+        "🛡️ CyberCare Final Version loaded successfully."
+    );
+
+    console.log(
+        "Available Help Services:",
+        Object.keys(helpData)
     );
 
 });
