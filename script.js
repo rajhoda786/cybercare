@@ -1,40 +1,81 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ================================
-    // THEME BUTTON
-    // ================================
-
-    const themeBtn =
-        document.getElementById("themeBtn");
-
-    if (themeBtn) {
-
-        themeBtn.addEventListener("click", function () {
-
-            document.body.classList.toggle(
-                "light-mode"
-            );
-
-            themeBtn.textContent =
-                document.body.classList.contains(
-                    "light-mode"
-                )
-                    ? "☀️"
-                    : "🌙";
-
-        });
-
-    }
+    const helpButtons = document.querySelectorAll(".help-btn");
+    const emergencyButton = document.getElementById("emergencyBtn");
+    const themeButton = document.getElementById("themeBtn");
 
 
-    // ================================
-    // HELP DATA
-    // ================================
-
-    const data = {
+    const helpData = {
 
         "Hacked Account": {
+            title: "🔐 Hacked Account",
 
+            situations: [
+                {
+                    name: "🔓 I can still access my account",
+
+                    steps: [
+                        "Change your password immediately.",
+                        "Sign out of unknown or suspicious devices.",
+                        "Enable two-factor authentication (2FA).",
+                        "Check your recovery email and phone number.",
+                        "Review recent login and account activity."
+                    ],
+
+                    warning: [
+                        "Never share your password, OTP or recovery codes.",
+                        "Do not use recovery links sent by strangers."
+                    ]
+                },
+
+                {
+                    name: "🚫 I cannot log in",
+
+                    steps: [
+                        "Use the official account recovery page.",
+                        "Try your recovery email or phone number.",
+                        "Follow the service's identity verification process.",
+                        "Secure your recovery email account.",
+                        "After recovery, change your password and enable 2FA."
+                    ],
+
+                    warning: [
+                        "Do not pay strangers who promise guaranteed account recovery.",
+                        "Never share recovery codes."
+                    ]
+                }
+            ]
+        },
+
+
+        "Scam & Phishing": {
+            title: "🎣 Scam & Phishing",
+
+            situations: [
+                {
+                    name: "📩 I received a suspicious message",
+
+                    steps: [
+                        "Do not click suspicious links.",
+                        "Check the sender's address or phone number carefully.",
+                        "Look for urgency, threats, unusual spelling or unrealistic offers.",
+                        "Verify the request through the organisation's official website or app.",
+                        "Report or block the sender when appropriate."
+                    ],
+
+                    warning: [
+                        "Never share passwords, OTPs or recovery codes.",
+                        "Do not trust a message simply because it uses a company logo."
+                    ]
+                },
+
+                {
+                    name: "🔗 I clicked a suspicious link",
+
+                    steps: [
+                        "Close the suspicious page.",
+                        "Do not enter any more information.",
+                        "If you entered a password
             title: "🔐 Hacked Account",
 
             situations: [
