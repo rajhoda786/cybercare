@@ -1,206 +1,584 @@
-// ===============================
-// CyberCare Interactive Help System
-// ===============================
+// ============================================
+// CYBERCARE — INTERACTIVE HELP SYSTEM
+// ============================================
 
 
-// 🌙 Theme Toggle
+// 🌙 Theme Button
 
 const themeBtn = document.getElementById("themeBtn");
 
 themeBtn.addEventListener("click", () => {
+
     document.body.classList.toggle("light-mode");
 
     themeBtn.textContent =
         document.body.classList.contains("light-mode")
             ? "☀️"
             : "🌙";
-});
-
-
-// 🚨 Emergency Help
-
-const emergencyBtn = document.getElementById("emergencyBtn");
-
-emergencyBtn.addEventListener("click", () => {
-
-    showHelpPanel(
-        "🚨 Emergency Cyber Help",
-        "If something serious has happened, follow these steps first.",
-        [
-            "🛑 Stop communicating with the suspected scammer.",
-            "🔐 Secure affected accounts from a trusted device.",
-            "🔑 Change compromised passwords.",
-            "📱 Sign out unknown devices and sessions.",
-            "💳 Contact your bank or payment provider immediately if money is involved.",
-            "📸 Save screenshots, messages, transaction details and other evidence.",
-            "🚨 Use the appropriate official reporting channel for serious incidents."
-        ],
-        [
-            "Never share OTPs, PINs, passwords or recovery codes.",
-            "Do not send additional money to someone claiming they can recover your account or money."
-        ]
-    );
 
 });
 
 
-// 🛡️ Service Information
+// ============================================
+// SERVICE DATA
+// ============================================
 
 const serviceData = {
 
     "Hacked Account": {
-        title: "🔐 Hacked Account Recovery",
-        intro: "If you think someone has accessed your account, secure it as quickly as possible.",
-        steps: [
-            "Secure your email account first if it may also be compromised.",
-            "Change the affected account password using the official website or app.",
-            "Sign out of unknown devices and active sessions.",
-            "Enable two-factor authentication (2FA).",
-            "Check your recovery email address and phone number.",
-            "Review connected apps and remove anything you do not recognize.",
-            "Check recent activity for suspicious changes."
-        ],
-        dont: [
-            "Never share OTPs, passwords or recovery codes.",
-            "Do not use recovery links sent by suspicious people.",
-            "Do not pay strangers claiming they can recover your account."
+
+        title: "🔐 Hacked Account",
+
+        intro:
+            "Tell CyberCare what happened so we can show you the most relevant safety steps.",
+
+        situations: [
+
+            {
+                name: "🔓 I can still access my account",
+
+                title: "You still have access",
+
+                steps: [
+                    "Change your password immediately using the official website or app.",
+                    "Sign out of unfamiliar devices and active sessions.",
+                    "Enable two-factor authentication (2FA).",
+                    "Check your recovery email address and phone number.",
+                    "Review recent account activity.",
+                    "Remove unknown connected apps or services."
+                ],
+
+                dont: [
+                    "Never share your password or OTP.",
+                    "Do not use suspicious recovery links sent by strangers."
+                ]
+            },
+
+            {
+                name: "🚫 I cannot log in",
+
+                title: "You cannot access the account",
+
+                steps: [
+                    "Use the service's official account recovery page.",
+                    "Try the recovery email or phone number associated with the account.",
+                    "Follow the provider's identity verification process.",
+                    "Secure your recovery email account first if necessary.",
+                    "After recovery, change the password and enable 2FA."
+                ],
+
+                dont: [
+                    "Do not pay strangers promising guaranteed account recovery.",
+                    "Never give recovery codes to another person."
+                ]
+            },
+
+            {
+                name: "📧 My email or phone was changed",
+
+                title: "Recovery information was changed",
+
+                steps: [
+                    "Check your original email account for security alerts.",
+                    "Use the official account recovery process.",
+                    "Look for an option to reverse an unauthorized change.",
+                    "Secure your email account immediately.",
+                    "After recovery, review all account settings."
+                ],
+
+                dont: [
+                    "Do not trust people contacting you claiming to be account support.",
+                    "Never share verification codes."
+                ]
+            },
+
+            {
+                name: "💰 My account was used for fraud",
+
+                title: "Your account may be involved in fraud",
+
+                steps: [
+                    "Secure the account immediately.",
+                    "Change the password from a trusted device.",
+                    "Sign out unknown sessions.",
+                    "Enable 2FA.",
+                    "Save screenshots and suspicious messages.",
+                    "Contact the affected platform.",
+                    "If money is involved, contact your bank or payment provider."
+                ],
+
+                dont: [
+                    "Do not delete important evidence before saving it.",
+                    "Do not send money to someone claiming they can recover the account."
+                ]
+            }
+
         ]
     },
 
+
+    // ========================================
+    // SCAM
+    // ========================================
 
     "Scam & Phishing": {
-        title: "🎣 Scam & Phishing Protection",
-        intro: "Scammers often create urgency to make you act before thinking.",
-        steps: [
-            "Do not click suspicious links.",
-            "Check the sender's address or phone number carefully.",
-            "Look for unusual spelling, urgent threats or unrealistic offers.",
-            "Verify the request through the organisation's official website or app.",
-            "If you already clicked a suspicious link, change affected passwords from a trusted device.",
-            "If financial information was shared, contact your bank or payment provider."
-        ],
-        dont: [
-            "Never share OTPs, PINs or passwords.",
-            "Do not trust caller ID alone.",
-            "Do not install remote-access software because an unknown caller asks you to."
+
+        title: "🎣 Scam & Phishing",
+
+        intro:
+            "Scammers often create urgency or fear. Choose what happened to you.",
+
+        situations: [
+
+            {
+                name: "📩 I received a suspicious message",
+
+                title: "Suspicious message",
+
+                steps: [
+                    "Do not click links or download attachments.",
+                    "Check the sender's address or phone number carefully.",
+                    "Look for unusual spelling, threats or unrealistic offers.",
+                    "Verify the request through the organisation's official website.",
+                    "Report or block the suspicious sender if appropriate."
+                ],
+
+                dont: [
+                    "Do not reply with passwords, OTPs or personal information.",
+                    "Do not trust a message simply because it uses a company logo."
+                ]
+            },
+
+            {
+                name: "🔗 I clicked a suspicious link",
+
+                title: "You clicked a suspicious link",
+
+                steps: [
+                    "Do not enter any more information on the website.",
+                    "Close the suspicious page.",
+                    "If you entered a password, change it immediately from the official website.",
+                    "Enable 2FA on the affected account.",
+                    "If financial information was entered, contact your bank or payment provider.",
+                    "Run a security check if a file or application was downloaded."
+                ],
+
+                dont: [
+                    "Do not return to the suspicious website.",
+                    "Do not download anything it recommends."
+                ]
+            },
+
+            {
+                name: "🔑 I shared an OTP or password",
+
+                title: "Sensitive information was shared",
+
+                steps: [
+                    "Change the affected password immediately.",
+                    "Sign out unknown sessions.",
+                    "Enable 2FA.",
+                    "Contact your bank or service provider if financial information was involved.",
+                    "Monitor the account for suspicious activity."
+                ],
+
+                dont: [
+                    "Never share another OTP or verification code.",
+                    "Do not trust anyone who asks for another code to 'secure' your account."
+                ]
+            },
+
+            {
+                name: "💳 I sent money",
+
+                title: "Money was sent to a suspected scammer",
+
+                steps: [
+                    "Contact your bank or payment provider immediately.",
+                    "Ask what options are available to secure the payment/account.",
+                    "Save the transaction ID and payment details.",
+                    "Save messages, phone numbers and screenshots.",
+                    "Secure any account that may have been compromised.",
+                    "Report the incident through the appropriate official channel."
+                ],
+
+                dont: [
+                    "Do not send additional money.",
+                    "Do not trust anyone promising guaranteed recovery."
+                ]
+            }
+
         ]
     },
 
+
+    // ========================================
+    // PHONE PRIVACY
+    // ========================================
 
     "Phone Privacy": {
-        title: "📱 Phone Privacy Check",
-        intro: "A few simple checks can significantly improve your phone's privacy.",
-        steps: [
-            "Review installed apps and remove anything you do not recognize.",
-            "Check camera, microphone, location and contacts permissions.",
-            "Keep your operating system and apps updated.",
-            "Use a strong screen lock.",
-            "Enable device-finding features.",
-            "Avoid installing apps from unknown sources.",
-            "Review which apps can run in the background."
-        ],
-        dont: [
-            "Do not give unnecessary permissions to unknown apps.",
-            "Do not install modified or cracked apps from untrusted websites."
+
+        title: "📱 Phone Privacy",
+
+        intro:
+            "Choose the situation that best matches your phone problem.",
+
+        situations: [
+
+            {
+                name: "📦 I found an unknown app",
+
+                title: "Unknown application",
+
+                steps: [
+                    "Check the app's name and installation source.",
+                    "Review its permissions.",
+                    "If you do not recognize or need it, uninstall it.",
+                    "Update your phone.",
+                    "Run a security scan using a trusted security tool."
+                ],
+
+                dont: [
+                    "Do not install another unknown 'cleaner' app recommended by a stranger."
+                ]
+            },
+
+            {
+                name: "🎤 Camera or microphone seems suspicious",
+
+                title: "Camera or microphone privacy",
+
+                steps: [
+                    "Review which apps have camera and microphone permissions.",
+                    "Remove permissions that are unnecessary.",
+                    "Uninstall suspicious applications.",
+                    "Update the operating system.",
+                    "Restart the device after removing suspicious software."
+                ],
+
+                dont: [
+                    "Do not give camera or microphone access to unknown apps."
+                ]
+            },
+
+            {
+                name: "📍 I am worried about location tracking",
+
+                title: "Location privacy",
+
+                steps: [
+                    "Review which apps can access your location.",
+                    "Disable unnecessary location permissions.",
+                    "Check account location-sharing settings.",
+                    "Review unfamiliar apps and connected services.",
+                    "Use the most restrictive permission that still lets an app work."
+                ],
+
+                dont: [
+                    "Do not leave location sharing enabled for services you do not recognize."
+                ]
+            }
+
         ]
     },
 
+
+    // ========================================
+    // ACCOUNT SECURITY
+    // ========================================
 
     "Account Security": {
+
         title: "🔒 Account Security",
-        intro: "Strong account security reduces the chance of unauthorized access.",
-        steps: [
-            "Use a unique password for every important account.",
-            "Use a password manager if possible.",
-            "Enable two-factor authentication.",
-            "Review active sessions and logged-in devices.",
-            "Keep your recovery email and phone number updated.",
-            "Remove unknown connected apps.",
-            "Keep your software and browser updated."
-        ],
-        dont: [
-            "Never reuse your main password everywhere.",
-            "Never share passwords or authentication codes."
+
+        intro:
+            "Improve your account protection with these practical steps.",
+
+        situations: [
+
+            {
+                name: "🔑 My password is weak or reused",
+
+                title: "Password security",
+
+                steps: [
+                    "Create a unique password for the account.",
+                    "Avoid using the same password on multiple services.",
+                    "Consider using a reputable password manager.",
+                    "Change passwords that may have been exposed."
+                ],
+
+                dont: [
+                    "Never share your password with anyone.",
+                    "Do not use obvious personal information in passwords."
+                ]
+            },
+
+            {
+                name: "🛡️ I don't have 2FA",
+
+                title: "Enable two-factor authentication",
+
+                steps: [
+                    "Open the account's official security settings.",
+                    "Enable two-factor authentication.",
+                    "Prefer an authenticator app or passkey when supported.",
+                    "Store recovery codes somewhere secure."
+                ],
+
+                dont: [
+                    "Never send recovery codes to another person."
+                ]
+            },
+
+            {
+                name: "💻 I see an unknown device",
+
+                title: "Unknown login",
+
+                steps: [
+                    "Review the device or session details.",
+                    "Sign out the unfamiliar session.",
+                    "Change your password if the login was unauthorized.",
+                    "Enable 2FA.",
+                    "Review recent security activity."
+                ],
+
+                dont: [
+                    "Do not ignore repeated unfamiliar login alerts."
+                ]
+            }
+
         ]
     },
 
+
+    // ========================================
+    // ONLINE FRAUD
+    // ========================================
 
     "Online Fraud": {
-        title: "💳 Online Fraud Help",
-        intro: "If money or financial information is involved, act quickly.",
-        steps: [
-            "Contact your bank or payment provider immediately.",
-            "Ask about blocking or securing the affected account or card.",
-            "Save transaction IDs, receipts and screenshots.",
-            "Secure the account connected to the payment.",
-            "Change compromised passwords.",
-            "Report the incident through the appropriate official channel."
-        ],
-        dont: [
-            "Do not send more money to the scammer.",
-            "Do not delete evidence before saving it.",
-            "Do not trust anyone promising guaranteed recovery of your money."
+
+        title: "💳 Online Fraud",
+
+        intro:
+            "If money or financial information is involved, acting quickly matters.",
+
+        situations: [
+
+            {
+                name: "💸 I lost money",
+
+                title: "Money may have been lost",
+
+                steps: [
+                    "Contact your bank or payment provider immediately.",
+                    "Tell them the transaction may be fraudulent.",
+                    "Save the transaction ID and receipt.",
+                    "Secure the account used for payment.",
+                    "Change compromised passwords.",
+                    "Keep screenshots and communication as evidence.",
+                    "Use the appropriate official reporting channel."
+                ],
+
+                dont: [
+                    "Do not send more money to recover the first payment.",
+                    "Do not delete transaction evidence."
+                ]
+            },
+
+            {
+                name: "🏦 My banking information was shared",
+
+                title: "Financial information exposed",
+
+                steps: [
+                    "Contact your bank immediately.",
+                    "Ask what security measures should be taken.",
+                    "Monitor transactions.",
+                    "Change affected account credentials if necessary.",
+                    "Secure your email and phone account."
+                ],
+
+                dont: [
+                    "Never share another OTP or PIN.",
+                    "Do not trust unsolicited callers claiming to be bank staff."
+                ]
+            }
+
         ]
     },
 
+
+    // ========================================
+    // MALWARE
+    // ========================================
 
     "Malware": {
+
         title: "🦠 Malware & Suspicious Apps",
-        intro: "Unexpected pop-ups, unknown apps or unusual device behaviour can be warning signs.",
-        steps: [
-            "Disconnect the affected device from the internet if you suspect active compromise.",
-            "Remove applications you do not recognize.",
-            "Update the operating system and security software.",
-            "Run a scan using a trusted security tool.",
-            "Review browser extensions and remove suspicious ones.",
-            "Change important passwords from a trusted device if needed."
-        ],
-        dont: [
-            "Do not install another unknown 'cleaner' or security app recommended by a stranger.",
-            "Do not enter passwords into suspicious pop-ups."
+
+        intro:
+            "Choose the symptom that best describes your device.",
+
+        situations: [
+
+            {
+                name: "📱 My device is behaving strangely",
+
+                title: "Unusual device behaviour",
+
+                steps: [
+                    "Check recently installed applications.",
+                    "Remove applications you do not recognize.",
+                    "Update the operating system.",
+                    "Run a scan using trusted security software.",
+                    "Review browser extensions.",
+                    "Change important passwords from a trusted device if compromise is suspected."
+                ],
+
+                dont: [
+                    "Do not install random security software from pop-up advertisements."
+                ]
+            },
+
+            {
+                name: "⬇️ I installed a suspicious app",
+
+                title: "Suspicious application",
+
+                steps: [
+                    "Disconnect the device from the internet if active compromise is suspected.",
+                    "Uninstall the suspicious application if possible.",
+                    "Run a trusted security scan.",
+                    "Update the device.",
+                    "Change important passwords from a trusted device."
+                ],
+
+                dont: [
+                    "Do not enter passwords into suspicious applications.",
+                    "Do not continue using a suspicious app just because it appears harmless."
+                ]
+            }
+
         ]
     },
 
+
+    // ========================================
+    // EMERGENCY
+    // ========================================
 
     "Emergency Help": {
-        title: "🚨 Emergency Help",
-        intro: "Use this when a cyber incident may be actively harming you.",
-        steps: [
-            "Stop interacting with the suspected attacker.",
-            "Secure your most important email account.",
-            "Secure banking or payment accounts if financial information is involved.",
-            "Change compromised passwords.",
-            "Enable 2FA.",
-            "Save evidence such as screenshots, emails and transaction details.",
-            "Contact the relevant official organisation or service provider."
-        ],
-        dont: [
-            "Never share OTPs, PINs or recovery codes.",
-            "Do not send money to someone threatening or pressuring you."
+
+        title: "🚨 Emergency Cyber Help",
+
+        intro:
+            "If you are dealing with an active cyber incident, start here.",
+
+        situations: [
+
+            {
+                name: "🚨 My account is actively compromised",
+
+                title: "Active account compromise",
+
+                steps: [
+                    "Secure your email account first.",
+                    "Change compromised passwords.",
+                    "Sign out unknown devices.",
+                    "Enable 2FA.",
+                    "Save evidence.",
+                    "Contact the affected service through its official support channel."
+                ],
+
+                dont: [
+                    "Do not communicate with the suspected attacker.",
+                    "Never share OTPs or recovery codes."
+                ]
+            },
+
+            {
+                name: "💳 My money is at risk",
+
+                title: "Financial emergency",
+
+                steps: [
+                    "Contact your bank or payment provider immediately.",
+                    "Ask them how to secure the account or payment method.",
+                    "Save transaction details.",
+                    "Secure the email account connected to financial services.",
+                    "Report the incident through the appropriate official channel."
+                ],
+
+                dont: [
+                    "Do not send additional money.",
+                    "Do not trust recovery scammers."
+                ]
+            }
+
         ]
     },
 
 
+    // ========================================
+    // LEARNING
+    // ========================================
+
     "Learn Cybersecurity": {
+
         title: "🎓 Learn Cybersecurity",
-        intro: "Start with the fundamentals and build good security habits.",
-        steps: [
-            "Learn how phishing and social engineering work.",
-            "Learn how to create and manage strong unique passwords.",
-            "Understand two-factor authentication.",
-            "Learn how malware and suspicious apps can affect devices.",
-            "Practice identifying suspicious links and messages.",
-            "Learn how to protect your personal information online."
-        ],
-        dont: [
-            "Do not test security tools or techniques against systems you do not own or have permission to test."
+
+        intro:
+            "Build strong cybersecurity habits one topic at a time.",
+
+        situations: [
+
+            {
+                name: "🎣 Learn about phishing",
+
+                title: "Phishing basics",
+
+                steps: [
+                    "Learn how scammers imitate trusted organisations.",
+                    "Check sender addresses carefully.",
+                    "Avoid unexpected links and attachments.",
+                    "Verify requests through official channels.",
+                    "Never share authentication codes."
+                ],
+
+                dont: [
+                    "Do not test suspicious links on real accounts."
+                ]
+            },
+
+            {
+                name: "🔐 Learn account protection",
+
+                title: "Account security basics",
+
+                steps: [
+                    "Use unique passwords.",
+                    "Enable 2FA.",
+                    "Review active sessions.",
+                    "Keep recovery information updated.",
+                    "Keep your devices and applications updated."
+                ],
+
+                dont: [
+                    "Do not reuse passwords across important accounts."
+                ]
+            }
+
         ]
     }
 
 };
 
 
-// 📚 Open Service Help
+// ============================================
+// OPEN SERVICE
+// ============================================
 
 const helpButtons = document.querySelectorAll(".help-btn");
 
@@ -209,187 +587,293 @@ helpButtons.forEach((button) => {
     button.addEventListener("click", () => {
 
         const service = button.dataset.service;
+
         const data = serviceData[service];
 
         if (!data) return;
 
-        showHelpPanel(
-            data.title,
-            data.intro,
-            data.steps,
-            data.dont
-        );
+        showSituationPanel(data);
 
     });
 
 });
 
 
-// 🧩 Help Panel
+// ============================================
+// SITUATION PANEL
+// ============================================
 
-function showHelpPanel(title, intro, steps, dont) {
+function showSituationPanel(data) {
 
-    const oldPanel = document.getElementById("cybercare-help-panel");
+    const oldPanel =
+        document.getElementById("cybercare-help-panel");
 
     if (oldPanel) {
         oldPanel.remove();
     }
 
-    const overlay = document.createElement("div");
 
-    overlay.id = "cybercare-help-panel";
-    overlay.className = "help-overlay";
+    const overlay =
+        document.createElement("div");
+
+    overlay.id =
+        "cybercare-help-panel";
+
+    overlay.className =
+        "help-overlay";
+
+
+    const buttons =
+        data.situations
+            .map((item, index) => {
+
+                return `
+                    <button
+                        class="situation-btn"
+                        data-index="${index}">
+
+                        ${item.name}
+
+                    </button>
+                `;
+
+            })
+            .join("");
+
 
     overlay.innerHTML = `
+
         <div class="help-modal">
 
-            <button class="close-help" aria-label="Close">
+            <button
+                class="close-help"
+                aria-label="Close">
+
                 ✕
+
             </button>
 
+
             <div class="help-header">
-                <span class="help-badge">CYBERCARE HELP</span>
-                <h2>${title}</h2>
-                <p>${intro}</p>
-            </div>
 
-            <div class="help-section">
-                <h3>✅ What you should do</h3>
+                <span class="help-badge">
+                    CYBERCARE HELP
+                </span>
 
-                <ol>
-                    ${steps.map(step => `<li>${step}</li>`).join("")}
-                </ol>
-            </div>
+                <h2>
+                    ${data.title}
+                </h2>
 
-            <div class="help-section danger-section">
-                <h3>⚠️ What you should NOT do</h3>
-
-                <ul>
-                    ${dont.map(item => `<li>${item}</li>`).join("")}
-                </ul>
-            </div>
-
-            <div class="help-footer">
                 <p>
-                    🛡️ CyberCare provides general safety guidance.
-                    For serious incidents, use the appropriate official service.
+                    ${data.intro}
                 </p>
+
+            </div>
+
+
+            <div class="situation-section">
+
+                <h3>
+                    👇 What happened?
+                </h3>
+
+                <div class="situation-grid">
+
+                    ${buttons}
+
+                </div>
+
+            </div>
+
+
+            <div id="help-result">
+
+                <div class="empty-help">
+
+                    🛡️
+
+                    <p>
+                        Select the situation above
+                        to get step-by-step guidance.
+                    </p>
+
+                </div>
+
             </div>
 
         </div>
+
     `;
+
 
     document.body.appendChild(overlay);
 
-    const closeBtn = overlay.querySelector(".close-help");
 
-    closeBtn.addEventListener("click", () => {
-        overlay.remove();
-    });
+    // Close button
+
+    overlay
+        .querySelector(".close-help")
+        .addEventListener("click", () => {
+
+            overlay.remove();
+
+        });
+
+
+    // Click outside
 
     overlay.addEventListener("click", (event) => {
 
         if (event.target === overlay) {
+
             overlay.remove();
+
         }
 
     });
 
-        }helpButtons.forEach((button) => {
 
-    button.addEventListener("click", () => {
+    // Situation buttons
 
-        const service = button.dataset.service;
+    overlay
+        .querySelectorAll(".situation-btn")
+        .forEach((button) => {
 
-        let message = "";
+            button.addEventListener("click", () => {
 
-        if (service === "Hacked Account") {
+                const index =
+                    Number(button.dataset.index);
 
-            message =
-                "🔐 Hacked Account Help\n\n" +
-                "• Change your password immediately.\n" +
-                "• Sign out of unknown devices.\n" +
-                "• Enable two-factor authentication.\n" +
-                "• Check your recovery email and phone number.\n" +
-                "• Never share OTPs or recovery codes.";
+                const situation =
+                    data.situations[index];
 
-        } else if (service === "Scam & Phishing") {
+                showSituationResult(
+                    overlay,
+                    situation
+                );
 
-            message =
-                "🎣 Scam & Phishing Guide\n\n" +
-                "• Do not click suspicious links.\n" +
-                "• Check the sender carefully.\n" +
-                "• Never share OTPs, passwords or PINs.\n" +
-                "• Be careful with urgent payment requests.\n" +
-                "• Verify information through an official website.";
+            });
 
-        } else if (service === "Phone Privacy") {
+        });
 
-            message =
-                "📱 Phone Privacy\n\n" +
-                "• Review app permissions.\n" +
-                "• Remove apps you do not recognize.\n" +
-                "• Keep your phone updated.\n" +
-                "• Use a strong screen lock.\n" +
-                "• Avoid installing apps from unknown sources.";
+}
 
-        } else if (service === "Account Security") {
 
-            message =
-                "🔒 Account Security\n\n" +
-                "• Use unique passwords.\n" +
-                "• Enable two-factor authentication.\n" +
-                "• Review logged-in devices.\n" +
-                "• Keep recovery information updated.\n" +
-                "• Never share passwords or OTPs.";
+// ============================================
+// SHOW SITUATION RESULT
+// ============================================
 
-        } else if (service === "Online Fraud") {
+function showSituationResult(
+    overlay,
+    situation
+) {
 
-            message =
-                "💳 Online Fraud Help\n\n" +
-                "• Contact your bank/payment provider immediately if money is involved.\n" +
-                "• Save transaction details and evidence.\n" +
-                "• Do not send additional money to scammers.\n" +
-                "• Secure your accounts.\n" +
-                "• Report the incident to the appropriate official authority.";
+    const result =
+        overlay.querySelector("#help-result");
 
-        } else if (service === "Malware") {
 
-            message =
-                "🦠 Malware & Suspicious Apps\n\n" +
-                "• Disconnect the device if you suspect active compromise.\n" +
-                "• Remove suspicious applications.\n" +
-                "• Update your operating system.\n" +
-                "• Run a trusted security scan.\n" +
-                "• Change important passwords from a trusted device.";
+    const steps =
+        situation.steps
+            .map(step => `<li>${step}</li>`)
+            .join("");
 
-        } else if (service === "Emergency Help") {
 
-            message =
-                "🚨 Emergency Help\n\n" +
-                "If your account, device or money may be at immediate risk:\n\n" +
-                "• Stop communicating with the suspected scammer.\n" +
-                "• Do not share OTPs or passwords.\n" +
-                "• Contact your bank if financial information is involved.\n" +
-                "• Secure affected accounts.\n" +
-                "• Preserve screenshots and other evidence.";
+    const dont =
+        situation.dont
+            .map(item => `<li>${item}</li>`)
+            .join("");
 
-        } else if (service === "Learn Cybersecurity") {
 
-            message =
-                "🎓 Learn Cybersecurity\n\n" +
-                "Start with these basics:\n\n" +
-                "• Strong passwords\n" +
-                "• Two-factor authentication\n" +
-                "• Phishing awareness\n" +
-                "• Safe browsing\n" +
-                "• Software updates\n" +
-                "• Privacy protection";
+    result.innerHTML = `
 
-        }
+        <div class="result-panel">
 
-        alert(message);
+            <div class="result-title">
 
+                <span>
+                    ⚡
+                </span>
+
+                <h3>
+                    ${situation.title}
+                </h3>
+
+            </div>
+
+
+            <div class="help-section">
+
+                <h3>
+                    ⚡ Do this first
+                </h3>
+
+                <p>
+                    Start with the first step below
+                    and work through the list carefully.
+                </p>
+
+            </div>
+
+
+            <div class="help-section">
+
+                <h3>
+                    ✅ What you should do
+                </h3>
+
+                <ol>
+                    ${steps}
+                </ol>
+
+            </div>
+
+
+            <div class="help-section danger-section">
+
+                <h3>
+                    ⚠️ What you should NOT do
+                </h3>
+
+                <ul>
+                    ${dont}
+                </ul>
+
+            </div>
+
+
+            <div class="help-section evidence-section">
+
+                <h3>
+                    📸 Save useful evidence
+                </h3>
+
+                <p>
+                    Keep relevant screenshots,
+                    messages, emails, transaction details
+                    or security alerts when appropriate.
+                </p>
+
+            </div>
+
+
+            <div class="help-footer">
+
+                🛡️ CyberCare provides general
+                cybersecurity safety guidance.
+
+                For serious incidents, contact the
+                appropriate official service.
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
     });
 
-});
+}
