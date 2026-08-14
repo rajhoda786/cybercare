@@ -1,6 +1,13 @@
-/* =========================
-   CYBERCARE - STYLE.CSS
-========================= */
+/* =========================================================
+   CYBERCARE — COMPLETE STYLE.CSS
+   Digital Safety • Women Safety • Cybersecurity
+   Responsive • Bengali Support • Dark Mode
+========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL
+========================================================= */
 
 * {
     margin: 0;
@@ -10,43 +17,93 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 75px;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        "Noto Sans Bengali",
+        "Noto Sans",
+        Helvetica,
+        sans-serif;
+
     background: #f4f7fb;
     color: #111827;
-    line-height: 1.6;
-    transition: background 0.3s ease, color 0.3s ease;
+
+    line-height: 1.65;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+
+    overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
 }
 
 
-/* =========================
-   NAVBAR
-========================= */
+/* =========================================================
+   2. NAVBAR
+========================================================= */
 
 .navbar {
     position: sticky;
     top: 0;
     z-index: 1000;
 
-    height: 68px;
-    padding: 0 6%;
+    width: 100%;
+    min-height: 68px;
+
+    padding: 10px 6%;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
+
     border-bottom: 1px solid #e5e7eb;
 
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transition: 0.3s ease;
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
     font-size: 21px;
     font-weight: 800;
+
     color: #2563eb;
+
+    white-space: nowrap;
 }
 
 .nav-actions {
@@ -59,6 +116,10 @@ body {
     width: 44px;
     height: 44px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border: 1px solid #dbe3ef;
     border-radius: 12px;
 
@@ -66,13 +127,13 @@ body {
     color: #111827;
 
     font-size: 18px;
-    cursor: pointer;
 
     transition: 0.2s ease;
 }
 
 .nav-btn:hover {
     background: #eff6ff;
+    border-color: #bfdbfe;
     transform: translateY(-1px);
 }
 
@@ -81,27 +142,29 @@ body {
 }
 
 
-/* =========================
-   SIDE MENU
-========================= */
+/* =========================================================
+   3. SIDE MENU
+========================================================= */
 
 .side-menu {
     position: fixed;
-    top: 0;
-    right: -330px;
 
-    width: 310px;
-    max-width: 85%;
+    top: 0;
+    right: -350px;
+
+    width: 320px;
+    max-width: 88%;
 
     height: 100vh;
+
+    padding: 25px 20px;
 
     background: #ffffff;
 
     z-index: 2000;
 
-    padding: 25px 20px;
-
-    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        -12px 0 40px rgba(0, 0, 0, 0.18);
 
     transition: right 0.3s ease;
 
@@ -128,16 +191,16 @@ body {
 }
 
 .menu-header button {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
 
     border: none;
     border-radius: 10px;
 
     background: #f3f4f6;
+    color: #111827;
 
     font-size: 20px;
-    cursor: pointer;
 }
 
 .menu-item {
@@ -153,9 +216,8 @@ body {
     color: #111827;
 
     text-align: left;
-    font-size: 15px;
 
-    cursor: pointer;
+    font-size: 15px;
 
     transition: 0.2s ease;
 }
@@ -163,13 +225,14 @@ body {
 .menu-item:hover {
     background: #eff6ff;
     color: #2563eb;
+    transform: translateX(-2px);
 }
 
 .menu-overlay {
     position: fixed;
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.55);
 
     z-index: 1500;
 
@@ -185,14 +248,14 @@ body {
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* =========================================================
+   4. HERO
+========================================================= */
 
 .hero {
-    min-height: 500px;
+    min-height: 520px;
 
-    padding: 80px 20px;
+    padding: 85px 20px;
 
     display: flex;
     flex-direction: column;
@@ -205,14 +268,14 @@ body {
         radial-gradient(
             circle at top,
             #dbeafe 0%,
-            #eff6ff 40%,
+            #eff6ff 42%,
             #f8fafc 100%
         );
 }
 
 .hero-icon {
-    width: 92px;
-    height: 92px;
+    width: 96px;
+    height: 96px;
 
     display: flex;
     align-items: center;
@@ -222,41 +285,53 @@ body {
 
     background: #ffffff;
 
-    font-size: 48px;
+    font-size: 50px;
 
-    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+    box-shadow:
+        0 15px 45px rgba(37, 99, 235, 0.16);
 
-    margin-bottom: 22px;
+    margin-bottom: 23px;
 }
 
 .hero h1 {
-    font-size: clamp(42px, 8vw, 68px);
+    font-size: clamp(42px, 8vw, 70px);
+
     color: #1d4ed8;
+
     margin-bottom: 8px;
+
+    letter-spacing: -1px;
 }
 
 .hero h2 {
+    max-width: 850px;
+
     font-size: clamp(20px, 4vw, 30px);
-    max-width: 800px;
+
+    line-height: 1.35;
+
     margin-bottom: 18px;
 }
 
 .hero p {
-    max-width: 700px;
+    max-width: 730px;
+
     color: #64748b;
+
     font-size: 17px;
+
     margin-bottom: 30px;
 }
 
 
-/* =========================
-   BUTTONS
-========================= */
+/* =========================================================
+   5. BUTTONS
+========================================================= */
 
 .emergency-btn {
     border: none;
 
-    padding: 14px 24px;
+    padding: 14px 25px;
 
     border-radius: 12px;
 
@@ -266,30 +341,50 @@ body {
     font-size: 16px;
     font-weight: 700;
 
-    cursor: pointer;
-
-    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.25);
+    box-shadow:
+        0 8px 22px rgba(220, 38, 38, 0.25);
 
     transition: 0.2s ease;
 }
 
 .emergency-btn:hover {
-    transform: translateY(-2px);
     background: #b91c1c;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    padding: 13px 22px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.secondary-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
 }
 
 
-/* =========================
-   COMMON SECTIONS
-========================= */
+/* =========================================================
+   6. COMMON SECTIONS
+========================================================= */
 
 .services,
 .tools,
 .extra-section,
 .about-section {
+    width: 100%;
     max-width: 1150px;
 
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 
     padding: 80px 20px;
 }
@@ -300,7 +395,9 @@ body {
 .about-section > h2 {
     text-align: center;
 
-    font-size: 32px;
+    font-size: clamp(27px, 4vw, 34px);
+
+    line-height: 1.3;
 
     margin-bottom: 10px;
 }
@@ -310,13 +407,16 @@ body {
 
     color: #64748b;
 
-    margin-bottom: 35px;
+    max-width: 750px;
+
+    margin:
+        0 auto 35px;
 }
 
 
-/* =========================
-   SERVICE GRID
-========================= */
+/* =========================================================
+   7. SERVICE GRID
+========================================================= */
 
 .service-grid {
     display: grid;
@@ -328,6 +428,8 @@ body {
 }
 
 .service-card {
+    min-width: 0;
+
     background: #ffffff;
 
     border: 1px solid #e5e7eb;
@@ -336,7 +438,8 @@ body {
 
     padding: 25px;
 
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06);
 
     transition: 0.25s ease;
 }
@@ -366,12 +469,16 @@ body {
 }
 
 .service-card h3 {
-    margin-bottom: 10px;
     font-size: 20px;
+
+    line-height: 1.35;
+
+    margin-bottom: 10px;
 }
 
 .service-card p {
     color: #64748b;
+
     font-size: 14px;
 
     min-height: 68px;
@@ -393,22 +500,22 @@ body {
     font-size: 14px;
     font-weight: 700;
 
-    cursor: pointer;
-
     transition: 0.2s ease;
 }
 
 .help-btn:hover {
     background: #1d4ed8;
+    transform: translateY(-1px);
 }
 
 
-/* =========================
-   EMERGENCY CARD
-========================= */
+/* =========================================================
+   8. EMERGENCY CARD
+========================================================= */
 
 .emergency-card {
     border: 1px solid #fecaca;
+
     background: #fffafa;
 }
 
@@ -417,40 +524,26 @@ body {
 }
 
 
-/* =========================
-   EXTRA / LEARN
-========================= */
+/* =========================================================
+   9. LEARN SECTION
+========================================================= */
 
 .extra-section {
+    max-width: 100%;
+
     text-align: center;
 
     background: #eff6ff;
-
-    max-width: 100%;
-}
-
-.secondary-btn {
-    padding: 13px 22px;
-
-    border: none;
-    border-radius: 11px;
-
-    background: #2563eb;
-    color: #ffffff;
-
-    font-weight: 700;
-
-    cursor: pointer;
-}
-
-.secondary-btn:hover {
-    background: #1d4ed8;
 }
 
 
-/* =========================
-   TOOLS
-========================= */
+/* =========================================================
+   10. TOOLS
+========================================================= */
+
+.tools {
+    max-width: 1150px;
+}
 
 .tool-grid {
     display: grid;
@@ -462,6 +555,8 @@ body {
 }
 
 .tool-card {
+    min-width: 0;
+
     background: #ffffff;
 
     border: 1px solid #e5e7eb;
@@ -472,11 +567,17 @@ body {
 
     text-align: center;
 
+    box-shadow:
+        0 7px 22px rgba(15, 23, 42, 0.05);
+
     transition: 0.25s ease;
 }
 
 .tool-card:hover {
     transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.09);
 }
 
 .tool-icon {
@@ -487,6 +588,8 @@ body {
 
 .tool-card h3 {
     margin-bottom: 10px;
+
+    line-height: 1.35;
 }
 
 .tool-card p {
@@ -498,7 +601,9 @@ body {
 }
 
 .tool-btn {
-    padding: 9px 15px;
+    display: inline-block;
+
+    padding: 10px 16px;
 
     border: 1px solid #cbd5e1;
 
@@ -506,15 +611,22 @@ body {
 
     background: #f8fafc;
 
-    color: #64748b;
+    color: #334155;
 
-    cursor: default;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.tool-btn:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
 }
 
 
-/* =========================
-   ABOUT
-========================= */
+/* =========================================================
+   11. ABOUT
+========================================================= */
 
 .about-section {
     text-align: center;
@@ -526,6 +638,9 @@ body {
     margin-bottom: 60px;
 
     max-width: 1000px;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.05);
 }
 
 .about-section p {
@@ -537,12 +652,308 @@ body {
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* =========================================================
+   12. WOMEN / GIRLS DIGITAL SAFETY
+========================================================= */
+
+.women-safety-section {
+    width: 100%;
+
+    padding: 85px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff7fb 0%,
+            #fff 100%
+        );
+}
+
+.women-safety-container {
+    max-width: 1150px;
+
+    margin: auto;
+}
+
+.women-safety-header {
+    text-align: center;
+
+    max-width: 800px;
+
+    margin: 0 auto 40px;
+}
+
+.women-safety-header h2 {
+    font-size: clamp(28px, 5vw, 38px);
+
+    line-height: 1.3;
+
+    margin-bottom: 12px;
+}
+
+.women-safety-header p {
+    color: #64748b;
+
+    font-size: 16px;
+}
+
+.women-safety-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 20px;
+}
+
+.women-safety-card {
+    padding: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #f1d6e4;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(190, 24, 93, 0.06);
+
+    transition: 0.25s ease;
+}
+
+.women-safety-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 14px 32px rgba(190, 24, 93, 0.10);
+}
+
+.women-safety-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #fce7f3;
+
+    font-size: 27px;
+
+    margin-bottom: 16px;
+}
+
+.women-safety-card h3 {
+    font-size: 19px;
+
+    margin-bottom: 9px;
+}
+
+.women-safety-card p {
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   13. SAFETY TOPIC / INFORMATION CARDS
+========================================================= */
+
+.safety-topic-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 18px;
+
+    margin-top: 30px;
+}
+
+.safety-topic-card {
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 7px 20px rgba(15, 23, 42, 0.05);
+}
+
+.safety-topic-card h3 {
+    margin-bottom: 10px;
+
+    line-height: 1.35;
+}
+
+.safety-topic-card p {
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   14. WARNING / SAFETY BOXES
+========================================================= */
+
+.warning-box,
+.danger-box,
+.success-box,
+.info-box,
+.evidence-box {
+    padding: 18px;
+
+    border-radius: 14px;
+
+    margin-top: 18px;
+}
+
+.warning-box {
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    color: #9a3412;
+}
+
+.danger-box {
+    background: #fff1f2;
+
+    border: 1px solid #fecdd3;
+
+    color: #9f1239;
+}
+
+.success-box {
+    background: #ecfdf5;
+
+    border: 1px solid #bbf7d0;
+
+    color: #166534;
+}
+
+.info-box {
+    background: #eff6ff;
+
+    border: 1px solid #bfdbfe;
+
+    color: #1e40af;
+}
+
+.evidence-box {
+    background: #f8fafc;
+
+    border: 1px solid #cbd5e1;
+
+    color: #334155;
+}
+
+.warning-box h3,
+.danger-box h3,
+.success-box h3,
+.info-box h3,
+.evidence-box h3 {
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   15. PASSWORD SAMPLE / EDUCATION
+========================================================= */
+
+.password-example {
+    padding: 18px;
+
+    margin-top: 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid #dbe3ef;
+
+    border-radius: 14px;
+}
+
+.password-example code {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 10px 13px;
+
+    border-radius: 9px;
+
+    background: #111827;
+
+    color: #ffffff;
+
+    font-family:
+        Consolas,
+        monospace;
+
+    font-size: 14px;
+
+    word-break: break-all;
+}
+
+.password-tip {
+    margin-top: 10px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   16. CHECKLIST
+========================================================= */
+
+.checklist {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.checklist-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 11px;
+}
+
+.checklist-item input {
+    margin-top: 5px;
+
+    accent-color: #2563eb;
+}
+
+
+/* =========================================================
+   17. FOOTER
+========================================================= */
 
 footer {
-    padding: 45px 20px;
+    padding: 48px 20px;
 
     text-align: center;
 
@@ -568,29 +979,39 @@ footer .copyright {
 }
 
 
-/* =========================
-   DARK MODE
-========================= */
+/* =========================================================
+   18. DARK MODE
+========================================================= */
 
 body.dark-mode {
     background: #0b1120;
+
     color: #f8fafc;
 }
 
+
+/* NAVBAR */
+
 body.dark-mode .navbar {
-    background: rgba(15, 23, 42, 0.96);
+    background: rgba(15, 23, 42, 0.97);
+
     border-color: #1e293b;
 }
 
 body.dark-mode .nav-btn {
     background: #111827;
+
     border-color: #334155;
+
     color: #f8fafc;
 }
 
 body.dark-mode .nav-btn:hover {
     background: #1e293b;
 }
+
+
+/* HERO */
 
 body.dark-mode .hero {
     background:
@@ -610,11 +1031,14 @@ body.dark-mode .hero h1 {
     color: #60a5fa;
 }
 
-body.dark-mode .hero p,
-body.dark-mode .section-text,
-body.dark-mode .service-card p,
-body.dark-mode .tool-card p,
-body.dark-mode .about-section p {
+body.dark-mode .hero p {
+    color: #94a3b8;
+}
+
+
+/* SECTIONS */
+
+body.dark-mode .section-text {
     color: #94a3b8;
 }
 
@@ -622,15 +1046,29 @@ body.dark-mode .service-card,
 body.dark-mode .tool-card,
 body.dark-mode .about-section {
     background: #111827;
+
     border-color: #1e293b;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.20);
+}
+
+body.dark-mode .service-card p,
+body.dark-mode .tool-card p,
+body.dark-mode .about-section p {
+    color: #94a3b8;
 }
 
 body.dark-mode .service-icon {
     background: #172554;
 }
 
+
+/* EMERGENCY */
+
 body.dark-mode .emergency-card {
     background: #1f1315;
+
     border-color: #7f1d1d;
 }
 
@@ -638,12 +1076,35 @@ body.dark-mode .emergency-card .service-icon {
     background: #450a0a;
 }
 
+
+/* LEARN */
+
 body.dark-mode .extra-section {
     background: #111827;
 }
 
+
+/* TOOLS */
+
+body.dark-mode .tool-btn {
+    background: #1e293b;
+
+    border-color: #334155;
+
+    color: #e2e8f0;
+}
+
+body.dark-mode .tool-btn:hover {
+    background: #172554;
+}
+
+
+/* SIDE MENU */
+
 body.dark-mode .side-menu {
     background: #0f172a;
+
+    color: #f8fafc;
 }
 
 body.dark-mode .menu-header {
@@ -652,6 +1113,7 @@ body.dark-mode .menu-header {
 
 body.dark-mode .menu-header button {
     background: #1e293b;
+
     color: #ffffff;
 }
 
@@ -661,38 +1123,170 @@ body.dark-mode .menu-item {
 
 body.dark-mode .menu-item:hover {
     background: #172554;
+
     color: #60a5fa;
 }
 
-body.dark-mode .tool-btn {
-    background: #1e293b;
-    border-color: #334155;
+
+/* WOMEN SAFETY */
+
+body.dark-mode .women-safety-section {
+    background:
+        linear-gradient(
+            180deg,
+            #1a1018 0%,
+            #0b1120 100%
+        );
+}
+
+body.dark-mode .women-safety-header p {
+    color: #94a3b8;
+}
+
+body.dark-mode .women-safety-card {
+    background: #111827;
+
+    border-color: #4c1d3a;
+}
+
+body.dark-mode .women-safety-card p {
+    color: #94a3b8;
+}
+
+body.dark-mode .women-safety-icon {
+    background: #3b1730;
+}
+
+
+/* SAFETY TOPICS */
+
+body.dark-mode .safety-topic-card {
+    background: #111827;
+
+    border-color: #1e293b;
+}
+
+body.dark-mode .safety-topic-card p {
     color: #94a3b8;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* BOXES */
 
-@media (max-width: 600px) {
+body.dark-mode .warning-box {
+    background: #2a1b0d;
+
+    border-color: #7c2d12;
+
+    color: #fed7aa;
+}
+
+body.dark-mode .danger-box {
+    background: #2a1116;
+
+    border-color: #881337;
+
+    color: #fecdd3;
+}
+
+body.dark-mode .success-box {
+    background: #0d2418;
+
+    border-color: #166534;
+
+    color: #bbf7d0;
+}
+
+body.dark-mode .info-box {
+    background: #101f3d;
+
+    border-color: #1d4ed8;
+
+    color: #bfdbfe;
+}
+
+body.dark-mode .evidence-box {
+    background: #111827;
+
+    border-color: #334155;
+
+    color: #cbd5e1;
+}
+
+
+/* PASSWORD */
+
+body.dark-mode .password-example {
+    background: #111827;
+
+    border-color: #334155;
+}
+
+body.dark-mode .password-tip {
+    color: #94a3b8;
+}
+
+
+/* CHECKLIST */
+
+body.dark-mode .checklist-item {
+    background: #111827;
+
+    border-color: #1e293b;
+}
+
+
+/* =========================================================
+   19. MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
 
     .navbar {
-        padding: 0 15px;
+        min-height: 64px;
+
+        padding:
+            8px 14px;
     }
 
     .logo {
         font-size: 18px;
     }
 
+    .nav-actions {
+        gap: 5px;
+    }
+
     .nav-btn {
         width: 40px;
         height: 40px;
+
+        border-radius: 10px;
+
+        font-size: 16px;
     }
 
+    .menu-btn {
+        font-size: 23px;
+    }
+
+
+    /* HERO */
+
     .hero {
-        min-height: 470px;
-        padding: 65px 18px;
+        min-height: 480px;
+
+        padding:
+            65px 18px;
+    }
+
+    .hero-icon {
+        width: 82px;
+        height: 82px;
+
+        font-size: 42px;
+
+        border-radius: 24px;
     }
 
     .hero h1 {
@@ -701,17 +1295,32 @@ body.dark-mode .tool-btn {
 
     .hero h2 {
         font-size: 21px;
+
+        line-height: 1.4;
     }
 
     .hero p {
         font-size: 15px;
+
+        line-height: 1.7;
     }
+
+    .emergency-btn {
+        width: 100%;
+        max-width: 330px;
+
+        padding: 14px 18px;
+    }
+
+
+    /* SECTIONS */
 
     .services,
     .tools,
     .extra-section,
     .about-section {
-        padding: 60px 15px;
+        padding:
+            60px 15px;
     }
 
     .services > h2,
@@ -719,14 +1328,162 @@ body.dark-mode .tool-btn {
     .extra-section > h2,
     .about-section > h2 {
         font-size: 27px;
+
+        line-height: 1.4;
     }
 
+    .section-text {
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+
+    /* GRIDS */
+
     .service-grid,
-    .tool-grid {
+    .tool-grid,
+    .women-safety-grid,
+    .safety-topic-grid {
         grid-template-columns: 1fr;
     }
 
-    .service-card {
-        padding: 22px;
+
+    /* CARDS */
+
+    .service-card,
+    .tool-card,
+    .women-safety-card,
+    .safety-topic-card {
+        padding: 21px;
+
+        border-radius: 16px;
+    }
+
+    .service-card p {
+        min-height: auto;
+    }
+
+
+    /* WOMEN SAFETY */
+
+    .women-safety-section {
+        padding:
+            65px 15px;
+    }
+
+    .women-safety-header {
+        margin-bottom: 30px;
+    }
+
+    .women-safety-header h2 {
+        font-size: 28px;
+    }
+
+
+    /* SIDE MENU */
+
+    .side-menu {
+        width: 300px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding:
+            40px 15px;
     }
 }
+
+
+/* =========================================================
+   20. SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .nav-btn {
+        width: 37px;
+        height: 37px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero h2 {
+        font-size: 19px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .service-card,
+    .tool-card,
+    .women-safety-card {
+        padding: 18px;
+    }
+}
+
+
+/* =========================================================
+   21. ACCESSIBILITY / TOUCH
+========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+
+    outline-offset: 2px;
+}
+
+@media (hover: none) {
+
+    .service-card:hover,
+    .tool-card:hover,
+    .women-safety-card:hover {
+        transform: none;
+    }
+}
+
+
+/* =========================================================
+   22. MODAL SCROLL SUPPORT
+========================================================= */
+
+#cybercare-modal,
+#cybercare-tool-modal {
+    -webkit-overflow-scrolling: touch;
+}
+
+#cybercare-modal > div,
+#cybercare-tool-modal > div {
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* =========================================================
+   23. TEXT SAFETY
+========================================================= */
+
+.service-card h3,
+.tool-card h3,
+.women-safety-card h3,
+.safety-topic-card h3,
+button,
+a {
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   END OF CYBERCARE STYLE
+========================================================= */
