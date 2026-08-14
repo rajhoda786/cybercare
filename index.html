@@ -11,568 +11,719 @@
 
 <body>
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
+<header class="navbar">
 
-    <header class="navbar">
+    <div class="logo">
+        🛡️ <span>CyberCare</span>
+    </div>
 
-        <div class="logo">
-            🛡️ <span>CyberCare</span>
-        </div>
+    <div class="nav-actions">
 
-        <div class="nav-actions">
-
-            <!-- LANGUAGE -->
-            <button
-                id="languageBtn"
-                class="nav-btn"
-                type="button"
-                aria-label="Change language">
-
-                🌐 <span id="languageText">EN</span>
-
-            </button>
-
-
-            <!-- DARK / LIGHT MODE -->
-            <button
-                id="themeBtn"
-                class="nav-btn"
-                type="button"
-                aria-label="Change theme">
-
-                🌙
-
-            </button>
-
-
-            <!-- MENU -->
-            <button
-                id="menuBtn"
-                class="nav-btn menu-btn"
-                type="button"
-                aria-label="Open menu">
-
-                ⋮
-
-            </button>
-
-        </div>
-
-    </header>
-
-
-    <!-- =========================
-         SIDE MENU
-    ========================== -->
-
-    <div id="sideMenu" class="side-menu">
-
-        <div class="menu-header">
-
-            <h3>CyberCare</h3>
-
-            <button
-                id="closeMenu"
-                type="button">
-
-                ✕
-
-            </button>
-
-        </div>
-
-
-        <button class="menu-item" data-menu="services">
-            🛡️ All Services
+        <button
+            id="languageBtn"
+            class="nav-btn"
+            type="button"
+            aria-label="Change language">
+            🌐 <span id="languageText">EN</span>
         </button>
 
-        <button class="menu-item" data-menu="learn">
-            🎓 Learn Cybersecurity
+        <button
+            id="themeBtn"
+            class="nav-btn"
+            type="button"
+            aria-label="Change theme">
+            🌙
         </button>
 
-        <button class="menu-item" data-menu="tools">
-            🛠️ CyberCare Tools
-        </button>
-
-        <button class="menu-item" data-menu="emergency">
-            🚨 Emergency Help
-        </button>
-
-        <button class="menu-item" data-menu="about">
-            ℹ️ About CyberCare
+        <button
+            id="menuBtn"
+            class="nav-btn menu-btn"
+            type="button"
+            aria-label="Open menu">
+            ⋮
         </button>
 
     </div>
 
-
-    <div id="menuOverlay" class="menu-overlay"></div>
-
-
-    <!-- =========================
-         MAIN
-    ========================== -->
-
-    <main>
+</header>
 
 
-        <!-- =========================
-             HERO
-        ========================== -->
+<!-- SIDE MENU -->
 
-        <section class="hero">
+<div id="sideMenu" class="side-menu">
 
-            <div class="hero-icon">
-                🛡️
-            </div>
+    <div class="menu-header">
+        <h3>CyberCare</h3>
 
-            <h1>
-                CyberCare
-            </h1>
+        <button id="closeMenu" type="button">
+            ✕
+        </button>
+    </div>
 
-            <h2>
-                Protecting People. Securing Digital Lives.
-            </h2>
+    <button class="menu-item" data-menu="services">
+        🛡️ All Services
+    </button>
+
+    <button class="menu-item" data-menu="girlsSafety">
+        👩 Girls Digital Safety
+    </button>
+
+    <button class="menu-item" data-menu="learn">
+        🎓 Learn Cybersecurity
+    </button>
+
+    <button class="menu-item" data-menu="tools">
+        🛠️ CyberCare Tools
+    </button>
+
+    <button class="menu-item" data-menu="emergency">
+        🚨 Emergency Help
+    </button>
+
+    <button class="menu-item" data-menu="about">
+        ℹ️ About CyberCare
+    </button>
+
+</div>
+
+<div id="menuOverlay" class="menu-overlay"></div>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-icon">
+        🛡️
+    </div>
+
+    <h1>
+        CyberCare
+    </h1>
+
+    <h2>
+        Protecting People. Securing Digital Lives.
+    </h2>
+
+    <p>
+        Practical cybersecurity guidance for hacked accounts,
+        scams, fraud, harassment, privacy problems and digital threats.
+    </p>
+
+    <button
+        id="emergencyBtn"
+        class="emergency-btn"
+        type="button">
+        🚨 I Need Help Now
+    </button>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services" class="services">
+
+    <h2>
+        How Can We Help You?
+    </h2>
+
+    <p class="section-text">
+        Choose a situation and get step-by-step guidance.
+    </p>
+
+
+    <div class="service-grid">
+
+        <article class="service-card">
+
+            <div class="service-icon">🔐</div>
+
+            <h3>Account Recovery</h3>
 
             <p>
-                Practical cybersecurity guidance for hacked accounts,
-                scams, fraud, privacy problems and digital threats.
-            </p>
-
-
-            <button
-                id="emergencyBtn"
-                class="emergency-btn"
-                type="button">
-
-                🚨 I Need Help Now
-
-            </button>
-
-        </section>
-
-
-        <!-- =========================
-             SERVICES
-        ========================== -->
-
-        <section
-            id="services"
-            class="services">
-
-            <h2>
-                How Can We Help You?
-            </h2>
-
-            <p class="section-text">
-                Choose a situation and get step-by-step guidance.
-            </p>
-
-
-            <div class="service-grid">
-
-
-                <!-- ACCOUNT RECOVERY -->
-
-                <article class="service-card">
-
-                    <div class="service-icon">
-                        🔐
-                    </div>
-
-                    <h3>
-                        Account Recovery
-                    </h3>
-
-                    <p>
-                        Recover and secure hacked or compromised
-                        social media and online accounts.
-                    </p>
-
-                    <button
-                        class="help-btn"
-                        data-service="Account Recovery"
-                        type="button">
-
-                        Get Help →
-
-                    </button>
-
-                </article>
-
-
-                <!-- SCAM & PHISHING -->
-
-                <article class="service-card">
-
-                    <div class="service-icon">
-                        🎣
-                    </div>
-
-                    <h3>
-                        Scam & Phishing
-                    </h3>
-
-                    <p>
-                        Check suspicious messages, WhatsApp links,
-                        fake websites and OTP scams.
-                    </p>
-
-                    <button
-                        class="help-btn"
-                        data-service="Scam & Phishing"
-                        type="button">
-
-                        Get Help →
-
-                    </button>
-
-                </article>
-
-
-                <!-- PHONE SECURITY -->
-
-                <article class="service-card">
-
-                    <div class="service-icon">
-                        📱
-                    </div>
-
-                    <h3>
-                        Phone Security
-                    </h3>
-
-                    <p>
-                        Check unknown apps, permissions, location,
-                        camera and microphone access.
-                    </p>
-
-                    <button
-                        class="help-btn"
-                        data-service="Phone Security"
-                        type="button">
-
-                        Get Help →
-
-                    </button>
-
-                </article>
-
-
-                <!-- ONLINE FRAUD -->
-
-                <article class="service-card">
-
-                    <div class="service-icon">
-                        💳
-                    </div>
-
-                    <h3>
-                        Online Fraud
-                    </h3>
-
-                    <p>
-                        Get guidance if money, UPI, bank or
-                        payment information is involved.
-                    </p>
-
-                    <button
-                        class="help-btn"
-                        data-service="Online Fraud"
-                        type="button">
-
-                        Get Help →
-
-                    </button>
-
-                </article>
-
-
-                <!-- SUSPICIOUS ACTIVITY -->
-
-                <article class="service-card">
-
-                    <div class="service-icon">
-                        🕵️
-                    </div>
-
-                    <h3>
-                        Suspicious Activity
-                    </h3>
-
-                    <p>
-                        Understand suspicious links, malware,
-                        fake login pages and unusual activity.
-                    </p>
-
-                    <button
-                        class="help-btn"
-                        data-service="Suspicious Activity"
-                        type="button">
-
-                        Get Help →
-
-                    </button>
-
-                </article>
-
-
-                <!-- EMERGENCY -->
-
-                <article class="service-card emergency-card">
-
-                    <div class="service-icon">
-                        🚨
-                    </div>
-
-                    <h3>
-                        Emergency Help
-                    </h3>
-
-                    <p>
-                        Immediate safety steps when your account,
-                        device or money may be at risk.
-                    </p>
-
-                    <button
-                        class="help-btn"
-                        data-service="Emergency Help"
-                        type="button">
-
-                        Get Help →
-
-                    </button>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             LEARN
-        ========================== -->
-
-        <section
-            id="learn"
-            class="extra-section">
-
-            <h2>
-                🎓 Learn Cybersecurity
-            </h2>
-
-            <p class="section-text">
-                Learn simple habits that can make your digital life safer.
+                Recover hacked, stolen or compromised
+                online accounts.
             </p>
 
             <button
-                class="secondary-btn"
-                id="learnBtn"
+                class="help-btn"
+                data-service="Account Recovery"
                 type="button">
-
-                Start Learning →
-
+                Get Help →
             </button>
 
-        </section>
+        </article>
 
 
-        <!-- =========================
-             TOOLS
-        ========================== -->
+        <article class="service-card">
 
-        <section
-            id="tools"
-            class="tools">
+            <div class="service-icon">🎣</div>
 
-            <h2>
-                🛠️ CyberCare Tools
-            </h2>
-
-            <p class="section-text">
-                Simple tools to improve your digital safety.
-            </p>
-
-
-            <div class="tool-grid">
-
-
-                <!-- SCAM CHECKER -->
-
-                <article class="tool-card">
-
-                    <div class="tool-icon">
-                        🔎
-                    </div>
-
-                    <h3>
-                        Scam Checker
-                    </h3>
-
-                    <p>
-                        Check a suspicious message for common scam
-                        and phishing warning signs.
-                    </p>
-
-                    <button
-                        class="tool-btn tool-open-btn"
-                        data-tool="scam"
-                        type="button">
-
-                        Check Message
-
-                    </button>
-
-                </article>
-
-
-                <!-- PASSWORD CHECKER -->
-
-                <article class="tool-card">
-
-                    <div class="tool-icon">
-                        🔐
-                    </div>
-
-                    <h3>
-                        Password Checker
-                    </h3>
-
-                    <p>
-                        Check password strength locally and learn
-                        how to make your password safer.
-                    </p>
-
-                    <button
-                        class="tool-btn tool-open-btn"
-                        data-tool="password"
-                        type="button">
-
-                        Check Password
-
-                    </button>
-
-                </article>
-
-
-                <!-- PRIVACY CHECKLIST -->
-
-                <article class="tool-card">
-
-                    <div class="tool-icon">
-                        📱
-                    </div>
-
-                    <h3>
-                        Privacy Checklist
-                    </h3>
-
-                    <p>
-                        Review important privacy and security
-                        settings for your digital accounts and device.
-                    </p>
-
-                    <button
-                        class="tool-btn tool-open-btn"
-                        data-tool="privacy"
-                        type="button">
-
-                        Start Checklist
-
-                    </button>
-
-                </article>
-
-
-                <!-- CYBER SAFETY SCORE -->
-
-                <article class="tool-card">
-
-                    <div class="tool-icon">
-                        🛡️
-                    </div>
-
-                    <h3>
-                        Cyber Safety Score
-                    </h3>
-
-                    <p>
-                        Answer a few questions and check your overall
-                        cybersecurity safety level.
-                    </p>
-
-                    <button
-                        class="tool-btn tool-open-btn"
-                        data-tool="score"
-                        type="button">
-
-                        Check My Score
-
-                    </button>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ABOUT
-        ========================== -->
-
-        <section
-            id="about"
-            class="about-section">
-
-            <h2>
-                🛡️ About CyberCare
-            </h2>
+            <h3>Scam & Phishing</h3>
 
             <p>
-                CyberCare provides simple, practical cybersecurity
-                guidance to help people respond to common digital
-                safety problems.
+                Handle suspicious messages, links,
+                fake websites and OTP scams.
             </p>
+
+            <button
+                class="help-btn"
+                data-service="Scam & Phishing"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-icon">📱</div>
+
+            <h3>Phone Security</h3>
 
             <p>
-                Stay alert. Protect your accounts. Never share
-                passwords, OTPs or recovery codes.
+                Check unknown apps, permissions,
+                location, camera and microphone.
             </p>
 
-        </section>
+            <button
+                class="help-btn"
+                data-service="Phone Security"
+                type="button">
+                Get Help →
+            </button>
 
-    </main>
+        </article>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+        <article class="service-card">
 
-    <footer>
+            <div class="service-icon">💳</div>
 
-        <h3>
-            🛡️ CyberCare
-        </h3>
+            <h3>Online Fraud</h3>
+
+            <p>
+                Get help with UPI, bank, payment and
+                financial fraud situations.
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Online Fraud"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-icon">🕵️</div>
+
+            <h3>Suspicious Activity</h3>
+
+            <p>
+                Investigate unknown logins, malware,
+                fake login pages and unusual activity.
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Suspicious Activity"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card emergency-card">
+
+            <div class="service-icon">🚨</div>
+
+            <h3>Emergency Help</h3>
+
+            <p>
+                Immediate steps when your account,
+                device, privacy or money is at risk.
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Emergency Help"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- GIRLS DIGITAL SAFETY -->
+
+<section
+    id="girlsSafety"
+    class="extra-section girls-safety">
+
+    <h2>
+        👩 Girls Digital Safety
+    </h2>
+
+    <p class="section-text">
+        বিশেষ করে মেয়েদের অনলাইন harassment, stalking,
+        blackmail, fake account, private photo misuse এবং
+        unwanted contact-এর ক্ষেত্রে কী করতে হবে।
+    </p>
+
+    <div class="service-grid">
+
+        <article class="service-card">
+
+            <div class="service-icon">📞</div>
+
+            <h3>
+                Harassing Calls
+            </h3>
+
+            <p>
+                বারবার ফোন, অশ্লীল কথা, ভয় দেখানো বা
+                unwanted calls হলে কী করবেন।
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Girls Harassment"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-icon">💬</div>
+
+            <h3>
+                WhatsApp / Instagram Harassment
+            </h3>
+
+            <p>
+                বারবার message, DM, unwanted contact,
+                abusive বা threatening messages-এর ক্ষেত্রে
+                নিরাপদ পদক্ষেপ।
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Girls Harassment"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-icon">📸</div>
+
+            <h3>
+                Private Photo / Video Misuse
+            </h3>
+
+            <p>
+                ব্যক্তিগত ছবি বা ভিডিও ছড়িয়ে দেওয়ার
+                হুমকি বা misuse হলে কী করবেন।
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Private Image Abuse"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-icon">💔</div>
+
+            <h3>
+                Blackmail
+            </h3>
+
+            <p>
+                ছবি, ভিডিও, chat বা অন্য কোনো তথ্য দিয়ে
+                blackmail করলে নিরাপদভাবে কী করবেন।
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Blackmail"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-icon">👤</div>
+
+            <h3>
+                Fake Account / Impersonation
+            </h3>
+
+            <p>
+                আপনার নামে fake Facebook, Instagram বা
+                অন্য account তৈরি হলে কী করবেন।
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Fake Account"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-icon">👁️</div>
+
+            <h3>
+                Stalking / Tracking
+            </h3>
+
+            <p>
+                কেউ online বা digital ভাবে follow,
+                track বা monitor করছে বলে মনে হলে কী করবেন।
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Stalking"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-icon">🔒</div>
+
+            <h3>
+                Privacy Protection
+            </h3>
+
+            <p>
+                Profile, location, story, followers,
+                photos এবং personal information নিরাপদ রাখুন।
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Girls Privacy"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+
+        <article class="service-card">
+
+            <div class="service-icon">🚨</div>
+
+            <h3>
+                Immediate Safety
+            </h3>
+
+            <p>
+                Threat বা immediate danger থাকলে
+                প্রথমে নিজের physical safety নিশ্চিত করুন।
+            </p>
+
+            <button
+                class="help-btn"
+                data-service="Girls Emergency"
+                type="button">
+                Get Help →
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- PASSWORD SAFETY -->
+
+<section class="extra-section">
+
+    <h2>
+        🔑 Strong Password কীভাবে তৈরি করবেন?
+    </h2>
+
+    <p class="section-text">
+        Strong password শুধু random symbol দিলেই হয় না।
+        এটি দীর্ঘ, unique এবং অন্য account-এর password থেকে আলাদা হওয়া উচিত।
+    </p>
+
+    <div class="about-section">
+
+        <h3>❌ দুর্বল উদাহরণ</h3>
 
         <p>
-            Stay Safe. Stay Secure.
+            12345678
+            <br>
+            password123
+            <br>
+            rabin123
+            <br>
+            rabin@123
         </p>
 
-        <p class="copyright">
-            © 2026 CyberCare. Built for a safer digital world.
+
+        <h3>⚠️ শুধু শেখার জন্য sample</h3>
+
+        <p>
+            <strong>rabin@12#das</strong>
         </p>
 
-    </footer>
+        <p>
+            এই sample password বাস্তবে ব্যবহার করবেন না।
+            Website-এ প্রকাশিত কোনো password কখনো নিজের password হিসেবে ব্যবহার করবেন না।
+        </p>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+        <h3>✅ ভালো password structure</h3>
 
-    <script src="script.js"></script>
+        <p>
+            একটি দীর্ঘ ও unique passphrase ব্যবহার করতে পারেন।
+            যেমন কয়েকটি unrelated শব্দের সাথে সংখ্যা ও symbol।
+        </p>
+
+        <p>
+            <strong>
+                উদাহরণ: River!Mango#27Cloud
+            </strong>
+        </p>
+
+        <p>
+            এটিও শুধু example — নিজের জন্য আলাদা password তৈরি করুন।
+        </p>
+
+
+        <h3>🛡️ Password Rules</h3>
+
+        <ul>
+            <li>কমপক্ষে 12–16 characters রাখার চেষ্টা করুন।</li>
+            <li>প্রতিটি গুরুত্বপূর্ণ account-এ আলাদা password ব্যবহার করুন।</li>
+            <li>নিজের নাম, জন্মতারিখ, phone number ব্যবহার করবেন না।</li>
+            <li>একই password Facebook, Gmail, Instagram-এ ব্যবহার করবেন না।</li>
+            <li>OTP বা password কারও সাথে share করবেন না।</li>
+            <li>সম্ভব হলে password manager ব্যবহার করুন।</li>
+            <li>গুরুত্বপূর্ণ account-এ 2FA চালু করুন।</li>
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- LEARN -->
+
+<section id="learn" class="extra-section">
+
+    <h2>
+        🎓 Learn Cybersecurity
+    </h2>
+
+    <p class="section-text">
+        সহজ ভাষায় cybersecurity-এর গুরুত্বপূর্ণ বিষয়গুলো শিখুন।
+    </p>
+
+    <button
+        class="secondary-btn"
+        id="learnBtn"
+        type="button">
+        Start Learning →
+    </button>
+
+</section>
+
+
+<!-- TOOLS -->
+
+<section id="tools" class="tools">
+
+    <h2>
+        🛠️ CyberCare Tools
+    </h2>
+
+    <p class="section-text">
+        আপনার digital safety নিজে পরীক্ষা করুন।
+    </p>
+
+
+    <div class="tool-grid">
+
+        <article class="tool-card">
+
+            <div class="tool-icon">🔎</div>
+
+            <h3>Scam Checker</h3>
+
+            <p>
+                Suspicious message-এ common scam warning
+                signs খুঁজে দেখুন।
+            </p>
+
+            <button
+                class="tool-btn"
+                data-tool="scam"
+                type="button">
+                Check Message
+            </button>
+
+        </article>
+
+
+        <article class="tool-card">
+
+            <div class="tool-icon">🔐</div>
+
+            <h3>Password Checker</h3>
+
+            <p>
+                Password structure কতটা শক্তিশালী তা
+                locally check করুন।
+            </p>
+
+            <button
+                class="tool-btn"
+                data-tool="password"
+                type="button">
+                Check Password
+            </button>
+
+        </article>
+
+
+        <article class="tool-card">
+
+            <div class="tool-icon">📱</div>
+
+            <h3>Privacy Checklist</h3>
+
+            <p>
+                আপনার account এবং phone-এর গুরুত্বপূর্ণ
+                privacy settings পরীক্ষা করুন।
+            </p>
+
+            <button
+                class="tool-btn"
+                data-tool="privacy"
+                type="button">
+                Start Checklist
+            </button>
+
+        </article>
+
+
+        <article class="tool-card">
+
+            <div class="tool-icon">🛡️</div>
+
+            <h3>Cyber Safety Score</h3>
+
+            <p>
+                কয়েকটি প্রশ্নের মাধ্যমে আপনার
+                security habits পরীক্ষা করুন।
+            </p>
+
+            <button
+                class="tool-btn"
+                data-tool="score"
+                type="button">
+                Check My Score
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" class="about-section">
+
+    <h2>
+        🛡️ About CyberCare
+    </h2>
+
+    <p>
+        CyberCare-এর উদ্দেশ্য হলো সাধারণ মানুষকে
+        সহজ ভাষায় practical digital safety guidance দেওয়া।
+    </p>
+
+    <p>
+        Hack, scam, phishing, fraud, harassment,
+        blackmail, privacy সমস্যা বা suspicious activity—
+        সমস্যাটি বুঝে নিরাপদ পদক্ষেপ নিতে CyberCare সাহায্য করবে।
+    </p>
+
+    <p>
+        কোনো password, OTP, PIN, recovery code বা
+        sensitive information CyberCare-এর সাথে share করবেন না।
+    </p>
+
+</section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>
+        🛡️ CyberCare
+    </h3>
+
+    <p>
+        Stay Safe. Stay Secure.
+    </p>
+
+    <p class="copyright">
+        © 2026 CyberCare. Built for a safer digital world.
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
