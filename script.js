@@ -1,124 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================
-       1. MENU
-    ========================= */
-
-    const menuBtn = document.getElementById("menuBtn");
-    const sideMenu = document.getElementById("sideMenu");
-    const closeMenu = document.getElementById("closeMenu");
-    const menuOverlay = document.getElementById("menuOverlay");
-
-    function openMenu() {
-        sideMenu.classList.add("active");
-        menuOverlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-    }
-
-    function closeSideMenu() {
-        sideMenu.classList.remove("active");
-        menuOverlay.classList.remove("active");
-        document.body.style.overflow = "";
-    }
-
-    if (menuBtn) {
-        menuBtn.addEventListener("click", openMenu);
-    }
-
-    if (closeMenu) {
-        closeMenu.addEventListener("click", closeSideMenu);
-    }
-
-    if (menuOverlay) {
-        menuOverlay.addEventListener("click", closeSideMenu);
-    }
-
-
-    /* =========================
-       2. MENU NAVIGATION
-    ========================= */
-
-    const menuItems = document.querySelectorAll(".menu-item");
-
-    menuItems.forEach(function (item) {
-
-        item.addEventListener("click", function () {
-
-            const target = item.getAttribute("data-menu");
-
-            closeSideMenu();
-
-            if (target === "emergency") {
-                openHelp("Emergency Help");
-                return;
-            }
-
-            const section = document.getElementById(target);
-
-            if (section) {
-                setTimeout(function () {
-                    section.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-                }, 200);
-            }
-
-        });
-
-    });
-
-
-    /* =========================
-       3. DARK / LIGHT MODE
-    ========================= */
-
-    const themeBtn = document.getElementById("themeBtn");
-
-    const savedTheme = localStorage.getItem("cybercare-theme");
-
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark-mode");
-
-        if (themeBtn) {
-            themeBtn.textContent = "☀️";
-        }
-    }
-
-    if (themeBtn) {
-
-        themeBtn.addEventListener("click", function () {
-
-            document.body.classList.toggle("dark-mode");
-
-            if (document.body.classList.contains("dark-mode")) {
-
-                themeBtn.textContent = "☀️";
-
-                localStorage.setItem(
-                    "cybercare-theme",
-                    "dark"
-                );
-
-            } else {
-
-                themeBtn.textContent = "🌙";
-
-                localStorage.setItem(
-                    "cybercare-theme",
-                    "light"
-                );
-
-            }
-
-        });
-
-    }
-
-
-    /* =========================
-       4. LANGUAGE
-    ========================= */
+       CYBERCARE LANGUAGE SYSTEM
+    ========================== */
 
     const languageBtn = document.getElementById("languageBtn");
     const languageText = document.getElementById("languageText");
@@ -126,827 +10,414 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentLanguage =
         localStorage.getItem("cybercare-language") || "EN";
 
-    if (languageText) {
-        languageText.textContent = currentLanguage;
-    }
-
-    if (languageBtn) {
-
-        languageBtn.addEventListener("click", function () {
-
-            if (currentLanguage === "EN") {
-
-                currentLanguage = "BN";
-
-                if (languageText) {
-                    languageText.textContent = "BN";
-                }
-
-                alert(
-                    "বাংলা ভাষা সাপোর্ট শীঘ্রই সম্পূর্ণভাবে যোগ করা হবে।"
-                );
-
-            } else {
-
-                currentLanguage = "EN";
-
-                if (languageText) {
-                    languageText.textContent = "EN";
-                }
-
-            }
-
-            localStorage.setItem(
-                "cybercare-language",
-                currentLanguage
-            );
-
-        });
-
-    }
-
 
     /* =========================
-       5. HELP DATA
-    ========================= */
+       TRANSLATIONS
+    ========================== */
 
-    const helpData = {
+    const translations = {
 
-        "Account Recovery": {
+        EN: {
 
-            title: "🔐 Account Recovery",
+            logo: "CyberCare",
 
-            description:
-                "Choose the account problem you are facing.",
+            heroTitle: "CyberCare",
+            heroSubtitle: "Protecting People. Securing Digital Lives.",
+            heroText:
+                "Practical cybersecurity guidance for hacked accounts, scams, fraud, privacy problems and digital threats.",
+            emergency: "🚨 I Need Help Now",
 
-            situations: [
+            servicesTitle: "How Can We Help You?",
+            servicesText:
+                "Choose a situation and get step-by-step guidance.",
 
-                {
-                    name: "📘 Facebook account hacked",
-                    title: "Facebook Account Recovery",
+            accountTitle: "Account Recovery",
+            accountText:
+                "Recover and secure hacked or compromised social media and online accounts.",
+            getHelp: "Get Help →",
 
-                    steps: [
-                        "Do not share your password or recovery code with anyone.",
-                        "Use Facebook's official account recovery process.",
-                        "Change your password if you still have access.",
-                        "Check your email and phone number.",
-                        "Sign out unknown devices.",
-                        "Enable two-factor authentication."
-                    ],
+            scamTitle: "Scam & Phishing",
+            scamText:
+                "Check suspicious messages, WhatsApp links, fake websites and OTP scams.",
 
-                    dont: [
-                        "Do not pay strangers claiming they can recover your account.",
-                        "Never share OTP or recovery codes."
-                    ]
-                },
+            phoneTitle: "Phone Security",
+            phoneText:
+                "Check unknown apps, permissions, location, camera and microphone access.",
 
-                {
-                    name: "📸 Instagram account hacked",
-                    title: "Instagram Account Recovery",
+            fraudTitle: "Online Fraud",
+            fraudText:
+                "Get guidance if money, UPI, bank or payment information is involved.",
 
-                    steps: [
-                        "Check your email for a security alert.",
-                        "Use Instagram's official recovery process.",
-                        "Change your password if you still have access.",
-                        "Check login activity.",
-                        "Remove unknown devices.",
-                        "Enable two-factor authentication."
-                    ],
+            suspiciousTitle: "Suspicious Activity",
+            suspiciousText:
+                "Understand suspicious links, malware, fake login pages and unusual activity.",
 
-                    dont: [
-                        "Do not trust random Instagram recovery services.",
-                        "Never send verification codes to anyone."
-                    ]
-                },
+            emergencyTitle: "Emergency Help",
+            emergencyText:
+                "Immediate safety steps when your account, device or money may be at risk.",
 
-                {
-                    name: "💬 WhatsApp account hacked",
-                    title: "WhatsApp Account Recovery",
+            learnTitle: "🎓 Learn Cybersecurity",
+            learnText:
+                "Learn simple habits that can make your digital life safer.",
+            learnButton: "Start Learning →",
 
-                    steps: [
-                        "Register your phone number again in WhatsApp.",
-                        "Enter the official verification code.",
-                        "Check Linked Devices.",
-                        "Log out devices you do not recognise.",
-                        "Enable two-step verification."
-                    ],
+            toolsTitle: "🛠️ CyberCare Tools",
+            toolsText:
+                "Simple tools to improve your digital safety.",
 
-                    dont: [
-                        "Never share your WhatsApp verification code.",
-                        "Do not trust people asking for your OTP."
-                    ]
-                },
+            scamChecker: "Scam Checker",
+            scamCheckerText:
+                "Check suspicious messages for common warning signs.",
 
-                {
-                    name: "▶️ YouTube / Google account hacked",
-                    title: "Google / YouTube Account Recovery",
+            passwordChecker: "Password Checker",
+            passwordCheckerText:
+                "Learn how to create stronger and safer passwords.",
 
-                    steps: [
-                        "Secure your Google account first.",
-                        "Use Google's official account recovery process.",
-                        "Change your password.",
-                        "Review recent security activity.",
-                        "Remove unknown devices.",
-                        "Enable two-step verification."
-                    ],
+            privacyChecker: "Privacy Checklist",
+            privacyCheckerText:
+                "Review important privacy and security settings.",
 
-                    dont: [
-                        "Do not pay unofficial recovery agents.",
-                        "Never share recovery codes."
-                    ]
-                },
+            safetyScore: "Cyber Safety Score",
+            safetyScoreText:
+                "Check your overall cybersecurity habits.",
 
-                {
-                    name: "🔑 I cannot log in",
-                    title: "Cannot Access Account",
+            comingSoon: "Coming Soon",
 
-                    steps: [
-                        "Use the official recovery page of the service.",
-                        "Try your recovery email or phone number.",
-                        "Complete identity verification if requested.",
-                        "Secure your recovery email.",
-                        "Change your password after recovery.",
-                        "Enable 2FA."
-                    ],
+            aboutTitle: "🛡️ About CyberCare",
+            aboutText1:
+                "CyberCare provides simple, practical cybersecurity guidance to help people respond to common digital safety problems.",
+            aboutText2:
+                "Stay alert. Protect your accounts. Never share passwords, OTPs or recovery codes.",
 
-                    dont: [
-                        "Do not use unofficial recovery websites.",
-                        "Never share recovery codes."
-                    ]
-                }
+            footerText: "Stay Safe. Stay Secure.",
+            copyright:
+                "© 2026 CyberCare. Built for a safer digital world."
 
-            ]
         },
 
 
-        "Scam & Phishing": {
-
-            title: "🎣 Scam & Phishing",
-
-            description:
-                "Check suspicious messages, links and fake websites.",
-
-            situations: [
-
-                {
-                    name: "💬 Someone sent me a suspicious WhatsApp link",
-                    title: "Suspicious WhatsApp Link",
-
-                    steps: [
-                        "Do not open the link again.",
-                        "Do not enter your password, OTP or card details.",
-                        "Check who sent the message.",
-                        "Take a screenshot of the message.",
-                        "Block or report the sender if necessary.",
-                        "If you entered information, secure the affected account immediately."
-                    ],
-
-                    dont: [
-                        "Do not forward the suspicious link to others.",
-                        "Do not download files from the link."
-                    ]
-                },
-
-                {
-                    name: "🔗 I clicked a suspicious link",
-                    title: "Suspicious Link Clicked",
-
-                    steps: [
-                        "Close the website.",
-                        "Do not enter additional information.",
-                        "If you entered a password, change it immediately.",
-                        "Enable 2FA.",
-                        "Run a trusted security scan if a file was downloaded.",
-                        "Contact your bank if financial information was entered."
-                    ],
-
-                    dont: [
-                        "Do not return to the suspicious website.",
-                        "Do not install software suggested by the page."
-                    ]
-                },
-
-                {
-                    name: "📩 I received a phishing message",
-                    title: "Phishing Message",
-
-                    steps: [
-                        "Check the sender address or number.",
-                        "Look for urgency or threats.",
-                        "Do not click unexpected links.",
-                        "Verify the request using the official website or app.",
-                        "Report and block the sender."
-                    ],
-
-                    dont: [
-                        "Never share OTPs.",
-                        "Never share passwords or recovery codes."
-                    ]
-                },
-
-                {
-                    name: "🔑 I shared an OTP",
-                    title: "OTP Was Shared",
-
-                    steps: [
-                        "Change the affected account password immediately.",
-                        "Sign out unknown devices.",
-                        "Enable 2FA.",
-                        "Contact your bank if the OTP was financial.",
-                        "Monitor the account for suspicious activity."
-                    ],
-
-                    dont: [
-                        "Do not share another OTP.",
-                        "Do not trust anyone asking for another code."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Phone Security": {
-
-            title: "📱 Phone Security",
-
-            description:
-                "Check suspicious apps, permissions and privacy settings.",
-
-            situations: [
-
-                {
-                    name: "📦 I found an unknown app",
-                    title: "Unknown Application",
-
-                    steps: [
-                        "Check where the app came from.",
-                        "Review its permissions.",
-                        "Uninstall it if you do not recognise it.",
-                        "Update your phone.",
-                        "Run a trusted security scan."
-                    ],
-
-                    dont: [
-                        "Do not install random security apps from pop-ups."
-                    ]
-                },
-
-                {
-                    name: "🎤 Camera or microphone seems suspicious",
-                    title: "Camera & Microphone",
-
-                    steps: [
-                        "Review camera permissions.",
-                        "Review microphone permissions.",
-                        "Remove unnecessary permissions.",
-                        "Uninstall suspicious applications.",
-                        "Update your operating system."
-                    ],
-
-                    dont: [
-                        "Do not give unknown apps unnecessary permissions."
-                    ]
-                },
-
-                {
-                    name: "📍 I am worried about location tracking",
-                    title: "Location Privacy",
-
-                    steps: [
-                        "Review location permissions.",
-                        "Disable unnecessary location access.",
-                        "Check location-sharing settings.",
-                        "Review unfamiliar apps and services."
-                    ],
-
-                    dont: [
-                        "Do not leave location sharing enabled for unknown services."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Online Fraud": {
-
-            title: "💳 Online Fraud",
-
-            description:
-                "Take action when money or financial information may be at risk.",
-
-            situations: [
-
-                {
-                    name: "💸 I lost money",
-                    title: "Possible Financial Fraud",
-
-                    steps: [
-                        "Contact your bank or payment provider immediately.",
-                        "Save the transaction ID.",
-                        "Save screenshots and receipts.",
-                        "Secure the account used for payment.",
-                        "Change compromised passwords.",
-                        "Monitor your transactions."
-                    ],
-
-                    dont: [
-                        "Do not send additional money.",
-                        "Do not delete evidence."
-                    ]
-                },
-
-                {
-                    name: "🏦 My banking information was shared",
-                    title: "Banking Information Exposed",
-
-                    steps: [
-                        "Contact your bank immediately.",
-                        "Ask what security measures should be taken.",
-                        "Monitor transactions.",
-                        "Change affected credentials.",
-                        "Secure your email account."
-                    ],
-
-                    dont: [
-                        "Never share another OTP or PIN.",
-                        "Do not trust unsolicited callers."
-                    ]
-                },
-
-                {
-                    name: "📲 UPI fraud",
-                    title: "UPI Fraud",
-
-                    steps: [
-                        "Contact your bank or payment provider immediately.",
-                        "Save the transaction details.",
-                        "Report the fraudulent transaction through the appropriate official channel.",
-                        "Secure your UPI-linked accounts.",
-                        "Monitor your bank account."
-                    ],
-
-                    dont: [
-                        "Never share your UPI PIN.",
-                        "Remember that receiving money does not require entering your UPI PIN."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Suspicious Activity": {
-
-            title: "🕵️ Suspicious Activity",
-
-            description:
-                "Investigate unusual links, logins, malware and account activity.",
-
-            situations: [
-
-                {
-                    name: "🚨 Someone logged into my account",
-                    title: "Unknown Login",
-
-                    steps: [
-                        "Change your password immediately.",
-                        "Sign out unknown devices.",
-                        "Enable 2FA.",
-                        "Check recent account activity.",
-                        "Review recovery information."
-                    ],
-
-                    dont: [
-                        "Do not share your password with anyone."
-                    ]
-                },
-
-                {
-                    name: "🦠 I think my device has malware",
-                    title: "Possible Malware",
-
-                    steps: [
-                        "Disconnect from the internet if active compromise is suspected.",
-                        "Check recently installed apps.",
-                        "Remove suspicious applications.",
-                        "Update your operating system.",
-                        "Run a trusted security scan.",
-                        "Change important passwords from a trusted device."
-                    ],
-
-                    dont: [
-                        "Do not install random antivirus software from pop-ups."
-                    ]
-                },
-
-                {
-                    name: "🎭 I saw a fake login page",
-                    title: "Fake Login Page",
-
-                    steps: [
-                        "Close the page.",
-                        "Do not enter credentials.",
-                        "If you entered a password, change it immediately.",
-                        "Enable 2FA.",
-                        "Check account login activity."
-                    ],
-
-                    dont: [
-                        "Do not use the fake page again."
-                    ]
-                }
-
-            ]
-        },
-
-
-        "Emergency Help": {
-
-            title: "🚨 Emergency Cyber Help",
-
-            description:
-                "Immediate safety steps for urgent cyber incidents.",
-
-            situations: [
-
-                {
-                    name: "🔐 My account is actively compromised",
-                    title: "Active Account Compromise",
-
-                    steps: [
-                        "Secure your email account first.",
-                        "Change compromised passwords.",
-                        "Sign out unknown devices.",
-                        "Enable 2FA.",
-                        "Save important evidence.",
-                        "Contact the affected service through its official support."
-                    ],
-
-                    dont: [
-                        "Do not communicate with the suspected attacker.",
-                        "Never share OTPs or recovery codes."
-                    ]
-                },
-
-                {
-                    name: "💳 My money is at risk",
-                    title: "Financial Emergency",
-
-                    steps: [
-                        "Contact your bank or payment provider immediately.",
-                        "Ask how to secure the account.",
-                        "Save transaction details.",
-                        "Secure your email account.",
-                        "Report the incident through the appropriate official channel."
-                    ],
-
-                    dont: [
-                        "Do not send additional money.",
-                        "Do not trust recovery scammers."
-                    ]
-                }
-
-            ]
+        BN: {
+
+            logo: "সাইবারকেয়ার",
+
+            heroTitle: "সাইবারকেয়ার",
+            heroSubtitle: "মানুষকে সুরক্ষিত রাখা। ডিজিটাল জীবনকে নিরাপদ রাখা।",
+            heroText:
+                "হ্যাক হওয়া অ্যাকাউন্ট, প্রতারণা, স্ক্যাম, প্রাইভেসি সমস্যা এবং বিভিন্ন ডিজিটাল হুমকির ক্ষেত্রে সহজ ও ব্যবহারিক সাইবার নিরাপত্তা সহায়তা।",
+            emergency: "🚨 আমার এখনই সাহায্য দরকার",
+
+            servicesTitle: "আমরা কীভাবে সাহায্য করতে পারি?",
+            servicesText:
+                "আপনার সমস্যাটি নির্বাচন করুন এবং ধাপে ধাপে নির্দেশনা পান।",
+
+            accountTitle: "অ্যাকাউন্ট পুনরুদ্ধার",
+            accountText:
+                "হ্যাক বা অন্যভাবে ঝুঁকিতে পড়া সোশ্যাল মিডিয়া ও অনলাইন অ্যাকাউন্ট পুনরুদ্ধার এবং নিরাপদ করুন।",
+            getHelp: "সাহায্য নিন →",
+
+            scamTitle: "স্ক্যাম ও ফিশিং",
+            scamText:
+                "সন্দেহজনক মেসেজ, WhatsApp লিংক, ভুয়া ওয়েবসাইট এবং OTP স্ক্যাম সম্পর্কে সাহায্য নিন।",
+
+            phoneTitle: "ফোন নিরাপত্তা",
+            phoneText:
+                "অজানা অ্যাপ, permission, location, camera এবং microphone access পরীক্ষা করুন।",
+
+            fraudTitle: "অনলাইন প্রতারণা",
+            fraudText:
+                "টাকা, UPI, ব্যাংক বা payment information জড়িত থাকলে কী করবেন তা জানুন।",
+
+            suspiciousTitle: "সন্দেহজনক কার্যকলাপ",
+            suspiciousText:
+                "সন্দেহজনক লিংক, malware, fake login page এবং অস্বাভাবিক activity সম্পর্কে জানুন।",
+
+            emergencyTitle: "জরুরি সাহায্য",
+            emergencyText:
+                "আপনার account, device অথবা টাকা ঝুঁকিতে থাকলে তাৎক্ষণিক নিরাপত্তা পদক্ষেপ নিন।",
+
+            learnTitle: "🎓 সাইবার নিরাপত্তা শিখুন",
+            learnText:
+                "সহজ কিছু অভ্যাস শিখুন যা আপনার ডিজিটাল জীবনকে আরও নিরাপদ করতে পারে।",
+            learnButton: "শেখা শুরু করুন →",
+
+            toolsTitle: "🛠️ CyberCare Tools",
+            toolsText:
+                "আপনার ডিজিটাল নিরাপত্তা বাড়ানোর জন্য সহজ কিছু tools।",
+
+            scamChecker: "স্ক্যাম চেকার",
+            scamCheckerText:
+                "সন্দেহজনক মেসেজে সাধারণ scam-এর লক্ষণ আছে কিনা দেখুন।",
+
+            passwordChecker: "পাসওয়ার্ড চেকার",
+            passwordCheckerText:
+                "কীভাবে আরও শক্তিশালী ও নিরাপদ password তৈরি করবেন তা জানুন।",
+
+            privacyChecker: "প্রাইভেসি চেকলিস্ট",
+            privacyCheckerText:
+                "গুরুত্বপূর্ণ privacy ও security settings পরীক্ষা করুন।",
+
+            safetyScore: "সাইবার সেফটি স্কোর",
+            safetyScoreText:
+                "আপনার সামগ্রিক cybersecurity অভ্যাস পরীক্ষা করুন।",
+
+            comingSoon: "শীঘ্রই আসছে",
+
+            aboutTitle: "🛡️ CyberCare সম্পর্কে",
+            aboutText1:
+                "CyberCare সাধারণ ডিজিটাল নিরাপত্তা সমস্যার ক্ষেত্রে মানুষকে সহজ ও ব্যবহারিক cybersecurity guidance প্রদান করে।",
+            aboutText2:
+                "সতর্ক থাকুন। আপনার account সুরক্ষিত রাখুন। কখনো password, OTP বা recovery code কারও সঙ্গে share করবেন না।",
+
+            footerText: "নিরাপদ থাকুন। সুরক্ষিত থাকুন।",
+            copyright:
+                "© 2026 CyberCare. একটি নিরাপদ ডিজিটাল বিশ্বের জন্য তৈরি।"
+
         }
 
     };
 
 
     /* =========================
-       6. OPEN HELP
-    ========================= */
+       APPLY LANGUAGE
+    ========================== */
 
-    function openHelp(service) {
+    function applyLanguage() {
 
-        const info = helpData[service];
+        const t = translations[currentLanguage];
 
-        if (!info) {
-            alert("This CyberCare service is currently unavailable.");
-            return;
+        if (!t) return;
+
+
+        /* LOGO */
+
+        const logo = document.querySelector(".logo span");
+        if (logo) logo.textContent = t.logo;
+
+
+        /* HERO */
+
+        const heroH1 = document.querySelector(".hero h1");
+        const heroH2 = document.querySelector(".hero h2");
+        const heroP = document.querySelector(".hero p");
+        const emergencyBtn =
+            document.getElementById("emergencyBtn");
+
+        if (heroH1) heroH1.textContent = t.heroTitle;
+        if (heroH2) heroH2.textContent = t.heroSubtitle;
+        if (heroP) heroP.textContent = t.heroText;
+
+        if (emergencyBtn)
+            emergencyBtn.textContent = t.emergency;
+
+
+        /* SERVICES */
+
+        const servicesSection =
+            document.querySelector(".services");
+
+        if (servicesSection) {
+
+            const h2 =
+                servicesSection.querySelector("h2");
+
+            const p =
+                servicesSection.querySelector(".section-text");
+
+            if (h2) h2.textContent = t.servicesTitle;
+            if (p) p.textContent = t.servicesText;
+
         }
 
-        const oldModal =
-            document.getElementById("cybercare-modal");
 
-        if (oldModal) {
-            oldModal.remove();
-        }
+        /* SERVICE CARDS */
 
-        const overlay =
-            document.createElement("div");
+        const cards =
+            document.querySelectorAll(".service-card");
 
-        overlay.id = "cybercare-modal";
+        if (cards.length >= 6) {
 
-        overlay.style.cssText = `
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.75);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 99999;
-            overflow-y: auto;
-        `;
+            const data = [
 
-        const modal =
-            document.createElement("div");
+                [t.accountTitle, t.accountText],
+                [t.scamTitle, t.scamText],
+                [t.phoneTitle, t.phoneText],
+                [t.fraudTitle, t.fraudText],
+                [t.suspiciousTitle, t.suspiciousText],
+                [t.emergencyTitle, t.emergencyText]
 
-        modal.style.cssText = `
-            width: 100%;
-            max-width: 720px;
-            max-height: 90vh;
-            overflow-y: auto;
-            background: #ffffff;
-            color: #111827;
-            border-radius: 22px;
-            padding: 26px;
-            position: relative;
-            box-sizing: border-box;
-            box-shadow: 0 25px 70px rgba(0,0,0,0.45);
-            font-family: Arial, sans-serif;
-        `;
+            ];
 
-        let buttons = "";
+            cards.forEach(function (card, index) {
 
-        info.situations.forEach(function (item, index) {
+                const h3 = card.querySelector("h3");
+                const p = card.querySelector("p");
+                const btn = card.querySelector(".help-btn");
 
-            buttons += `
-                <button
-                    type="button"
-                    class="cyber-situation"
-                    data-index="${index}"
-                    style="
-                        width:100%;
-                        padding:15px;
-                        margin:6px 0;
-                        border:1px solid #dbe3ef;
-                        border-radius:12px;
-                        background:#f8fafc;
-                        color:#111827;
-                        font-size:15px;
-                        text-align:left;
-                        cursor:pointer;
-                    "
-                >
-                    ${item.name}
-                </button>
-            `;
+                if (data[index]) {
 
-        });
+                    if (h3)
+                        h3.textContent = data[index][0];
 
-        modal.innerHTML = `
+                    if (p)
+                        p.textContent = data[index][1];
 
-            <button
-                type="button"
-                id="closeCyberCare"
-                style="
-                    position:absolute;
-                    top:12px;
-                    right:15px;
-                    width:38px;
-                    height:38px;
-                    border:none;
-                    border-radius:10px;
-                    background:#f1f5f9;
-                    font-size:20px;
-                    cursor:pointer;
-                "
-            >
-                ✕
-            </button>
+                }
 
-            <div style="padding-right:45px;">
+                if (btn)
+                    btn.textContent = t.getHelp;
 
-                <div style="
-                    font-size:12px;
-                    font-weight:bold;
-                    letter-spacing:1px;
-                    color:#2563eb;
-                    margin-bottom:8px;
-                ">
-                    CYBERCARE HELP
-                </div>
-
-                <h2 style="margin:0 0 8px 0;">
-                    ${info.title}
-                </h2>
-
-                <p style="
-                    margin-top:0;
-                    color:#64748b;
-                ">
-                    ${info.description}
-                </p>
-
-            </div>
-
-            <h3 style="margin-top:25px;">
-                👇 What happened?
-            </h3>
-
-            <div>
-                ${buttons}
-            </div>
-
-            <div
-                id="cybercareResult"
-                style="margin-top:20px;"
-            >
-                <div style="
-                    padding:20px;
-                    background:#f8fafc;
-                    border-radius:15px;
-                    text-align:center;
-                    color:#64748b;
-                ">
-                    🛡️ Select an option above to get step-by-step help.
-                </div>
-            </div>
-        `;
-
-        overlay.appendChild(modal);
-        document.body.appendChild(overlay);
-
-        document
-            .getElementById("closeCyberCare")
-            .addEventListener("click", function () {
-                overlay.remove();
             });
 
-        overlay.addEventListener("click", function (event) {
+        }
 
-            if (event.target === overlay) {
-                overlay.remove();
+
+        /* LEARN */
+
+        const learn =
+            document.getElementById("learn");
+
+        if (learn) {
+
+            const h2 = learn.querySelector("h2");
+            const p = learn.querySelector("p");
+            const btn = learn.querySelector("button");
+
+            if (h2) h2.textContent = t.learnTitle;
+            if (p) p.textContent = t.learnText;
+            if (btn) btn.textContent = t.learnButton;
+
+        }
+
+
+        /* TOOLS */
+
+        const tools =
+            document.getElementById("tools");
+
+        if (tools) {
+
+            const h2 = tools.querySelector("h2");
+            const p = tools.querySelector(".section-text");
+
+            if (h2) h2.textContent = t.toolsTitle;
+            if (p) p.textContent = t.toolsText;
+
+            const toolCards =
+                tools.querySelectorAll(".tool-card");
+
+            if (toolCards.length >= 4) {
+
+                const toolData = [
+
+                    [t.scamChecker, t.scamCheckerText],
+                    [t.passwordChecker, t.passwordCheckerText],
+                    [t.privacyChecker, t.privacyCheckerText],
+                    [t.safetyScore, t.safetyScoreText]
+
+                ];
+
+                toolCards.forEach(function (card, index) {
+
+                    const h3 = card.querySelector("h3");
+                    const p = card.querySelector("p");
+                    const btn = card.querySelector(".tool-btn");
+
+                    if (toolData[index]) {
+
+                        if (h3)
+                            h3.textContent = toolData[index][0];
+
+                        if (p)
+                            p.textContent = toolData[index][1];
+
+                    }
+
+                    if (btn)
+                        btn.textContent = t.comingSoon;
+
+                });
+
             }
 
-        });
-
-        const situationButtons =
-            modal.querySelectorAll(".cyber-situation");
-
-        situationButtons.forEach(function (button) {
-
-            button.addEventListener("click", function () {
-
-                const index =
-                    Number(button.dataset.index);
-
-                showResult(
-                    modal,
-                    info.situations[index]
-                );
-
-            });
-
-        });
-
-    }
+        }
 
 
-    /* =========================
-       7. SHOW RESULT
-    ========================= */
+        /* ABOUT */
 
-    function showResult(modal, situation) {
+        const about =
+            document.getElementById("about");
 
-        const result =
-            modal.querySelector("#cybercareResult");
+        if (about) {
 
-        const steps =
-            situation.steps
-                .map(function (step) {
-                    return `
-                        <li style="margin-bottom:10px;">
-                            ${step}
-                        </li>
-                    `;
-                })
-                .join("");
+            const h2 = about.querySelector("h2");
+            const paragraphs =
+                about.querySelectorAll("p");
 
-        const dont =
-            situation.dont
-                .map(function (item) {
-                    return `
-                        <li style="margin-bottom:10px;">
-                            ${item}
-                        </li>
-                    `;
-                })
-                .join("");
+            if (h2)
+                h2.textContent = t.aboutTitle;
 
-        result.innerHTML = `
+            if (paragraphs[0])
+                paragraphs[0].textContent = t.aboutText1;
 
-            <div style="
-                background:#f8fafc;
-                border-radius:16px;
-                padding:20px;
-                border:1px solid #e5e7eb;
-            ">
+            if (paragraphs[1])
+                paragraphs[1].textContent = t.aboutText2;
 
-                <h3>
-                    ⚡ ${situation.title}
-                </h3>
+        }
 
-                <h4 style="margin-top:20px;">
-                    ✅ What you should do
-                </h4>
 
-                <ol style="padding-left:22px;">
-                    ${steps}
-                </ol>
+        /* FOOTER */
 
-                <div style="
-                    margin-top:20px;
-                    padding:15px;
-                    background:#fff1f2;
-                    border-radius:12px;
-                ">
+        const footer =
+            document.querySelector("footer");
 
-                    <h4>
-                        ⚠️ What you should NOT do
-                    </h4>
+        if (footer) {
 
-                    <ul style="padding-left:22px;">
-                        ${dont}
-                    </ul>
+            const p =
+                footer.querySelectorAll("p");
 
-                </div>
+            if (p[0])
+                p[0].textContent = t.footerText;
 
-                <div style="
-                    margin-top:20px;
-                    padding:15px;
-                    background:#eff6ff;
-                    border-radius:12px;
-                ">
+            if (p[1])
+                p[1].textContent = t.copyright;
 
-                    <h4>
-                        📸 Save useful evidence
-                    </h4>
+        }
 
-                    <p style="margin-bottom:0;">
-                        Keep screenshots, messages, emails,
-                        receipts and transaction details when appropriate.
-                    </p>
 
-                </div>
+        /* BUTTON */
 
-                <p style="
-                    margin-top:20px;
-                    font-size:13px;
-                    color:#64748b;
-                ">
-                    🛡️ CyberCare provides general cybersecurity
-                    safety guidance.
-                </p>
+        if (languageText) {
+            languageText.textContent = currentLanguage;
+        }
 
-            </div>
-        `;
 
-        result.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest"
-        });
+        /* SAVE */
+
+        localStorage.setItem(
+            "cybercare-language",
+            currentLanguage
+        );
 
     }
 
 
     /* =========================
-       8. GET HELP BUTTONS
-    ========================= */
+       LANGUAGE BUTTON
+    ========================== */
 
-    const helpButtons =
-        document.querySelectorAll(".help-btn");
+    if (languageBtn) {
 
-    helpButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const service =
-                button.getAttribute("data-service");
-
-            openHelp(service);
-
-        });
-
-    });
-
-
-    /* =========================
-       9. EMERGENCY BUTTON
-    ========================= */
-
-    const emergencyButton =
-        document.getElementById("emergencyBtn");
-
-    if (emergencyButton) {
-
-        emergencyButton.addEventListener(
+        languageBtn.addEventListener(
             "click",
             function () {
-                openHelp("Emergency Help");
+
+                currentLanguage =
+                    currentLanguage === "EN"
+                        ? "BN"
+                        : "EN";
+
+                applyLanguage();
+
             }
         );
 
@@ -954,8 +425,228 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       10. LEARN BUTTON
-    ========================= */
+       DARK MODE
+    ========================== */
+
+    const themeBtn =
+        document.getElementById("themeBtn");
+
+    const savedTheme =
+        localStorage.getItem("cybercare-theme");
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark-mode");
+
+        if (themeBtn)
+            themeBtn.textContent = "☀️";
+
+    }
+
+
+    if (themeBtn) {
+
+        themeBtn.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+                if (
+                    document.body.classList.contains(
+                        "dark-mode"
+                    )
+                ) {
+
+                    themeBtn.textContent = "☀️";
+
+                    localStorage.setItem(
+                        "cybercare-theme",
+                        "dark"
+                    );
+
+                } else {
+
+                    themeBtn.textContent = "🌙";
+
+                    localStorage.setItem(
+                        "cybercare-theme",
+                        "light"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       SIDE MENU
+    ========================== */
+
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    const sideMenu =
+        document.getElementById("sideMenu");
+
+    const closeMenu =
+        document.getElementById("closeMenu");
+
+    const menuOverlay =
+        document.getElementById("menuOverlay");
+
+
+    function openMenu() {
+
+        if (sideMenu)
+            sideMenu.classList.add("active");
+
+        if (menuOverlay)
+            menuOverlay.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeSideMenu() {
+
+        if (sideMenu)
+            sideMenu.classList.remove("active");
+
+        if (menuOverlay)
+            menuOverlay.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    if (menuBtn)
+        menuBtn.addEventListener("click", openMenu);
+
+    if (closeMenu)
+        closeMenu.addEventListener(
+            "click",
+            closeSideMenu
+        );
+
+    if (menuOverlay)
+        menuOverlay.addEventListener(
+            "click",
+            closeSideMenu
+        );
+
+
+    /* =========================
+       MENU NAVIGATION
+    ========================== */
+
+    document.querySelectorAll(".menu-item")
+        .forEach(function (item) {
+
+            item.addEventListener(
+                "click",
+                function () {
+
+                    const target =
+                        item.getAttribute(
+                            "data-menu"
+                        );
+
+                    closeSideMenu();
+
+                    if (target === "emergency") {
+
+                        alert(
+                            currentLanguage === "BN"
+                                ? "জরুরি সাহায্য section শীঘ্রই আরও উন্নত করা হবে।"
+                                : "Emergency Help will be expanded soon."
+                        );
+
+                        return;
+                    }
+
+                    const section =
+                        document.getElementById(target);
+
+                    if (section) {
+
+                        setTimeout(function () {
+
+                            section.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }, 200);
+
+                    }
+
+                }
+            );
+
+        });
+
+
+    /* =========================
+       GET HELP
+    ========================== */
+
+    document.querySelectorAll(".help-btn")
+        .forEach(function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const service =
+                        button.getAttribute(
+                            "data-service"
+                        );
+
+                    alert(
+                        currentLanguage === "BN"
+                            ? "এই Help System আমরা পরের ধাপে A–Z করব।"
+                            : "The A–Z Help System will be added in the next step."
+                    );
+
+                }
+            );
+
+        });
+
+
+    /* =========================
+       EMERGENCY
+    ========================== */
+
+    if (emergencyBtn) {
+
+        emergencyBtn.addEventListener(
+            "click",
+            function () {
+
+                alert(
+                    currentLanguage === "BN"
+                        ? "জরুরি সাহায্য system পরের ধাপে তৈরি করা হবে।"
+                        : "Emergency Help system will be built next."
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       LEARN
+    ========================== */
 
     const learnBtn =
         document.getElementById("learnBtn");
@@ -967,7 +658,9 @@ document.addEventListener("DOMContentLoaded", function () {
             function () {
 
                 alert(
-                    "Cybersecurity learning section is coming soon."
+                    currentLanguage === "BN"
+                        ? "Cybersecurity Learning section পরের ধাপে তৈরি করা হবে।"
+                        : "Cybersecurity Learning section will be built next."
                 );
 
             }
@@ -977,8 +670,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       11. STARTUP TEST
-    ========================= */
+       STARTUP
+    ========================== */
+
+    applyLanguage();
 
     console.log(
         "🛡️ CyberCare loaded successfully."
