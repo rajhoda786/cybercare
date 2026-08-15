@@ -1,12 +1,12 @@
-// ============================================================
-// CyberCare - Complete Main JavaScript
-// ============================================================
+// ======================================================
+// CYBERCARE — COMPLETE SAFETY GUIDE JAVASCRIPT
+// ======================================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ============================================================
+    // ==================================================
     // ELEMENTS
-    // ============================================================
+    // ==================================================
 
     const menuBtn = document.getElementById("menuBtn");
     const closeMenu = document.getElementById("closeMenu");
@@ -24,19 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchResults = document.getElementById("searchResults");
 
 
-    // ============================================================
+    // ==================================================
     // SIDE MENU
-    // ============================================================
+    // ==================================================
 
     function openMenu() {
-        if (sideMenu) sideMenu.classList.add("active");
-        if (menuOverlay) menuOverlay.classList.add("active");
+        if (!sideMenu || !menuOverlay) return;
+
+        sideMenu.classList.add("active");
+        menuOverlay.classList.add("active");
         document.body.classList.add("menu-open");
     }
 
     function closeSideMenu() {
-        if (sideMenu) sideMenu.classList.remove("active");
-        if (menuOverlay) menuOverlay.classList.remove("active");
+        if (!sideMenu || !menuOverlay) return;
+
+        sideMenu.classList.remove("active");
+        menuOverlay.classList.remove("active");
         document.body.classList.remove("menu-open");
     }
 
@@ -45,12 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     menuOverlay?.addEventListener("click", closeSideMenu);
 
 
-    // ============================================================
+    // ==================================================
     // SECTION NAVIGATION
-    // ============================================================
+    // ==================================================
 
     function scrollToSection(id) {
-
         const section = document.getElementById(id);
 
         if (section) {
@@ -85,11 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 scrollToSection("learn");
             }
 
-            if (target === "emergency") {
-                document.querySelector(".emergency-section")
-                    ?.scrollIntoView({ behavior: "smooth" });
-            }
-
             if (target === "india") {
                 scrollToSection("india");
             }
@@ -98,14 +96,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 scrollToSection("about");
             }
 
+            if (target === "emergency") {
+                document.querySelector(".emergency-section")
+                    ?.scrollIntoView({
+                        behavior: "smooth"
+                    });
+            }
+
         });
 
     });
 
 
-    // ============================================================
-    // HERO BUTTONS
-    // ============================================================
+    // ==================================================
+    // EMERGENCY BUTTON
+    // ==================================================
 
     emergencyBtn?.addEventListener("click", () => {
 
@@ -116,6 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+
+    // ==================================================
+    // QUICK HELP
+    // ==================================================
 
     quickHelpBtn?.addEventListener("click", () => {
 
@@ -131,20 +140,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // ============================================================
+    // ==================================================
     // DARK MODE
-    // ============================================================
+    // ==================================================
 
     let darkMode =
         localStorage.getItem("cybercare-theme") === "dark";
 
     function applyTheme() {
 
-        document.body.classList.toggle("dark-mode", darkMode);
+        if (darkMode) {
+            document.body.classList.add("dark-mode");
 
-        if (themeBtn) {
-            themeBtn.textContent =
-                darkMode ? "☀️" : "🌙";
+            if (themeBtn) {
+                themeBtn.textContent = "☀️";
+            }
+
+        } else {
+
+            document.body.classList.remove("dark-mode");
+
+            if (themeBtn) {
+                themeBtn.textContent = "🌙";
+            }
         }
     }
 
@@ -164,9 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // ============================================================
+    // ==================================================
     // LANGUAGE
-    // ============================================================
+    // ==================================================
 
     let bengali = false;
 
@@ -196,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "মানুষকে সুরক্ষিত রাখা। ডিজিটাল জীবনকে নিরাপদ রাখা।",
 
             "What happened?":
-                "কি ঘটেছে?",
+                "কী ঘটেছে?",
 
             "How Can We Help You?":
                 "আমরা কীভাবে সাহায্য করতে পারি?",
@@ -255,8 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "h1,h2,h3,h4,p,button,strong,small"
         ).forEach(element => {
 
-            const text =
-                element.textContent.trim();
+            const text = element.textContent.trim();
 
             if (translations[text]) {
                 element.textContent =
@@ -268,132 +285,231 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ============================================================
-    // PROBLEM SEARCH
-    // ============================================================
+    // ==================================================
+    // COMPLETE PROBLEM DATABASE
+    // ==================================================
 
     const problems = [
 
+        // ACCOUNT
         {
             keywords: [
-                "facebook",
-                "instagram",
-                "whatsapp",
-                "google",
-                "youtube",
+                "facebook hacked",
+                "instagram hacked",
+                "whatsapp hacked",
+                "google hacked",
+                "youtube hacked",
+                "account hacked",
                 "hacked",
-                "hack",
-                "account"
+                "account recovery",
+                "account stolen",
+                "login problem"
             ],
             title: "🔐 Account Recovery",
-            text:
-                "Your account may be compromised. Secure your email, change passwords, enable 2FA and follow the official recovery process."
+            text: `
+                If your account may be compromised, secure your
+                email first, change passwords, enable 2FA,
+                review active sessions and use only the official
+                recovery process.
+            `
         },
 
+
+        // BLACKMAIL
         {
             keywords: [
                 "blackmail",
+                "blackmailing",
                 "threat",
+                "threatening",
+                "money demand",
+                "blackmailer"
+            ],
+            title: "⚠️ Blackmail / Threat",
+            text: `
+                Do not pay, do not send additional content and
+                preserve all evidence. Secure your accounts,
+                block/report when appropriate and seek trusted
+                and official help.
+            `
+        },
+
+
+        // PRIVATE CONTENT
+        {
+            keywords: [
                 "private photo",
                 "private video",
-                "leak"
+                "intimate photo",
+                "intimate video",
+                "nude photo",
+                "nude video",
+                "personal video",
+                "photo threat",
+                "video threat"
             ],
-            title: "⚠️ Blackmail / Private Content Threat",
-            text:
-                "Do not pay or send additional content. Preserve evidence, secure your accounts, report the abuse and seek appropriate official help."
+            title: "🔒 Private Photo / Video Threat",
+            text: `
+                Do not negotiate with the person or send more
+                material. Preserve evidence, report the account
+                and content, secure your accounts and seek
+                appropriate official help.
+            `
         },
 
+
+        // HARASSMENT
         {
             keywords: [
-                "call",
-                "calling",
                 "harassment",
-                "message",
-                "disturb",
-                "phone"
+                "calling",
+                "call",
+                "repeated call",
+                "unknown caller",
+                "disturbing",
+                "messages",
+                "abusive messages"
             ],
             title: "📞 Repeated Calls / Harassment",
-            text:
-                "Save call logs and messages, review privacy settings, block/report the person and escalate threats when necessary."
+            text: `
+                Preserve call logs and messages, block the
+                person where appropriate, review privacy settings
+                and report threatening or abusive behaviour.
+            `
         },
 
+
+        // PHOTO MISUSE
         {
             keywords: [
-                "photo",
-                "picture",
-                "image"
+                "photo misuse",
+                "photo stolen",
+                "picture stolen",
+                "image stolen",
+                "photo used",
+                "picture used",
+                "edited photo",
+                "morphed photo"
             ],
             title: "📸 Photo Misuse",
-            text:
-                "Save screenshots and URLs, report the content and protect your accounts and privacy."
+            text: `
+                Save screenshots, profile URLs and timestamps.
+                Report the content/account and avoid engaging
+                with people spreading the material.
+            `
         },
 
+
+        // FAKE PROFILE
         {
             keywords: [
                 "fake profile",
                 "fake account",
-                "impersonation"
+                "impersonation",
+                "someone pretending",
+                "fake instagram",
+                "fake facebook"
             ],
             title: "🎭 Fake Profile",
-            text:
-                "Collect evidence, save the profile URL, report the account and warn trusted contacts if necessary."
+            text: `
+                Record the profile URL and screenshots, report
+                impersonation through the platform and inform
+                trusted contacts if necessary.
+            `
         },
 
+
+        // STALKING
+        {
+            keywords: [
+                "stalking",
+                "stalker",
+                "following me",
+                "monitoring me",
+                "tracking me",
+                "online stalking"
+            ],
+            title: "👁️ Online Stalking",
+            text: `
+                Review location sharing, privacy settings,
+                active sessions and unknown devices. Change
+                passwords, enable 2FA and preserve evidence.
+            `
+        },
+
+
+        // FINANCIAL FRAUD
         {
             keywords: [
                 "upi",
-                "bank",
-                "money",
-                "fraud",
-                "payment",
-                "scam",
-                "transaction"
+                "bank fraud",
+                "banking fraud",
+                "payment fraud",
+                "money stolen",
+                "money fraud",
+                "card fraud",
+                "investment scam",
+                "job scam",
+                "refund scam",
+                "financial fraud",
+                "online fraud"
             ],
             title: "💳 Online & Financial Fraud",
-            text:
-                "Contact your bank/payment provider immediately and use the official cybercrime reporting channel in India when appropriate."
+            text: `
+                Contact your bank or payment provider immediately.
+                Preserve transaction details and use the official
+                cybercrime reporting channel in India when
+                appropriate.
+            `
         },
 
+
+        // PHISHING
         {
             keywords: [
                 "phishing",
-                "link",
-                "otp",
+                "fake link",
+                "suspicious link",
                 "fake website",
-                "kyc"
+                "otp",
+                "login link",
+                "fake login"
             ],
             title: "🎣 Scam & Phishing",
-            text:
-                "Do not open suspicious links or share OTPs, passwords, PINs or recovery codes."
+            text: `
+                Do not open suspicious links or share OTPs,
+                passwords or recovery codes. Verify the sender
+                through an independent official channel.
+            `
         },
 
+
+        // PHONE
         {
             keywords: [
-                "spyware",
-                "unknown app",
-                "malware",
                 "phone hacked",
-                "phone security"
+                "phone security",
+                "spyware",
+                "malware",
+                "unknown app",
+                "phone compromised",
+                "phone hacked",
+                "screen sharing"
             ],
             title: "📱 Phone Security",
-            text:
-                "Review unknown applications, permissions, accessibility access, device administrator settings and account sessions."
-        },
-
-        {
-            keywords: [
-                "login",
-                "unknown login",
-                "unknown device",
-                "suspicious activity"
-            ],
-            title: "🕵️ Suspicious Activity",
-            text:
-                "Review login history, secure your password, enable 2FA and remove unknown devices and connected apps."
+            text: `
+                Review installed apps, permissions, accessibility
+                services, device administrator access and system
+                updates. Secure important accounts.
+            `
         }
 
     ];
 
+
+    // ==================================================
+    // SEARCH
+    // ==================================================
 
     problemSearch?.addEventListener("input", () => {
 
@@ -408,24 +524,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!query) return;
 
-        const matches =
-            problems.filter(problem =>
-                problem.keywords.some(keyword =>
-                    query.includes(keyword)
-                )
-            );
+        const matches = problems.filter(problem =>
+            problem.keywords.some(keyword =>
+                query.includes(keyword) ||
+                keyword.includes(query)
+            )
+        );
 
-        if (matches.length === 0) {
+        if (!matches.length) {
 
             searchResults.innerHTML = `
                 <div class="search-result">
-                    <h3>No exact guide found</h3>
+
+                    <h3>🔎 No exact guide found</h3>
+
                     <p>
-                        Try words like blackmail, hacked,
-                        UPI fraud, fake profile,
-                        harassment, phishing,
-                        spyware or suspicious login.
+                        Try words like:
+                        blackmail, hacked, UPI fraud,
+                        harassment, fake profile,
+                        phishing, photo misuse or stalking.
                     </p>
+
                 </div>
             `;
 
@@ -441,15 +560,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             result.innerHTML = `
                 <h3>${problem.title}</h3>
+
                 <p>${problem.text}</p>
+
                 <button class="result-help">
-                    View Safety Guide →
+                    View Complete Safety Guide →
                 </button>
             `;
 
-            result
-                .querySelector(".result-help")
-                ?.addEventListener("click", () => {
+            result.querySelector(".result-help")
+                .addEventListener("click", () => {
 
                     showGuide(
                         problem.title,
@@ -465,9 +585,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // ============================================================
+    // ==================================================
     // SERVICE BUTTONS
-    // ============================================================
+    // ==================================================
 
     document.querySelectorAll(".help-btn")
         .forEach(button => {
@@ -488,358 +608,225 @@ document.addEventListener("DOMContentLoaded", () => {
         const guides = {
 
             "Account Recovery": {
+                title: "🔐 Account Recovery",
+                content: `
+                    <h3>🚨 Do this first</h3>
+                    <ol>
+                        <li>Secure the email account connected to the account.</li>
+                        <li>Change the password immediately if you can still log in.</li>
+                        <li>Use a unique password that you do not use elsewhere.</li>
+                        <li>Enable two-factor authentication.</li>
+                        <li>Review active sessions and remove unknown devices.</li>
+                    </ol>
 
-                title: "🔐 Account Recovery — A to Z",
+                    <h3>📱 If you cannot log in</h3>
+                    <ol>
+                        <li>Use only the platform's official recovery page or app.</li>
+                        <li>Do not trust people offering paid guaranteed recovery.</li>
+                        <li>Check whether your recovery email or phone number was changed.</li>
+                        <li>Secure other accounts that used the same password.</li>
+                    </ol>
 
-                text: `
-                    <div class="guide-warning">
-                        <strong>First:</strong>
-                        If you think someone has accessed your account,
-                        stay calm and secure the account before doing anything else.
-                    </div>
+                    <h3>🧾 Save evidence</h3>
+                    <ul>
+                        <li>Suspicious login alerts</li>
+                        <li>Security emails</li>
+                        <li>Unknown device information</li>
+                        <li>Changed recovery details</li>
+                    </ul>
 
-                    <h3>1. Identify the problem</h3>
-                    <p>
-                        Check whether your password changed, unknown messages
-                        were sent, unknown devices are logged in, recovery details
-                        changed, or you simply lost access.
-                    </p>
-
-                    <h3>2. Secure your email first</h3>
-                    <p>
-                        Your email can be the recovery key for many accounts.
-                        Change its password and enable 2FA if you suspect compromise.
-                    </p>
-
-                    <h3>3. Change the affected password</h3>
-                    <p>
-                        Use a new, unique password. Never reuse a compromised password
-                        on another important account.
-                    </p>
-
-                    <h3>4. Sign out unknown devices</h3>
-                    <p>
-                        Review active sessions, login activity and connected devices.
-                        Remove anything you do not recognize.
-                    </p>
-
-                    <h3>5. Check recovery information</h3>
-                    <p>
-                        Verify your recovery email and phone number.
-                        Remove unknown recovery methods.
-                    </p>
-
-                    <h3>6. Enable 2FA</h3>
-                    <p>
-                        Use an authenticator app or another strong second factor
-                        supported by the service.
-                    </p>
-
-                    <h3>7. Check connected applications</h3>
-                    <p>
-                        Remove third-party applications or services you do not recognize.
-                    </p>
-
-                    <h3>8. Use only official recovery pages</h3>
-                    <p>
-                        Never give your password, OTP or recovery code to someone
-                        claiming they can recover your account for money.
-                    </p>
-
-                    <h3>9. Warn contacts if necessary</h3>
-                    <p>
-                        If your account sent suspicious messages, tell your contacts
-                        not to open links or send money.
-                    </p>
-
-                    <h3>10. Preserve evidence</h3>
-                    <p>
-                        Save screenshots of suspicious logins, emails, messages
-                        and account changes.
-                    </p>
+                    <h3>❌ Never do this</h3>
+                    <ul>
+                        <li>Never share OTPs.</li>
+                        <li>Never share recovery codes.</li>
+                        <li>Never give your password to a stranger.</li>
+                    </ul>
                 `
             },
 
 
             "Scam & Phishing": {
-
-                title: "🎣 Scam & Phishing — A to Z",
-
-                text: `
-                    <h3>1. Stop</h3>
-                    <p>
-                        Do not click the link, download the file or continue the conversation.
-                    </p>
-
-                    <h3>2. Do not share sensitive information</h3>
+                title: "🎣 Scam & Phishing",
+                content: `
+                    <h3>🚨 Warning signs</h3>
                     <ul>
-                        <li>OTP</li>
-                        <li>Password</li>
-                        <li>UPI PIN</li>
-                        <li>Banking PIN</li>
-                        <li>Recovery code</li>
-                        <li>Card security information</li>
+                        <li>Urgent pressure to act immediately.</li>
+                        <li>Requests for OTP or password.</li>
+                        <li>Unexpected payment request.</li>
+                        <li>Fake prize, job or investment promise.</li>
+                        <li>Suspicious website address.</li>
                     </ul>
 
-                    <h3>3. Check the sender</h3>
+                    <h3>🛡️ What to do</h3>
+                    <ol>
+                        <li>Stop communicating with the sender.</li>
+                        <li>Do not open suspicious links.</li>
+                        <li>Verify through the organisation's official website or app.</li>
+                        <li>If credentials were entered, change the password immediately.</li>
+                        <li>Enable 2FA.</li>
+                    </ol>
+
+                    <h3>💳 If money was sent</h3>
                     <p>
-                        Look carefully at the email address, phone number,
-                        username and website domain.
+                        Contact your bank or payment provider immediately
+                        and preserve transaction information.
                     </p>
 
-                    <h3>4. Watch for pressure</h3>
-                    <p>
-                        Urgent threats, guaranteed rewards, fake KYC warnings,
-                        job offers and investment promises are common scam patterns.
-                    </p>
-
-                    <h3>5. Verify independently</h3>
-                    <p>
-                        Contact the organisation using an official website or
-                        known phone number instead of the contact information
-                        supplied by the suspicious message.
-                    </p>
-
-                    <h3>6. If you clicked a suspicious link</h3>
-                    <p>
-                        Do not enter credentials. If you already entered a password,
-                        change it immediately from the legitimate service.
-                    </p>
-
-                    <h3>7. If money was sent</h3>
-                    <p>
-                        Contact your bank or payment provider immediately and
-                        preserve the transaction details.
-                    </p>
-
-                    <h3>8. Report</h3>
-                    <p>
-                        Report the scam to the relevant platform/provider and,
-                        where appropriate, the official cybercrime reporting channel.
-                    </p>
+                    <h3>❌ Never share</h3>
+                    <ul>
+                        <li>OTP</li>
+                        <li>UPI PIN</li>
+                        <li>Password</li>
+                        <li>Recovery code</li>
+                        <li>Banking credentials</li>
+                    </ul>
                 `
             },
 
 
             "Phone Security": {
+                title: "📱 Phone Security",
+                content: `
+                    <h3>🔎 Check your phone</h3>
+                    <ol>
+                        <li>Review recently installed applications.</li>
+                        <li>Remove apps you do not recognise.</li>
+                        <li>Review microphone, camera and location permissions.</li>
+                        <li>Check Accessibility access.</li>
+                        <li>Check Device Administrator access.</li>
+                        <li>Install system and security updates.</li>
+                    </ol>
 
-                title: "📱 Phone Security — A to Z",
+                    <h3>🔐 Secure accounts</h3>
+                    <ol>
+                        <li>Change important passwords from a trusted device if possible.</li>
+                        <li>Enable 2FA.</li>
+                        <li>Review active sessions.</li>
+                        <li>Remove unknown devices.</li>
+                    </ol>
 
-                text: `
-                    <h3>1. Update your phone</h3>
+                    <h3>⚠️ If you strongly suspect compromise</h3>
                     <p>
-                        Install security and system updates from the official device source.
-                    </p>
-
-                    <h3>2. Check installed applications</h3>
-                    <p>
-                        Look for apps you do not remember installing.
-                        Remove suspicious applications when safe to do so.
-                    </p>
-
-                    <h3>3. Review permissions</h3>
-                    <p>
-                        Pay particular attention to camera, microphone,
-                        contacts, location, SMS and accessibility permissions.
-                    </p>
-
-                    <h3>4. Check accessibility/device administrator access</h3>
-                    <p>
-                        Unknown applications with powerful device permissions
-                        deserve immediate attention.
-                    </p>
-
-                    <h3>5. Review account sessions</h3>
-                    <p>
-                        Secure important accounts and remove unknown devices.
-                    </p>
-
-                    <h3>6. Change important passwords</h3>
-                    <p>
-                        If you believe the phone or credentials were compromised,
-                        secure email, banking and social accounts.
-                    </p>
-
-                    <h3>7. Avoid unknown APKs and files</h3>
-                    <p>
-                        Install applications only from trusted official sources.
-                    </p>
-
-                    <h3>8. Protect your lock screen</h3>
-                    <p>
-                        Use a strong PIN/password and do not share it unnecessarily.
-                    </p>
-
-                    <h3>9. If compromise is suspected</h3>
-                    <p>
-                        Disconnect risky accounts where appropriate,
-                        preserve important evidence and seek professional/official help.
+                        Avoid entering sensitive credentials on the
+                        potentially compromised device until you have
+                        secured it or obtained appropriate technical help.
                     </p>
                 `
             },
 
 
             "Online Fraud": {
+                title: "💳 Online & Financial Fraud",
+                content: `
+                    <h3>🚨 Act immediately</h3>
+                    <ol>
+                        <li>Contact your bank/payment provider immediately.</li>
+                        <li>Ask about blocking or securing the affected payment method.</li>
+                        <li>Preserve transaction IDs and confirmation messages.</li>
+                        <li>Do not send additional money to a person claiming they can recover your money.</li>
+                        <li>Use the official cybercrime reporting channel when appropriate.</li>
+                    </ol>
 
-                title: "💳 Online & Financial Fraud — A to Z",
-
-                text: `
-                    <div class="guide-warning">
-                        <strong>If money is moving right now:</strong>
-                        contact your bank/payment provider immediately.
-                    </div>
-
-                    <h3>1. Stop further transactions</h3>
-                    <p>
-                        Do not send additional money to the person or account.
-                    </p>
-
-                    <h3>2. Contact your bank/payment provider</h3>
-                    <p>
-                        Use the official app, website or verified customer-support channel.
-                    </p>
-
-                    <h3>3. Preserve transaction information</h3>
+                    <h3>🧾 Keep</h3>
                     <ul>
                         <li>Transaction ID</li>
                         <li>Amount</li>
                         <li>Date and time</li>
-                        <li>Recipient details</li>
-                        <li>Screenshots</li>
-                        <li>Messages and phone numbers</li>
+                        <li>Phone number/account details shown</li>
+                        <li>Screenshots and messages</li>
                     </ul>
 
-                    <h3>4. Secure your accounts</h3>
-                    <p>
-                        Change compromised passwords and review account sessions.
-                    </p>
-
-                    <h3>5. Never share OTP or UPI PIN</h3>
-                    <p>
-                        Banks and legitimate services do not need your secret authentication
-                        credentials to "receive" a payment.
-                    </p>
-
-                    <h3>6. Beware of recovery scams</h3>
-                    <p>
-                        After a fraud, scammers may contact you claiming they can recover
-                        your money for a fee. Do not trust unofficial recovery promises.
-                    </p>
-
-                    <h3>7. India reporting</h3>
-                    <p>
-                        For cyber financial fraud in India, use the official cybercrime
-                        reporting channels as soon as possible.
-                    </p>
+                    <h3>❌ Never</h3>
+                    <ul>
+                        <li>Share OTP.</li>
+                        <li>Share UPI PIN.</li>
+                        <li>Install unknown remote-access apps.</li>
+                        <li>Pay a recovery scammer.</li>
+                    </ul>
                 `
             },
 
 
             "Suspicious Activity": {
+                title: "🕵️ Suspicious Activity",
+                content: `
+                    <h3>🔎 Check immediately</h3>
+                    <ol>
+                        <li>Review recent login activity.</li>
+                        <li>Check active sessions.</li>
+                        <li>Remove unknown devices.</li>
+                        <li>Change the password.</li>
+                        <li>Enable 2FA.</li>
+                        <li>Check connected third-party applications.</li>
+                    </ol>
 
-                title: "🕵️ Suspicious Activity — A to Z",
-
-                text: `
-                    <h3>Possible warning signs</h3>
-                    <ul>
-                        <li>Unknown login notifications</li>
-                        <li>Unknown devices</li>
-                        <li>Password reset emails you did not request</li>
-                        <li>Messages sent without your knowledge</li>
-                        <li>Unknown connected applications</li>
-                        <li>Unexpected security changes</li>
-                    </ul>
-
-                    <h3>1. Change your password</h3>
+                    <h3>📧 Check your email</h3>
                     <p>
-                        Use a unique password immediately if compromise is suspected.
+                        Look for password-reset messages, new-login
+                        alerts and security notifications you did not initiate.
                     </p>
 
-                    <h3>2. Enable 2FA</h3>
+                    <h3>🧾 Preserve evidence</h3>
                     <p>
-                        Add an additional layer of account protection.
-                    </p>
-
-                    <h3>3. Remove unknown sessions</h3>
-                    <p>
-                        Sign out devices you do not recognize.
-                    </p>
-
-                    <h3>4. Review recovery settings</h3>
-                    <p>
-                        Check recovery email, phone number and security settings.
-                    </p>
-
-                    <h3>5. Check connected apps</h3>
-                    <p>
-                        Revoke access for suspicious third-party applications.
-                    </p>
-
-                    <h3>6. Preserve evidence</h3>
-                    <p>
-                        Save login alerts, emails and screenshots before deleting anything.
+                        Save screenshots, dates, times, device names
+                        and security notifications.
                     </p>
                 `
             },
 
 
             "Emergency Help": {
-
                 title: "🚨 Emergency Cyber Response",
+                content: `
+                    <h3>1️⃣ Stop the damage</h3>
+                    <ul>
+                        <li>Stop sending money.</li>
+                        <li>Stop sending private information.</li>
+                        <li>Stop communicating with suspicious people.</li>
+                    </ul>
 
-                text: `
-                    <div class="guide-warning">
-                        <strong>Priority:</strong>
-                        Protect your money, accounts, device and physical safety first.
-                    </div>
+                    <h3>2️⃣ Secure yourself</h3>
+                    <ul>
+                        <li>Secure email.</li>
+                        <li>Change important passwords.</li>
+                        <li>Enable 2FA.</li>
+                        <li>Remove unknown sessions.</li>
+                    </ul>
 
-                    <h3>🔐 Account compromised</h3>
+                    <h3>3️⃣ Preserve evidence</h3>
+                    <ul>
+                        <li>Screenshots</li>
+                        <li>Messages</li>
+                        <li>URLs</li>
+                        <li>Transaction details</li>
+                        <li>Call logs</li>
+                    </ul>
+
+                    <h3>4️⃣ Report</h3>
                     <p>
-                        Secure email, change passwords, enable 2FA and remove unknown sessions.
-                    </p>
-
-                    <h3>💳 Money at risk</h3>
-                    <p>
-                        Contact your bank/payment provider immediately and preserve transaction details.
-                    </p>
-
-                    <h3>⚠️ Blackmail</h3>
-                    <p>
-                        Do not pay or send additional content. Preserve evidence,
-                        secure accounts, report the abuse and seek appropriate help.
-                    </p>
-
-                    <h3>📱 Phone compromised</h3>
-                    <p>
-                        Review suspicious applications and permissions, update the device
-                        and secure important accounts.
-                    </p>
-
-                    <h3>🚨 Physical danger</h3>
-                    <p>
-                        If you believe you are in immediate physical danger,
-                        move to a safer place and seek immediate local emergency assistance.
+                        Use the relevant platform's reporting system
+                        and appropriate official authorities.
                     </p>
                 `
             }
 
         };
 
-
         const guide = guides[service];
 
-        showGuide(
-            guide?.title || service,
-            guide?.text ||
-            "Follow the official recovery or reporting process and preserve evidence."
-        );
+        if (guide) {
+            showGuide(
+                guide.title,
+                guide.content
+            );
+        }
 
     }
 
 
-    // ============================================================
-    // WOMEN'S DIGITAL SAFETY
-    // ============================================================
+    // ==================================================
+    // WOMEN SAFETY
+    // ==================================================
 
     document.querySelectorAll(".women-btn")
         .forEach(button => {
@@ -859,421 +846,271 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const guides = {
 
-            // ----------------------------------------------------
-            // HARASSMENT
-            // ----------------------------------------------------
-
             harassment: {
+                title: "📞 Repeated Calls / Harassment",
+                content: `
+                    <h3>🚨 First steps</h3>
+                    <ol>
+                        <li>Do not argue or threaten the person back.</li>
+                        <li>Do not reveal your location.</li>
+                        <li>Save call logs and messages.</li>
+                        <li>Block the number/account when appropriate.</li>
+                        <li>Use the platform's report feature.</li>
+                    </ol>
 
-                title: "📞 Repeated Calls / Harassment — A to Z",
-
-                text: `
-                    <div class="guide-warning">
-                        <strong>Do not panic.</strong>
-                        You do not have to keep responding to someone who is repeatedly
-                        disturbing or threatening you.
-                    </div>
-
-                    <h3>1. 🧾 Save evidence first</h3>
+                    <h3>🧾 Evidence</h3>
                     <ul>
-                        <li>Call logs</li>
-                        <li>Screenshots of messages</li>
-                        <li>Phone numbers/usernames</li>
-                        <li>Dates and times</li>
-                        <li>Threatening voice messages</li>
+                        <li>Caller number</li>
+                        <li>Date and time</li>
+                        <li>Call history</li>
+                        <li>Messages</li>
+                        <li>Profile URL</li>
+                        <li>Screenshots</li>
                     </ul>
 
-                    <h3>2. ❌ Do not argue or threaten back</h3>
-                    <p>
-                        Avoid escalating the situation. Keep communication minimal
-                        if communication is unavoidable.
-                    </p>
-
-                    <h3>3. 🚫 Block the person</h3>
-                    <p>
-                        After preserving important evidence, block the number/account
-                        where appropriate.
-                    </p>
-
-                    <h3>4. 📱 Report the account</h3>
-                    <p>
-                        Use the platform's official harassment/report feature.
-                    </p>
-
-                    <h3>5. 🔒 Review privacy settings</h3>
+                    <h3>🔐 Protect yourself</h3>
                     <ul>
-                        <li>Who can message you</li>
-                        <li>Who can call you</li>
-                        <li>Who can see your posts</li>
-                        <li>Who can see your phone number</li>
-                        <li>Location sharing</li>
+                        <li>Review social-media privacy.</li>
+                        <li>Limit who can message or call you.</li>
+                        <li>Hide unnecessary personal information.</li>
+                        <li>Review location sharing.</li>
                     </ul>
 
-                    <h3>6. 👥 Tell someone you trust</h3>
+                    <h3>⚠️ If threats become serious</h3>
                     <p>
-                        If the harassment continues, tell a trusted person and
-                        avoid handling the situation completely alone.
-                    </p>
-
-                    <h3>7. 🚨 If threats become serious</h3>
-                    <p>
-                        Preserve the threat and seek appropriate official help.
-                        If you feel physically unsafe, prioritize your immediate safety.
+                        Tell someone you trust and seek appropriate
+                        local official help, especially if you feel
+                        physically unsafe.
                     </p>
                 `
             },
 
-
-            // ----------------------------------------------------
-            // PHOTO MISUSE
-            // ----------------------------------------------------
 
             photo: {
+                title: "📸 Photo Misuse",
+                content: `
+                    <h3>🚨 Do this first</h3>
+                    <ol>
+                        <li>Do not panic or engage with the person.</li>
+                        <li>Take screenshots of the content.</li>
+                        <li>Save the profile/page URL.</li>
+                        <li>Record the date and time.</li>
+                        <li>Report the content to the platform.</li>
+                    </ol>
 
-                title: "📸 Photo Misuse — A to Z",
-
-                text: `
-                    <h3>1. 🧾 Document where your photo is being used</h3>
-                    <p>
-                        Save screenshots, profile names, usernames and exact URLs.
-                    </p>
-
-                    <h3>2. Do not spread the image further</h3>
-                    <p>
-                        Do not repeatedly forward the image while trying to collect evidence.
-                    </p>
-
-                    <h3>3. 📱 Report the content</h3>
-                    <p>
-                        Use the platform's official reporting tools for privacy abuse,
-                        impersonation, harassment or other applicable violations.
-                    </p>
-
-                    <h3>4. 🎭 If a fake profile is involved</h3>
-                    <p>
-                        Save the fake profile URL and report it as impersonation/fake account.
-                    </p>
-
-                    <h3>5. 🔒 Protect your own account</h3>
-                    <p>
-                        Review profile visibility, followers, tags, mentions and
-                        connected devices.
-                    </p>
-
-                    <h3>6. 🚫 Do not pay removal scammers</h3>
-                    <p>
-                        Be careful of people who promise guaranteed removal for money.
-                    </p>
-
-                    <h3>7. ⚠️ If threats are involved</h3>
-                    <p>
-                        Preserve all threats and seek appropriate official help.
-                    </p>
-                `
-            },
-
-
-            // ----------------------------------------------------
-            // FAKE PROFILE
-            // ----------------------------------------------------
-
-            fakeprofile: {
-
-                title: "🎭 Fake Profile / Impersonation — A to Z",
-
-                text: `
-                    <h3>1. 🧾 Collect evidence</h3>
+                    <h3>🧾 Preserve evidence</h3>
                     <ul>
-                        <li>Fake profile screenshot</li>
+                        <li>Original image if available</li>
+                        <li>Screenshot</li>
                         <li>Username</li>
                         <li>Profile URL</li>
-                        <li>Fake posts/messages</li>
-                        <li>Date and time</li>
+                        <li>Post URL</li>
+                        <li>Messages</li>
                     </ul>
 
-                    <h3>2. 🚨 Report impersonation</h3>
-                    <p>
-                        Use the platform's official fake account/impersonation report process.
-                    </p>
-
-                    <h3>3. 👥 Warn trusted contacts</h3>
-                    <p>
-                        If the fake account is contacting your friends or asking for money,
-                        warn them not to respond or send money.
-                    </p>
-
-                    <h3>4. 🔐 Secure your real account</h3>
+                    <h3>❌ Do not</h3>
                     <ul>
-                        <li>Change password if necessary</li>
-                        <li>Enable 2FA</li>
-                        <li>Review active sessions</li>
-                        <li>Review privacy settings</li>
+                        <li>Do not pay someone promising guaranteed removal.</li>
+                        <li>Do not send additional personal information.</li>
+                        <li>Do not publicly share the harmful content unnecessarily.</li>
                     </ul>
-
-                    <h3>5. ⚠️ If the fake account is threatening people</h3>
-                    <p>
-                        Preserve evidence and report the behaviour through the appropriate
-                        official channels.
-                    </p>
-
-                    <h3>6. ❌ Do not engage in a public fight</h3>
-                    <p>
-                        Keep evidence and use reporting mechanisms rather than escalating
-                        the conflict.
-                    </p>
                 `
             },
 
 
-            // ----------------------------------------------------
-            // BLACKMAIL
-            // ----------------------------------------------------
+            fakeprofile: {
+                title: "🎭 Fake Profile / Impersonation",
+                content: `
+                    <h3>🔎 Collect information</h3>
+                    <ol>
+                        <li>Screenshot the profile.</li>
+                        <li>Copy the profile URL.</li>
+                        <li>Save username and profile name.</li>
+                        <li>Record suspicious posts/messages.</li>
+                    </ol>
+
+                    <h3>📢 Report</h3>
+                    <p>
+                        Use the platform's impersonation/fake-account
+                        reporting option.
+                    </p>
+
+                    <h3>👥 Protect contacts</h3>
+                    <p>
+                        If the fake account is contacting people as you,
+                        warn trusted contacts not to send money or
+                        personal information.
+                    </p>
+
+                    <h3>❌ Never</h3>
+                    <p>
+                        Do not give the impersonator passwords,
+                        OTPs or personal documents.
+                    </p>
+                `
+            },
+
 
             blackmail: {
+                title: "⚠️ Blackmail — Complete Safety Guide",
+                content: `
+                    <h3>🚨 STEP 1 — STOP</h3>
+                    <ol>
+                        <li>Do not pay the blackmailer.</li>
+                        <li>Do not send additional photos or videos.</li>
+                        <li>Do not send OTPs, passwords or personal documents.</li>
+                        <li>Do not negotiate under pressure.</li>
+                    </ol>
 
-                title: "⚠️ Blackmail — A to Z",
-
-                text: `
-                    <div class="guide-warning">
-                        <strong>First: Don't panic.</strong><br>
-                        Blackmail is designed to create fear and pressure.
-                        Do not make decisions only because you are scared.
-                    </div>
-
-                    <h3>1. ❌ Do NOT pay</h3>
-                    <p>
-                        Do not send money, cryptocurrency, gift cards or other payments.
-                        Paying does not guarantee that the blackmailer will stop.
-                    </p>
-
-                    <h3>2. ❌ Do NOT send more content</h3>
-                    <p>
-                        Do not send additional photos, videos, passwords, OTPs,
-                        identity documents or personal information.
-                    </p>
-
-                    <h3>3. 🧾 Preserve evidence BEFORE blocking</h3>
+                    <h3>🧾 STEP 2 — SAVE EVERYTHING</h3>
                     <ul>
-                        <li>Threatening messages</li>
-                        <li>Screenshots</li>
-                        <li>Username/profile name</li>
-                        <li>Profile URL</li>
-                        <li>Phone number/email if visible</li>
-                        <li>Date and time</li>
-                        <li>Payment details</li>
-                        <li>Links to uploaded content</li>
+                        <li>Take screenshots of conversations.</li>
+                        <li>Save usernames and profile URLs.</li>
+                        <li>Save phone numbers.</li>
+                        <li>Save payment demands.</li>
+                        <li>Save threats and timestamps.</li>
+                        <li>Keep relevant original messages where possible.</li>
                     </ul>
 
-                    <h3>4. 🔐 Secure your accounts</h3>
+                    <h3>🔐 STEP 3 — SECURE YOUR ACCOUNTS</h3>
                     <ol>
                         <li>Change important passwords.</li>
-                        <li>Use unique passwords.</li>
                         <li>Enable 2FA.</li>
+                        <li>Review active login sessions.</li>
                         <li>Remove unknown devices.</li>
-                        <li>Check recovery email and phone.</li>
+                        <li>Review privacy and location settings.</li>
                     </ol>
 
-                    <h3>5. 🚫 Block and report</h3>
+                    <h3>🚫 STEP 4 — BLOCK & REPORT</h3>
                     <p>
-                        After preserving evidence, block/report the account where appropriate.
+                        After preserving evidence, block/report the
+                        account when appropriate. Do not repeatedly
+                        engage with the blackmailer.
                     </p>
 
-                    <h3>6. 🌐 If content is posted online</h3>
-                    <ol>
-                        <li>Save the exact URL.</li>
-                        <li>Take screenshots.</li>
-                        <li>Report the content to the platform.</li>
-                        <li>Request removal through official tools.</li>
-                    </ol>
-
-                    <h3>7. 💳 If you already paid</h3>
+                    <h3>👥 STEP 5 — TELL SOMEONE YOU TRUST</h3>
                     <p>
-                        Do not assume you must keep paying.
-                        Contact your bank/payment provider immediately and preserve
-                        transaction information.
+                        Blackmail is designed to create fear and isolation.
+                        Consider telling a trusted person who can support
+                        you while you document and report the situation.
                     </p>
 
-                    <h3>8. 👥 Tell someone you trust</h3>
+                    <h3>🇮🇳 STEP 6 — OFFICIAL HELP</h3>
                     <p>
-                        Tell a trusted family member, friend, teacher, colleague
-                        or another person who can support you.
+                        If you are in India, use the official cybercrime
+                        reporting channels when appropriate. If there is
+                        an immediate physical safety risk, seek immediate
+                        local emergency assistance.
                     </p>
 
-                    <h3>9. 🚨 Physical threats</h3>
+                    <h3>❌ IMPORTANT</h3>
                     <p>
-                        If the person threatens physical harm, knows your location,
-                        follows you or you feel immediately unsafe, prioritize your
-                        physical safety and seek immediate local assistance.
+                        Paying does not guarantee that the material will
+                        be deleted. Sending more content can increase the
+                        risk. Preserve evidence before deleting or blocking
+                        where possible.
                     </p>
-
-                    <div class="guide-warning">
-                        <strong>Remember:</strong>
-                        Being blackmailed is not your fault.
-                        Do not let fear force you into sending money or more content.
-                    </div>
                 `
             },
 
-
-            // ----------------------------------------------------
-            // PRIVATE PHOTO / VIDEO
-            // ----------------------------------------------------
 
             private: {
+                title: "🔒 Private Photo / Video Threat",
+                content: `
+                    <h3>🚨 If someone threatens to publish private content</h3>
 
-                title: "🔒 Private Photo / Video Threat — A to Z",
-
-                text: `
-                    <div class="guide-warning">
-                        <strong>Do not panic and do not negotiate under pressure.</strong>
-                    </div>
-
-                    <h3>1. ❌ Do not send more content</h3>
-                    <p>
-                        Sending more material usually does not solve the problem.
-                    </p>
-
-                    <h3>2. ❌ Do not pay automatically</h3>
-                    <p>
-                        Payment does not guarantee deletion.
-                    </p>
-
-                    <h3>3. 🧾 Preserve evidence</h3>
-                    <ul>
-                        <li>Threat messages</li>
-                        <li>Account username</li>
-                        <li>Profile URL</li>
-                        <li>Post/content URL</li>
-                        <li>Screenshots</li>
-                        <li>Payment information</li>
-                    </ul>
-
-                    <h3>4. 🔐 Secure your accounts</h3>
-                    <p>
-                        Change passwords, enable 2FA and remove unknown sessions.
-                    </p>
-
-                    <h3>5. 📱 Report the account/content</h3>
-                    <p>
-                        Use the platform's official reporting mechanism.
-                    </p>
-
-                    <h3>6. 🌐 If content has already been published</h3>
-                    <p>
-                        Save the exact URL and report each relevant post/account
-                        through the platform's official process.
-                    </p>
-
-                    <h3>7. 👥 Tell a trusted person</h3>
-                    <p>
-                        You should not have to manage the situation alone.
-                    </p>
-
-                    <h3>8. 🚨 If there is a serious threat</h3>
-                    <p>
-                        Preserve evidence and seek appropriate official help.
-                        If you are in immediate physical danger, prioritize your safety.
-                    </p>
-                `
-            },
-
-
-            // ----------------------------------------------------
-            // STALKING
-            // ----------------------------------------------------
-
-            stalking: {
-
-                title: "👁️ Online Stalking — A to Z",
-
-                text: `
-                    <div class="guide-warning">
-                        <strong>If you feel unsafe, take the situation seriously.</strong>
-                    </div>
-
-                    <h3>1. 🧾 Document repeated behaviour</h3>
-                    <ul>
-                        <li>Messages</li>
-                        <li>Calls</li>
-                        <li>Fake accounts</li>
-                        <li>Repeated follows</li>
-                        <li>Threats</li>
-                        <li>Unknown login alerts</li>
-                    </ul>
-
-                    <h3>2. 📍 Check location sharing</h3>
-                    <p>
-                        Review live location, location-sharing apps,
-                        social media location settings and shared accounts.
-                    </p>
-
-                    <h3>3. 🔐 Secure accounts</h3>
                     <ol>
+                        <li>Do not pay.</li>
+                        <li>Do not send additional content.</li>
+                        <li>Do not share passwords or OTPs.</li>
+                        <li>Preserve screenshots and URLs.</li>
+                        <li>Record the username and account details.</li>
+                    </ol>
+
+                    <h3>🔐 Secure your accounts</h3>
+                    <ul>
                         <li>Change passwords.</li>
                         <li>Enable 2FA.</li>
                         <li>Review active sessions.</li>
+                        <li>Check cloud/photo-sharing accounts.</li>
+                        <li>Review privacy settings.</li>
+                    </ul>
+
+                    <h3>📢 Report</h3>
+                    <p>
+                        Report the account and harmful content through
+                        the platform's official reporting system.
+                    </p>
+
+                    <h3>👥 Get support</h3>
+                    <p>
+                        Tell a trusted person. If there are threats,
+                        extortion or distribution, seek appropriate
+                        official help.
+                    </p>
+                `
+            },
+
+
+            stalking: {
+                title: "👁️ Online Stalking",
+                content: `
+                    <h3>🔎 Check for unwanted access</h3>
+                    <ol>
+                        <li>Review account login activity.</li>
+                        <li>Check active sessions.</li>
                         <li>Remove unknown devices.</li>
-                        <li>Review connected applications.</li>
+                        <li>Review location sharing.</li>
+                        <li>Review connected apps.</li>
                     </ol>
 
-                    <h3>4. 👥 Review followers and privacy</h3>
+                    <h3>🔐 Secure accounts</h3>
+                    <ol>
+                        <li>Change passwords.</li>
+                        <li>Use unique passwords.</li>
+                        <li>Enable 2FA.</li>
+                        <li>Review recovery email and phone number.</li>
+                    </ol>
+
+                    <h3>🧾 Keep evidence</h3>
                     <p>
-                        Remove suspicious followers and restrict who can message,
-                        tag or mention you.
+                        Save repeated messages, usernames, dates,
+                        profile URLs, screenshots and suspicious activity.
                     </p>
 
-                    <h3>5. 🚫 Block/report</h3>
+                    <h3>⚠️ Physical safety</h3>
                     <p>
-                        Preserve important evidence first, then block/report where appropriate.
-                    </p>
-
-                    <h3>6. 📱 Check suspicious applications</h3>
-                    <p>
-                        Review apps with unusual access to location, microphone,
-                        camera, SMS or accessibility features.
-                    </p>
-
-                    <h3>7. 👥 Tell someone you trust</h3>
-                    <p>
-                        Let someone know what is happening, especially if the behaviour
-                        is becoming persistent.
-                    </p>
-
-                    <h3>8. 🚨 If stalking becomes physical</h3>
-                    <p>
-                        Do not meet the person alone. Move to a safer place and seek
-                        immediate local assistance if you feel physically threatened.
+                        If online stalking appears connected to physical
+                        stalking or threats, prioritise your physical
+                        safety and seek appropriate local help.
                     </p>
                 `
             }
 
         };
 
-
         const guide = guides[type];
 
         if (guide) {
             showGuide(
                 guide.title,
-                guide.text
+                guide.content
             );
         }
 
     }
 
 
-    // ============================================================
-    // CYBERCARE TOOLS
-    // ============================================================
+    // ==================================================
+    // TOOLS
+    // ==================================================
 
     document.querySelectorAll(".tool-btn")
         .forEach(button => {
 
             button.addEventListener("click", () => {
 
-                openTool(
-                    button.dataset.tool
-                );
+                openTool(button.dataset.tool);
 
             });
 
@@ -1285,172 +1122,178 @@ document.addEventListener("DOMContentLoaded", () => {
         const tools = {
 
             scam: {
-
                 title: "🔎 Scam Checker",
-
-                text: `
-                    <h3>Check these warning signs:</h3>
+                content: `
+                    <h3>Check the message</h3>
 
                     <ul>
-                        <li>❌ Someone creates urgent pressure</li>
-                        <li>❌ Requests OTP/password/PIN</li>
-                        <li>❌ Suspicious link</li>
-                        <li>❌ Unexpected payment request</li>
-                        <li>❌ Guaranteed profit or reward</li>
-                        <li>❌ Fake KYC/account suspension warning</li>
-                        <li>❌ Unknown job or investment offer</li>
-                        <li>❌ Request to install remote-access software</li>
+                        <li>Is someone creating urgency?</li>
+                        <li>Are they asking for OTP/password?</li>
+                        <li>Are they requesting money?</li>
+                        <li>Is the link unexpected?</li>
+                        <li>Are they promising guaranteed profit?</li>
+                        <li>Are they threatening account closure?</li>
                     </ul>
 
-                    <div class="guide-warning">
-                        If several warning signs appear together,
-                        stop and independently verify the request.
-                    </div>
+                    <h3>Result</h3>
+
+                    <p>
+                        The more warning signs you find, the more
+                        carefully you should verify the message
+                        through an independent official channel.
+                    </p>
                 `
             },
 
 
             password: {
-
                 title: "🔐 Password Checker",
-
-                text: `
-                    <h3>A safer password should:</h3>
+                content: `
+                    <h3>Good password habits</h3>
 
                     <ul>
-                        <li>Be long</li>
-                        <li>Be unique to one account</li>
-                        <li>Not contain obvious personal information</li>
-                        <li>Not be reused across important services</li>
-                        <li>Be protected by 2FA where available</li>
+                        <li>Use a long password or passphrase.</li>
+                        <li>Use a different password for important accounts.</li>
+                        <li>Use a password manager if appropriate.</li>
+                        <li>Enable 2FA.</li>
+                    </ul>
+
+                    <h3>❌ Avoid</h3>
+
+                    <ul>
+                        <li>Name</li>
+                        <li>Date of birth</li>
+                        <li>Phone number</li>
+                        <li>Simple sequences</li>
+                        <li>Reusing passwords</li>
                     </ul>
 
                     <p>
-                        Never enter your real password into an unknown
-                        password-checking website.
+                        Never enter your real password into an
+                        unknown website just to "check" its strength.
                     </p>
                 `
             },
 
 
             url: {
-
                 title: "🔗 URL Safety Guide",
-
-                text: `
-                    <h3>Before opening a suspicious URL:</h3>
+                content: `
+                    <h3>Before opening a link</h3>
 
                     <ol>
-                        <li>Check the domain spelling.</li>
-                        <li>Look for unusual subdomains.</li>
-                        <li>Be careful with shortened links.</li>
-                        <li>Do not trust a familiar logo alone.</li>
-                        <li>Do not enter passwords after following an unexpected link.</li>
-                        <li>Open the official website yourself when possible.</li>
+                        <li>Check the domain spelling carefully.</li>
+                        <li>Be cautious with shortened URLs.</li>
+                        <li>Look for unexpected login requests.</li>
+                        <li>Do not trust a link only because the message looks professional.</li>
+                        <li>Open the organisation's official website separately when possible.</li>
                     </ol>
 
-                    <div class="guide-warning">
-                        HTTPS alone does not prove that a website is legitimate.
-                    </div>
+                    <h3>⚠️ Remember</h3>
+
+                    <p>
+                        HTTPS alone does not prove that a website is
+                        legitimate. Check the actual domain.
+                    </p>
                 `
             },
 
 
             privacy: {
-
                 title: "📱 Privacy Checklist",
-
-                text: `
-                    <h3>Review these regularly:</h3>
+                content: `
+                    <h3>Review regularly</h3>
 
                     <ul>
-                        <li>🔒 Account privacy</li>
-                        <li>📍 Location sharing</li>
-                        <li>📷 Camera permissions</li>
-                        <li>🎙️ Microphone permissions</li>
-                        <li>👥 Contacts permissions</li>
-                        <li>📱 Active sessions</li>
-                        <li>🔗 Connected applications</li>
-                        <li>👤 Unknown followers</li>
-                        <li>🔔 Login alerts</li>
-                        <li>🔑 Two-factor authentication</li>
+                        <li>Account privacy</li>
+                        <li>Location sharing</li>
+                        <li>Camera permissions</li>
+                        <li>Microphone permissions</li>
+                        <li>Contact permissions</li>
+                        <li>Connected devices</li>
+                        <li>Active sessions</li>
+                        <li>Third-party applications</li>
                     </ul>
+
+                    <h3>Best practice</h3>
+
+                    <p>
+                        Give apps only the permissions they genuinely
+                        need and remove access you no longer require.
+                    </p>
                 `
             },
 
 
             evidence: {
-
                 title: "🧾 Evidence Checklist",
-
-                text: `
-                    <h3>Save when relevant:</h3>
+                content: `
+                    <h3>Save</h3>
 
                     <ul>
-                        <li>📸 Screenshots</li>
-                        <li>👤 Username</li>
-                        <li>🔗 Profile URL</li>
-                        <li>🔗 Content URL</li>
-                        <li>📞 Phone number</li>
-                        <li>📧 Email address</li>
-                        <li>🕒 Date and time</li>
-                        <li>💳 Transaction ID</li>
-                        <li>💬 Messages</li>
-                        <li>📨 Emails</li>
+                        <li>Screenshots</li>
+                        <li>Profile URLs</li>
+                        <li>Post URLs</li>
+                        <li>Usernames</li>
+                        <li>Phone numbers</li>
+                        <li>Messages</li>
+                        <li>Call logs</li>
+                        <li>Date and time</li>
+                        <li>Transaction IDs</li>
+                        <li>Payment confirmations</li>
                     </ul>
 
+                    <h3>Important</h3>
+
                     <p>
-                        Keep original evidence safely and avoid unnecessary editing.
+                        Keep original evidence where possible.
+                        Avoid editing screenshots or messages before
+                        preserving the original information.
                     </p>
                 `
             },
 
 
             score: {
-
-                title: "🛡️ Cyber Safety Check",
-
-                text: `
+                title: "🛡️ Cyber Safety Score",
+                content: `
                     <h3>Ask yourself:</h3>
 
-                    <ul>
-                        <li>✔ Do I use unique passwords?</li>
-                        <li>✔ Is 2FA enabled on important accounts?</li>
-                        <li>✔ Do I avoid sharing OTPs and PINs?</li>
-                        <li>✔ Do I review active sessions?</li>
-                        <li>✔ Do I install apps only from trusted sources?</li>
-                        <li>✔ Do I check app permissions?</li>
-                        <li>✔ Do I keep my phone updated?</li>
-                        <li>✔ Do I know how to report cybercrime?</li>
-                    </ul>
+                    <ol>
+                        <li>Do I use unique passwords?</li>
+                        <li>Is 2FA enabled?</li>
+                        <li>Do I avoid sharing OTPs?</li>
+                        <li>Do I review active sessions?</li>
+                        <li>Do I review app permissions?</li>
+                        <li>Do I install apps from trusted sources?</li>
+                        <li>Do I verify payment requests?</li>
+                        <li>Do I keep my phone updated?</li>
+                    </ol>
 
-                    <div class="guide-warning">
-                        The more "Yes" answers you have,
-                        the stronger your basic digital safety habits are.
-                    </div>
+                    <p>
+                        The more "yes" answers you have, the stronger
+                        your basic digital safety habits are.
+                    </p>
                 `
             }
 
         };
 
-
         const selected = tools[tool];
 
         if (selected) {
-
             showGuide(
                 selected.title,
-                selected.text
+                selected.content
             );
-
         }
 
     }
 
 
-    // ============================================================
-    // LEARN CYBERSECURITY
-    // ============================================================
+    // ==================================================
+    // LEARNING
+    // ==================================================
 
     document.querySelectorAll(".learn-card")
         .forEach(button => {
@@ -1472,85 +1315,103 @@ document.addEventListener("DOMContentLoaded", () => {
 
             password: `
                 <h3>🔐 Password Safety</h3>
+
                 <p>
                     Use long, unique passwords for important accounts.
-                    Never reuse a password after a compromise.
+                    Avoid reusing passwords across different services.
                 </p>
-                <p>
-                    Consider a reputable password manager and enable 2FA.
-                </p>
+
+                <h3>Best practice</h3>
+
+                <ul>
+                    <li>Use unique passwords.</li>
+                    <li>Use a password manager if appropriate.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Never share passwords.</li>
+                </ul>
             `,
 
             "2fa": `
                 <h3>🔑 Two-Factor Authentication</h3>
+
                 <p>
                     2FA adds another security layer beyond your password.
                 </p>
-                <p>
-                    If available, use a strong second factor supported
-                    by the service.
-                </p>
+
+                <ul>
+                    <li>Enable it on email.</li>
+                    <li>Enable it on social accounts.</li>
+                    <li>Protect recovery codes.</li>
+                    <li>Never share verification codes.</li>
+                </ul>
             `,
 
             phishing: `
                 <h3>🎣 Phishing</h3>
+
                 <p>
-                    Phishing attempts to trick you into giving information
-                    through fake messages, websites or calls.
+                    Phishing attempts to trick you into revealing
+                    sensitive information or opening harmful links.
                 </p>
-                <p>
-                    Verify requests independently and never share OTPs
-                    or passwords through unexpected messages.
-                </p>
+
+                <ul>
+                    <li>Check the sender.</li>
+                    <li>Check the actual domain.</li>
+                    <li>Do not share OTPs.</li>
+                    <li>Verify independently.</li>
+                </ul>
             `,
 
             privacy: `
                 <h3>🔒 Privacy</h3>
-                <p>
-                    Review who can see your posts, contact you,
-                    tag you and access your location.
-                </p>
-                <p>
-                    Remove unnecessary access and review connected applications.
-                </p>
+
+                <ul>
+                    <li>Limit public personal information.</li>
+                    <li>Review location sharing.</li>
+                    <li>Review followers and contacts.</li>
+                    <li>Check app permissions.</li>
+                    <li>Review connected accounts.</li>
+                </ul>
             `,
 
             phone: `
                 <h3>📱 Phone Security</h3>
-                <p>
-                    Keep your phone updated and install applications
-                    only from trusted sources.
-                </p>
-                <p>
-                    Review permissions regularly.
-                </p>
+
+                <ul>
+                    <li>Keep the operating system updated.</li>
+                    <li>Install apps from trusted sources.</li>
+                    <li>Review permissions.</li>
+                    <li>Use a strong screen lock.</li>
+                    <li>Remove unknown apps.</li>
+                </ul>
             `,
 
             financial: `
                 <h3>💳 Financial Safety</h3>
-                <p>
-                    Never share OTPs, UPI PINs or banking credentials.
-                </p>
-                <p>
-                    Verify payment requests independently before approving them.
-                </p>
+
+                <ul>
+                    <li>Never share OTPs.</li>
+                    <li>Never share UPI PIN.</li>
+                    <li>Verify payment requests.</li>
+                    <li>Do not install unknown remote-access apps.</li>
+                    <li>Contact your bank immediately if fraud occurs.</li>
+                </ul>
             `
 
         };
 
-
         showGuide(
             "🎓 Learn Cybersecurity",
             content[topic] ||
-            "Learn safe digital habits."
+            "<p>Learn safe digital habits and protect your accounts.</p>"
         );
 
     }
 
 
-    // ============================================================
+    // ==================================================
     // EMERGENCY RESPONSE
-    // ============================================================
+    // ==================================================
 
     document.querySelectorAll("[data-emergency]")
         .forEach(button => {
@@ -1570,87 +1431,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const guides = {
 
-            account: {
+            account: `
+                <h3>🔐 Account Compromised</h3>
 
-                title: "🔐 Account Compromised",
+                <ol>
+                    <li>Secure your email account first.</li>
+                    <li>Change the affected account password.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Sign out unknown sessions.</li>
+                    <li>Check recovery email/phone.</li>
+                    <li>Preserve security alerts and evidence.</li>
+                    <li>Use the platform's official recovery process.</li>
+                </ol>
 
-                text: `
-                    <ol>
-                        <li>Secure your email account.</li>
-                        <li>Change the affected password.</li>
-                        <li>Enable 2FA.</li>
-                        <li>Sign out unknown sessions.</li>
-                        <li>Check recovery information.</li>
-                        <li>Remove suspicious connected applications.</li>
-                        <li>Preserve suspicious login evidence.</li>
-                    </ol>
-                `
-            },
+                <h3>❌ Never</h3>
+                <p>
+                    Never share OTPs, passwords or recovery codes
+                    with anyone claiming to be support.
+                </p>
+            `,
 
-            money: {
+            money: `
+                <h3>💳 Money at Risk</h3>
 
-                title: "💳 Money at Risk",
+                <ol>
+                    <li>Stop further payments.</li>
+                    <li>Contact your bank/payment provider immediately.</li>
+                    <li>Preserve transaction details.</li>
+                    <li>Save screenshots and messages.</li>
+                    <li>Use the official cybercrime reporting channel when appropriate.</li>
+                </ol>
 
-                text: `
-                    <div class="guide-warning">
-                        <strong>Act quickly.</strong>
-                    </div>
+                <h3>❌ Avoid recovery scams</h3>
 
-                    <ol>
-                        <li>Stop further payments.</li>
-                        <li>Contact your bank/payment provider immediately.</li>
-                        <li>Save transaction IDs and screenshots.</li>
-                        <li>Secure your banking/payment account.</li>
-                        <li>Do not share OTP or PIN.</li>
-                        <li>Use the official cybercrime reporting channel when appropriate.</li>
-                    </ol>
-                `
-            },
+                <p>
+                    Do not pay strangers who promise guaranteed
+                    recovery of your money.
+                </p>
+            `,
 
-            blackmail: {
+            blackmail: `
+                <h3>⚠️ Blackmail / Threat</h3>
 
-                title: "⚠️ Blackmail / Threat",
+                <ol>
+                    <li>Do not pay.</li>
+                    <li>Do not send additional content.</li>
+                    <li>Save evidence.</li>
+                    <li>Secure your accounts.</li>
+                    <li>Block/report when appropriate.</li>
+                    <li>Tell a trusted person.</li>
+                    <li>Seek appropriate official help if threats continue.</li>
+                </ol>
 
-                text: `
-                    <ol>
-                        <li>Do not pay.</li>
-                        <li>Do not send more content.</li>
-                        <li>Preserve screenshots and URLs.</li>
-                        <li>Secure important accounts.</li>
-                        <li>Block/report after preserving evidence.</li>
-                        <li>Tell someone you trust.</li>
-                        <li>Seek appropriate official help if threats continue.</li>
-                    </ol>
-                `
-            },
+                <p>
+                    If there is an immediate physical safety risk,
+                    prioritise getting to a safe place and obtaining
+                    immediate local help.
+                </p>
+            `,
 
-            phone: {
+            phone: `
+                <h3>📱 Phone Compromised</h3>
 
-                title: "📱 Phone Compromised",
-
-                text: `
-                    <ol>
-                        <li>Review unknown applications.</li>
-                        <li>Check permissions.</li>
-                        <li>Check accessibility/device administrator access.</li>
-                        <li>Update the device.</li>
-                        <li>Secure important accounts.</li>
-                        <li>Remove suspicious access where safe.</li>
-                        <li>Preserve evidence if you suspect malicious activity.</li>
-                    </ol>
-                `
-            }
+                <ol>
+                    <li>Stop entering sensitive credentials if the device is strongly suspected to be compromised.</li>
+                    <li>Review unknown apps.</li>
+                    <li>Review permissions.</li>
+                    <li>Check Accessibility and Device Administrator access.</li>
+                    <li>Update the device.</li>
+                    <li>Secure important accounts from a trusted device if possible.</li>
+                    <li>Seek appropriate technical help if the problem continues.</li>
+                </ol>
+            `
 
         };
 
+        const content = guides[type];
 
-        const guide = guides[type];
-
-        if (guide) {
+        if (content) {
 
             showGuide(
-                guide.title,
-                guide.text
+                "🚨 Emergency Cyber Response",
+                content
             );
 
         }
@@ -1658,15 +1520,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ============================================================
+    // ==================================================
     // GUIDE MODAL
-    // ============================================================
+    // ==================================================
 
     function showGuide(title, content) {
 
-        document
-            .getElementById("cybercareModal")
-            ?.remove();
+        const oldModal =
+            document.getElementById("cybercareModal");
+
+        if (oldModal) {
+            oldModal.remove();
+        }
 
         const modal =
             document.createElement("div");
@@ -1681,8 +1546,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     <button
                         class="guide-close"
-                        type="button"
-                        aria-label="Close"
+                        aria-label="Close guide"
                     >
                         ✕
                     </button>
@@ -1693,10 +1557,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${content}
                     </div>
 
-                    <button
-                        class="guide-ok"
-                        type="button"
-                    >
+                    <button class="guide-ok">
                         Got it
                     </button>
 
@@ -1708,20 +1569,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.body.appendChild(modal);
 
-        modal
-            .querySelector(".guide-close")
+        modal.querySelector(".guide-close")
             ?.addEventListener("click", () => {
                 modal.remove();
             });
 
-        modal
-            .querySelector(".guide-ok")
+        modal.querySelector(".guide-ok")
             ?.addEventListener("click", () => {
                 modal.remove();
             });
 
-        modal
-            .querySelector(".guide-overlay")
+        modal.querySelector(".guide-overlay")
             ?.addEventListener("click", event => {
 
                 if (
@@ -1737,9 +1595,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ============================================================
-    // ESC KEY
-    // ============================================================
+    // ==================================================
+    // ESCAPE KEY
+    // ==================================================
 
     document.addEventListener("keydown", event => {
 
@@ -1747,9 +1605,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             closeSideMenu();
 
-            document
-                .getElementById("cybercareModal")
-                ?.remove();
+            const modal =
+                document.getElementById(
+                    "cybercareModal"
+                );
+
+            if (modal) {
+                modal.remove();
+            }
 
         }
 
