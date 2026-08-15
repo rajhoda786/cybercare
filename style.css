@@ -1,6 +1,7 @@
-/* =========================================
-   CYBERCARE - FINAL MOBILE FIRST CSS
-========================================= */
+/* =========================================================
+   CYBERCARE — COMPLETE MOBILE-FIRST SECURITY UI
+   Scan-first + Safety Guides + Emergency + Dark Mode
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -22,6 +23,8 @@ body {
 
 button,
 input,
+select,
+textarea,
 a {
     font: inherit;
 }
@@ -34,9 +37,13 @@ a {
     text-decoration: none;
 }
 
-/* =========================================
+section {
+    scroll-margin-top: 75px;
+}
+
+/* =========================================================
    NAVBAR
-========================================= */
+========================================================= */
 
 .navbar {
     position: sticky;
@@ -53,6 +60,7 @@ a {
 
     background: rgba(255,255,255,.97);
     border-bottom: 1px solid #e2e8f0;
+
     backdrop-filter: blur(12px);
 }
 
@@ -94,9 +102,9 @@ a {
     font-weight: 800;
 }
 
-/* =========================================
+/* =========================================================
    SIDE MENU
-========================================= */
+========================================================= */
 
 .side-menu {
     position: fixed;
@@ -151,7 +159,6 @@ a {
 
 .menu-item {
     width: 100%;
-
     min-height: 52px;
 
     padding: 13px 15px;
@@ -194,22 +201,20 @@ body.menu-open {
     overflow: hidden;
 }
 
-/* =========================================
+/* =========================================================
    HERO
-========================================= */
+========================================================= */
 
 .hero {
     width: 100%;
 
-    padding: 48px 18px 42px;
+    padding: 42px 18px 32px;
 
     text-align: center;
 
-    background: linear-gradient(
-        180deg,
-        #eff6ff 0%,
-        #f8fafc 100%
-    );
+    background:
+        radial-gradient(circle at top, #dbeafe 0%, transparent 55%),
+        linear-gradient(180deg,#eff6ff 0%,#f8fafc 100%);
 }
 
 .hero-icon {
@@ -227,6 +232,8 @@ body.menu-open {
     background: #dbeafe;
 
     font-size: 40px;
+
+    box-shadow: 0 12px 30px rgba(37,99,235,.12);
 }
 
 .hero h1 {
@@ -286,6 +293,8 @@ body.menu-open {
 
     background: #dc2626;
     color: white;
+
+    box-shadow: 0 8px 20px rgba(220,38,38,.2);
 }
 
 .secondary-btn {
@@ -295,9 +304,242 @@ body.menu-open {
     border: 1px solid #bfdbfe;
 }
 
-/* =========================================
+/* =========================================================
+   SCAN CENTER — IMPORTANT
+========================================================= */
+
+.scan-center {
+    width: 100%;
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    padding: 24px 18px 15px;
+}
+
+.scan-panel {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 25px 20px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #2563eb 55%,
+            #0ea5e9
+        );
+
+    color: white;
+
+    box-shadow:
+        0 18px 45px rgba(37,99,235,.22);
+}
+
+.scan-panel::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -70px;
+    top: -70px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.08);
+}
+
+.scan-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 11px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.15);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+.scan-panel h2 {
+    font-size: 27px;
+    line-height: 1.25;
+
+    margin-bottom: 9px;
+}
+
+.scan-panel > p {
+    color: #dbeafe;
+
+    font-size: 14px;
+
+    margin-bottom: 19px;
+}
+
+.scan-actions {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.scan-main-btn {
+    width: 100%;
+    min-height: 55px;
+
+    border: 0;
+    border-radius: 13px;
+
+    background: white;
+    color: #1d4ed8;
+
+    font-weight: 900;
+    font-size: 16px;
+}
+
+.scan-manual-btn {
+    width: 100%;
+    min-height: 48px;
+
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 13px;
+
+    background: rgba(255,255,255,.1);
+    color: white;
+
+    font-weight: 800;
+}
+
+.scan-note {
+    margin-top: 14px;
+
+    padding: 11px 13px;
+
+    border-radius: 11px;
+
+    background: rgba(15,23,42,.18);
+
+    color: #e0f2fe;
+
+    font-size: 12px;
+}
+
+/* =========================================================
+   SCAN STATUS
+========================================================= */
+
+.scan-status {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 18px;
+
+    border-radius: 17px;
+
+    background: white;
+
+    border: 1px solid #dbeafe;
+
+    box-shadow: 0 8px 25px rgba(15,23,42,.08);
+}
+
+.scan-status.active {
+    display: block;
+}
+
+.scan-progress {
+    height: 9px;
+
+    margin-top: 13px;
+
+    overflow: hidden;
+
+    border-radius: 50px;
+
+    background: #e2e8f0;
+}
+
+.scan-progress-bar {
+    width: 0%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #2563eb;
+
+    transition: width .35s ease;
+}
+
+.scan-step {
+    margin-top: 10px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.scan-result {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 18px;
+
+    border-radius: 17px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+}
+
+.scan-result.active {
+    display: block;
+}
+
+.scan-result.safe {
+    border-color: #bbf7d0;
+    background: #f0fdf4;
+}
+
+.scan-result.warning {
+    border-color: #fed7aa;
+    background: #fff7ed;
+}
+
+.scan-result.danger {
+    border-color: #fecaca;
+    background: #fef2f2;
+}
+
+.scan-limit {
+    margin-top: 12px;
+
+    padding: 11px;
+
+    border-radius: 10px;
+
+    background: #eff6ff;
+
+    color: #1e40af;
+
+    font-size: 12px;
+}
+
+/* =========================================================
    SEARCH
-========================================= */
+========================================================= */
 
 .search-section {
     width: 100%;
@@ -381,9 +623,9 @@ body.menu-open {
     font-weight: 700;
 }
 
-/* =========================================
+/* =========================================================
    COMMON SECTIONS
-========================================= */
+========================================================= */
 
 .services,
 .women-section,
@@ -392,7 +634,9 @@ body.menu-open {
 .india-section,
 .emergency-section,
 .about-section,
-.rules-section {
+.rules-section,
+.attack-section,
+.recovery-section {
 
     width: 100%;
 
@@ -410,7 +654,9 @@ body.menu-open {
 .india-section h2,
 .emergency-section h2,
 .about-section h2,
-.rules-section h2 {
+.rules-section h2,
+.attack-section h2,
+.recovery-section h2 {
 
     text-align: center;
 
@@ -431,9 +677,9 @@ body.menu-open {
     color: #64748b;
 }
 
-/* =========================================
+/* =========================================================
    SERVICE CARDS
-========================================= */
+========================================================= */
 
 .service-grid {
     display: grid;
@@ -499,13 +745,9 @@ body.menu-open {
     border-color: #fecaca;
 }
 
-/* =========================================
+/* =========================================================
    WOMEN SAFETY
-========================================= */
-
-.women-section {
-    max-width: 1150px;
-}
+========================================================= */
 
 .section-badge {
     width: fit-content;
@@ -572,9 +814,9 @@ body.menu-open {
     background: #db2777;
 }
 
-/* =========================================
+/* =========================================================
    SAFETY RULES
-========================================= */
+========================================================= */
 
 .rules-section {
     max-width: 950px;
@@ -604,9 +846,9 @@ body.menu-open {
     font-weight: 800;
 }
 
-/* =========================================
+/* =========================================================
    TOOLS
-========================================= */
+========================================================= */
 
 .tool-grid {
     display: grid;
@@ -649,9 +891,69 @@ body.menu-open {
     margin-bottom: 17px;
 }
 
-/* =========================================
+/* =========================================================
+   NEW SECURITY TOOLS
+========================================================= */
+
+.security-tool-grid {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    margin-top: 25px;
+}
+
+.security-tool-card {
+    padding: 20px;
+
+    border: 1px solid #dbeafe;
+
+    border-radius: 17px;
+
+    background: white;
+
+    box-shadow: 0 6px 20px rgba(15,23,42,.05);
+}
+
+.security-tool-card .icon {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.security-tool-card h3 {
+    margin-bottom: 6px;
+}
+
+.security-tool-card p {
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+.security-tool-btn {
+    width: 100%;
+
+    min-height: 45px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: #eff6ff;
+
+    color: #1d4ed8;
+
+    font-weight: 800;
+}
+
+/* =========================================================
    LEARN
-========================================= */
+========================================================= */
 
 .learn-grid {
     display: grid;
@@ -697,9 +999,132 @@ body.menu-open {
     font-size: 12px;
 }
 
-/* =========================================
+/* =========================================================
+   HACKING / ATTACK METHODS
+========================================================= */
+
+.attack-section {
+    max-width: 1150px;
+
+    background: #f8fafc;
+}
+
+.attack-grid {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    margin-top: 25px;
+}
+
+.attack-card {
+    padding: 20px;
+
+    border-radius: 17px;
+
+    background: white;
+
+    border: 1px solid #e2e8f0;
+}
+
+.attack-card .attack-icon {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.attack-card h3 {
+    margin-bottom: 7px;
+
+    font-size: 18px;
+}
+
+.attack-card p {
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 13px;
+}
+
+.attack-card .protect {
+    padding: 11px;
+
+    border-radius: 10px;
+
+    background: #f0fdf4;
+
+    color: #166534;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+/* =========================================================
+   RECOVERY
+========================================================= */
+
+.recovery-section {
+    max-width: 1150px;
+
+    background: #eff6ff;
+}
+
+.recovery-grid {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    margin-top: 25px;
+}
+
+.recovery-card {
+    padding: 20px;
+
+    border-radius: 17px;
+
+    background: white;
+
+    border: 1px solid #dbeafe;
+}
+
+.recovery-card h3 {
+    margin-bottom: 8px;
+}
+
+.recovery-card p {
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 12px;
+}
+
+.recovery-card ol,
+.recovery-card ul {
+    padding-left: 21px;
+}
+
+.recovery-card li {
+    margin-bottom: 7px;
+
+    font-size: 13px;
+}
+
+.recovery-danger {
+    border-color: #fecaca;
+
+    background: #fff7f7;
+}
+
+/* =========================================================
    INDIA
-========================================= */
+========================================================= */
 
 .india-section {
     max-width: none;
@@ -772,9 +1197,9 @@ body.menu-open {
     font-size: 14px;
 }
 
-/* =========================================
+/* =========================================================
    EMERGENCY
-========================================= */
+========================================================= */
 
 .emergency-section {
     text-align: center;
@@ -810,9 +1235,9 @@ body.menu-open {
     font-size: 14px;
 }
 
-/* =========================================
+/* =========================================================
    ABOUT
-========================================= */
+========================================================= */
 
 .about-section {
     max-width: 850px;
@@ -838,9 +1263,9 @@ body.menu-open {
     font-weight: 700;
 }
 
-/* =========================================
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 footer {
     padding: 38px 18px;
@@ -868,9 +1293,9 @@ footer .copyright {
     color: #94a3b8;
 }
 
-/* =========================================
+/* =========================================================
    MODAL
-========================================= */
+========================================================= */
 
 .guide-overlay {
     position: fixed;
@@ -892,7 +1317,7 @@ footer .copyright {
 .guide-modal {
     width: 100%;
 
-    max-width: 600px;
+    max-width: 650px;
 
     max-height: 85vh;
 
@@ -920,6 +1345,31 @@ footer .copyright {
     font-size: 23px;
 }
 
+.guide-content {
+    line-height: 1.7;
+
+    margin: 15px 0 20px;
+}
+
+.guide-content ol,
+.guide-content ul {
+    padding-left: 22px;
+}
+
+.guide-content li {
+    margin-bottom: 9px;
+}
+
+.guide-content h3 {
+    margin-top: 18px;
+
+    margin-bottom: 7px;
+}
+
+.guide-content h3:first-child {
+    margin-top: 0;
+}
+
 .guide-close {
     position: absolute;
 
@@ -936,21 +1386,6 @@ footer .copyright {
     background: #f1f5f9;
 
     font-size: 20px;
-}
-
-.guide-content {
-    line-height: 1.7;
-
-    margin: 15px 0 20px;
-}
-
-.guide-content ol,
-.guide-content ul {
-    padding-left: 22px;
-}
-
-.guide-content li {
-    margin-bottom: 9px;
 }
 
 .guide-ok {
@@ -971,9 +1406,99 @@ footer .copyright {
     font-weight: 800;
 }
 
-/* =========================================
+/* =========================================================
+   SCAN MODAL
+========================================================= */
+
+.scan-modal {
+    width: 100%;
+
+    max-width: 680px;
+
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 23px;
+
+    box-shadow: 0 25px 70px rgba(0,0,0,.35);
+}
+
+.scan-modal-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.scan-modal-header h2 {
+    font-size: 22px;
+}
+
+.scan-close {
+    width: 38px;
+    height: 38px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: #f1f5f9;
+}
+
+.scan-check-list {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 9px;
+
+    margin: 17px 0;
+}
+
+.scan-check-item {
+    padding: 13px;
+
+    border-radius: 11px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    font-size: 13px;
+}
+
+.scan-check-item strong {
+    display: block;
+
+    margin-bottom: 2px;
+}
+
+.scan-disclaimer {
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 11px;
+
+    background: #fff7ed;
+
+    color: #9a3412;
+
+    font-size: 12px;
+}
+
+/* =========================================================
    DARK MODE
-========================================= */
+========================================================= */
 
 body.dark-mode {
     background: #0f172a;
@@ -994,7 +1519,9 @@ body.dark-mode .nav-btn {
 }
 
 body.dark-mode .hero {
-    background: #0f172a;
+    background:
+        radial-gradient(circle at top,#172554 0%,transparent 55%),
+        #0f172a;
 }
 
 body.dark-mode .hero p,
@@ -1004,7 +1531,10 @@ body.dark-mode .women-card p,
 body.dark-mode .tool-card p,
 body.dark-mode .learn-card small,
 body.dark-mode .search-result p,
-body.dark-mode .india-section > p {
+body.dark-mode .india-section > p,
+body.dark-mode .attack-card p,
+body.dark-mode .recovery-card p,
+body.dark-mode .security-tool-card p {
     color: #94a3b8;
 }
 
@@ -1033,7 +1563,10 @@ body.dark-mode .menu-header button {
 body.dark-mode .service-card,
 body.dark-mode .women-card,
 body.dark-mode .tool-card,
-body.dark-mode .learn-card {
+body.dark-mode .learn-card,
+body.dark-mode .security-tool-card,
+body.dark-mode .attack-card,
+body.dark-mode .recovery-card {
     background: #1e293b;
 
     border-color: #334155;
@@ -1081,21 +1614,64 @@ body.dark-mode .about-warning {
     color: #fde68a;
 }
 
+body.dark-mode .attack-section {
+    background: #0f172a;
+}
+
+body.dark-mode .recovery-section {
+    background: #172554;
+}
+
+body.dark-mode .attack-card .protect {
+    background: #052e16;
+
+    color: #bbf7d0;
+}
+
+body.dark-mode .scan-status,
+body.dark-mode .scan-result,
+body.dark-mode .scan-modal {
+    background: #1e293b;
+
+    color: #f8fafc;
+
+    border-color: #334155;
+}
+
+body.dark-mode .scan-check-item {
+    background: #0f172a;
+
+    border-color: #334155;
+}
+
+body.dark-mode .scan-limit {
+    background: #172554;
+
+    color: #bfdbfe;
+}
+
+body.dark-mode .scan-disclaimer {
+    background: #431407;
+
+    color: #fed7aa;
+}
+
 body.dark-mode .guide-modal {
     background: #1e293b;
 
     color: #f8fafc;
 }
 
-body.dark-mode .guide-close {
+body.dark-mode .guide-close,
+body.dark-mode .scan-close {
     background: #334155;
 
     color: white;
 }
 
-/* =========================================
+/* =========================================================
    TABLET
-========================================= */
+========================================================= */
 
 @media (min-width: 600px) {
 
@@ -1104,7 +1680,7 @@ body.dark-mode .guide-close {
     }
 
     .hero {
-        padding: 70px 25px 60px;
+        padding: 65px 25px 45px;
     }
 
     .hero h1 {
@@ -1121,9 +1697,28 @@ body.dark-mode .guide-close {
         max-width: 620px;
     }
 
+    .scan-center {
+        padding: 28px 25px 18px;
+    }
+
+    .scan-panel {
+        padding: 30px;
+    }
+
+    .scan-actions {
+        flex-direction: row;
+    }
+
     .service-grid,
     .tool-grid,
-    .women-grid {
+    .women-grid,
+    .security-tool-grid,
+    .attack-grid,
+    .recovery-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .scan-check-list {
         grid-template-columns: 1fr 1fr;
     }
 
@@ -1134,15 +1729,17 @@ body.dark-mode .guide-close {
     .emergency-section,
     .about-section,
     .rules-section,
-    .search-section {
+    .search-section,
+    .attack-section,
+    .recovery-section {
         padding-left: 25px;
         padding-right: 25px;
     }
 }
 
-/* =========================================
+/* =========================================================
    DESKTOP
-========================================= */
+========================================================= */
 
 @media (min-width: 900px) {
 
@@ -1151,7 +1748,7 @@ body.dark-mode .guide-close {
     }
 
     .hero {
-        padding: 90px 30px 75px;
+        padding: 80px 30px 55px;
     }
 
     .hero h1 {
@@ -1166,9 +1763,24 @@ body.dark-mode .guide-close {
         font-size: 16px;
     }
 
+    .scan-center {
+        padding: 35px 30px 20px;
+    }
+
+    .scan-panel {
+        padding: 35px 40px;
+    }
+
+    .scan-panel h2 {
+        font-size: 32px;
+    }
+
     .service-grid,
     .women-grid,
-    .tool-grid {
+    .tool-grid,
+    .security-tool-grid,
+    .attack-grid,
+    .recovery-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 
@@ -1186,8 +1798,41 @@ body.dark-mode .guide-close {
     .learn-section,
     .emergency-section,
     .about-section,
-    .rules-section {
+    .rules-section,
+    .attack-section,
+    .recovery-section {
         padding-top: 65px;
         padding-bottom: 65px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY / TOUCH
+========================================================= */
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid rgba(37,99,235,.35);
+
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
     }
 }
