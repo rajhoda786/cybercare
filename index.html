@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
 
-    <meta name="theme-color" content="#2563eb">
+<title>CyberCare | Digital Safety</title>
 
-    <title>CyberCare | Digital Safety</title>
-
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -116,22 +115,33 @@
 </section>
 
 
-<!-- SEARCH -->
+<!-- SMART SEARCH -->
 
 <section class="search-section">
 
     <h2>🔎 What happened?</h2>
 
     <p>
-        Search for your problem and CyberCare will show
-        the relevant safety guide.
+        Describe your problem. CyberCare will find the
+        most relevant safety guide.
     </p>
 
-    <input
-        id="problemSearch"
-        type="search"
-        placeholder="Example: blackmail, Instagram hacked, UPI fraud..."
-    >
+    <div class="smart-search">
+
+        <input
+            id="problemSearch"
+            type="search"
+            autocomplete="off"
+            placeholder="Example: someone is blackmailing me..."
+        >
+
+        <button id="clearSearch" type="button">
+            ✕
+        </button>
+
+    </div>
+
+    <div id="searchSuggestions" class="search-suggestions"></div>
 
     <div id="searchResults"></div>
 
@@ -151,110 +161,80 @@
     <div class="service-grid">
 
         <article class="service-card">
-
             <div class="service-icon">🔐</div>
-
             <h3>Account Recovery</h3>
-
             <p>
                 Facebook, Instagram, WhatsApp, Google,
                 YouTube and other account problems.
             </p>
-
             <button class="help-btn" data-service="Account Recovery">
                 Get Help →
             </button>
-
         </article>
 
 
         <article class="service-card">
-
             <div class="service-icon">🎣</div>
-
             <h3>Scam & Phishing</h3>
-
             <p>
-                Suspicious messages, fake links, fake websites,
-                OTP scams and phishing.
+                Suspicious messages, fake links, OTP scams
+                and phishing.
             </p>
-
             <button class="help-btn" data-service="Scam & Phishing">
                 Get Help →
             </button>
-
         </article>
 
 
         <article class="service-card">
-
             <div class="service-icon">📱</div>
-
             <h3>Phone Security</h3>
-
             <p>
                 Unknown apps, spyware warning signs,
-                permissions, location and device security.
+                permissions and device security.
             </p>
-
             <button class="help-btn" data-service="Phone Security">
                 Get Help →
             </button>
-
         </article>
 
 
         <article class="service-card">
-
             <div class="service-icon">💳</div>
-
             <h3>Online & Financial Fraud</h3>
-
             <p>
                 UPI, bank, card, investment, job,
                 refund and payment scams.
             </p>
-
             <button class="help-btn" data-service="Online Fraud">
                 Get Help →
             </button>
-
         </article>
 
 
         <article class="service-card">
-
             <div class="service-icon">🕵️</div>
-
             <h3>Suspicious Activity</h3>
-
             <p>
-                Unknown login, malware, fake login pages,
-                account monitoring and privacy problems.
+                Unknown login, malware, fake login pages
+                and privacy problems.
             </p>
-
             <button class="help-btn" data-service="Suspicious Activity">
                 Get Help →
             </button>
-
         </article>
 
 
         <article class="service-card emergency-card">
-
             <div class="service-icon">🚨</div>
-
             <h3>Emergency Help</h3>
-
             <p>
                 Immediate actions when your account,
-                device, money or personal safety is at risk.
+                device, money or safety is at risk.
             </p>
-
             <button class="help-btn" data-service="Emergency Help">
                 Get Help →
             </button>
-
         </article>
 
     </div>
@@ -273,112 +253,69 @@
     <h2>Women's Digital Safety</h2>
 
     <p class="section-text">
-        A dedicated guide for online harassment, stalking,
-        blackmail, unwanted contact, fake profiles and
-        intimate-image threats.
+        Protection against harassment, stalking, blackmail,
+        fake profiles and private-content threats.
     </p>
 
     <div class="women-grid">
 
         <article class="women-card">
-
             <span>📞</span>
-
             <h3>Repeated Calls / Harassment</h3>
-
-            <p>
-                Someone keeps calling, messaging or disturbing you.
-            </p>
-
+            <p>Someone keeps calling or messaging you.</p>
             <button class="women-btn" data-women="harassment">
                 What Should I Do?
             </button>
-
         </article>
 
 
         <article class="women-card">
-
             <span>📸</span>
-
             <h3>Photo Misuse</h3>
-
-            <p>
-                Someone is using your photo without permission.
-            </p>
-
+            <p>Someone is using your photo without permission.</p>
             <button class="women-btn" data-women="photo">
                 What Should I Do?
             </button>
-
         </article>
 
 
         <article class="women-card">
-
             <span>🎭</span>
-
             <h3>Fake Profile</h3>
-
-            <p>
-                Someone created a fake Facebook/Instagram profile.
-            </p>
-
+            <p>Someone created a fake Facebook or Instagram profile.</p>
             <button class="women-btn" data-women="fakeprofile">
                 What Should I Do?
             </button>
-
         </article>
 
 
         <article class="women-card">
-
             <span>⚠️</span>
-
             <h3>Blackmail</h3>
-
-            <p>
-                Someone is threatening you or demanding money.
-            </p>
-
+            <p>Someone is threatening you or demanding money.</p>
             <button class="women-btn" data-women="blackmail">
                 What Should I Do?
             </button>
-
         </article>
 
 
         <article class="women-card">
-
             <span>🔒</span>
-
             <h3>Private Photo / Video Threat</h3>
-
-            <p>
-                Someone threatens to publish private content.
-            </p>
-
+            <p>Someone threatens to publish private content.</p>
             <button class="women-btn" data-women="private">
                 What Should I Do?
             </button>
-
         </article>
 
 
         <article class="women-card">
-
             <span>👁️</span>
-
             <h3>Online Stalking</h3>
-
-            <p>
-                Someone repeatedly follows, monitors or contacts you.
-            </p>
-
+            <p>Someone repeatedly follows or monitors you.</p>
             <button class="women-btn" data-women="stalking">
                 What Should I Do?
             </button>
-
         </article>
 
     </div>
@@ -386,7 +323,7 @@
 </section>
 
 
-<!-- SAFETY RULES -->
+<!-- NEVER SHARE -->
 
 <section class="rules-section">
 
@@ -408,14 +345,15 @@
 </section>
 
 
-<!-- TOOLS -->
+<!-- ADVANCED TOOLS -->
 
 <section id="tools" class="tools">
 
     <h2>🛠️ CyberCare Tools</h2>
 
     <p class="section-text">
-        These tools work locally in your browser where possible.
+        Helpful privacy and safety tools that work locally
+        in your browser.
     </p>
 
     <div class="tool-grid">
@@ -424,14 +362,15 @@
 
             <div class="tool-icon">🔎</div>
 
-            <h3>Scam Checker</h3>
+            <h3>Scam Scanner</h3>
 
             <p>
-                Check common warning signs in suspicious messages.
+                Paste a suspicious message and scan common
+                scam warning signs.
             </p>
 
             <button class="tool-btn" data-tool="scam">
-                Open Tool
+                Scan Message
             </button>
 
         </article>
@@ -444,11 +383,11 @@
             <h3>Password Checker</h3>
 
             <p>
-                Check password structure locally.
+                Check password strength locally.
             </p>
 
             <button class="tool-btn" data-tool="password">
-                Open Tool
+                Check Password
             </button>
 
         </article>
@@ -458,14 +397,14 @@
 
             <div class="tool-icon">🔗</div>
 
-            <h3>URL Safety Guide</h3>
+            <h3>URL Safety Checker</h3>
 
             <p>
-                Learn what to check before opening a suspicious URL.
+                Check common warning signs in a URL.
             </p>
 
             <button class="tool-btn" data-tool="url">
-                Open Tool
+                Check URL
             </button>
 
         </article>
@@ -478,11 +417,11 @@
             <h3>Privacy Checklist</h3>
 
             <p>
-                Review important privacy and security settings.
+                Review important privacy settings.
             </p>
 
             <button class="tool-btn" data-tool="privacy">
-                Open Tool
+                Open Checklist
             </button>
 
         </article>
@@ -495,11 +434,11 @@
             <h3>Evidence Checklist</h3>
 
             <p>
-                Know what evidence to save before reporting.
+                Learn what evidence to preserve.
             </p>
 
             <button class="tool-btn" data-tool="evidence">
-                Open Tool
+                Open Checklist
             </button>
 
         </article>
@@ -512,7 +451,7 @@
             <h3>Cyber Safety Score</h3>
 
             <p>
-                Check your basic digital safety habits.
+                Test your basic digital safety habits.
             </p>
 
             <button class="tool-btn" data-tool="score">
@@ -579,7 +518,7 @@
 </section>
 
 
-<!-- INDIA CYBER HELP -->
+<!-- INDIA -->
 
 <section id="india" class="india-section">
 
@@ -591,7 +530,7 @@
 
     <p>
         Use official government channels for cybercrime reporting.
-        Never pay an unofficial person promising guaranteed recovery.
+        CyberCare does not receive complaints directly.
     </p>
 
     <div class="india-actions">
@@ -627,18 +566,8 @@
             href="tel:1930"
             class="india-btn emergency-link"
         >
-            ☎️ Call 1930 — Financial Cyber Fraud
+            ☎️ 1930 — Financial Cyber Fraud
         </a>
-
-    </div>
-
-    <div class="important-note">
-
-        <strong>⚠️ Important:</strong>
-
-        CyberCare does not receive your complaint and cannot
-        recover money or accounts itself. Use the official
-        service/provider or government reporting channel.
 
     </div>
 
@@ -690,14 +619,14 @@
     </p>
 
     <p>
-        It provides general educational guidance for account
-        security, scams, harassment, privacy, financial fraud
-        and other common digital safety problems.
+        It provides educational guidance for account security,
+        scams, harassment, privacy, financial fraud and
+        other common digital safety problems.
     </p>
 
     <div class="about-warning">
-        CyberCare is not a police service, bank, social-media
-        company or emergency response service.
+        CyberCare is not a police service, bank,
+        social-media company or emergency response service.
     </div>
 
 </section>
