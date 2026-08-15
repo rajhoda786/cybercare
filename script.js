@@ -1,44 +1,77 @@
 /* ============================================================
-   CYBERCARE — A TO Z DIGITAL PROBLEM SOLVER
-   VERSION: FULL PROBLEM LIBRARY
+   CYBERCARE — COMPLETE A TO Z DIGITAL SAFETY ENGINE
    ------------------------------------------------------------
-   Covers:
-   Facebook, Instagram, WhatsApp, Google/Gmail, YouTube,
-   AdSense, Android/Phone, UPI/Payments, Cyber Fraud,
-   Women Safety, Email, Browser, Privacy, Passwords,
-   Social Media Safety, Blackmail, Harassment, etc.
+   IMPORTANT:
+   - Does NOT inject a new homepage UI
+   - Does NOT create Quick Help outside the existing menu
+   - Does NOT create Service Selector outside the existing menu
+   - Keeps existing HTML/UI intact as much as possible
+   - Adds searchable A-Z problem database
+   - Step-by-step guidance
+   - Facebook / Instagram / WhatsApp / Google / Gmail
+   - YouTube / AdSense / Android / Cyber Fraud
+   - Women Safety / Privacy / Password / Scam / Phishing
 ============================================================ */
 
 "use strict";
 
 /* ============================================================
-   OFFICIAL LINKS
+   OFFICIAL HELP LINKS
 ============================================================ */
 
-const OFFICIAL = {
+const CC_LINKS = {
     facebook: "https://www.facebook.com/help/",
-    instagram: "https://help.instagram.com/",
-    whatsapp: "https://faq.whatsapp.com/",
-    google: "https://support.google.com/",
-    gmail: "https://support.google.com/mail/",
-    youtube: "https://support.google.com/youtube/",
-    adsense: "https://support.google.com/adsense/",
-    android: "https://support.google.com/android/",
-    youtubeStudio: "https://support.google.com/youtube/",
-    cybercrime: "https://www.cybercrime.gov.in/",
-    googleAccount: "https://accounts.google.com/signin/recovery/",
     facebookRecovery: "https://www.facebook.com/login/identify/",
-    instagramRecovery: "https://www.instagram.com/accounts/password/reset/",
-    whatsappSecurity: "https://faq.whatsapp.com/general/account-and-profile/about-two-step-verification/",
-    youtubeStudioLogin: "https://studio.youtube.com/",
-    googleSecurity: "https://myaccount.google.com/security"
+    facebookHacked: "https://www.facebook.com/hacked",
+
+    instagram: "https://help.instagram.com/",
+    instagramRecovery:
+        "https://www.instagram.com/accounts/password/reset/",
+
+    whatsapp: "https://faq.whatsapp.com/",
+
+    google: "https://support.google.com/",
+    googleRecovery:
+        "https://accounts.google.com/signin/recovery",
+    googleSecurity:
+        "https://myaccount.google.com/security",
+
+    gmail:
+        "https://support.google.com/mail/",
+
+    youtube:
+        "https://support.google.com/youtube/",
+
+    youtubeStudio:
+        "https://studio.youtube.com/",
+
+    adsense:
+        "https://support.google.com/adsense/",
+
+    android:
+        "https://support.google.com/android/",
+
+    chrome:
+        "https://support.google.com/chrome/",
+
+    cybercrime:
+        "https://www.cybercrime.gov.in/"
 };
 
 /* ============================================================
-   HELPER
+   GUIDE BUILDER
 ============================================================ */
 
-function makeGuide(service, category, problem, icon, steps, check, avoid, official) {
+function ccGuide(
+    service,
+    category,
+    problem,
+    icon,
+    steps,
+    check,
+    dont,
+    official
+) {
     return {
         service,
         category,
@@ -46,343 +79,405 @@ function makeGuide(service, category, problem, icon, steps, check, avoid, offici
         icon,
         steps,
         check,
-        avoid,
+        dont,
         official
     };
 }
 
 /* ============================================================
-   COMPLETE GUIDE DATABASE
+   COMPLETE PROBLEM DATABASE
 ============================================================ */
 
 const CYBERCARE_GUIDES = [
 
-/* ============================================================
-   FACEBOOK — LOGIN & ACCOUNT
-============================================================ */
+/* ========================= FACEBOOK ========================= */
 
-makeGuide(
+ccGuide(
 "Facebook",
-"Login & Account",
-"Password ভুলে গেছি",
+"Login & Recovery",
+"Facebook password ভুলে গেছি",
 "🔐",
 [
 "Facebook login page খুলুন।",
-"আপনার account-এর সঙ্গে যুক্ত mobile number বা email দিন।",
-"Forgot password / Forgotten password option নির্বাচন করুন।",
-"যে recovery option দেখায় সেটি বেছে নিন।",
-"Verification code পেলে code দিয়ে নতুন password তৈরি করুন।",
-"নতুন password অন্য কোনো website-এ ব্যবহার করা password-এর মতো রাখবেন না।",
-"Password পরিবর্তনের পরে Security settings খুলে অচেনা device/session থেকে logout করুন।"
+"আপনার mobile number, email বা username দিয়ে account খুঁজুন।",
+"Forgot password / Forgotten password নির্বাচন করুন।",
+"যে recovery method আপনার হাতে আছে সেটি নির্বাচন করুন।",
+"Verification code দিয়ে নতুন password তৈরি করুন।",
+"Login করার পরে Security settings খুলুন।",
+"অচেনা device/session থাকলে logout করুন।",
+"Two-factor authentication চালু করুন।"
 ],
-"আপনার account-এর email বা phone এখনও ব্যবহার করতে পারছেন কি না দেখুন।",
-"কাউকে OTP, login code বা password দেবেন না।",
-OFFICIAL.facebookRecovery
+"Recovery email বা phone এখনও আপনার হাতে আছে কি না দেখুন।",
+"OTP, password বা recovery code কাউকে দেবেন না।",
+CC_LINKS.facebookRecovery
 ),
 
-makeGuide(
+ccGuide(
 "Facebook",
-"Login & Account",
-"পুরোনো SIM/phone number নেই",
+"Login & Recovery",
+"Facebook account-এ login হচ্ছে না",
+"🔑",
+[
+"Internet connection পরীক্ষা করুন।",
+"Email/phone/username সঠিকভাবে লিখেছেন কি না দেখুন।",
+"Forgot password দিয়ে recovery চেষ্টা করুন।",
+"অন্য browser বা Facebook app দিয়ে চেষ্টা করুন।",
+"Account locked বা restricted message দেখাচ্ছে কি না দেখুন।",
+"অচেনা login বা security alert থাকলে account recovery করুন।"
+],
+"Login screen-এ exact error message কী দেখাচ্ছে সেটি খেয়াল করুন।",
+"একই password বারবার randomভাবে চেষ্টা করবেন না।",
+CC_LINKS.facebook
+),
+
+ccGuide(
+"Facebook",
+"Account Recovery",
+"পুরোনো SIM নেই",
 "📱",
 [
-"Facebook-এর account recovery page খুলুন।",
-"আপনার account name, email বা পুরোনো number দিয়ে account খুঁজুন।",
-"পুরোনো number-এ code পাঠানোর option থাকলে এবং সেটি ব্যবহার করতে না পারলে অন্য recovery option খুঁজুন।",
-"আগে account-এ যুক্ত থাকা email address ব্যবহার করার চেষ্টা করুন।",
-"Facebook যে identity/recovery verification option দেয় সেটি সম্পূর্ণ করুন।",
-"Account ফিরে পেলে সঙ্গে সঙ্গে নতুন phone number ও recovery email যোগ করুন।"
+"Facebook account recovery page খুলুন।",
+"Account-এর নাম, username, email বা পুরোনো number দিয়ে account খুঁজুন।",
+"পুরোনো number-এ code পাঠানোর option থাকলে অন্য recovery option দেখুন।",
+"আগে যুক্ত থাকা recovery email ব্যবহার করুন।",
+"Facebook যে identity/recovery verification option দেয় তা সম্পূর্ণ করুন।",
+"Account ফিরে পেলে নতুন phone number যোগ করুন।",
+"Recovery email-ও updated রাখুন।"
 ],
 "পুরোনো email এখনও access করা যায় কি না পরীক্ষা করুন।",
-"অচেনা third-party recovery service-কে টাকা দেবেন না।",
-OFFICIAL.facebookRecovery
+"কোনো third-party 'account recovery agent'-কে password দেবেন না।",
+CC_LINKS.facebookRecovery
 ),
 
-makeGuide(
+ccGuide(
 "Facebook",
 "Security",
 "কেউ আমার Facebook password পরিবর্তন করেছে",
 "🚨",
 [
-"প্রথমে নিজের email inbox এবং SMS পরীক্ষা করুন—password/email change-এর notification এসেছে কি না দেখুন।",
-"Facebook-এর official hacked/recovery flow ব্যবহার করুন।",
-"Account-এ ঢুকতে পারলে password সঙ্গে সঙ্গে পরিবর্তন করুন।",
-"Security and Login/Where you're logged in অংশে গিয়ে অচেনা device logout করুন।",
-"Email address ও phone number পরিবর্তন হয়েছে কি না পরীক্ষা করুন।",
-"Two-factor authentication চালু করুন।",
-"অচেনা connected apps এবং sessions remove করুন।"
+"আপনার email inbox ও SMS পরীক্ষা করুন।",
+"Password change notification থাকলে সেটি review করুন।",
+"Facebook-এর hacked-account recovery ব্যবহার করুন।",
+"Account access পেলে নতুন password দিন।",
+"Where you're logged in অংশে গিয়ে অচেনা device logout করুন।",
+"Email এবং phone number পরিবর্তন হয়েছে কি না দেখুন।",
+"Two-factor authentication চালু করুন।"
 ],
-"অচেনা login notification থাকলে সেটি গুরুত্বসহকারে পরীক্ষা করুন।",
-"কাউকে recovery code বা password দেবেন না।",
-" https://www.facebook.com/hacked "
+"Email account-টিও secure করুন।",
+"হ্যাকারকে টাকা দিয়ে account ফেরত নেওয়ার চেষ্টা করবেন না।",
+CC_LINKS.facebookHacked
 ),
 
-makeGuide(
+ccGuide(
 "Facebook",
 "Security",
 "Facebook account hacked",
 "🛡️",
 [
-"অচেনা device থেকে account access বন্ধ করার চেষ্টা করুন।",
-"Facebook-এর official hacked-account recovery ব্যবহার করুন।",
-"Password পরিবর্তন করুন।",
-"Recovery email এবং phone number পরীক্ষা করুন।",
-"অচেনা sessions logout করুন।",
+"Official hacked-account recovery page ব্যবহার করুন।",
+"Account access পেলে password পরিবর্তন করুন।",
+"সব অচেনা login session logout করুন।",
+"Email/phone number পরীক্ষা করুন।",
 "Two-factor authentication চালু করুন।",
-"অচেনা posts/messages/apps থাকলে review করুন।",
-"বন্ধুদের জানিয়ে দিন hacked account থেকে আসা suspicious message যেন তারা বিশ্বাস না করে।"
+"Connected apps এবং permissions review করুন।",
+"বন্ধুদের জানান hacked account থেকে আসা suspicious message যেন তারা বিশ্বাস না করে।"
 ],
-"আপনার email account-ও নিরাপদ আছে কি না পরীক্ষা করুন।",
-"হ্যাকারকে টাকা দিয়ে account ফেরত নেওয়ার চেষ্টা করবেন না।",
-"https://www.facebook.com/hacked"
+"Google/Gmail বা অন্য recovery account-ও secure করুন।",
+"হ্যাকারকে OTP, recovery code বা টাকা দেবেন না।",
+CC_LINKS.facebookHacked
 ),
 
-makeGuide(
+ccGuide(
 "Facebook",
-"Login & Account",
-"Login code আসছে না",
-"🔢",
+"Two-Factor Authentication",
+"Facebook 2FA কাজ করছে না",
+"🔐",
 [
-"Phone number/email সঠিক আছে কি না পরীক্ষা করুন।",
-"SMS-এর পরিবর্তে অন্য available verification option দেখুন।",
-"Spam/Junk folder পরীক্ষা করুন যদি email ব্যবহার করেন।",
-"কিছুক্ষণ অপেক্ষা করে নতুন code request করুন।",
-"একই সঙ্গে বারবার code request করবেন না।",
-"Account access ফিরে পেলে 2FA settings review করুন।"
-],
-"SIM network এবং SMS receiving কাজ করছে কি না পরীক্ষা করুন।",
-"কাউকে verification code দেবেন না।",
-OFFICIAL.facebook
-),
-
-makeGuide(
-"Facebook",
-"Security",
-"Two-Factor Authentication সমস্যা",
-"🔑",
-[
-"Account recovery-এর মাধ্যমে আগে account access নিশ্চিত করুন।",
+"Account recovery করে access নিশ্চিত করুন।",
 "Security settings খুলুন।",
 "Two-factor authentication method পরীক্ষা করুন।",
-"পুরোনো authenticator/phone হারিয়ে গেলে available recovery method ব্যবহার করুন।",
-"Account access পাওয়ার পরে নতুন secure authentication method যোগ করুন।",
+"পুরোনো phone/authenticator unavailable হলে available recovery option ব্যবহার করুন।",
+"Account access পাওয়ার পরে নতুন authentication method যোগ করুন।",
 "Recovery codes নিরাপদ জায়গায় রাখুন।"
 ],
-"আপনার primary email এবং phone number এখনও accessible কি না দেখুন।",
+"Phone number এবং recovery email updated আছে কি না দেখুন।",
 "Recovery code screenshot করে public জায়গায় রাখবেন না।",
-OFFICIAL.facebook
+CC_LINKS.facebook
 ),
 
-makeGuide(
+ccGuide(
+"Facebook",
+"Login",
+"Facebook login code আসছে না",
+"🔢",
+[
+"Phone number বা email সঠিক আছে কি না পরীক্ষা করুন।",
+"SMS network কাজ করছে কি না পরীক্ষা করুন।",
+"Spam/Junk folder দেখুন যদি email ব্যবহার করেন।",
+"কিছুক্ষণ অপেক্ষা করে নতুন code request করুন।",
+"অন্য available verification method থাকলে সেটি ব্যবহার করুন।"
+],
+"SIM-এ SMS receive হচ্ছে কি না পরীক্ষা করুন।",
+"Verification code কাউকে দেবেন না।",
+CC_LINKS.facebook
+),
+
+ccGuide(
 "Facebook",
 "Account Status",
-"Account locked / restricted",
+"Facebook account locked বা restricted",
 "🔒",
 [
-"Login করার সময় Facebook যে exact message দেখাচ্ছে সেটি পড়ুন।",
-"Account Status / Support Inbox পরীক্ষা করুন।",
-"যদি review/appeal option থাকে সেটি ব্যবহার করুন।",
-"Facebook যে তথ্য বা verification চায় তা সঠিকভাবে দিন।",
-"একই issue-এর জন্য বারবার random appeal পাঠাবেন না।",
-"Account ফিরে এলে policy এবং security settings review করুন।"
+"Login করার সময় Facebook যে message দেখাচ্ছে সেটি পড়ুন।",
+"Account Status এবং Support Inbox পরীক্ষা করুন।",
+"Review বা appeal option থাকলে official process ব্যবহার করুন।",
+"Facebook যে verification চায় তা সঠিকভাবে সম্পূর্ণ করুন।",
+"Account ফিরে এলে security ও policy status review করুন।"
 ],
-"Restriction-এর কারণ কী দেখাচ্ছে তা আগে বুঝুন।",
-"Fake documents বা ভুল তথ্য submit করবেন না।",
-OFFICIAL.facebook
+"Restriction-এর exact কারণ আগে বুঝুন।",
+"Fake document বা ভুল তথ্য submit করবেন না।",
+CC_LINKS.facebook
 ),
 
-/* ============================================================
-   FACEBOOK — MONETIZATION
-============================================================ */
-
-makeGuide(
+ccGuide(
 "Facebook",
 "Monetization",
-"Monetization eligible হচ্ছি না",
+"Facebook monetization eligible হচ্ছে না",
 "💰",
 [
 "Professional Dashboard খুলুন।",
 "Monetization section-এ eligibility status দেখুন।",
-"কোন requirement পূরণ হয়নি সেটি শনাক্ত করুন।",
-"Page/profile policy status পরীক্ষা করুন।",
+"কোন requirement পূরণ হয়নি তা শনাক্ত করুন।",
+"Account Status ও policy violations পরীক্ষা করুন।",
 "Content originality এবং policy compliance review করুন।",
-"যে requirement এখনও পূরণ হয়নি সেটি পূরণ করার পরিকল্পনা করুন।",
-"Eligibility status update হতে সময় লাগলে অপেক্ষা করুন।"
+"যে requirement বাকি আছে সেটি পূরণ করুন।",
+"Eligibility update হলে আবার status পরীক্ষা করুন।"
 ],
-"Account Status/Policy violations আগে পরীক্ষা করুন।",
-"কেউ টাকা নিলে monetization guarantee করবে—এমন দাবিতে বিশ্বাস করবেন না।",
-OFFICIAL.facebook
+"Policy violation বা restriction আগে পরীক্ষা করুন।",
+"Fake followers, views বা engagement কিনবেন না।",
+CC_LINKS.facebook
 ),
 
-makeGuide(
+ccGuide(
 "Facebook",
 "Monetization",
-"Monetization setup করতে পারছি না",
+"Facebook monetization setup করতে পারছি না",
 "⚙️",
 [
 "Professional Dashboard > Monetization খুলুন।",
 "Available monetization product নির্বাচন করুন।",
-"Identity, payment এবং tax-related information-এর status দেখুন।",
-"যে field incomplete আছে সেটি সম্পূর্ণ করুন।",
-"Name/payment information যেন official documents-এর সঙ্গে consistent থাকে তা নিশ্চিত করুন।",
+"Identity, payment এবং tax-related information পরীক্ষা করুন।",
+"অসম্পূর্ণ field পূরণ করুন।",
+"Payment information সঠিক রাখুন।",
+"Required verification সম্পূর্ণ করুন।",
 "Submit করার পরে review status দেখুন।"
 ],
-"Payment account এবং identity information সঠিক কি না পরীক্ষা করুন।",
-"অন্য ব্যক্তির payment information ব্যবহার করবেন না।",
-OFFICIAL.facebook
+"Payment এবং identity information-এর spelling/ownership পরীক্ষা করুন।",
+"অন্য ব্যক্তির payment account ব্যবহার করবেন না।",
+CC_LINKS.facebook
 ),
 
-makeGuide(
+ccGuide(
 "Facebook",
 "Monetization",
-"Monetization বন্ধ/Restricted হয়ে গেছে",
+"Facebook monetization restricted",
 "⚠️",
 [
 "Professional Dashboard-এর Monetization status খুলুন।",
-"Restriction-এর reason পড়ুন।",
-"Account Status ও policy violations পরীক্ষা করুন।",
-"যদি appeal/review option থাকে সেটি ব্যবহার করুন।",
-"ভবিষ্যতের content যেন policy-compliant হয় তা নিশ্চিত করুন।",
-"Review শেষ না হওয়া পর্যন্ত suspicious third-party workaround ব্যবহার করবেন না।"
+"Restriction-এর কারণ পড়ুন।",
+"Account Status পরীক্ষা করুন।",
+"Policy violation থাকলে বিষয়টি বুঝুন।",
+"Review/appeal option থাকলে official appeal করুন।",
+"Future content policy-compliant রাখুন।"
 ],
-"Restriction-এর exact reason সংরক্ষণ করুন।",
-"Fake engagement বা paid fake views দিয়ে সমস্যার সমাধান করার চেষ্টা করবেন না।",
-OFFICIAL.facebook
+"Restriction-এর exact reason save করে রাখুন।",
+"Fake engagement দিয়ে restriction bypass করার চেষ্টা করবেন না।",
+CC_LINKS.facebook
 ),
 
-makeGuide(
+ccGuide(
 "Facebook",
 "Monetization",
-"Earnings দেখাচ্ছে না",
+"Facebook earnings দেখাচ্ছে না",
 "📊",
 [
-"Professional Dashboard-এর earnings section খুলুন।",
-"কোন monetization product থেকে income আসার কথা তা পরীক্ষা করুন।",
+"Professional Dashboard খুলুন।",
+"Earnings section-এ যান।",
 "Date range সঠিক আছে কি না দেখুন।",
-"Estimated এবং finalized earnings আলাদা হতে পারে—দুটো status পরীক্ষা করুন।",
-"Payment account এবং payout status পরীক্ষা করুন।",
-"Policy/eligibility restriction আছে কি না দেখুন।"
+"Estimated ও finalized earnings আলাদা কি না দেখুন।",
+"Payment/payout status পরীক্ষা করুন।",
+"Payment hold আছে কি না দেখুন।",
+"Policy বা eligibility restriction পরীক্ষা করুন।"
 ],
-"Dashboard-এ কোনো warning বা payout hold আছে কি না দেখুন।",
-"অচেনা ব্যক্তি/agency-কে account login দেবেন না।",
-OFFICIAL.facebook
+"Dashboard-এর warning/notification পড়ুন।",
+"অচেনা agency-কে login details দেবেন না।",
+CC_LINKS.facebook
 ),
 
-makeGuide(
+ccGuide(
 "Facebook",
 "Pages",
-"Page-এর admin access নেই",
+"Facebook Page admin access নেই",
 "📄",
 [
-"আপনার অন্য কোনো admin account আছে কি না পরীক্ষা করুন।",
-"Page access settings খুলুন।",
-"আপনার access remove করা হয়েছে কি না দেখুন।",
-"Account hacked হলে আগে personal account recover করুন।",
-"Page access recovery/report option থাকলে official process ব্যবহার করুন।",
-"Future-এর জন্য একাধিক trusted admin এবং security method রাখুন।"
+"অন্য কোনো trusted admin আছে কি না পরীক্ষা করুন।",
+"Page access settings দেখুন।",
+"আপনার access remove হয়েছে কি না দেখুন।",
+"Personal Facebook account hacked হলে আগে সেটি recover করুন।",
+"Official Page access/recovery process ব্যবহার করুন।",
+"Page ফিরে পেলে trusted admins ও security settings review করুন।"
 ],
-"Page এবং personal profile দুটির security পরীক্ষা করুন।",
+"Personal profile এবং Page—দুটির security পরীক্ষা করুন।",
 "অচেনা কাউকে admin access দেবেন না।",
-OFFICIAL.facebook
+CC_LINKS.facebook
 ),
 
-makeGuide(
+ccGuide(
 "Facebook",
 "Safety",
-"Fake Facebook profile / impersonation",
+"Facebook fake profile / impersonation",
 "🎭",
 [
-"Fake profile-এর profile URL সংরক্ষণ করুন।",
-"Profile-এর screenshots নিন।",
-"Facebook-এর impersonation/report option ব্যবহার করুন।",
-"যদি আপনার পরিচিত কারও নামে fake account হয় তাকেও report করতে বলুন।",
-"Threat/blackmail থাকলে evidence সংরক্ষণ করুন।",
-"Financial fraud হলে cybercrime report করার কথা বিবেচনা করুন।"
+"Fake profile-এর screenshot নিন।",
+"Profile URL এবং username সংরক্ষণ করুন।",
+"Profile report করুন।",
+"যার নামে fake account তৈরি হয়েছে তাকেও জানানো ভালো।",
+"Threat/blackmail থাকলে evidence আলাদা করে রাখুন।"
 ],
-"Profile URL, username এবং relevant screenshots রাখুন।",
-"Fake account-এর সঙ্গে ঝগড়া বা personal information share করবেন না।",
-OFFICIAL.facebook
+"Profile URL ও screenshots রাখুন।",
+"Fake account-এর সঙ্গে ঝগড়া করবেন না।",
+CC_LINKS.facebook
 ),
 
-/* ============================================================
-   INSTAGRAM
-============================================================ */
+ccGuide(
+"Facebook",
+"Content",
+"Facebook post remove হয়েছে",
+"📝",
+[
+"Notification খুলে removal reason পড়ুন।",
+"Account Status পরীক্ষা করুন।",
+"Content policy কোন অংশে সমস্যা করেছে তা বুঝুন।",
+"Review/appeal option থাকলে official review request করুন।",
+"Future content policy অনুযায়ী তৈরি করুন।"
+],
+"Removal notification-এর screenshot রাখুন।",
+"Repeatedly একই violating content repost করবেন না।",
+CC_LINKS.facebook
+),
 
-makeGuide(
+ccGuide(
+"Facebook",
+"Safety",
+"Facebook harassment",
+"🚫",
+[
+"Harassing message/comment-এর screenshot রাখুন।",
+"Profile বা account block/restrict করুন।",
+"Content বা message report করুন।",
+"Privacy settings শক্ত করুন।",
+"Threat বা blackmail থাকলে evidence backup করুন।",
+"প্রয়োজনে cybercrime/police assistance নিন।"
+],
+"Username, URL, date এবং time সংরক্ষণ করুন।",
+"Harasser-এর সঙ্গে দীর্ঘ argument করবেন না।",
+CC_LINKS.facebook
+),
+
+/* ========================= INSTAGRAM ======================== */
+
+ccGuide(
 "Instagram",
-"Login & Account",
+"Login",
 "Instagram password ভুলে গেছি",
 "🔐",
 [
 "Instagram login screen খুলুন।",
 "Forgot password নির্বাচন করুন।",
-"Username, email বা phone number দিন।",
-"Available recovery method ব্যবহার করুন।",
-"Code দিয়ে নতুন password সেট করুন।",
-"Login-এর পরে Security settings review করুন।"
+"Username/email/phone দিন।",
+"Available recovery option নির্বাচন করুন।",
+"Code দিয়ে নতুন password তৈরি করুন।",
+"Login করার পরে Security settings review করুন।"
 ],
-"Recovery email/phone access আছে কি না দেখুন।",
+"Recovery email বা phone access আছে কি না দেখুন।",
 "Recovery code কাউকে দেবেন না।",
-OFFICIAL.instagramRecovery
+CC_LINKS.instagramRecovery
 ),
 
-makeGuide(
+ccGuide(
 "Instagram",
 "Security",
 "Instagram hacked",
 "🚨",
 [
-"Email inbox-এ Instagram-এর security notification খুঁজুন।",
+"Instagram security email পরীক্ষা করুন।",
 "Password পরিবর্তনের সুযোগ থাকলে সঙ্গে সঙ্গে পরিবর্তন করুন।",
-"Email/phone number পরিবর্তন হয়েছে কি না পরীক্ষা করুন।",
-"অচেনা login/session remove করুন।",
+"Email/phone number পরিবর্তন হয়েছে কি না দেখুন।",
+"Login activity পরীক্ষা করুন।",
+"অচেনা sessions remove করুন।",
 "Two-factor authentication চালু করুন।",
-"Connected apps review করুন।",
-"Friends-কে suspicious DM সম্পর্কে সতর্ক করুন।"
+"Connected apps review করুন।"
 ],
 "আপনার email account-ও secure করুন।",
-"হ্যাকারকে টাকা বা personal information দেবেন না।",
-OFFICIAL.instagram
+"হ্যাকারকে টাকা বা code দেবেন না।",
+CC_LINKS.instagram
 ),
 
-makeGuide(
+ccGuide(
 "Instagram",
-"Safety",
-"Instagram harassment / unwanted messages",
+"Security",
+"Instagram 2FA সমস্যা",
+"🔑",
+[
+"Account recovery করে login করুন।",
+"Security settings খুলুন।",
+"Two-factor authentication method পরীক্ষা করুন।",
+"Available backup/recovery method ব্যবহার করুন।",
+"Account access ফিরে পেলে নতুন secure method যোগ করুন।"
+],
+"Recovery email/phone updated আছে কি না দেখুন।",
+"Backup code public জায়গায় রাখবেন না।",
+CC_LINKS.instagram
+),
+
+ccGuide(
+"Instagram",
+"Privacy",
+"Instagram unwanted DM / harassment",
 "🚫",
 [
-"প্রথমে evidence হিসেবে screenshots রাখুন।",
-"Sender-কে block/restrict করুন।",
-"Message বা profile report করুন।",
-"Privacy settings শক্ত করুন।",
-"Message controls থেকে unwanted requests সীমিত করুন।",
-"Threat বা blackmail থাকলে evidence আলাদা করে সংরক্ষণ করুন।"
+"Message-এর screenshot রাখুন।",
+"Profile block বা restrict করুন।",
+"Message/profile report করুন।",
+"Message controls শক্ত করুন।",
+"Privacy settings review করুন।",
+"Threat থাকলে evidence backup করুন।"
 ],
-"Username, date/time এবং message screenshots রাখুন।",
-"Harasser-এর সঙ্গে দীর্ঘ argument করবেন না।",
-OFFICIAL.instagram
+"Username এবং message-এর date/time সংরক্ষণ করুন।",
+"Harasser-এর সঙ্গে personal information share করবেন না।",
+CC_LINKS.instagram
 ),
 
-makeGuide(
+ccGuide(
 "Instagram",
 "Safety",
-"Blackmail / intimate photo threat",
+"Instagram blackmail",
 "🛑",
 [
 "Blackmailer-কে টাকা দেবেন না।",
-"আর কোনো ছবি, ভিডিও বা personal information পাঠাবেন না।",
-"সব message, profile URL, username এবং payment demand-এর evidence রাখুন।",
-"Account block/report করার আগে প্রয়োজনীয় evidence সংরক্ষণ করুন।",
-"Threat থাকলে trusted person-কে জানান।",
-"ভারতে হলে serious cybercrime/financial fraud-এর ক্ষেত্রে National Cyber Crime Reporting Portal ব্যবহার করুন।",
-"নিজের নিরাপত্তা ঝুঁকিতে থাকলে local emergency/police assistance নিন।"
+"আর কোনো ছবি/video পাঠাবেন না।",
+"সব threatening message-এর screenshot রাখুন।",
+"Username এবং profile URL সংরক্ষণ করুন।",
+"Evidence backup করুন।",
+"Platform report/block ব্যবহার করুন।",
+"ভারতে গুরুতর cybercrime হলে National Cyber Crime Reporting Portal ব্যবহার করুন।"
 ],
-"Evidence delete না করে নিরাপদ backup রাখুন।",
-"Blackmailer-এর কথামতো দেখা করতে যাবেন না।",
-OFFICIAL.cybercrime
+"Evidence delete করবেন না।",
+"Blackmailer-এর সঙ্গে দেখা করতে যাবেন না।",
+CC_LINKS.cybercrime
 ),
 
-makeGuide(
+ccGuide(
 "Instagram",
 "Creator",
 "Instagram monetization সমস্যা",
@@ -390,179 +485,196 @@ makeGuide(
 [
 "Professional Dashboard খুলুন।",
 "Monetization/eligibility status পরীক্ষা করুন।",
-"Policy violations এবং account status দেখুন।",
-"Payment/identity information-এর incomplete field পূরণ করুন।",
-"Eligibility requirement-এর কোন অংশ বাকি আছে তা দেখুন।",
-"Official review/appeal option থাকলে সেটি ব্যবহার করুন।"
+"Account Status ও policy issues দেখুন।",
+"Payment/identity information review করুন।",
+"অসম্পূর্ণ requirements পূরণ করুন।",
+"Official review/appeal option থাকলে ব্যবহার করুন।"
 ],
-"Account Status আগে পরীক্ষা করুন।",
-"Third-party monetization seller-কে password দেবেন না।",
-OFFICIAL.instagram
+"Account restriction আগে পরীক্ষা করুন।",
+"Third-party monetization service-কে password দেবেন না।",
+CC_LINKS.instagram
 ),
 
-/* ============================================================
-   WHATSAPP
-============================================================ */
+/* ========================= WHATSAPP ========================= */
 
-makeGuide(
+ccGuide(
 "WhatsApp",
 "Account",
 "WhatsApp verification code আসছে না",
 "📱",
 [
-"Phone number এবং country code সঠিক কিনা দেখুন।",
-"SIM-এ SMS ও call receive হচ্ছে কিনা পরীক্ষা করুন।",
-"Network connection পরীক্ষা করুন।",
-"কিছুক্ষণ অপেক্ষা করে আবার verification request করুন।",
-"বারবার request করে temporary delay তৈরি করবেন না।",
-"SIM unavailable হলে আগে mobile operator-এর মাধ্যমে number recovery-এর চেষ্টা করুন।"
+"Country code ও phone number সঠিক কিনা দেখুন।",
+"SIM-এ SMS/call receive হচ্ছে কি না পরীক্ষা করুন।",
+"Network পরীক্ষা করুন।",
+"কিছুক্ষণ অপেক্ষা করে আবার code request করুন।",
+"বারবার code request করবেন না।",
+"SIM unavailable হলে operator-এর মাধ্যমে number recovery বিবেচনা করুন।"
 ],
-"SIM active এবং আপনার control-এ আছে কি না নিশ্চিত করুন।",
+"SIM active এবং আপনার control-এ আছে কি না দেখুন।",
 "Verification code কাউকে দেবেন না।",
-OFFICIAL.whatsapp
+CC_LINKS.whatsapp
 ),
 
-makeGuide(
+ccGuide(
 "WhatsApp",
 "Security",
 "WhatsApp account অন্য কেউ নিয়েছে",
 "🚨",
 [
-"আপনার phone number দিয়ে WhatsApp-এ আবার registration করার চেষ্টা করুন।",
+"আপনার number দিয়ে WhatsApp আবার register করার চেষ্টা করুন।",
 "SMS verification code ব্যবহার করুন।",
-"Two-step verification PIN চাইলে available recovery process অনুসরণ করুন।",
-"Linked Devices পরীক্ষা করুন।",
+"Two-step verification PIN চাইলে recovery option অনুসরণ করুন।",
+"Linked Devices খুলুন।",
 "অচেনা device logout করুন।",
 "Two-step verification চালু করুন।",
-"Contacts-কে জানিয়ে দিন hacked account থেকে আসা message যেন তারা বিশ্বাস না করে।"
+"Contacts-কে suspicious message সম্পর্কে জানান।"
 ],
 "Linked Devices list পরীক্ষা করুন।",
-"কোনো WhatsApp verification code কাউকে দেবেন না।",
-OFFICIAL.whatsapp
+"WhatsApp verification code কাউকে দেবেন না।",
+CC_LINKS.whatsapp
 ),
 
-makeGuide(
+ccGuide(
 "WhatsApp",
 "Privacy",
-"অচেনা মানুষ WhatsApp-এ বিরক্ত করছে",
+"WhatsApp-এ কেউ বিরক্ত করছে",
 "🚫",
 [
-"অচেনা number-এর message-এর screenshots রাখুন।",
+"Message/call log-এর evidence রাখুন।",
 "Number block করুন।",
-"Report option ব্যবহার করুন।",
-"Privacy settings review করুন।",
-"Profile photo, about এবং status কে দেখতে পারবে তা সীমিত করুন।",
-"Group privacy settings শক্ত করুন।"
+"Report করুন।",
+"Privacy settings শক্ত করুন।",
+"Groups privacy review করুন।",
+"Unknown callers silence করার option থাকলে ব্যবহার করুন।"
 ],
-"Threat/blackmail থাকলে evidence রাখুন।",
-"অচেনা link খুলবেন না।",
-OFFICIAL.whatsapp
+"Threat থাকলে evidence backup করুন।",
+"অচেনা link বা file খুলবেন না।",
+CC_LINKS.whatsapp
 ),
 
-makeGuide(
+ccGuide(
 "WhatsApp",
 "Privacy",
 "WhatsApp privacy settings",
 "🔒",
 [
 "WhatsApp Settings খুলুন।",
-"Privacy section-এ যান।",
-"Last seen/online visibility সীমিত করুন।",
-"Profile photo visibility review করুন।",
+"Privacy section খুলুন।",
+"Last seen/online visibility review করুন।",
+"Profile photo visibility সীমিত করুন।",
+"About এবং Status visibility review করুন।",
 "Groups-এ কে add করতে পারবে সেটি সীমিত করুন।",
-"Calls from unknown numbers silence করার option থাকলে ব্যবহার করুন।",
-"Disappearing messages প্রয়োজন অনুযায়ী ব্যবহার করুন।"
+"Unknown callers silence option ব্যবহার করতে পারেন।"
 ],
-"আপনার privacy preference অনুযায়ী settings নির্বাচন করুন।",
-"Public profile information-এ sensitive information রাখবেন না।",
-OFFICIAL.whatsapp
+"আপনার প্রয়োজন অনুযায়ী visibility নির্বাচন করুন।",
+"Public profile-এ sensitive information রাখবেন না।",
+CC_LINKS.whatsapp
 ),
 
-/* ============================================================
-   GOOGLE / GMAIL
-============================================================ */
+/* ========================= GOOGLE =========================== */
 
-makeGuide(
+ccGuide(
 "Google",
-"Account",
+"Account Recovery",
 "Google password ভুলে গেছি",
 "🔐",
 [
-"Google account recovery page খুলুন।",
-"আপনার email address দিন।",
-"Google যে verification method দেয় সেটি ব্যবহার করুন।",
+"Google Account Recovery খুলুন।",
+"Email address দিন।",
+"Google-এর verification process অনুসরণ করুন।",
 "আগের password মনে থাকলে সঠিকভাবে দিন।",
-"Recovery phone/email access থাকলে সেটি ব্যবহার করুন।",
+"Recovery phone/email ব্যবহার করুন।",
 "Account ফিরে পেলে Security Checkup করুন।",
 "Two-step verification চালু করুন।"
 ],
 "Recovery information updated আছে কি না দেখুন।",
-"Google account recovery-এর নামে কাউকে password দেবেন না।",
-OFFICIAL.googleAccount
+"কাউকে Google password বা verification code দেবেন না।",
+CC_LINKS.googleRecovery
 ),
 
-makeGuide(
+ccGuide(
+"Google",
+"Security",
+"Google account hacked",
+"🚨",
+[
+"Google Account Security page খুলুন।",
+"Password পরিবর্তন করুন।",
+"Recent security activity দেখুন।",
+"Your devices থেকে অচেনা device sign out করুন।",
+"Third-party apps access review করুন।",
+"Recovery email/phone পরীক্ষা করুন।",
+"Two-step verification চালু করুন।"
+],
+"Recovery email account-ও secure করুন।",
+"Unknown recovery service-কে টাকা দেবেন না।",
+CC_LINKS.googleSecurity
+),
+
+/* ========================= GMAIL ============================ */
+
+ccGuide(
+"Gmail",
+"Email",
+"Gmail-এ email আসছে না",
+"📩",
+[
+"Spam/Junk folder পরীক্ষা করুন।",
+"Google storage full কিনা দেখুন।",
+"Search দিয়ে email খুঁজুন।",
+"Filters পরীক্ষা করুন।",
+"Blocked addresses পরীক্ষা করুন।",
+"Forwarding settings review করুন।",
+"অন্য browser/device থেকে Gmail পরীক্ষা করুন।"
+],
+"Google storage available আছে কি না দেখুন।",
+"অচেনা attachment খুলবেন না।",
+CC_LINKS.gmail
+),
+
+ccGuide(
 "Gmail",
 "Security",
 "Gmail hacked",
 "🚨",
 [
-"Google account recovery ব্যবহার করুন।",
+"Google account recovery করুন।",
 "Password পরিবর্তন করুন।",
-"Google Account > Security খুলুন।",
-"Recent security activity পরীক্ষা করুন।",
-"Your devices থেকে অচেনা device remove/sign out করুন।",
-"Third-party apps access review করুন।",
-"Gmail forwarding এবং filters পরীক্ষা করুন—অচেনা forwarding থাকলে remove করুন।",
+"Recent security activity দেখুন।",
+"Unknown devices sign out করুন।",
+"Third-party access remove করুন।",
+"Gmail forwarding পরীক্ষা করুন।",
+"অচেনা filters remove করুন।",
 "Two-step verification চালু করুন।"
 ],
-"Recovery email এবং phone number পরীক্ষা করুন।",
-"OTP বা password কারও সঙ্গে share করবেন না।",
-OFFICIAL.googleSecurity
+"Recovery phone/email পরীক্ষা করুন।",
+"OTP বা password share করবেন না।",
+CC_LINKS.googleSecurity
 ),
 
-makeGuide(
-"Gmail",
-"Email",
-"Email আসছে না",
-"📩",
-[
-"Spam/Junk folder পরীক্ষা করুন।",
-"Storage full কিনা দেখুন।",
-"Internet connection পরীক্ষা করুন।",
-"Search দিয়ে email খুঁজুন।",
-"Filters এবং blocked addresses পরীক্ষা করুন।",
-"Forwarding settings পরীক্ষা করুন।",
-"অন্য device/browser থেকে Gmail খুলে দেখুন।"
-],
-"Google storage available আছে কি না পরীক্ষা করুন।",
-"অচেনা email-এর attachment/link খুলবেন না।",
-OFFICIAL.gmail
-),
+/* ========================= YOUTUBE ========================== */
 
-/* ============================================================
-   YOUTUBE
-============================================================ */
-
-makeGuide(
+ccGuide(
 "YouTube",
 "Channel",
 "YouTube channel hacked",
 "🚨",
 [
-"Google account recovery করুন।",
+"Google account secure করুন।",
 "Password পরিবর্তন করুন।",
-"Google Security page থেকে unknown devices sign out করুন।",
-"YouTube channel-এর videos, permissions এবং branding পরীক্ষা করুন।",
-"অচেনা managers/permissions remove করুন।",
-"Official YouTube support/recovery route ব্যবহার করুন।"
+"Unknown devices sign out করুন।",
+"YouTube Studio খুলুন।",
+"Channel permissions review করুন।",
+"অচেনা manager/access remove করুন।",
+"Suspicious videos/settings review করুন।",
+"Official support/recovery route ব্যবহার করুন।"
 ],
-"Google account এবং channel দুটির security পরীক্ষা করুন।",
-"Recovery-এর নামে কাউকে login code দেবেন না।",
-OFFICIAL.youtube
+"Google account এবং YouTube channel দুটোই পরীক্ষা করুন।",
+"কাউকে channel login code দেবেন না।",
+CC_LINKS.youtube
 ),
 
-makeGuide(
+ccGuide(
 "YouTube",
 "Monetization",
 "YouTube monetization হচ্ছে না",
@@ -570,80 +682,96 @@ makeGuide(
 [
 "YouTube Studio খুলুন।",
 "Earn/Monetization section দেখুন।",
-"Eligibility requirement কী দেখাচ্ছে তা পরীক্ষা করুন।",
-"Channel policy status পরীক্ষা করুন।",
-"Copyright এবং Community Guidelines issues দেখুন।",
+"Eligibility requirements পরীক্ষা করুন।",
+"Channel policy status দেখুন।",
+"Copyright এবং Community Guidelines issues পরীক্ষা করুন।",
 "যে requirement পূরণ হয়নি সেটি পূরণ করুন।",
 "Eligible হলে official application process অনুসরণ করুন।"
 ],
-"Channel status এবং policy issues আগে দেখুন।",
-"Fake views/subscribers কিনবেন না।",
-OFFICIAL.youtube
+"Policy issue আগে ঠিক করুন।",
+"Fake subscribers/views কিনবেন না।",
+CC_LINKS.youtube
 ),
 
-makeGuide(
+ccGuide(
+"YouTube",
+"Copyright",
+"YouTube copyright issue",
+"©️",
+[
+"YouTube Studio-তে Content/Copyright section দেখুন।",
+"Claim নাকি strike সেটি বুঝুন।",
+"Claim-এর details পড়ুন।",
+"আপনার rights থাকলে official dispute process ব্যবহার করুন।",
+"Copyrighted content ব্যবহারের permission আছে কি না পরীক্ষা করুন।"
+],
+"Copyright notice-এর details সংরক্ষণ করুন।",
+"মিথ্যা copyright dispute submit করবেন না।",
+CC_LINKS.youtube
+),
+
+/* ========================= ADSENSE ========================== */
+
+ccGuide(
 "AdSense",
-"Payment",
+"Account Setup",
 "AdSense account setup করতে পারছি না",
-"💳",
+"💰",
 [
 "AdSense account-এ sign in করুন।",
 "Payments section খুলুন।",
-"Identity/payment information-এর status পরীক্ষা করুন।",
-"Required fields সম্পূর্ণ করুন।",
-"Name ও payment information সঠিক রাখুন।",
-"Google যে verification চায় সেটি সম্পূর্ণ করুন।",
-"কোনো warning থাকলে সেটির exact instruction অনুসরণ করুন।"
+"Identity/payment information পরীক্ষা করুন।",
+"অসম্পূর্ণ fields পূরণ করুন।",
+"নাম ও payment information সঠিক রাখুন।",
+"Google verification সম্পূর্ণ করুন।",
+"Warning বা hold থাকলে সেটির instruction অনুসরণ করুন।"
 ],
-"AdSense এবং Google account একই security standards-এ রাখুন।",
-"AdSense account বিক্রি/ভাড়া/transfer করার চেষ্টা করবেন না।",
-OFFICIAL.adsense
+"Account owner এবং payment information consistent কি না দেখুন।",
+"অন্যের payment details ব্যবহার করবেন না।",
+CC_LINKS.adsense
 ),
 
-makeGuide(
+ccGuide(
 "AdSense",
 "Payment",
 "AdSense payment পাচ্ছি না",
-"💰",
+"💳",
 [
 "Payments page খুলুন।",
 "Payment threshold পূরণ হয়েছে কি না দেখুন।",
-"Payment hold আছে কি না পরীক্ষা করুন।",
+"Payment hold আছে কি না দেখুন।",
 "Identity verification status পরীক্ষা করুন।",
-"Bank/payment method সঠিক আছে কি না দেখুন।",
-"Payment history review করুন।",
-"Official AdSense help/support ব্যবহার করুন।"
+"Payment method সঠিক আছে কি না দেখুন।",
+"Payment history review করুন।"
 ],
-"Payment hold-এর কারণ আগে চিহ্নিত করুন।",
-"অচেনা ব্যক্তি payment release করার নামে টাকা চাইলে দেবেন না।",
-OFFICIAL.adsense
+"Hold-এর কারণ আগে চিহ্নিত করুন।",
+"Payment release করার নামে কাউকে টাকা দেবেন না।",
+CC_LINKS.adsense
 ),
 
-/* ============================================================
-   ANDROID / PHONE
-============================================================ */
+/* ========================= ANDROID ========================== */
 
-makeGuide(
+ccGuide(
 "Android",
 "Phone",
-"Google Assistant চালু হচ্ছে না",
+"Google Assistant / Gemini কাজ করছে না",
 "🎙️",
 [
 "Internet connection পরীক্ষা করুন।",
 "Google app update করুন।",
-"Phone Settings > Apps > Google খুলুন।",
-"Permissions এবং microphone access পরীক্ষা করুন।",
-"Google app-এর cache clear করে আবার চেষ্টা করুন।",
-"Google Assistant/Gemini settings পরীক্ষা করুন।",
+"Settings > Apps > Google খুলুন।",
+"Microphone permission পরীক্ষা করুন।",
+"Google app-এর cache clear করে চেষ্টা করুন।",
+"Assistant/Gemini settings review করুন।",
 "Phone restart করুন।",
-"তারপর voice activation আবার setup করুন।"
+"Microphone অন্য app-এ কাজ করছে কি না পরীক্ষা করুন।"
 ],
-"Microphone অন্য app-এ কাজ করছে কি না পরীক্ষা করুন।",
+"Microphone permission এবং internet আগে পরীক্ষা করুন।",
 "Unknown assistant/mod APK install করবেন না।",
-OFFICIAL.android
+CC_LINKS.android
 ),
 
-makeGuide(
+ccGuide(
 "Android",
 "Internet",
 "Wi-Fi connected কিন্তু internet নেই",
@@ -651,925 +779,1018 @@ makeGuide(
 [
 "Wi-Fi disconnect করে আবার connect করুন।",
 "Router restart করুন।",
-"অন্য device-এ internet কাজ করছে কি না দেখুন।",
-"Phone-এর Wi-Fi network forget করে আবার password দিয়ে connect করুন।",
-"Airplane mode কয়েক সেকেন্ড চালু করে বন্ধ করুন।",
-"DNS/VPN ব্যবহার করলে temporary disable করে পরীক্ষা করুন।",
-"Router-এর সমস্যা হলে ISP-এর সঙ্গে যোগাযোগ করুন।"
+"অন্য device-এ internet আছে কি না পরীক্ষা করুন।",
+"Network forget করে আবার connect করুন।",
+"Airplane mode on/off করুন।",
+"VPN থাকলে temporary disable করে পরীক্ষা করুন।",
+"সব device-এ সমস্যা হলে ISP/router পরীক্ষা করুন।"
 ],
-"শুধু আপনার phone-এ সমস্যা নাকি সব device-এ সমস্যা তা আগে বুঝুন।",
+"সমস্যা শুধু phone-এ নাকি সব device-এ তা আগে দেখুন।",
 "Unknown public Wi-Fi-তে banking করবেন না।",
-OFFICIAL.android
+CC_LINKS.android
 ),
 
-makeGuide(
+ccGuide(
 "Android",
-"Phone",
+"Storage",
 "Phone storage full",
 "💾",
 [
 "Settings > Storage খুলুন।",
-"Large files এবং unused apps চিহ্নিত করুন।",
-"Unnecessary downloads delete করুন।",
-"WhatsApp/Telegram media review করুন।",
-"Photos/videos backup করে প্রয়োজনহীন files delete করুন।",
+"Large files দেখুন।",
+"Downloads পরিষ্কার করুন।",
 "Unused apps uninstall করুন।",
-"Recycle Bin/Trash empty করুন।"
+"Photos/videos backup করুন।",
+"Messaging app-এর unnecessary media delete করুন।",
+"Trash/Recycle Bin empty করুন।"
 ],
-"Important photos/documents আগে backup করুন।",
+"Important files আগে backup করুন।",
 "System files না বুঝে delete করবেন না।",
-OFFICIAL.android
+CC_LINKS.android
 ),
 
-makeGuide(
+ccGuide(
 "Android",
-"Security",
+"Lost Phone",
 "Phone হারিয়ে গেছে",
 "📍",
 [
 "অন্য device থেকে Google Find My Device ব্যবহার করুন।",
-"Phone-এর location দেখা গেলে নিরাপদভাবে retrieve করার চেষ্টা করুন।",
+"Phone locate করার চেষ্টা করুন।",
 "Phone lock করুন।",
-"Phone পাওয়া না গেলে প্রয়োজন অনুযায়ী remote erase বিবেচনা করুন।",
-"SIM operator-এর সঙ্গে যোগাযোগ করে SIM block/reissue করুন।",
-"Banking/UPI এবং important accounts-এর sessions/password secure করুন।",
-"Police report প্রয়োজন হলে করুন।"
+"ফিরে পাওয়ার সম্ভাবনা না থাকলে remote erase বিবেচনা করুন।",
+"SIM operator-এর সঙ্গে যোগাযোগ করুন।",
+"Banking/UPI apps এবং গুরুত্বপূর্ণ accounts secure করুন।",
+"প্রয়োজনে police report করুন।"
 ],
 "Phone-এ screen lock ছিল কি না মনে করুন।",
-"নিজে গিয়ে অপরাধীর সঙ্গে confrontation করবেন না।",
-OFFICIAL.android
+"নিজে গিয়ে সন্দেহভাজন ব্যক্তির সঙ্গে confrontation করবেন না।",
+CC_LINKS.android
 ),
 
-/* ============================================================
-   PASSWORD & GENERAL SECURITY
-============================================================ */
+/* ========================= CYBER FRAUD ====================== */
 
-makeGuide(
-"Cyber Security",
-"Passwords",
-"Password নিরাপদ করতে চাই",
-"🔑",
-[
-"প্রতিটি গুরুত্বপূর্ণ account-এর জন্য আলাদা password ব্যবহার করুন।",
-"লম্বা passphrase ব্যবহার করুন।",
-"Password manager ব্যবহার করতে পারেন।",
-"Two-factor authentication চালু করুন।",
-"Recovery email এবং phone number updated রাখুন।",
-"পুরোনো বা leaked password reuse করবেন না।"
-],
-"একই password একাধিক account-এ আছে কি না পরীক্ষা করুন।",
-"Password notes public chat/gallery-তে রাখবেন না।",
-"https://www.cisa.gov/secure-our-world/use-strong-passwords"
-),
-
-/* ============================================================
-   CYBER FRAUD
-============================================================ */
-
-makeGuide(
+ccGuide(
 "Cyber Fraud",
-"UPI / Payment",
-"UPI scam হয়েছে",
+"UPI",
+"UPI fraud হয়েছে",
 "💸",
 [
 "আর কোনো টাকা পাঠাবেন না।",
-"Transaction ID, UTR, screenshots এবং messages সংরক্ষণ করুন।",
-"আপনার bank/UPI provider-এর official fraud reporting channel-এ দ্রুত report করুন।",
-"UPI app-এর transaction dispute/report option ব্যবহার করুন।",
-"ভারতে cyber financial fraud হলে দ্রুত National Cyber Crime Reporting Portal-এ report করার কথা বিবেচনা করুন।",
-"প্রয়োজনে bank account/card temporarily secure করুন।"
+"Transaction ID/UTR সংরক্ষণ করুন।",
+"Screenshot নিন।",
+"Bank/UPI provider-এর official fraud reporting channel ব্যবহার করুন।",
+"UPI app-এর dispute/report option ব্যবহার করুন।",
+"ভারতে cyber financial fraud হলে National Cyber Crime Reporting Portal-এ দ্রুত report করার কথা বিবেচনা করুন।",
+"প্রয়োজনে bank account/card secure করুন।"
 ],
-"Transaction time, amount, UTR এবং receiver details সংরক্ষণ করুন।",
-"Refund পাওয়ার নামে দ্বিতীয়বার টাকা দেবেন না।",
-OFFICIAL.cybercrime
+"Amount, date, time, UTR এবং receiver details সংরক্ষণ করুন।",
+"Refund পাওয়ার নামে আবার টাকা দেবেন না।",
+CC_LINKS.cybercrime
 ),
 
-makeGuide(
+ccGuide(
 "Cyber Fraud",
 "OTP",
-"OTP চাওয়া হয়েছে",
+"কেউ OTP চেয়েছে",
 "🚨",
 [
 "OTP কাউকে বলবেন না।",
-"কোন service-এর OTP তা বুঝুন।",
+"OTP কোন service-এর তা পড়ুন।",
 "আপনি নিজে transaction শুরু না করলে OTP ব্যবহার করবেন না।",
-"Account suspicious মনে হলে password পরিবর্তন করুন।",
-"Banking OTP হলে bank-এর official channel-এ report করুন।"
+"Suspicious activity হলে password পরিবর্তন করুন।",
+"Banking OTP হলে bank-এর official fraud channel-এ যোগাযোগ করুন।"
 ],
-"OTP message-এ transaction/service-এর নাম পড়ুন।",
+"OTP message-এ transaction/service name দেখুন।",
 "Customer care সেজে কেউ OTP চাইলে দেবেন না।",
-OFFICIAL.cybercrime
+CC_LINKS.cybercrime
 ),
 
-makeGuide(
+ccGuide(
 "Cyber Fraud",
 "Phishing",
 "Suspicious link পেয়েছি",
 "🔗",
 [
 "Link-এ click করবেন না।",
-"Sender-এর identity যাচাই করুন।",
-"Message-এ urgent payment/password request থাকলে সন্দেহ করুন।",
-"Official website নিজে browser-এ টাইপ করে খুলুন।",
-"Click করে ফেললে password দিলে সঙ্গে সঙ্গে password পরিবর্তন করুন।",
+"Sender যাচাই করুন।",
+"Urgent payment/password request সন্দেহ করুন।",
+"Official website নিজে browser-এ খুলুন।",
+"Click করে password দিয়ে ফেললে password সঙ্গে সঙ্গে পরিবর্তন করুন।",
 "Banking information দিলে bank-এর official fraud channel-এ যোগাযোগ করুন।"
 ],
-"Domain name carefully পরীক্ষা করুন।",
-"Shortened/unknown links trust করবেন না।",
-OFFICIAL.cybercrime
+"Website address/domain carefully দেখুন।",
+"Unknown shortened link খুলবেন না।",
+CC_LINKS.cybercrime
 ),
 
-/* ============================================================
-   WOMEN SAFETY
-============================================================ */
+ccGuide(
+"Cyber Fraud",
+"Online Shopping",
+"Online shopping scam",
+"🛒",
+[
+"Order/payment screenshots রাখুন।",
+"Transaction ID সংরক্ষণ করুন।",
+"Seller/store-এর details সংরক্ষণ করুন।",
+"Platform-এর official dispute/refund process ব্যবহার করুন।",
+"Bank/payment provider-কে fraud report করুন।",
+"প্রয়োজনে cybercrime portal-এ report করুন।"
+],
+"Payment proof এবং communication save করুন।",
+"Refund-এর জন্য আবার টাকা দেবেন না।",
+CC_LINKS.cybercrime
+),
 
-makeGuide(
+ccGuide(
+"Cyber Fraud",
+"Job Scam",
+"Fake job scam",
+"💼",
+[
+"Scammer-এর number/profile/email সংরক্ষণ করুন।",
+"Payment proof রাখুন।",
+"আর কোনো টাকা দেবেন না।",
+"Bank/payment provider-কে report করুন।",
+"Platform-এ scam report করুন।",
+"Cybercrime report করার কথা বিবেচনা করুন।"
+],
+"Job offer-এর domain/email/number সংরক্ষণ করুন।",
+"Registration fee বা security deposit-এর নামে বারবার টাকা দেবেন না।",
+CC_LINKS.cybercrime
+),
+
+/* ========================= WOMEN SAFETY ===================== */
+
+ccGuide(
 "Women Safety",
-"Harassment",
-"Phone call করে বিরক্ত করছে",
+"Phone Harassment",
+"ফোন করে বিরক্ত করছে",
 "📞",
 [
-"প্রথমে repeated calls-এর screenshots/call logs রাখুন।",
+"Call log-এর screenshot রাখুন।",
 "Number block করুন।",
-"Phone-এর spam protection/call blocking ব্যবহার করুন।",
-"Unknown callers-এর সঙ্গে personal information share করবেন না।",
+"Spam protection/call blocking ব্যবহার করুন।",
+"Personal information share করবেন না।",
 "Threat থাকলে trusted person-কে জানান।",
-"Serious threat/stalking হলে local authorities-এর assistance নিন।",
-"Digital evidence delete করবেন না।"
+"Repeated stalking/threat হলে appropriate authorities-এর assistance নিন।",
+"Evidence delete করবেন না।"
 ],
-"Number, date, time এবং threatening content লিখে রাখুন।",
+"Number, date, time এবং threat-এর details লিখে রাখুন।",
 "অপরিচিত ব্যক্তির সঙ্গে দেখা করতে যাবেন না।",
-OFFICIAL.cybercrime
+CC_LINKS.cybercrime
 ),
 
-makeGuide(
+ccGuide(
 "Women Safety",
 "Online Harassment",
-"Facebook/Instagram/WhatsApp-এ harassment",
+"Social media-তে harassment",
 "🛡️",
 [
-"Harassing messages-এর screenshots নিন।",
-"Profile/number/username সংরক্ষণ করুন।",
-"Block এবং report করুন।",
+"Message/comment-এর screenshot নিন।",
+"Username এবং profile URL সংরক্ষণ করুন।",
+"Account block/restrict করুন।",
+"Message/profile report করুন।",
 "Privacy settings শক্ত করুন।",
-"Mutual contacts-এর মাধ্যমে personal information leak হচ্ছে কি না দেখুন।",
 "Threat/blackmail থাকলে evidence backup করুন।",
 "প্রয়োজনে cybercrime/police assistance নিন।"
 ],
-"Evidence-এ date/time এবং profile URL রাখুন।",
-"Harasser-কে ভয় পেয়ে টাকা বা আরও ছবি দেবেন না।",
-OFFICIAL.cybercrime
+"Date/time সহ evidence রাখুন।",
+"Harasser-কে টাকা বা private information দেবেন না।",
+CC_LINKS.cybercrime
 ),
 
-makeGuide(
+ccGuide(
 "Women Safety",
 "Stalking",
-"কেউ online/offline follow বা stalk করছে",
+"কেউ online/offline stalk করছে",
 "🚨",
 [
-"ঘটনার date, time, place এবং digital evidence নোট করুন।",
+"ঘটনার date/time/place লিখে রাখুন।",
+"Digital evidence সংরক্ষণ করুন।",
 "Trusted family/friend-কে জানান।",
-"Location sharing এবং social media privacy review করুন।",
-"Live location public post করবেন না।",
-"অপরিচিত person-এর সঙ্গে একা দেখা করবেন না।",
-"Repeated threat/stalking হলে authorities-এর assistance নিন।"
+"Social media privacy settings review করুন।",
+"Live location public করবেন না।",
+"অপরিচিত ব্যক্তির সঙ্গে একা দেখা করবেন না।",
+"Repeated threat/stalking হলে appropriate authority-এর সাহায্য নিন।"
 ],
-"Evidence নিরাপদ জায়গায় backup রাখুন।",
-"নিজে গিয়ে stalker-এর সঙ্গে confrontation করবেন না।",
-OFFICIAL.cybercrime
+"Evidence নিরাপদ জায়গায় backup করুন।",
+"Stalker-এর সঙ্গে নিজে গিয়ে confrontation করবেন না।",
+CC_LINKS.cybercrime
 ),
 
-makeGuide(
+ccGuide(
 "Women Safety",
 "Blackmail",
-"Private photo/video দিয়ে blackmail",
+"Private photo/video দিয়ে blackmail করছে",
 "🛑",
 [
 "Blackmailer-কে টাকা দেবেন না।",
 "আর কোনো private photo/video পাঠাবেন না।",
-"Threatening messages-এর screenshots এবং account details রাখুন।",
+"সব threat/message-এর screenshot রাখুন।",
+"Username/profile URL সংরক্ষণ করুন।",
 "Evidence backup করুন।",
 "Platform-এ report/block করুন।",
-"Trusted person-কে জানান—একা handle করার প্রয়োজন নেই।",
-"ভারতে হলে cybercrime reporting route ব্যবহার করুন।"
+"বিশ্বাসযোগ্য family/friend-কে জানান।",
+"ভারতে cybercrime reporting route ব্যবহার করুন।"
 ],
 "Evidence delete করবেন না।",
 "Blackmailer-এর সঙ্গে দেখা করতে যাবেন না।",
-OFFICIAL.cybercrime
+CC_LINKS.cybercrime
 ),
 
-/* ============================================================
-   EMAIL / BROWSER / PRIVACY
-============================================================ */
+/* ========================= PRIVACY ========================== */
 
-makeGuide(
-"Browser",
-"Privacy",
-"Browser-এ suspicious popup আসছে",
-"🌐",
-[
-"Popup-এ click করবেন না।",
-"Suspicious tab বন্ধ করুন।",
-"Browser notification permissions পরীক্ষা করুন।",
-"Unknown extensions remove করুন।",
-"Browser update করুন।",
-"Suspicious app install হয়ে থাকলে uninstall করুন।",
-"Account password/permissions review করুন।"
-],
-"কোন website থেকে popup আসছে তা খেয়াল করুন।",
-"Popup বলছে 'আপনার phone infected'—এমন message দেখে random app install করবেন না।",
-"https://support.google.com/chrome/"
-),
-
-makeGuide(
+ccGuide(
 "Privacy",
 "Account Security",
-"আমার account কোথায় কোথায় login আছে জানতে চাই",
+"আমার account কোথায় login আছে দেখতে চাই",
 "👁️",
 [
 "Account-এর Security settings খুলুন।",
 "Logged-in devices/session list দেখুন।",
 "অচেনা device শনাক্ত করুন।",
 "Unknown session sign out করুন।",
-"Password পরিবর্তন করুন যদি suspicious activity দেখেন।",
+"Suspicious activity থাকলে password পরিবর্তন করুন।",
 "Two-factor authentication চালু করুন।"
 ],
-"Device name, location এবং last active time মিলিয়ে দেখুন।",
-"শুধু location দেখে সিদ্ধান্ত নেবেন না—VPN/mobile network-এর কারণে location ভুল হতে পারে।",
-OFFICIAL.googleSecurity
+"Device name ও last active information মিলিয়ে দেখুন।",
+"শুধু approximate location দেখে সিদ্ধান্ত নেবেন না।",
+CC_LINKS.googleSecurity
+),
+
+ccGuide(
+"Cyber Security",
+"Passwords",
+"নিরাপদ password বানাতে চাই",
+"🔑",
+[
+"প্রতিটি গুরুত্বপূর্ণ account-এ আলাদা password ব্যবহার করুন।",
+"Long passphrase ব্যবহার করুন।",
+"Password manager ব্যবহার করতে পারেন।",
+"Two-factor authentication চালু করুন।",
+"Recovery email/phone updated রাখুন।",
+"Leaked বা reused password পরিবর্তন করুন।"
+],
+"একই password একাধিক account-এ ব্যবহার করেছেন কি না দেখুন।",
+"Password public notes বা social media chat-এ রাখবেন না।",
+"https://www.cisa.gov/secure-our-world/use-strong-passwords"
+),
+
+/* ========================= BROWSER ========================== */
+
+ccGuide(
+"Browser",
+"Security",
+"Browser-এ suspicious popup আসছে",
+"🌐",
+[
+"Popup-এ click করবেন না।",
+"Suspicious tab বন্ধ করুন।",
+"Browser notification permissions review করুন।",
+"Unknown extensions remove করুন।",
+"Browser update করুন।",
+"Suspicious app install হয়ে থাকলে uninstall করুন।",
+"Account password/permissions review করুন।"
+],
+"কোন website থেকে popup আসছে তা দেখুন।",
+"Popup বলছে phone infected—এমন message দেখে random cleaner/security app install করবেন না।",
+CC_LINKS.chrome
 )
 
 ];
 
 /* ============================================================
-   EXTRA UNIVERSAL PROBLEM CATEGORIES
+   SEARCH / NORMALIZATION
 ============================================================ */
 
-const EXTRA_CATEGORIES = [
-    "Account Recovery",
-    "Hacked Account",
-    "Password",
-    "2FA",
-    "Login",
-    "Privacy",
-    "Safety",
-    "Harassment",
-    "Blackmail",
-    "Scam",
-    "Fraud",
-    "UPI",
-    "Payment",
-    "Monetization",
-    "Creator",
-    "Page",
-    "Email",
-    "Phone",
-    "Android",
-    "Internet",
-    "Browser",
-    "Women Safety",
-    "Cyber Crime"
-];
+function ccNormalize(value) {
 
-/* ============================================================
-   SEARCH ENGINE
-============================================================ */
-
-function normalizeText(text) {
-    return String(text || "")
+    return String(value || "")
         .toLowerCase()
         .replace(/[^\w\u0980-\u09ff\s]/g, " ")
         .replace(/\s+/g, " ")
         .trim();
 }
 
-function searchCyberCare(query) {
+function ccSearch(query) {
 
-    const q = normalizeText(query);
+    const q = ccNormalize(query);
 
-    if (!q) return CYBERCARE_GUIDES;
+    if (!q) {
+        return CYBERCARE_GUIDES;
+    }
 
     const words = q.split(" ");
 
     return CYBERCARE_GUIDES
         .map(item => {
 
-            const fullText = normalizeText(
-                item.service + " " +
-                item.category + " " +
-                item.problem + " " +
-                item.steps.join(" ") + " " +
-                item.check + " " +
-                item.avoid
+            const text = ccNormalize(
+                [
+                    item.service,
+                    item.category,
+                    item.problem,
+                    ...item.steps,
+                    item.check,
+                    item.dont
+                ].join(" ")
             );
 
             let score = 0;
 
-            if (normalizeText(item.problem).includes(q)) score += 100;
-            if (normalizeText(item.service).includes(q)) score += 60;
-            if (normalizeText(item.category).includes(q)) score += 40;
+            if (ccNormalize(item.problem).includes(q)) {
+                score += 100;
+            }
+
+            if (ccNormalize(item.service).includes(q)) {
+                score += 60;
+            }
+
+            if (ccNormalize(item.category).includes(q)) {
+                score += 40;
+            }
 
             words.forEach(word => {
-                if (word.length > 1 && fullText.includes(word)) {
+
+                if (word.length < 2) return;
+
+                if (text.includes(word)) {
                     score += 10;
                 }
+
             });
 
-            return { item, score };
+            return {
+                item,
+                score
+            };
 
         })
-        .filter(x => x.score > 0)
+        .filter(result => result.score > 0)
         .sort((a, b) => b.score - a.score)
-        .map(x => x.item);
+        .map(result => result.item);
 }
 
 /* ============================================================
-   SERVICE FILTER
+   SERVICE / CATEGORY FILTER
 ============================================================ */
 
-function getServices() {
-    return [...new Set(
-        CYBERCARE_GUIDES.map(item => item.service)
-    )];
+function ccServices() {
+
+    return [
+        ...new Set(
+            CYBERCARE_GUIDES.map(item => item.service)
+        )
+    ];
+
 }
 
-function getCategories(service) {
+function ccCategories(service = "") {
+
     return [
         ...new Set(
             CYBERCARE_GUIDES
-                .filter(item => !service || item.service === service)
+                .filter(item =>
+                    !service ||
+                    item.service === service
+                )
                 .map(item => item.category)
         )
     ];
+
 }
 
-function getProblems(service, category) {
-    return CYBERCARE_GUIDES.filter(item =>
-        (!service || item.service === service) &&
-        (!category || item.category === category)
-    );
+function ccProblems(service = "", category = "") {
+
+    return CYBERCARE_GUIDES.filter(item => {
+
+        return (
+            (!service || item.service === service) &&
+            (!category || item.category === category)
+        );
+
+    });
+
 }
 
 /* ============================================================
-   UI HELPERS
+   HTML SAFETY
 ============================================================ */
 
-function escapeHTML(text) {
-    return String(text)
+function ccEscape(value) {
+
+    return String(value)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
 }
 
-function createGuideCard(item) {
+/* ============================================================
+   GUIDE HTML
+============================================================ */
 
-    const steps = item.steps.map((step, index) => `
-        <div class="cc-step">
-            <div class="cc-step-number">${index + 1}</div>
-            <div class="cc-step-text">${escapeHTML(step)}</div>
-        </div>
-    `).join("");
+function ccGuideHTML(item) {
+
+    const steps = item.steps.map((step, index) => {
+
+        return `
+            <div class="cc-dynamic-step">
+                <span class="cc-dynamic-step-number">
+                    ${index + 1}
+                </span>
+
+                <span class="cc-dynamic-step-text">
+                    ${ccEscape(step)}
+                </span>
+            </div>
+        `;
+
+    }).join("");
 
     return `
-        <article class="cc-guide-card">
+        <article class="cc-dynamic-guide">
 
-            <div class="cc-guide-header">
-                <div class="cc-guide-icon">${item.icon}</div>
+            <div class="cc-dynamic-header">
+
+                <div class="cc-dynamic-icon">
+                    ${item.icon}
+                </div>
 
                 <div>
-                    <div class="cc-service-name">
-                        ${escapeHTML(item.service)}
-                    </div>
+                    <small>
+                        ${ccEscape(item.service)}
+                        •
+                        ${ccEscape(item.category)}
+                    </small>
 
                     <h3>
-                        ${escapeHTML(item.problem)}
+                        ${ccEscape(item.problem)}
                     </h3>
-
-                    <span class="cc-category">
-                        ${escapeHTML(item.category)}
-                    </span>
                 </div>
+
             </div>
 
-            <div class="cc-guide-section">
-                <h4>✅ কী করবেন</h4>
-                <div class="cc-steps">
+            <div class="cc-dynamic-body">
+
+                <h4>What you should do</h4>
+
+                <div class="cc-dynamic-steps">
                     ${steps}
                 </div>
-            </div>
 
-            <div class="cc-info success">
-                <strong>🔎 আগে এটা দেখুন:</strong>
-                ${escapeHTML(item.check)}
-            </div>
+                <div class="cc-dynamic-check">
+                    <strong>🔎 আগে যা check করবেন:</strong>
+                    <br>
+                    ${ccEscape(item.check)}
+                </div>
 
-            <div class="cc-info danger">
-                <strong>⚠️ যা করবেন না:</strong>
-                ${escapeHTML(item.avoid)}
-            </div>
+                <div class="cc-dynamic-dont">
+                    <strong>⚠️ যা করবেন না:</strong>
+                    <br>
+                    ${ccEscape(item.dont)}
+                </div>
 
-            <a
-                class="cc-official-button"
-                href="${item.official}"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Official Help / Report →
-            </a>
+                <a
+                    class="cc-dynamic-official"
+                    href="${ccEscape(item.official)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Official Help / Report →
+                </a>
+
+            </div>
 
         </article>
     `;
+
+}
+
+/* ============================================================
+   FIND EXISTING RESULT CONTAINER
+   ------------------------------------------------------------
+   IMPORTANT:
+   We only use existing elements.
+   We DO NOT create homepage sections automatically.
+============================================================ */
+
+function ccFindResultContainer() {
+
+    const selectors = [
+
+        "#results",
+        "#searchResults",
+        "#guideResults",
+        "#guidesContainer",
+        "#guides",
+        "#resultsContainer",
+        ".results",
+        ".guide-results",
+        ".guides-container"
+
+    ];
+
+    for (const selector of selectors) {
+
+        const element =
+            document.querySelector(selector);
+
+        if (element) {
+            return element;
+        }
+
+    }
+
+    return null;
+
 }
 
 /* ============================================================
    RENDER RESULTS
 ============================================================ */
 
-function renderGuides(items, container) {
+function ccRender(items, container = null) {
 
-    if (!container) return;
+    const target =
+        container ||
+        ccFindResultContainer();
+
+    if (!target) {
+
+        console.warn(
+            "CyberCare: existing result container not found."
+        );
+
+        return;
+
+    }
 
     if (!items.length) {
 
-        container.innerHTML = `
-            <div class="cc-no-result">
-                <div class="cc-no-result-icon">🔍</div>
-                <h3>সমস্যাটি খুঁজে পাওয়া যায়নি</h3>
+        target.innerHTML = `
+            <div class="cc-dynamic-empty">
+
+                <div>🔍</div>
+
+                <h3>
+                    Problem not found
+                </h3>
+
                 <p>
-                    অন্যভাবে লিখে চেষ্টা করুন।
-                    যেমন: <b>password ভুলে গেছি</b>,
-                    <b>account hacked</b>,
-                    <b>SIM নেই</b>,
-                    <b>monetization</b>।
+                    অন্যভাবে লিখে আবার চেষ্টা করুন।
+                    যেমন:
+                    <br>
+                    <b>password ভুলে গেছি</b>
+                    <br>
+                    <b>account hacked</b>
+                    <br>
+                    <b>SIM নেই</b>
+                    <br>
+                    <b>monetization</b>
                 </p>
+
             </div>
         `;
 
         return;
+
     }
 
-    container.innerHTML = items.map(createGuideCard).join("");
+    target.innerHTML =
+        items.map(ccGuideHTML).join("");
+
 }
 
 /* ============================================================
-   AUTO CONNECT EXISTING SEARCH
+   SEARCH INPUT CONNECTOR
 ============================================================ */
 
-function connectSearch() {
+function ccFindSearchInput() {
+
+    const selectors = [
+
+        "#searchInput",
+        "#search",
+        "#searchBox",
+        "#guideSearch",
+        "#problemSearch",
+        ".search-input",
+        "input[type='search']"
+
+    ];
+
+    for (const selector of selectors) {
+
+        const element =
+            document.querySelector(selector);
+
+        if (element) {
+            return element;
+        }
+
+    }
+
+    return null;
+
+}
+
+function ccConnectSearch() {
 
     const input =
-        document.querySelector("#searchInput") ||
-        document.querySelector("#search") ||
-        document.querySelector(".search-input");
+        ccFindSearchInput();
 
-    const results =
-        document.querySelector("#results") ||
-        document.querySelector("#searchResults") ||
-        document.querySelector("#guidesContainer") ||
-        document.querySelector("#guides");
+    const resultContainer =
+        ccFindResultContainer();
 
-    if (!input || !results) return;
+    if (!input || !resultContainer) {
 
-    let timer;
+        console.log(
+            "CyberCare search: existing search/result elements not detected."
+        );
 
-    input.addEventListener("input", function () {
+        return;
+
+    }
+
+    let timer = null;
+
+    input.addEventListener("input", () => {
 
         clearTimeout(timer);
 
         timer = setTimeout(() => {
 
-            const query = input.value.trim();
+            const query =
+                input.value.trim();
 
             if (!query) {
-                renderGuides(CYBERCARE_GUIDES, results);
+
+                /*
+                   IMPORTANT:
+                   Empty search restores the existing
+                   UI state only if the current result
+                   container is intended for guides.
+                */
+
                 return;
+
             }
 
-            const found = searchCyberCare(query);
-
-            renderGuides(found, results);
-
-        }, 150);
-
-    });
-}
-
-/* ============================================================
-   SERVICE SELECTOR
-============================================================ */
-
-function createServiceSelector() {
-
-    if (document.querySelector("#cybercareServiceSelector")) return;
-
-    const wrapper = document.createElement("section");
-
-    wrapper.id = "cybercareServiceSelector";
-
-    wrapper.className = "cc-service-selector";
-
-    wrapper.innerHTML = `
-
-        <div class="cc-selector-title">
-            <span>🛡️</span>
-            <div>
-                <h2>What do you need help with?</h2>
-                <p>Choose a service or search your problem.</p>
-            </div>
-        </div>
-
-        <div class="cc-service-buttons">
-
-            ${getServices().map(service => `
-
-                <button
-                    type="button"
-                    class="cc-service-btn"
-                    data-service="${escapeHTML(service)}"
-                >
-                    ${getServiceIcon(service)}
-                    <span>${escapeHTML(service)}</span>
-                </button>
-
-            `).join("")}
-
-        </div>
-
-    `;
-
-    const target =
-        document.querySelector("#guidesContainer") ||
-        document.querySelector("#guides") ||
-        document.querySelector("#results") ||
-        document.body;
-
-    target.parentNode.insertBefore(wrapper, target);
-
-    wrapper.querySelectorAll(".cc-service-btn").forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            const service = button.dataset.service;
-
             const results =
-                document.querySelector("#results") ||
-                document.querySelector("#searchResults") ||
-                document.querySelector("#guidesContainer") ||
-                document.querySelector("#guides");
+                ccSearch(query);
 
-            renderGuides(
-                getProblems(service),
-                results
+            ccRender(
+                results,
+                resultContainer
             );
 
-            results?.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        });
+        }, 120);
 
     });
-}
 
-function getServiceIcon(service) {
-
-    const icons = {
-        "Facebook": "📘",
-        "Instagram": "📸",
-        "WhatsApp": "💬",
-        "Google": "🔵",
-        "Gmail": "📧",
-        "YouTube": "▶️",
-        "AdSense": "💰",
-        "Android": "📱",
-        "Cyber Fraud": "🚨",
-        "Women Safety": "🛡️",
-        "Privacy": "🔒",
-        "Browser": "🌐",
-        "Cyber Security": "🔐"
-    };
-
-    return icons[service] || "🛡️";
 }
 
 /* ============================================================
-   QUICK HELP
+   EXISTING MENU BUTTON SUPPORT
+   ------------------------------------------------------------
+   If existing HTML has data-service / data-category /
+   data-problem attributes, this automatically works.
 ============================================================ */
 
-const QUICK_HELP = [
+function ccConnectExistingMenu() {
 
-    {
-        title: "Account hacked",
-        icon: "🚨",
-        query: "hacked account"
-    },
+    document.addEventListener("click", event => {
 
-    {
-        title: "Password forgotten",
-        icon: "🔑",
-        query: "password ভুলে"
-    },
+        const serviceButton =
+            event.target.closest(
+                "[data-service]"
+            );
 
-    {
-        title: "Blackmail",
-        icon: "🛑",
-        query: "blackmail"
-    },
+        if (serviceButton) {
 
-    {
-        title: "Harassment",
-        icon: "🚫",
-        query: "harassment"
-    },
-
-    {
-        title: "UPI fraud",
-        icon: "💸",
-        query: "UPI scam"
-    },
-
-    {
-        title: "Monetization",
-        icon: "💰",
-        query: "monetization"
-    },
-
-    {
-        title: "Phone lost",
-        icon: "📱",
-        query: "phone হারিয়ে"
-    },
-
-    {
-        title: "Suspicious link",
-        icon: "🔗",
-        query: "suspicious link"
-    }
-
-];
-
-function createQuickHelp() {
-
-    if (document.querySelector("#cybercareQuickHelp")) return;
-
-    const section = document.createElement("section");
-
-    section.id = "cybercareQuickHelp";
-
-    section.className = "cc-quick-help";
-
-    section.innerHTML = `
-
-        <div class="cc-quick-title">
-            <h2>⚡ Quick Help</h2>
-            <p>Common problems</p>
-        </div>
-
-        <div class="cc-quick-grid">
-
-            ${QUICK_HELP.map(item => `
-
-                <button
-                    type="button"
-                    class="cc-quick-btn"
-                    data-query="${escapeHTML(item.query)}"
-                >
-                    <span>${item.icon}</span>
-                    <strong>${escapeHTML(item.title)}</strong>
-                </button>
-
-            `).join("")}
-
-        </div>
-    `;
-
-    document.body.prepend(section);
-
-    section.querySelectorAll(".cc-quick-btn").forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            const query = button.dataset.query;
-
-            const input =
-                document.querySelector("#searchInput") ||
-                document.querySelector("#search") ||
-                document.querySelector(".search-input");
+            const service =
+                serviceButton.dataset.service;
 
             const results =
-                document.querySelector("#results") ||
-                document.querySelector("#searchResults") ||
-                document.querySelector("#guidesContainer") ||
-                document.querySelector("#guides");
+                ccProblems(service);
 
-            if (input) input.value = query;
+            const container =
+                ccFindResultContainer();
 
-            renderGuides(searchCyberCare(query), results);
+            if (container) {
 
-            results?.scrollIntoView({
-                behavior: "smooth"
-            });
+                ccRender(
+                    results,
+                    container
+                );
 
-        });
+            }
+
+            return;
+
+        }
+
+        const categoryButton =
+            event.target.closest(
+                "[data-category]"
+            );
+
+        if (categoryButton) {
+
+            const category =
+                categoryButton.dataset.category;
+
+            const results =
+                ccProblems(
+                    "",
+                    category
+                );
+
+            const container =
+                ccFindResultContainer();
+
+            if (container) {
+
+                ccRender(
+                    results,
+                    container
+                );
+
+            }
+
+            return;
+
+        }
+
+        const problemButton =
+            event.target.closest(
+                "[data-problem]"
+            );
+
+        if (problemButton) {
+
+            const problem =
+                problemButton.dataset.problem;
+
+            const results =
+                ccSearch(problem);
+
+            const container =
+                ccFindResultContainer();
+
+            if (container) {
+
+                ccRender(
+                    results,
+                    container
+                );
+
+            }
+
+        }
 
     });
+
 }
 
 /* ============================================================
-   EMERGENCY SAFETY BANNER
+   DARK MODE — ONLY USE EXISTING TOGGLE
 ============================================================ */
 
-function createSafetyBanner() {
+function ccConnectDarkMode() {
 
-    if (document.querySelector("#cybercareSafetyBanner")) return;
+    const toggle =
+        document.querySelector(
+            "#darkModeToggle"
+        ) ||
+        document.querySelector(
+            "[data-dark-mode]"
+        );
 
-    const banner = document.createElement("div");
+    if (!toggle) {
+        return;
+    }
 
-    banner.id = "cybercareSafetyBanner";
+    const saved =
+        localStorage.getItem(
+            "cybercare-dark-mode"
+        );
 
-    banner.className = "cc-safety-banner";
+    if (saved === "true") {
 
-    banner.innerHTML = `
-        <div>
-            <strong>🚨 Immediate danger?</strong>
-            <span>
-                If someone is threatening you or you are physically unsafe,
-                move to a safe place and contact a trusted person or
-                appropriate local emergency service.
-            </span>
-        </div>
-    `;
+        document.body.classList.add(
+            "dark-mode"
+        );
 
-    document.body.prepend(banner);
-}
+    }
 
-/* ============================================================
-   DARK MODE
-============================================================ */
+    toggle.addEventListener(
+        "click",
+        () => {
 
-function setupDarkMode() {
-
-    const existing =
-        document.querySelector("#darkModeToggle") ||
-        document.querySelector("[data-dark-mode]");
-
-    if (existing) {
-
-        existing.addEventListener("click", () => {
-
-            document.body.classList.toggle("dark-mode");
+            document.body.classList.toggle(
+                "dark-mode"
+            );
 
             localStorage.setItem(
                 "cybercare-dark-mode",
-                document.body.classList.contains("dark-mode")
+                document.body.classList.contains(
+                    "dark-mode"
+                )
             );
 
-        });
+        }
+    );
 
-    }
-
-    if (
-        localStorage.getItem("cybercare-dark-mode") === "true"
-    ) {
-        document.body.classList.add("dark-mode");
-    }
 }
 
 /* ============================================================
    LANGUAGE SUPPORT
+   ------------------------------------------------------------
+   Does NOT create a new language UI.
+   It only connects to existing buttons if present.
 ============================================================ */
 
-const LANGUAGE_TEXT = {
+const CC_LANG = {
 
     en: {
-        help: "What do you need help with?",
-        search: "Search your problem"
+        searchPlaceholder:
+            "Search your problem..."
     },
 
     bn: {
-        help: "আপনার কী সমস্যা হয়েছে?",
-        search: "আপনার সমস্যাটি লিখুন"
+        searchPlaceholder:
+            "আপনার সমস্যাটি লিখুন..."
     }
 
 };
 
-function setLanguage(lang) {
+function ccSetLanguage(language) {
 
-    const data = LANGUAGE_TEXT[lang] || LANGUAGE_TEXT.en;
+    const data =
+        CC_LANG[language] ||
+        CC_LANG.en;
 
-    const title =
-        document.querySelector("#cybercareTitle");
+    const input =
+        ccFindSearchInput();
 
-    const search =
-        document.querySelector("#searchInput") ||
-        document.querySelector("#search");
+    if (input) {
 
-    if (title) title.textContent = data.help;
+        input.placeholder =
+            data.searchPlaceholder;
 
-    if (search) search.placeholder = data.search;
+    }
 
-    localStorage.setItem("cybercare-language", lang);
+    localStorage.setItem(
+        "cybercare-language",
+        language
+    );
+
 }
 
-/* ============================================================
-   STATISTICS
-============================================================ */
+function ccConnectLanguage() {
 
-function getCyberCareStats() {
+    const languageButtons =
+        document.querySelectorAll(
+            "[data-language]"
+        );
 
-    return {
-        totalGuides: CYBERCARE_GUIDES.length,
-        services: getServices().length,
-        categories: [
-            ...new Set(CYBERCARE_GUIDES.map(x => x.category))
-        ].length
-    };
+    languageButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                ccSetLanguage(
+                    button.dataset.language
+                );
+
+            }
+        );
+
+    });
+
+    const saved =
+        localStorage.getItem(
+            "cybercare-language"
+        );
+
+    if (saved) {
+        ccSetLanguage(saved);
+    }
 
 }
 
 /* ============================================================
    GLOBAL CYBERCARE API
+   ------------------------------------------------------------
+   Useful for existing HTML buttons.
 ============================================================ */
 
 window.CyberCare = {
 
-    guides: CYBERCARE_GUIDES,
+    guides:
+        CYBERCARE_GUIDES,
 
-    search: searchCyberCare,
+    search:
+        ccSearch,
 
-    services: getServices,
+    services:
+        ccServices,
 
-    categories: getCategories,
+    categories:
+        ccCategories,
 
-    problems: getProblems,
+    problems:
+        ccProblems,
 
-    stats: getCyberCareStats,
+    render:
+        ccRender,
 
-    openGuide(problem) {
-
-        const found = searchCyberCare(problem);
+    openProblem(problem) {
 
         const results =
-            document.querySelector("#results") ||
-            document.querySelector("#searchResults") ||
-            document.querySelector("#guidesContainer") ||
-            document.querySelector("#guides");
+            ccSearch(problem);
 
-        renderGuides(found, results);
-
-        results?.scrollIntoView({
-            behavior: "smooth"
-        });
+        ccRender(results);
 
     },
 
-    language: setLanguage
+    openService(service) {
+
+        const results =
+            ccProblems(service);
+
+        ccRender(results);
+
+    },
+
+    openCategory(category) {
+
+        const results =
+            ccProblems("", category);
+
+        ccRender(results);
+
+    },
+
+    getStats() {
+
+        return {
+
+            totalProblems:
+                CYBERCARE_GUIDES.length,
+
+            totalServices:
+                ccServices().length,
+
+            totalCategories:
+                ccCategories().length
+
+        };
+
+    }
 
 };
 
 /* ============================================================
-   START CYBERCARE
+   START
 ============================================================ */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    connectSearch();
+        /*
+           Connect only to EXISTING elements.
+           Nothing new is injected into the homepage.
+        */
 
-    setupDarkMode();
+        ccConnectSearch();
 
-    createSafetyBanner();
+        ccConnectExistingMenu();
 
-    createQuickHelp();
+        ccConnectDarkMode();
 
-    /*
-       Service selector is created only if there is
-       already a guides/results container.
-    */
+        ccConnectLanguage();
 
-    const target =
-        document.querySelector("#guidesContainer") ||
-        document.querySelector("#guides") ||
-        document.querySelector("#results") ||
-        document.querySelector("#searchResults");
+        console.log(
+            "CyberCare A-Z Digital Safety Engine loaded."
+        );
 
-    if (target) {
-        createServiceSelector();
-        renderGuides(CYBERCARE_GUIDES, target);
+        console.log(
+            "Problems:",
+            CYBERCARE_GUIDES.length
+        );
+
+        console.log(
+            "Services:",
+            ccServices().length
+        );
+
     }
-
-    const savedLanguage =
-        localStorage.getItem("cybercare-language");
-
-    if (savedLanguage) {
-        setLanguage(savedLanguage);
-    }
-
-    console.log(
-        "CyberCare loaded:",
-        getCyberCareStats()
-    );
-
-});
+);
