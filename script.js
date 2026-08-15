@@ -4765,3 +4765,1568 @@ window.CyberCare = {
     }
 
 })();
+/* ============================================================
+   CYBERCARE — A-Z PRACTICAL HELP DESK ADD-ON
+   Paste this entire block at the VERY BOTTOM of script.js
+   Do NOT delete the old code.
+============================================================ */
+
+(function () {
+  "use strict";
+
+  /* ---------- HELPERS ---------- */
+
+  const CC = {
+    modal: null,
+
+    esc(value = "") {
+      return String(value).replace(/[&<>"']/g, c => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[c]));
+    },
+
+    close() {
+      document.getElementById("ccAZHelpModal")?.remove();
+      document.body.classList.remove("cc-az-lock");
+    },
+
+    copy(text) {
+      navigator.clipboard?.writeText(text)
+        .then(() => alert("Copied / কপি হয়েছে"))
+        .catch(() => {
+          const t = document.createElement("textarea");
+          t.value = text;
+          document.body.appendChild(t);
+          t.select();
+          document.execCommand("copy");
+          t.remove();
+          alert("Copied / কপি হয়েছে");
+        });
+    },
+
+    open(title, html) {
+      this.close();
+
+      const modal = document.createElement("div");
+      modal.id = "ccAZHelpModal";
+
+      modal.innerHTML = `
+        <div class="cc-az-overlay">
+
+          <div class="cc-az-box">
+
+            <button
+              class="cc-az-close"
+              type="button"
+              aria-label="Close">
+              ×
+            </button>
+
+            <h2 class="cc-az-title">
+              ${title}
+            </h2>
+
+            <div class="cc-az-body">
+              ${html}
+            </div>
+
+          </div>
+
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+      document.body.classList.add("cc-az-lock");
+
+      modal.querySelector(".cc-az-close")
+        ?.addEventListener("click", () => this.close());
+
+      modal.querySelector(".cc-az-overlay")
+        ?.addEventListener("click", e => {
+          if (e.target.classList.contains("cc-az-overlay")) {
+            this.close();
+          }
+        });
+
+      modal.querySelectorAll("[data-cc-copy]")
+        .forEach(btn => {
+          btn.addEventListener("click", () => {
+            this.copy(btn.dataset.ccCopy);
+          });
+        });
+
+      modal.querySelectorAll("[data-cc-back]")
+        .forEach(btn => {
+          btn.addEventListener("click", () => {
+            this.socialDesk();
+          });
+        });
+    }
+  };
+
+
+  /* ============================================================
+     SOCIAL MEDIA HELP DESK
+  ============================================================ */
+
+  CC.socialDesk = function () {
+
+    CC.open(
+      "🌐 Social Media Help Desk",
+
+      `
+      <div class="cc-az-alert">
+        🛡️ আপনার সমস্যা অনুযায়ী platform নির্বাচন করুন।
+        শুধু information নয় — CyberCare আপনাকে কী করতে হবে,
+        কীভাবে করতে হবে এবং recovery-এর পরে কী করতে হবে
+        step-by-step দেখাবে।
+      </div>
+
+      <div class="cc-platform-grid">
+
+        <button class="cc-platform-btn" data-platform="facebook">
+          📘
+          <strong>Facebook</strong>
+          <small>Recovery • Security • Fake Profile</small>
+        </button>
+
+        <button class="cc-platform-btn" data-platform="instagram">
+          📸
+          <strong>Instagram</strong>
+          <small>Recovery • Login • Impersonation</small>
+        </button>
+
+        <button class="cc-platform-btn" data-platform="whatsapp">
+          💬
+          <strong>WhatsApp</strong>
+          <small>Stolen • Linked Devices • Security</small>
+        </button>
+
+        <button class="cc-platform-btn" data-platform="google">
+          🔵
+          <strong>Google / Gmail</strong>
+          <small>Recovery • Security • Devices</small>
+        </button>
+
+        <button class="cc-platform-btn" data-platform="youtube">
+          ▶️
+          <strong>YouTube</strong>
+          <small>Channel • Google • Security</small>
+        </button>
+
+        <button class="cc-platform-btn" data-platform="telegram">
+          ✈️
+          <strong>Telegram</strong>
+          <small>Account • Sessions • Privacy</small>
+        </button>
+
+        <button class="cc-platform-btn" data-platform="snapchat">
+          👻
+          <strong>Snapchat</strong>
+          <small>Account • Privacy • Abuse</small>
+        </button>
+
+        <button class="cc-platform-btn" data-platform="x">
+          𝕏
+          <strong>X</strong>
+          <small>Account • Impersonation • Safety</small>
+        </button>
+
+        <button class="cc-platform-btn" data-platform="tiktok">
+          🎵
+          <strong>TikTok</strong>
+          <small>Account • Privacy • Reporting</small>
+        </button>
+
+      </div>
+      `
+    );
+
+    document
+      .querySelectorAll("#ccAZHelpModal [data-platform]")
+      .forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+          const platform = btn.dataset.platform;
+
+          if (platform === "facebook")
+            CC.facebook();
+
+          else if (platform === "instagram")
+            CC.instagram();
+
+          else if (platform === "whatsapp")
+            CC.whatsapp();
+
+          else if (platform === "google")
+            CC.google();
+
+          else if (platform === "youtube")
+            CC.youtube();
+
+          else
+            CC.genericPlatform(
+              btn.querySelector("strong")?.textContent || "Social Media"
+            );
+        });
+
+      });
+  };
+
+
+  /* ============================================================
+     FACEBOOK
+  ============================================================ */
+
+  CC.facebook = function () {
+
+    CC.open(
+      "📘 Facebook — A to Z Help",
+
+      `
+      <button class="cc-back" data-cc-back>
+        ← Back to Social Media Help Desk
+      </button>
+
+      <div class="cc-step">
+        <b>🚨 যদি Account Hacked হয়</b>
+
+        <ol>
+          <li>প্রথমে আপনার connected email secure করুন।</li>
+          <li>Facebook-এর official recovery ব্যবহার করুন।</li>
+          <li>Password পরিবর্তন করুন।</li>
+          <li>Unknown devices/sessions remove করুন।</li>
+          <li>Recovery email ও phone number check করুন।</li>
+          <li>Two-factor authentication চালু করুন।</li>
+          <li>আপনি করেননি এমন post/message আছে কি না দেখুন।</li>
+        </ol>
+      </div>
+
+      <div class="cc-step">
+        <b>🎭 Fake Profile / Impersonation</b>
+
+        <ol>
+          <li>Profile URL copy করুন।</li>
+          <li>Screenshot নিন।</li>
+          <li>Profile report করুন।</li>
+          <li>Friends/family-কে সতর্ক করুন যদি fake account আপনার পরিচয়ে যোগাযোগ করে।</li>
+        </ol>
+      </div>
+
+      <div class="cc-step">
+        <b>🔐 Recovery-এর পরে</b>
+
+        <ol>
+          <li>নতুন unique password ব্যবহার করুন।</li>
+          <li>2FA চালু করুন।</li>
+          <li>Unknown login remove করুন।</li>
+          <li>Connected apps review করুন।</li>
+          <li>Privacy settings check করুন।</li>
+        </ol>
+      </div>
+
+      <a
+        class="cc-official"
+        href="https://www.facebook.com/hacked"
+        target="_blank"
+        rel="noopener">
+        🔗 Facebook Official Hacked Account Recovery
+      </a>
+
+      <button
+        class="cc-copy-btn"
+        data-cc-copy="https://www.facebook.com/hacked">
+        📋 Recovery Link Copy
+      </button>
+      `
+    );
+  };
+
+
+  /* ============================================================
+     INSTAGRAM
+  ============================================================ */
+
+  CC.instagram = function () {
+
+    CC.open(
+      "📸 Instagram — A to Z Help",
+
+      `
+      <button class="cc-back" data-cc-back>
+        ← Back
+      </button>
+
+      <div class="cc-step">
+        <b>🚨 Account Hacked</b>
+
+        <ol>
+          <li>আপনার email account secure করুন।</li>
+          <li>Official Instagram hacked recovery খুলুন।</li>
+          <li>Password change করুন।</li>
+          <li>Login Activity check করুন।</li>
+          <li>Unknown device remove করুন।</li>
+          <li>Recovery email/phone check করুন।</li>
+          <li>2FA চালু করুন।</li>
+        </ol>
+      </div>
+
+      <div class="cc-step">
+        <b>🎭 Fake Account</b>
+
+        <ol>
+          <li>Fake profile-এর URL save করুন।</li>
+          <li>Screenshot নিন।</li>
+          <li>Impersonation report করুন।</li>
+          <li>যাদের contact করতে পারে তাদের সতর্ক করুন।</li>
+        </ol>
+      </div>
+
+      <div class="cc-step">
+        <b>🔒 Privacy</b>
+
+        <ol>
+          <li>Account privacy check করুন।</li>
+          <li>Unknown followers remove করুন।</li>
+          <li>Mentions/tags সীমিত করুন।</li>
+          <li>Login Activity নিয়মিত check করুন।</li>
+        </ol>
+      </div>
+
+      <a
+        class="cc-official"
+        href="https://www.instagram.com/hacked/"
+        target="_blank"
+        rel="noopener">
+        🔗 Instagram Official Hacked Account Recovery
+      </a>
+
+      <button
+        class="cc-copy-btn"
+        data-cc-copy="https://www.instagram.com/hacked/">
+        📋 Recovery Link Copy
+      </button>
+      `
+    );
+  };
+
+
+  /* ============================================================
+     WHATSAPP
+  ============================================================ */
+
+  CC.whatsapp = function () {
+
+    CC.open(
+      "💬 WhatsApp — A to Z Help",
+
+      `
+      <button class="cc-back" data-cc-back>
+        ← Back
+      </button>
+
+      <div class="cc-step">
+        <b>🚨 WhatsApp Account Stolen</b>
+
+        <ol>
+          <li>আপনার phone number দিয়ে WhatsApp আবার register করুন।</li>
+          <li>Verification code কাউকে দেবেন না।</li>
+          <li>Linked Devices খুলুন।</li>
+          <li>Unknown device logout করুন।</li>
+          <li>Two-step verification চালু করুন।</li>
+          <li>Recovery email add করুন।</li>
+        </ol>
+      </div>
+
+      <div class="cc-step">
+        <b>⚠️ Contacts-কে scam message গেলে</b>
+
+        <ol>
+          <li>Contacts-কে জানান account compromised হয়েছিল।</li>
+          <li>তাদের টাকা না পাঠাতে বলুন।</li>
+          <li>OTP না দিতে বলুন।</li>
+          <li>Suspicious message-এর screenshot রাখুন।</li>
+        </ol>
+      </div>
+
+      <a
+        class="cc-official"
+        href="https://faq.whatsapp.com/"
+        target="_blank"
+        rel="noopener">
+        🔗 WhatsApp Official Help
+      </a>
+      `
+    );
+  };
+
+
+  /* ============================================================
+     GOOGLE / GMAIL
+  ============================================================ */
+
+  CC.google = function () {
+
+    CC.open(
+      "🔵 Google / Gmail — A to Z Help",
+
+      `
+      <button class="cc-back" data-cc-back>
+        ← Back
+      </button>
+
+      <div class="cc-step">
+        <b>🚨 Google Account Compromised</b>
+
+        <ol>
+          <li>Password change করুন।</li>
+          <li>Your Devices check করুন।</li>
+          <li>Unknown device sign out করুন।</li>
+          <li>Recent security activity দেখুন।</li>
+          <li>Recovery email check করুন।</li>
+          <li>Recovery phone check করুন।</li>
+          <li>Third-party access review করুন।</li>
+          <li>2-Step Verification চালু করুন।</li>
+        </ol>
+      </div>
+
+      <div class="cc-step">
+        <b>📧 Gmail-এর পরে এগুলোও check করুন</b>
+
+        <ol>
+          <li>Forwarding settings</li>
+          <li>Filters</li>
+          <li>Sent Mail</li>
+          <li>Trash</li>
+          <li>Unknown delegates/access</li>
+        </ol>
+      </div>
+
+      <a
+        class="cc-official"
+        href="https://accounts.google.com/signin/recovery"
+        target="_blank"
+        rel="noopener">
+        🔗 Google Official Account Recovery
+      </a>
+      `
+    );
+  };
+
+
+  /* ============================================================
+     YOUTUBE
+  ============================================================ */
+
+  CC.youtube = function () {
+
+    CC.open(
+      "▶️ YouTube — A to Z Help",
+
+      `
+      <button class="cc-back" data-cc-back>
+        ← Back
+      </button>
+
+      <div class="cc-step">
+        <b>🚨 Channel Hacked</b>
+
+        <ol>
+          <li>প্রথমে controlling Google account secure করুন।</li>
+          <li>Google password change করুন।</li>
+          <li>2-Step Verification চালু করুন।</li>
+          <li>Unknown devices remove করুন।</li>
+          <li>Channel permissions/managers check করুন।</li>
+          <li>Unknown videos/live streams check করুন।</li>
+          <li>Channel name/profile changes check করুন।</li>
+        </ol>
+      </div>
+
+      <a
+        class="cc-official"
+        href="https://support.google.com/youtube/"
+        target="_blank"
+        rel="noopener">
+        🔗 YouTube Official Help
+      </a>
+      `
+    );
+  };
+
+
+  /* ============================================================
+     OTHER PLATFORMS
+  ============================================================ */
+
+  CC.genericPlatform = function (name) {
+
+    CC.open(
+      "📱 " + CC.esc(name) + " — Safety Guide",
+
+      `
+      <button class="cc-back" data-cc-back>
+        ← Back
+      </button>
+
+      <div class="cc-step">
+        <b>🚨 যদি Account compromised হয়</b>
+
+        <ol>
+          <li>Password change করুন।</li>
+          <li>Unknown sessions/devices logout করুন।</li>
+          <li>Recovery email/phone check করুন।</li>
+          <li>2FA চালু করুন।</li>
+          <li>Connected apps review করুন।</li>
+        </ol>
+      </div>
+
+      <div class="cc-step">
+        <b>🎭 Fake Profile / Abuse</b>
+
+        <ol>
+          <li>Username save করুন।</li>
+          <li>Profile URL save করুন।</li>
+          <li>Screenshot নিন।</li>
+          <li>Platform-এর official report ব্যবহার করুন।</li>
+        </ol>
+      </div>
+      `
+    );
+  };
+
+
+  /* ============================================================
+     WOMEN'S DIGITAL SAFETY
+  ============================================================ */
+
+  CC.womenSafety = function () {
+
+    CC.open(
+      "👩 Women's Digital Safety",
+
+      `
+      <div class="cc-az-alert">
+        ❤️ আপনি একা নন। আগে নিজের নিরাপত্তা নিশ্চিত করুন,
+        তারপর evidence ও reporting-এর কাজ করুন।
+      </div>
+
+      <div class="cc-women-grid">
+
+        <button data-women-guide="harassment">
+          📞 Harassment
+        </button>
+
+        <button data-women-guide="blackmail">
+          ⚠️ Blackmail / Sextortion
+        </button>
+
+        <button data-women-guide="leak">
+          🛑 Intimate Photo / Video Leak
+        </button>
+
+        <button data-women-guide="fake">
+          🎭 Fake Profile
+        </button>
+
+        <button data-women-guide="stalking">
+          👁️ Online Stalking
+        </button>
+
+        <button data-women-guide="evidence">
+          🧾 Evidence & Complaint
+        </button>
+
+      </div>
+      `
+    );
+
+    document
+      .querySelectorAll("#ccAZHelpModal [data-women-guide]")
+      .forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+          const type = btn.dataset.womenGuide;
+
+          if (type === "leak")
+            CC.intimateLeak();
+
+          else if (type === "blackmail")
+            CC.blackmail();
+
+          else if (type === "harassment")
+            CC.harassment();
+
+          else
+            CC.womenGeneric(type);
+
+        });
+
+      });
+  };
+
+
+  /* ============================================================
+     INTIMATE IMAGE / VIDEO LEAK — A TO Z
+  ============================================================ */
+
+  CC.intimateLeak = function () {
+
+    CC.open(
+      "🛑 Intimate Photo / Video Leak — A to Z",
+
+      `
+      <div class="cc-az-danger">
+        🚨 যদি আপনার private/intimate photo বা video
+        আপনার অনুমতি ছাড়া ছড়ায়, প্রথমে panic করবেন না।
+      </div>
+
+      <h3>1️⃣ প্রথমে Evidence রাখুন</h3>
+
+      <ul>
+        <li>Post/profile/page-এর screenshot নিন।</li>
+        <li>Full URL copy করুন।</li>
+        <li>Username/profile name লিখে রাখুন।</li>
+        <li>তারিখ ও সময় লিখে রাখুন।</li>
+        <li>Threatening messages থাকলে সেগুলোও রাখুন।</li>
+      </ul>
+
+      <p>
+        ⚠️ Evidence রাখার জন্য content অন্য কাউকে forward করবেন না।
+      </p>
+
+
+      <h3>2️⃣ Platform-এ Report করুন</h3>
+
+      <ol>
+        <li>যে platform-এ content আছে সেটি খুলুন।</li>
+        <li>Report option নির্বাচন করুন।</li>
+        <li>Privacy / intimate imagery / non-consensual content-এর
+        সবচেয়ে উপযুক্ত option নির্বাচন করুন।</li>
+        <li>Original URL দিন।</li>
+        <li>প্রয়োজনীয় information দিন।</li>
+      </ol>
+
+
+      <h3>3️⃣ StopNCII.org ব্যবহার করুন</h3>
+
+      <p>
+        StopNCII eligible 18+ intimate image/video-এর
+        digital hash তৈরি করে participating platforms-এ
+        matching content detect করতে সাহায্য করে।
+      </p>
+
+      <ol>
+        <li>StopNCII website খুলুন।</li>
+        <li>Eligibility check করুন।</li>
+        <li>নিজের device থেকে relevant image/video নির্বাচন করুন।</li>
+        <li>Hash আপনার device-এই তৈরি হয়।</li>
+        <li>Original file upload না করেই case তৈরি হতে পারে।</li>
+        <li>Case Number ও PIN নিরাপদে সংরক্ষণ করুন।</li>
+      </ol>
+
+      <a
+        class="cc-official"
+        href="https://stopncii.org/create-your-case/"
+        target="_blank"
+        rel="noopener">
+        🛡️ Open StopNCII — Create a Case
+      </a>
+
+
+      <h3>4️⃣ India Government Cyber Crime Portal</h3>
+
+      <p>
+        Content online ছড়িয়ে গেলে India-এর official
+        National Cyber Crime Reporting Portal-এ complaint
+        করা যায়।
+      </p>
+
+      <ol>
+        <li>Government Cyber Crime Portal খুলুন।</li>
+        <li>Women/Children Related Crime-এর applicable option দেখুন।</li>
+        <li>Portal-এর instructions অনুযায়ী details দিন।</li>
+        <li>URL, username, screenshots ও incident details প্রস্তুত রাখুন।</li>
+        <li>Complaint/reference number save করুন।</li>
+      </ol>
+
+      <a
+        class="cc-official"
+        href="https://www.cybercrime.gov.in/"
+        target="_blank"
+        rel="noopener">
+        🇮🇳 Open National Cyber Crime Reporting Portal
+      </a>
+
+
+      <h3>5️⃣ Complaint-এ কী লিখবেন?</h3>
+
+      <textarea
+        id="ccLeakComplaint"
+        class="cc-copy-area"
+        rows="10"
+        readonly>Subject: Non-consensual sharing of my intimate image/video
+
+My intimate image/video is being shared online without my consent.
+
+Platform/website:
+Profile/page/channel:
+Username/ID:
+URL(s):
+Date/time noticed:
+
+I did not authorize the publication or distribution of this content. I request that the reported content be investigated and appropriate action be taken to prevent further circulation and remove/disable access wherever legally or policy appropriate.
+
+I have preserved relevant screenshots, URLs and other supporting evidence.</textarea>
+
+      <button
+        class="cc-copy-btn"
+        id="ccCopyLeakComplaint">
+        📋 Copy Complaint Text
+      </button>
+
+
+      <h3>6️⃣ যদি একাধিক website-এ থাকে</h3>
+
+      <ol>
+        <li>প্রতিটি website-এর URL আলাদা করে save করুন।</li>
+        <li>প্রতিটি platform-এর own reporting/removal process ব্যবহার করুন।</li>
+        <li>Government complaint-এ সব known URLs দিন।</li>
+        <li>নতুন copy পাওয়া গেলে নতুন URL evidence list-এ যোগ করুন।</li>
+      </ol>
+
+
+      <h3>7️⃣ Recovery-এর পরে</h3>
+
+      <ol>
+        <li>Email password change করুন।</li>
+        <li>Social media password change করুন।</li>
+        <li>2FA চালু করুন।</li>
+        <li>Unknown sessions remove করুন।</li>
+        <li>Cloud/photo-sharing settings check করুন।</li>
+        <li>Unknown connected apps remove করুন।</li>
+      </ol>
+
+
+      <div class="cc-az-note">
+        ⚠️ StopNCII পুরো internet থেকে automatically
+        content delete করার guarantee দেয় না।
+        তাই platform reporting এবং প্রয়োজন হলে
+        Government reporting-ও করুন।
+      </div>
+
+
+      <div class="cc-az-danger">
+        🚫 কোনো "hacker", "recovery expert" বা stranger-কে
+        guaranteed deletion-এর জন্য টাকা দেবেন না।
+      </div>
+      `
+    );
+
+    document
+      .getElementById("ccCopyLeakComplaint")
+      ?.addEventListener("click", () => {
+
+        CC.copy(
+          document.getElementById("ccLeakComplaint")?.value || ""
+        );
+
+      });
+  };
+
+
+  /* ============================================================
+     BLACKMAIL
+  ============================================================ */
+
+  CC.blackmail = function () {
+
+    CC.open(
+      "⚠️ Blackmail / Sextortion — What To Do",
+
+      `
+      <div class="cc-az-alert">
+        ❤️ Blackmail আপনার দোষ নয়।
+      </div>
+
+      <h3>এখনই করুন</h3>
+
+      <ol>
+        <li>টাকা দেবেন না।</li>
+        <li>আর কোনো photo/video পাঠাবেন না।</li>
+        <li>OTP/password/PIN দেবেন না।</li>
+        <li>Threat-এর screenshot রাখুন।</li>
+        <li>Username ও URL save করুন।</li>
+        <li>Account secure করুন।</li>
+        <li>Evidence রাখার পরে platform report করুন।</li>
+        <li>বিশ্বাসযোগ্য কাউকে জানান।</li>
+      </ol>
+
+      <h3>যদি টাকা পাঠিয়ে ফেলেন</h3>
+
+      <ol>
+        <li>Bank/payment provider-কে immediately জানান।</li>
+        <li>Transaction ID রাখুন।</li>
+        <li>Amount/date/time লিখে রাখুন।</li>
+        <li>India-তে financial cyber fraud হলে official
+        reporting route ব্যবহার করুন।</li>
+      </ol>
+
+      <a
+        class="cc-official"
+        href="https://www.cybercrime.gov.in/"
+        target="_blank"
+        rel="noopener">
+        🇮🇳 Government Cyber Crime Portal
+      </a>
+      `
+    );
+  };
+
+
+  /* ============================================================
+     HARASSMENT
+  ============================================================ */
+
+  CC.harassment = function () {
+
+    CC.open(
+      "📞 Harassment — Step-by-Step Help",
+
+      `
+      <h3>1️⃣ Reply করতেই হবে না</h3>
+
+      <p>
+        Repeated calls/messages-এর প্রতিটি reply দেওয়ার
+        প্রয়োজন নেই।
+      </p>
+
+      <h3>2️⃣ Evidence রাখুন</h3>
+
+      <ul>
+        <li>Screenshot</li>
+        <li>Call logs</li>
+        <li>Username</li>
+        <li>Phone number</li>
+        <li>Profile URL</li>
+        <li>Date/time</li>
+      </ul>
+
+      <h3>3️⃣ Block / Restrict</h3>
+
+      <p>
+        Evidence সংরক্ষণের পরে platform-এর
+        block/restrict/report options ব্যবহার করুন।
+      </p>
+
+      <h3>4️⃣ Privacy শক্ত করুন</h3>
+
+      <ul>
+        <li>Who can message you</li>
+        <li>Who can call you</li>
+        <li>Who can see your phone number</li>
+        <li>Who can see your location</li>
+        <li>Who can tag/mention you</li>
+      </ul>
+
+      <h3>5️⃣ Threat থাকলে</h3>
+
+      <p>
+        Physical danger বা serious threat থাকলে
+        digital steps-এর আগে নিজের physical safety
+        নিশ্চিত করুন এবং appropriate official help নিন।
+      </p>
+      `
+    );
+  };
+
+
+  /* ============================================================
+     WOMEN GENERIC
+  ============================================================ */
+
+  CC.womenGeneric = function (type) {
+
+    const data = {
+
+      fake: [
+        "🎭 Fake Profile",
+        `
+        <ol>
+          <li>Fake profile-এর screenshot নিন।</li>
+          <li>Profile URL copy করুন।</li>
+          <li>Username save করুন।</li>
+          <li>Platform-এর impersonation report ব্যবহার করুন।</li>
+          <li>নিজের account secure করুন।</li>
+        </ol>
+        `
+      ],
+
+      stalking: [
+        "👁️ Online Stalking",
+        `
+        <ol>
+          <li>Repeated contact-এর evidence রাখুন।</li>
+          <li>Location sharing check করুন।</li>
+          <li>Unknown devices remove করুন।</li>
+          <li>Password ও 2FA update করুন।</li>
+          <li>Public personal information কমান।</li>
+        </ol>
+        `
+      ],
+
+      evidence: [
+        "🧾 Evidence & Complaint",
+        `
+        <ul>
+          <li>Screenshot</li>
+          <li>Profile URL</li>
+          <li>Username</li>
+          <li>Phone/email</li>
+          <li>Message/call logs</li>
+          <li>Date/time</li>
+          <li>Transaction ID</li>
+        </ul>
+
+        <p>
+          Evidence edit না করে original copy নিরাপদে রাখুন।
+        </p>
+        `
+      ]
+
+    };
+
+    if (data[type]) {
+      CC.open(data[type][0], data[type][1]);
+    }
+  };
+
+
+  /* ============================================================
+     SAFETY TOOLS
+  ============================================================ */
+
+  CC.safetyTools = function () {
+
+    CC.open(
+      "🧰 CyberCare Safety Tools",
+
+      `
+      <div class="cc-tool-card">
+
+        <h3>🔎 Suspicious URL Checker</h3>
+
+        <input
+          id="ccAZUrl"
+          placeholder="Paste suspicious URL">
+
+        <button id="ccAZUrlCheck">
+          Check URL
+        </button>
+
+        <div id="ccAZUrlResult"></div>
+
+      </div>
+
+
+      <div class="cc-tool-card">
+
+        <h3>🔐 Password Strength</h3>
+
+        <input
+          id="ccAZPassword"
+          type="password"
+          placeholder="Check locally only">
+
+        <button id="ccAZPasswordCheck">
+          Check Strength
+        </button>
+
+        <div id="ccAZPasswordResult"></div>
+
+      </div>
+
+
+      <div class="cc-tool-card">
+
+        <h3>📧 Breach Check</h3>
+
+        <p>
+          কখনো password এখানে লিখবেন না।
+          Email breach checking-এর জন্য trusted service ব্যবহার করুন।
+        </p>
+
+        <a
+          class="cc-official"
+          href="https://haveibeenpwned.com/"
+          target="_blank"
+          rel="noopener">
+          🔗 Have I Been Pwned
+        </a>
+
+      </div>
+      `
+    );
+
+
+    document
+      .getElementById("ccAZUrlCheck")
+      ?.addEventListener("click", () => {
+
+        const input =
+          document.getElementById("ccAZUrl");
+
+        const output =
+          document.getElementById("ccAZUrlResult");
+
+        try {
+
+          const url =
+            new URL(input.value.trim());
+
+          const warnings = [];
+
+          if (url.protocol !== "https:")
+            warnings.push("HTTPS নেই");
+
+          if (url.hostname.includes("xn--"))
+            warnings.push("Punycode domain");
+
+          if (url.username)
+            warnings.push("URL-এর ভিতরে username আছে");
+
+          if (url.hostname.split(".").length > 4)
+            warnings.push("অস্বাভাবিকভাবে অনেক subdomain");
+
+          output.innerHTML =
+            warnings.length
+              ? `
+                <p>⚠️ Warning signs:</p>
+                <ul>
+                  ${warnings.map(x => `<li>${x}</li>`).join("")}
+                </ul>
+                <p>
+                  Official app/site নিজে খুলে verify করুন।
+                </p>
+                `
+              : `
+                <p>
+                  🟡 কোনো obvious warning পাওয়া যায়নি।
+                </p>
+                <p>
+                  এটি website safe হওয়ার guarantee নয়।
+                </p>
+                `;
+
+        } catch {
+
+          output.innerHTML =
+            "🔴 Invalid URL";
+
+        }
+
+      });
+
+
+    document
+      .getElementById("ccAZPasswordCheck")
+      ?.addEventListener("click", () => {
+
+        const p =
+          document.getElementById(
+            "ccAZPassword"
+          ).value;
+
+        const output =
+          document.getElementById(
+            "ccAZPasswordResult"
+          );
+
+        let score = 0;
+
+        if (p.length >= 8) score++;
+        if (p.length >= 12) score++;
+        if (p.length >= 16) score++;
+
+        if (/[a-z]/.test(p)) score++;
+        if (/[A-Z]/.test(p)) score++;
+        if (/[0-9]/.test(p)) score++;
+        if (/[^A-Za-z0-9]/.test(p)) score++;
+
+        output.innerHTML =
+          score >= 6
+            ? "🟢 Strong"
+            : score >= 4
+              ? "🟡 Moderate"
+              : "🔴 Weak";
+
+      });
+
+  };
+
+
+  /* ============================================================
+     ADD MENU ENTRY — SOCIAL MEDIA HELP DESK
+  ============================================================ */
+
+  function addSocialMenuItem() {
+
+    const menu =
+      document.querySelector("#sideMenu");
+
+    if (!menu) return;
+
+    if (menu.querySelector(
+      '[data-cc-action="social"]'
+    )) return;
+
+    const item =
+      document.createElement("button");
+
+    item.type = "button";
+
+    item.className =
+      "menu-item cc-added-menu-item";
+
+    item.dataset.ccAction = "social";
+
+    item.innerHTML =
+      "🌐 Social Media Help Desk";
+
+    item.addEventListener(
+      "click",
+      () => {
+
+        document
+          .querySelector("#sideMenu")
+          ?.classList.remove("active");
+
+        document
+          .querySelector("#menuOverlay")
+          ?.classList.remove("active");
+
+        document.body.classList.remove(
+          "menu-open"
+        );
+
+        CC.socialDesk();
+
+      }
+    );
+
+    menu.appendChild(item);
+  }
+
+
+  /* ============================================================
+     INTERCEPT OLD ACCOUNT RECOVERY BUTTON
+     → SOCIAL MEDIA HELP DESK
+  ============================================================ */
+
+  document.addEventListener(
+    "click",
+    function (event) {
+
+      const btn =
+        event.target.closest(".help-btn");
+
+      if (!btn) return;
+
+      const service =
+        (
+          btn.dataset.service ||
+          btn.textContent ||
+          ""
+        )
+        .toLowerCase();
+
+      if (
+        service.includes("account") ||
+        service.includes("recovery") ||
+        service.includes("hacked")
+      ) {
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        CC.socialDesk();
+
+      }
+
+    },
+    true
+  );
+
+
+  /* ============================================================
+     INTERCEPT 3-DOT SAFETY TOOLS
+  ============================================================ */
+
+  document.addEventListener(
+    "click",
+    function (event) {
+
+      const item =
+        event.target.closest(".menu-item");
+
+      if (!item) return;
+
+      const text =
+        (
+          item.dataset.menu ||
+          item.textContent ||
+          ""
+        )
+        .toLowerCase();
+
+      if (
+        text.includes("tool") ||
+        text.includes("safety")
+      ) {
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        document
+          .querySelector("#sideMenu")
+          ?.classList.remove("active");
+
+        document
+          .querySelector("#menuOverlay")
+          ?.classList.remove("active");
+
+        document.body.classList.remove(
+          "menu-open"
+        );
+
+        CC.safetyTools();
+
+      }
+
+    },
+    true
+  );
+
+
+  /* ============================================================
+     ADD WOMEN'S SAFETY BUTTON TO EXISTING WOMEN SECTION
+  ============================================================ */
+
+  document.addEventListener(
+    "click",
+    function (event) {
+
+      const btn =
+        event.target.closest(".women-btn");
+
+      if (!btn) return;
+
+      const type =
+        (
+          btn.dataset.women ||
+          btn.textContent ||
+          ""
+        ).toLowerCase();
+
+      if (
+        type.includes("blackmail") ||
+        type.includes("private") ||
+        type.includes("photo") ||
+        type.includes("video") ||
+        type.includes("leak")
+      ) {
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        CC.intimateLeak();
+
+      }
+
+    },
+    true
+  );
+
+
+  /* ============================================================
+     CSS
+  ============================================================ */
+
+  const style =
+    document.createElement("style");
+
+  style.id =
+    "cybercare-az-addon-style";
+
+  style.textContent = `
+
+    body.cc-az-lock {
+      overflow: hidden !important;
+    }
+
+    .cc-az-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      background: rgba(0,0,0,.70);
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cc-az-box {
+      width: 100%;
+      max-width: 720px;
+      max-height: 94vh;
+      overflow-y: auto;
+      background: #fff;
+      color: #111827;
+      border-radius: 20px;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 20px 70px rgba(0,0,0,.30);
+    }
+
+    .cc-az-close {
+      position: sticky;
+      top: 0;
+      float: right;
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      background: #eef2f7;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .cc-az-title {
+      padding-right: 48px;
+      margin-top: 5px;
+      line-height: 1.25;
+    }
+
+    .cc-az-body {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .cc-az-alert,
+    .cc-az-danger,
+    .cc-az-note {
+      padding: 13px;
+      border-radius: 12px;
+      margin: 10px 0 15px;
+    }
+
+    .cc-az-alert {
+      background: #fff7df;
+      border: 1px solid #eed37c;
+    }
+
+    .cc-az-danger {
+      background: #fff0f0;
+      border: 1px solid #efb1b1;
+    }
+
+    .cc-az-note {
+      background: #eef6ff;
+      border: 1px solid #c9ddf7;
+    }
+
+    .cc-platform-grid,
+    .cc-women-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+    }
+
+    .cc-platform-btn,
+    .cc-women-grid button {
+      border: 1px solid #dce3eb;
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 14px 8px;
+      min-height: 95px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .cc-platform-btn strong {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .cc-platform-btn small {
+      display: block;
+      opacity: .7;
+      margin-top: 4px;
+      font-size: 11px;
+    }
+
+    .cc-step,
+    .cc-tool-card {
+      padding: 14px;
+      margin: 11px 0;
+      background: #f8fafc;
+      border: 1px solid #e1e7ee;
+      border-radius: 13px;
+    }
+
+    .cc-step li {
+      margin: 7px 0;
+    }
+
+    .cc-official {
+      display: block;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 10px;
+      background: #edf5ff;
+      color: #1557a6;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .cc-copy-btn,
+    .cc-back,
+    .cc-tool-card button {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .cc-copy-btn {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    .cc-back {
+      background: #eef2f7;
+      margin-bottom: 10px;
+    }
+
+    .cc-tool-card input,
+    .cc-copy-area {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #cfd7e2;
+      border-radius: 10px;
+      padding: 11px;
+      margin: 7px 0;
+      background: #fff;
+      color: #111827;
+    }
+
+    .cc-tool-card button {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    .cc-tool-card div {
+      margin-top: 10px;
+    }
+
+    @media (max-width: 430px) {
+
+      .cc-az-overlay {
+        padding: 6px;
+      }
+
+      .cc-az-box {
+        padding: 15px 12px 20px;
+        border-radius: 17px;
+      }
+
+      .cc-platform-grid,
+      .cc-women-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 7px;
+      }
+
+      .cc-platform-btn,
+      .cc-women-grid button {
+        min-height: 88px;
+        padding: 9px 5px;
+      }
+
+      .cc-az-body {
+        font-size: 14px;
+      }
+    }
+
+  `;
+
+  document.head.appendChild(style);
+
+
+  /* ============================================================
+     INITIALIZE
+  ============================================================ */
+
+  function initCyberCareAZ() {
+
+    addSocialMenuItem();
+
+    console.log(
+      "CyberCare A-Z Practical Help Desk loaded successfully."
+    );
+
+  }
+
+
+  if (
+    document.readyState === "loading"
+  ) {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initCyberCareAZ,
+      { once: true }
+    );
+
+  } else {
+
+    initCyberCareAZ();
+
+  }
+
+
+  /* ============================================================
+     PUBLIC API
+  ============================================================ */
+
+  window.CyberCareAZ = {
+
+    socialDesk: () =>
+      CC.socialDesk(),
+
+    womenSafety: () =>
+      CC.womenSafety(),
+
+    intimateLeak: () =>
+      CC.intimateLeak(),
+
+    safetyTools: () =>
+      CC.safetyTools(),
+
+    blackmail: () =>
+      CC.blackmail(),
+
+    harassment: () =>
+      CC.harassment()
+
+  };
+
+})();
