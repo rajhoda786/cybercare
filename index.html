@@ -1,35 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2563eb">
+    <meta charset="UTF-8">
 
-<title>CyberCare | Digital Safety</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="style.css">
+    <meta
+        name="description"
+        content="CyberCare — Simple and practical digital safety guidance for account recovery, scams, harassment, blackmail, privacy and online threats."
+    >
+
+    <meta
+        name="theme-color"
+        content="#0f172a"
+    >
+
+    <title>CyberCare — Digital Safety</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="navbar">
+<!-- =========================================================
+     TOP HEADER
+========================================================= -->
 
-    <div class="logo">
-        🛡️ <span>CyberCare</span>
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-icon">🛡️</div>
+
+        <div>
+            <div class="brand-name">CyberCare</div>
+            <div class="brand-small">
+                Digital Safety
+            </div>
+        </div>
     </div>
 
-    <div class="nav-actions">
+    <div class="header-actions">
 
-        <button id="languageBtn" class="nav-btn" type="button">
-            🌐 <span id="languageText">EN</span>
+        <button
+            id="languageBtn"
+            class="icon-btn"
+            type="button"
+            aria-label="Change language"
+        >
+            🌐
+            <span id="languageText">EN</span>
         </button>
 
-        <button id="themeBtn" class="nav-btn" type="button">
+        <button
+            id="themeBtn"
+            class="icon-btn"
+            type="button"
+            aria-label="Toggle dark mode"
+        >
             🌙
         </button>
 
-        <button id="menuBtn" class="nav-btn" type="button">
-            ☰
+        <button
+            id="menuBtn"
+            class="icon-btn menu-trigger"
+            type="button"
+            aria-label="Open menu"
+        >
+            ⋮
         </button>
 
     </div>
@@ -37,56 +77,144 @@
 </header>
 
 
-<!-- SIDE MENU -->
+<!-- =========================================================
+     SIDE MENU
+     Main interface stays clean.
+     Detailed sections are kept here.
+========================================================= -->
 
-<div id="sideMenu" class="side-menu">
+<div
+    id="menuOverlay"
+    class="menu-overlay"
+></div>
 
-    <div class="menu-header">
-        <h3>🛡️ CyberCare</h3>
+<aside
+    id="sideMenu"
+    class="side-menu"
+    aria-label="CyberCare menu"
+>
 
-        <button id="closeMenu" type="button">✕</button>
+    <div class="side-menu-header">
+
+        <div>
+            <strong>🛡️ CyberCare</strong>
+            <small>
+                Safety & Help Center
+            </small>
+        </div>
+
+        <button
+            id="closeMenu"
+            class="close-menu"
+            type="button"
+            aria-label="Close menu"
+        >
+            ✕
+        </button>
+
     </div>
 
-    <button class="menu-item" data-menu="services">
-        🛡️ All Services
-    </button>
 
-    <button class="menu-item" data-menu="women">
-        👩 Women's Digital Safety
-    </button>
+    <nav class="menu-list">
 
-    <button class="menu-item" data-menu="tools">
-        🛠️ CyberCare Tools
-    </button>
+        <button
+            class="menu-item"
+            data-menu="services"
+            type="button"
+        >
+            <span>🔎</span>
+            <span>
+                <strong>Find My Problem</strong>
+                <small>Search for a solution</small>
+            </span>
+        </button>
 
-    <button class="menu-item" data-menu="learn">
-        🎓 Learn Cybersecurity
-    </button>
 
-    <button class="menu-item" data-menu="emergency">
-        🚨 Emergency Help
-    </button>
+        <button
+            class="menu-item"
+            data-menu="womenSafety"
+            type="button"
+        >
+            <span>👩</span>
+            <span>
+                <strong>Women Safety</strong>
+                <small>Harassment, stalking, blackmail</small>
+            </span>
+        </button>
 
-    <button class="menu-item" data-menu="india">
-        🇮🇳 India Cyber Help
-    </button>
 
-    <button class="menu-item" data-menu="about">
-        ℹ️ About CyberCare
-    </button>
+        <button
+            class="menu-item"
+            data-menu="emergency"
+            type="button"
+        >
+            <span>🚨</span>
+            <span>
+                <strong>Emergency Help</strong>
+                <small>What to do right now</small>
+            </span>
+        </button>
 
-</div>
 
-<div id="menuOverlay" class="menu-overlay"></div>
+        <button
+            class="menu-item"
+            data-menu="tools"
+            type="button"
+        >
+            <span>🧰</span>
+            <span>
+                <strong>Safety Tools</strong>
+                <small>Scanner, checker & checklist</small>
+            </span>
+        </button>
 
+
+        <button
+            class="menu-item"
+            data-menu="learn"
+            type="button"
+        >
+            <span>📚</span>
+            <span>
+                <strong>Learn Cyber Safety</strong>
+                <small>Learn before something happens</small>
+            </span>
+        </button>
+
+    </nav>
+
+
+    <div class="menu-footer">
+
+        <div class="menu-tip">
+            <strong>💡 Safety Tip</strong>
+
+            <p>
+                Never share OTPs, passwords, UPI PINs or
+                recovery codes with anyone.
+            </p>
+        </div>
+
+        <small>
+            CyberCare • Stay Safe Online
+        </small>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <main>
 
-<!-- HERO -->
-
 <section class="hero">
 
-    <div class="hero-icon">🛡️</div>
+    <div class="hero-badge">
+        🛡️ Your Digital Safety Companion
+    </div>
 
     <h1>CyberCare</h1>
 
@@ -100,13 +228,22 @@
         financial fraud and digital threats.
     </p>
 
-    <div class="hero-buttons">
 
-        <button id="emergencyBtn" class="emergency-btn">
+    <div class="hero-actions">
+
+        <button
+            id="emergencyBtn"
+            class="primary-btn emergency-btn"
+            type="button"
+        >
             🚨 I Need Help Now
         </button>
 
-        <button id="quickHelpBtn" class="secondary-btn">
+        <button
+            id="quickHelpBtn"
+            class="secondary-btn"
+            type="button"
+        >
             🔎 Find My Problem
         </button>
 
@@ -115,402 +252,578 @@
 </section>
 
 
-<!-- SMART SEARCH -->
+<!-- =========================================================
+     SEARCH
+========================================================= -->
 
-<section class="search-section">
+<section
+    id="services"
+    class="section search-section"
+>
 
-    <h2>🔎 What happened?</h2>
+    <div class="section-heading">
 
-    <p>
-        Describe your problem. CyberCare will find the
-        most relevant safety guide.
-    </p>
+        <span class="section-icon">🔎</span>
 
-    <div class="smart-search">
+        <div>
+            <h2>What happened?</h2>
 
-        <input
-            id="problemSearch"
-            type="search"
-            autocomplete="off"
-            placeholder="Example: someone is blackmailing me..."
+            <p>
+                Describe your problem. CyberCare will find
+                the most relevant safety guide.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <div class="search-input-wrap">
+
+            <span>🔍</span>
+
+            <input
+                id="problemSearch"
+                type="search"
+                autocomplete="off"
+                placeholder="Example: someone is blackmailing me..."
+                aria-label="Describe your problem"
+            >
+
+            <button
+                id="clearSearch"
+                type="button"
+                aria-label="Clear search"
+            >
+                ✕
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="searchResults"
+        class="search-results"
+        aria-live="polite"
+    ></div>
+
+</section>
+
+
+<!-- =========================================================
+     QUICK CATEGORIES
+========================================================= -->
+
+<section class="section quick-section">
+
+    <div class="section-heading">
+
+        <span class="section-icon">⚡</span>
+
+        <div>
+            <h2>Quick Help</h2>
+
+            <p>
+                Common problems people face online.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="quick-grid">
+
+        <button
+            class="help-btn quick-card"
+            data-service="Account Recovery"
+            type="button"
         >
+            <span class="quick-icon">🔐</span>
 
-        <button id="clearSearch" type="button">
-            ✕
+            <span>
+                <strong>Account Hacked</strong>
+                <small>
+                    Facebook, Instagram, Google & more
+                </small>
+            </span>
+        </button>
+
+
+        <button
+            class="help-btn quick-card"
+            data-service="Scam & Phishing"
+            type="button"
+        >
+            <span class="quick-icon">🎣</span>
+
+            <span>
+                <strong>Scam / Phishing</strong>
+                <small>
+                    Suspicious links, OTP & fake messages
+                </small>
+            </span>
+        </button>
+
+
+        <button
+            class="help-btn quick-card"
+            data-service="Online Fraud"
+            type="button"
+        >
+            <span class="quick-icon">💳</span>
+
+            <span>
+                <strong>Online Fraud</strong>
+                <small>
+                    UPI, bank, card & payment fraud
+                </small>
+            </span>
+        </button>
+
+
+        <button
+            class="help-btn quick-card"
+            data-service="Phone Security"
+            type="button"
+        >
+            <span class="quick-icon">📱</span>
+
+            <span>
+                <strong>Phone Security</strong>
+                <small>
+                    Suspicious apps & account access
+                </small>
+            </span>
         </button>
 
     </div>
 
-    <div id="searchSuggestions" class="search-suggestions"></div>
-
-    <div id="searchResults"></div>
-
 </section>
 
 
-<!-- SERVICES -->
+<!-- =========================================================
+     WOMEN SAFETY
+========================================================= -->
 
-<section id="services" class="services">
+<section
+    id="womenSafety"
+    class="section women-section"
+>
 
-    <h2>🛡️ How Can We Help You?</h2>
+    <div class="section-heading">
 
-    <p class="section-text">
-        Choose a situation and get step-by-step guidance.
-    </p>
+        <span class="section-icon">👩</span>
 
-    <div class="service-grid">
+        <div>
+            <h2>Women Safety</h2>
 
-        <article class="service-card">
-            <div class="service-icon">🔐</div>
-            <h3>Account Recovery</h3>
             <p>
-                Facebook, Instagram, WhatsApp, Google,
-                YouTube and other account problems.
+                Quick guidance for common online harassment
+                and safety problems.
             </p>
-            <button class="help-btn" data-service="Account Recovery">
-                Get Help →
-            </button>
-        </article>
-
-
-        <article class="service-card">
-            <div class="service-icon">🎣</div>
-            <h3>Scam & Phishing</h3>
-            <p>
-                Suspicious messages, fake links, OTP scams
-                and phishing.
-            </p>
-            <button class="help-btn" data-service="Scam & Phishing">
-                Get Help →
-            </button>
-        </article>
-
-
-        <article class="service-card">
-            <div class="service-icon">📱</div>
-            <h3>Phone Security</h3>
-            <p>
-                Unknown apps, spyware warning signs,
-                permissions and device security.
-            </p>
-            <button class="help-btn" data-service="Phone Security">
-                Get Help →
-            </button>
-        </article>
-
-
-        <article class="service-card">
-            <div class="service-icon">💳</div>
-            <h3>Online & Financial Fraud</h3>
-            <p>
-                UPI, bank, card, investment, job,
-                refund and payment scams.
-            </p>
-            <button class="help-btn" data-service="Online Fraud">
-                Get Help →
-            </button>
-        </article>
-
-
-        <article class="service-card">
-            <div class="service-icon">🕵️</div>
-            <h3>Suspicious Activity</h3>
-            <p>
-                Unknown login, malware, fake login pages
-                and privacy problems.
-            </p>
-            <button class="help-btn" data-service="Suspicious Activity">
-                Get Help →
-            </button>
-        </article>
-
-
-        <article class="service-card emergency-card">
-            <div class="service-icon">🚨</div>
-            <h3>Emergency Help</h3>
-            <p>
-                Immediate actions when your account,
-                device, money or safety is at risk.
-            </p>
-            <button class="help-btn" data-service="Emergency Help">
-                Get Help →
-            </button>
-        </article>
+        </div>
 
     </div>
 
-</section>
 
+    <div class="safety-grid">
 
-<!-- WOMEN SAFETY -->
-
-<section id="women" class="women-section">
-
-    <div class="section-badge">
-        👩 SPECIAL SAFETY CENTER
-    </div>
-
-    <h2>Women's Digital Safety</h2>
-
-    <p class="section-text">
-        Protection against harassment, stalking, blackmail,
-        fake profiles and private-content threats.
-    </p>
-
-    <div class="women-grid">
-
-        <article class="women-card">
+        <button
+            class="women-btn safety-card"
+            data-women="harassment"
+            type="button"
+        >
             <span>📞</span>
-            <h3>Repeated Calls / Harassment</h3>
-            <p>Someone keeps calling or messaging you.</p>
-            <button class="women-btn" data-women="harassment">
-                What Should I Do?
-            </button>
-        </article>
+
+            <strong>Harassment</strong>
+
+            <small>
+                Bad messages, repeated calls & unwanted contact
+            </small>
+        </button>
 
 
-        <article class="women-card">
-            <span>📸</span>
-            <h3>Photo Misuse</h3>
-            <p>Someone is using your photo without permission.</p>
-            <button class="women-btn" data-women="photo">
-                What Should I Do?
-            </button>
-        </article>
-
-
-        <article class="women-card">
-            <span>🎭</span>
-            <h3>Fake Profile</h3>
-            <p>Someone created a fake Facebook or Instagram profile.</p>
-            <button class="women-btn" data-women="fakeprofile">
-                What Should I Do?
-            </button>
-        </article>
-
-
-        <article class="women-card">
+        <button
+            class="women-btn safety-card"
+            data-women="blackmail"
+            type="button"
+        >
             <span>⚠️</span>
-            <h3>Blackmail</h3>
-            <p>Someone is threatening you or demanding money.</p>
-            <button class="women-btn" data-women="blackmail">
-                What Should I Do?
-            </button>
-        </article>
+
+            <strong>Blackmail</strong>
+
+            <small>
+                Threats, money demands & coercion
+            </small>
+        </button>
 
 
-        <article class="women-card">
-            <span>🔒</span>
-            <h3>Private Photo / Video Threat</h3>
-            <p>Someone threatens to publish private content.</p>
-            <button class="women-btn" data-women="private">
-                What Should I Do?
-            </button>
-        </article>
+        <button
+            class="women-btn safety-card"
+            data-women="private"
+            type="button"
+        >
+            <span>📸</span>
+
+            <strong>Private Photo / Video</strong>
+
+            <small>
+                Threats involving private content
+            </small>
+        </button>
 
 
-        <article class="women-card">
+        <button
+            class="women-btn safety-card"
+            data-women="fakeprofile"
+            type="button"
+        >
+            <span>🎭</span>
+
+            <strong>Fake Profile</strong>
+
+            <small>
+                Someone pretending to be you
+            </small>
+        </button>
+
+
+        <button
+            class="women-btn safety-card"
+            data-women="photo"
+            type="button"
+        >
+            <span>🖼️</span>
+
+            <strong>Photo Misuse</strong>
+
+            <small>
+                Photos used without permission
+            </small>
+        </button>
+
+
+        <button
+            class="women-btn safety-card"
+            data-women="stalking"
+            type="button"
+        >
             <span>👁️</span>
-            <h3>Online Stalking</h3>
-            <p>Someone repeatedly follows or monitors you.</p>
-            <button class="women-btn" data-women="stalking">
-                What Should I Do?
-            </button>
-        </article>
+
+            <strong>Online Stalking</strong>
+
+            <small>
+                Tracking, monitoring & repeated contact
+            </small>
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- NEVER SHARE -->
+<!-- =========================================================
+     EMERGENCY
+========================================================= -->
 
-<section class="rules-section">
+<section
+    id="emergency"
+    class="section emergency-section"
+>
 
-    <h2>🚫 Never Share These</h2>
+    <div class="emergency-card">
 
-    <div class="rules-grid">
+        <div class="emergency-icon">
+            🚨
+        </div>
 
-        <div>❌ OTP</div>
-        <div>❌ Password</div>
-        <div>❌ UPI PIN</div>
-        <div>❌ Recovery Code</div>
-        <div>❌ Banking PIN</div>
-        <div>❌ Login Code</div>
-        <div>❌ Private Key</div>
-        <div>❌ Screen-sharing access</div>
+        <div class="emergency-content">
+
+            <h2>
+                Need Help Right Now?
+            </h2>
+
+            <p>
+                If something serious is happening, start
+                with these immediate safety steps.
+            </p>
+
+            <button
+                class="primary-btn"
+                type="button"
+                data-emergency="account"
+            >
+                🔐 Account Compromised
+            </button>
+
+            <button
+                class="primary-btn"
+                type="button"
+                data-emergency="money"
+            >
+                💳 Money / Payment Fraud
+            </button>
+
+            <button
+                class="primary-btn"
+                type="button"
+                data-emergency="blackmail"
+            >
+                ⚠️ Blackmail / Threat
+            </button>
+
+            <button
+                class="primary-btn"
+                type="button"
+                data-emergency="phone"
+            >
+                📱 Phone Compromised
+            </button>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- ADVANCED TOOLS -->
+<!-- =========================================================
+     SAFETY TOOLS
+========================================================= -->
 
-<section id="tools" class="tools">
+<section
+    id="tools"
+    class="section tools-section"
+>
 
-    <h2>🛠️ CyberCare Tools</h2>
+    <div class="section-heading">
 
-    <p class="section-text">
-        Helpful privacy and safety tools that work locally
-        in your browser.
-    </p>
+        <span class="section-icon">🧰</span>
 
-    <div class="tool-grid">
-
-        <article class="tool-card">
-
-            <div class="tool-icon">🔎</div>
-
-            <h3>Scam Scanner</h3>
+        <div>
+            <h2>Safety Tools</h2>
 
             <p>
-                Paste a suspicious message and scan common
-                scam warning signs.
+                Simple browser-based tools to help you
+                identify warning signs and improve security.
             </p>
+        </div>
 
-            <button class="tool-btn" data-tool="scam">
-                Scan Message
-            </button>
-
-        </article>
+    </div>
 
 
-        <article class="tool-card">
+    <div class="tools-grid">
 
-            <div class="tool-icon">🔐</div>
+        <button
+            class="tool-btn tool-card"
+            data-tool="scam"
+            type="button"
+        >
+            <span>🎣</span>
 
-            <h3>Password Checker</h3>
+            <strong>Scam Scanner</strong>
 
-            <p>
-                Check password strength locally.
-            </p>
-
-            <button class="tool-btn" data-tool="password">
-                Check Password
-            </button>
-
-        </article>
-
-
-        <article class="tool-card">
-
-            <div class="tool-icon">🔗</div>
-
-            <h3>URL Safety Checker</h3>
-
-            <p>
-                Check common warning signs in a URL.
-            </p>
-
-            <button class="tool-btn" data-tool="url">
-                Check URL
-            </button>
-
-        </article>
+            <small>
+                Check suspicious messages
+            </small>
+        </button>
 
 
-        <article class="tool-card">
+        <button
+            class="tool-btn tool-card"
+            data-tool="password"
+            type="button"
+        >
+            <span>🔐</span>
 
-            <div class="tool-icon">📱</div>
+            <strong>Password Checker</strong>
 
-            <h3>Privacy Checklist</h3>
-
-            <p>
-                Review important privacy settings.
-            </p>
-
-            <button class="tool-btn" data-tool="privacy">
-                Open Checklist
-            </button>
-
-        </article>
+            <small>
+                Check basic password strength
+            </small>
+        </button>
 
 
-        <article class="tool-card">
+        <button
+            class="tool-btn tool-card"
+            data-tool="url"
+            type="button"
+        >
+            <span>🔗</span>
 
-            <div class="tool-icon">🧾</div>
+            <strong>URL Checker</strong>
 
-            <h3>Evidence Checklist</h3>
-
-            <p>
-                Learn what evidence to preserve.
-            </p>
-
-            <button class="tool-btn" data-tool="evidence">
-                Open Checklist
-            </button>
-
-        </article>
+            <small>
+                Look for basic suspicious patterns
+            </small>
+        </button>
 
 
-        <article class="tool-card">
+        <button
+            class="tool-btn tool-card"
+            data-tool="privacy"
+            type="button"
+        >
+            <span>🔒</span>
 
-            <div class="tool-icon">🛡️</div>
+            <strong>Privacy Checklist</strong>
 
-            <h3>Cyber Safety Score</h3>
+            <small>
+                Review your digital privacy
+            </small>
+        </button>
 
-            <p>
-                Test your basic digital safety habits.
-            </p>
 
-            <button class="tool-btn" data-tool="score">
-                Start Test
-            </button>
+        <button
+            class="tool-btn tool-card"
+            data-tool="evidence"
+            type="button"
+        >
+            <span>🧾</span>
 
-        </article>
+            <strong>Evidence Checklist</strong>
+
+            <small>
+                Preserve important evidence
+            </small>
+        </button>
+
+
+        <button
+            class="tool-btn tool-card"
+            data-tool="score"
+            type="button"
+        >
+            <span>🛡️</span>
+
+            <strong>Safety Score</strong>
+
+            <small>
+                Check your security habits
+            </small>
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- LEARN -->
+<!-- =========================================================
+     LEARN CYBERSECURITY
+========================================================= -->
 
-<section id="learn" class="learn-section">
+<section
+    id="learn"
+    class="section learn-section"
+>
 
-    <h2>🎓 Learn Cybersecurity</h2>
+    <div class="section-heading">
 
-    <p class="section-text">
-        Learn simple habits that protect your digital life.
-    </p>
+        <span class="section-icon">📚</span>
+
+        <div>
+            <h2>Learn Cyber Safety</h2>
+
+            <p>
+                Learn the basics before a problem happens.
+            </p>
+        </div>
+
+    </div>
+
 
     <div class="learn-grid">
 
-        <button class="learn-card" data-learn="password">
-            🔐
+        <button
+            class="learn-card"
+            data-learn="password"
+            type="button"
+        >
+            <span>🔐</span>
+
             <strong>Password Safety</strong>
-            <small>Passwords & passphrases</small>
+
+            <small>
+                Build safer password habits
+            </small>
         </button>
 
-        <button class="learn-card" data-learn="2fa">
-            🔑
+
+        <button
+            class="learn-card"
+            data-learn="2fa"
+            type="button"
+        >
+            <span>🔑</span>
+
             <strong>Two-Factor Authentication</strong>
-            <small>Protect account login</small>
+
+            <small>
+                Add another layer of protection
+            </small>
         </button>
 
-        <button class="learn-card" data-learn="phishing">
-            🎣
-            <strong>Phishing</strong>
-            <small>Identify fake messages</small>
+
+        <button
+            class="learn-card"
+            data-learn="phishing"
+            type="button"
+        >
+            <span>🎣</span>
+
+            <strong>Phishing Awareness</strong>
+
+            <small>
+                Recognize suspicious messages
+            </small>
         </button>
 
-        <button class="learn-card" data-learn="privacy">
-            🔒
+
+        <button
+            class="learn-card"
+            data-learn="privacy"
+            type="button"
+        >
+            <span>🔒</span>
+
             <strong>Privacy</strong>
-            <small>Protect personal information</small>
+
+            <small>
+                Protect your personal information
+            </small>
         </button>
 
-        <button class="learn-card" data-learn="phone">
-            📱
+
+        <button
+            class="learn-card"
+            data-learn="phone"
+            type="button"
+        >
+            <span>📱</span>
+
             <strong>Phone Security</strong>
-            <small>Apps & permissions</small>
+
+            <small>
+                Keep your device safer
+            </small>
         </button>
 
-        <button class="learn-card" data-learn="financial">
-            💳
+
+        <button
+            class="learn-card"
+            data-learn="financial"
+            type="button"
+        >
+            <span>💳</span>
+
             <strong>Financial Safety</strong>
-            <small>UPI & payment fraud</small>
+
+            <small>
+                Avoid payment and banking fraud
+            </small>
         </button>
 
     </div>
@@ -518,115 +831,33 @@
 </section>
 
 
-<!-- INDIA -->
+<!-- =========================================================
+     TRUST / IMPORTANT NOTICE
+========================================================= -->
 
-<section id="india" class="india-section">
+<section class="section notice-section">
 
-    <div class="section-badge">
-        🇮🇳 INDIA
-    </div>
+    <div class="notice-card">
 
-    <h2>India Cyber Help</h2>
+        <div class="notice-icon">
+            ℹ️
+        </div>
 
-    <p>
-        Use official government channels for cybercrime reporting.
-        CyberCare does not receive complaints directly.
-    </p>
+        <div>
 
-    <div class="india-actions">
+            <h3>
+                Important
+            </h3>
 
-        <a
-            href="https://www.cybercrime.gov.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="india-btn"
-        >
-            🌐 Cyber Crime Portal
-        </a>
+            <p>
+                CyberCare provides general digital-safety guidance.
+                For serious financial loss, threats, physical danger
+                or criminal activity, use the appropriate official
+                reporting and emergency channels.
+            </p>
 
-        <a
-            href="https://www.cybercrime.gov.in/Webform/cyber_suspect.aspx"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="india-btn"
-        >
-            🔎 Report Suspect
-        </a>
+        </div>
 
-        <a
-            href="https://www.cybercrime.gov.in/Webform/suspect_search_repository.aspx"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="india-btn"
-        >
-            🕵️ Check Suspect
-        </a>
-
-        <a
-            href="tel:1930"
-            class="india-btn emergency-link"
-        >
-            ☎️ 1930 — Financial Cyber Fraud
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- EMERGENCY -->
-
-<section class="emergency-section">
-
-    <h2>🚨 Emergency Cyber Response</h2>
-
-    <p>
-        If something is happening right now, start here.
-    </p>
-
-    <div class="emergency-grid">
-
-        <button data-emergency="account">
-            🔐 Account Compromised
-        </button>
-
-        <button data-emergency="money">
-            💳 Money at Risk
-        </button>
-
-        <button data-emergency="blackmail">
-            ⚠️ Blackmail / Threat
-        </button>
-
-        <button data-emergency="phone">
-            📱 Phone Compromised
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section id="about" class="about-section">
-
-    <h2>🛡️ About CyberCare</h2>
-
-    <p>
-        CyberCare is designed to make digital safety easier
-        to understand for ordinary users.
-    </p>
-
-    <p>
-        It provides educational guidance for account security,
-        scams, harassment, privacy, financial fraud and
-        other common digital safety problems.
-    </p>
-
-    <div class="about-warning">
-        CyberCare is not a police service, bank,
-        social-media company or emergency response service.
     </div>
 
 </section>
@@ -634,18 +865,30 @@
 </main>
 
 
-<footer>
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-    <h3>🛡️ CyberCare</h3>
+<footer class="footer">
 
-    <p>Stay Safe. Stay Secure.</p>
+    <div class="footer-brand">
+        🛡️ <strong>CyberCare</strong>
+    </div>
 
-    <p class="copyright">
-        © 2026 CyberCare. Built for a safer digital world.
+    <p>
+        Stay alert. Protect your accounts. Protect yourself.
     </p>
+
+    <small>
+        © 2026 CyberCare
+    </small>
 
 </footer>
 
+
+<!-- =========================================================
+     SCRIPT
+========================================================= -->
 
 <script src="script.js"></script>
 
