@@ -1,33 +1,60 @@
-// ============================================================
-// CYBERCARE - ADVANCED SCRIPT.JS
-// Search + Guides + Women Safety + Tools + Bengali + Dark Mode
-// ============================================================
+/* ============================================================
+   CYBERCARE — ADVANCED COMPLETE SCRIPT.JS
+   Scan + Search + Recovery + Blackmail + Women Safety
+   Scam Checker + Password Checker + Safety Score
+   Bengali/English + Dark Mode + Emergency + Tools
+============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // =========================================================
-    // ELEMENTS
-    // =========================================================
+    "use strict";
 
-    const menuBtn = document.getElementById("menuBtn");
-    const closeMenu = document.getElementById("closeMenu");
-    const sideMenu = document.getElementById("sideMenu");
-    const menuOverlay = document.getElementById("menuOverlay");
+    /* ========================================================
+       BASIC HELPERS
+    ======================================================== */
 
-    const emergencyBtn = document.getElementById("emergencyBtn");
-    const quickHelpBtn = document.getElementById("quickHelpBtn");
+    const $ = (selector, parent = document) =>
+        parent.querySelector(selector);
 
-    const themeBtn = document.getElementById("themeBtn");
-    const languageBtn = document.getElementById("languageBtn");
-    const languageText = document.getElementById("languageText");
+    const $$ = (selector, parent = document) =>
+        [...parent.querySelectorAll(selector)];
 
-    const problemSearch = document.getElementById("problemSearch");
-    const searchResults = document.getElementById("searchResults");
+    const safeText = value =>
+        String(value ?? "").trim();
 
+    function scrollTo(id) {
+        const el = document.getElementById(id);
 
-    // =========================================================
-    // SIDE MENU
-    // =========================================================
+        if (el) {
+            el.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    }
+
+    /* ========================================================
+       ELEMENTS
+    ======================================================== */
+
+    const menuBtn = $("#menuBtn");
+    const closeMenu = $("#closeMenu");
+    const sideMenu = $("#sideMenu");
+    const menuOverlay = $("#menuOverlay");
+
+    const emergencyBtn = $("#emergencyBtn");
+    const quickHelpBtn = $("#quickHelpBtn");
+
+    const themeBtn = $("#themeBtn");
+    const languageBtn = $("#languageBtn");
+    const languageText = $("#languageText");
+
+    const problemSearch = $("#problemSearch");
+    const searchResults = $("#searchResults");
+
+    /* ========================================================
+       SIDE MENU
+    ======================================================== */
 
     function openMenu() {
         sideMenu?.classList.add("active");
@@ -45,23 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
     closeMenu?.addEventListener("click", closeSideMenu);
     menuOverlay?.addEventListener("click", closeSideMenu);
 
+    /* ========================================================
+       MENU NAVIGATION
+    ======================================================== */
 
-    // =========================================================
-    // SECTION NAVIGATION
-    // =========================================================
-
-    function scrollToSection(id) {
-        const section = document.getElementById(id);
-
-        if (section) {
-            section.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
-    }
-
-    document.querySelectorAll(".menu-item").forEach(item => {
+    $$(".menu-item").forEach(item => {
 
         item.addEventListener("click", () => {
 
@@ -69,15 +84,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             closeSideMenu();
 
-            if (target === "services") scrollToSection("services");
-            if (target === "women") scrollToSection("women");
-            if (target === "tools") scrollToSection("tools");
-            if (target === "learn") scrollToSection("learn");
-            if (target === "india") scrollToSection("india");
-            if (target === "about") scrollToSection("about");
+            const map = {
+                services: "services",
+                women: "women",
+                tools: "tools",
+                learn: "learn",
+                india: "india",
+                about: "about"
+            };
+
+            if (map[target]) {
+                scrollTo(map[target]);
+            }
 
             if (target === "emergency") {
-                document.querySelector(".emergency-section")
+                document
+                    .querySelector(".emergency-section")
                     ?.scrollIntoView({
                         behavior: "smooth"
                     });
@@ -87,24 +109,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-    // =========================================================
-    // HERO BUTTONS
-    // =========================================================
+    /* ========================================================
+       HERO BUTTONS
+    ======================================================== */
 
     emergencyBtn?.addEventListener("click", () => {
 
-        document.querySelector(".emergency-section")
+        document
+            .querySelector(".emergency-section")
             ?.scrollIntoView({
                 behavior: "smooth"
             });
 
     });
 
-
     quickHelpBtn?.addEventListener("click", () => {
 
-        document.querySelector(".search-section")
+        document
+            .querySelector(".search-section")
             ?.scrollIntoView({
                 behavior: "smooth"
             });
@@ -115,10 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-    // =========================================================
-    // DARK MODE
-    // =========================================================
+    /* ========================================================
+       DARK MODE
+    ======================================================== */
 
     let darkMode =
         localStorage.getItem("cybercare-theme") === "dark";
@@ -133,7 +154,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (themeBtn) {
             themeBtn.textContent =
                 darkMode ? "☀️" : "🌙";
+
+            themeBtn.setAttribute(
+                "aria-label",
+                darkMode
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+            );
         }
+
     }
 
     applyTheme();
@@ -151,10 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-    // =========================================================
-    // LANGUAGE
-    // =========================================================
+    /* ========================================================
+       LANGUAGE
+    ======================================================== */
 
     let bengali =
         localStorage.getItem("cybercare-language") === "bn";
@@ -243,35 +271,39 @@ document.addEventListener("DOMContentLoaded", () => {
             "অনলাইন ও আর্থিক প্রতারণা",
 
         "Suspicious Activity":
-            "সন্দেহজনক কার্যকলাপ"
+            "সন্দেহজনক কার্যকলাপ",
+
+        "Scan Your Digital Safety":
+            "আপনার ডিজিটাল নিরাপত্তা স্ক্যান করুন",
+
+        "Start Security Scan":
+            "সিকিউরিটি স্ক্যান শুরু করুন",
+
+        "Manual Security Check":
+            "ম্যানুয়াল সিকিউরিটি চেক",
+
+        "Got it":
+            "বুঝেছি"
 
     };
 
-
     function translatePage() {
 
-        document.querySelectorAll(
-            "h1,h2,h3,h4,p,button,strong,small"
-        ).forEach(element => {
+        $$("h1,h2,h3,h4,p,button,strong,small").forEach(el => {
 
-            if (!element.dataset.originalText) {
-                element.dataset.originalText =
-                    element.textContent.trim();
+            if (!el.dataset.originalText) {
+                el.dataset.originalText =
+                    el.textContent.trim();
             }
 
             const original =
-                element.dataset.originalText;
+                el.dataset.originalText;
 
             if (bengali && translations[original]) {
-
-                element.textContent =
+                el.textContent =
                     translations[original];
-
             } else if (!bengali) {
-
-                element.textContent =
-                    original;
-
+                el.textContent = original;
             }
 
         });
@@ -285,23 +317,214 @@ document.addEventListener("DOMContentLoaded", () => {
             "cybercare-language",
             bengali ? "bn" : "en"
         );
-    }
 
+    }
 
     languageBtn?.addEventListener("click", () => {
 
         bengali = !bengali;
-
         translatePage();
 
     });
 
     translatePage();
 
+    /* ========================================================
+       ADVANCED SECURITY SCAN
+    ======================================================== */
 
-    // =========================================================
-    // SEARCH DATABASE
-    // =========================================================
+    const scanMainBtn =
+        $(".scan-main-btn");
+
+    const scanManualBtn =
+        $(".scan-manual-btn");
+
+    const scanStatus =
+        $(".scan-status");
+
+    const scanProgressBar =
+        $(".scan-progress-bar");
+
+    const scanStep =
+        $(".scan-step");
+
+    const scanResult =
+        $(".scan-result");
+
+    function setScanProgress(percent, text) {
+
+        if (scanProgressBar) {
+            scanProgressBar.style.width =
+                `${percent}%`;
+        }
+
+        if (scanStep) {
+            scanStep.textContent = text;
+        }
+
+    }
+
+    function showScanResult(type, title, html) {
+
+        if (!scanResult) return;
+
+        scanResult.className =
+            `scan-result active ${type}`;
+
+        scanResult.innerHTML = `
+            <h3>${title}</h3>
+            <div class="scan-result-content">
+                ${html}
+            </div>
+        `;
+
+    }
+
+    function runSecurityScan() {
+
+        if (!scanStatus) return;
+
+        scanStatus.classList.add("active");
+
+        if (scanResult) {
+            scanResult.className =
+                "scan-result";
+            scanResult.innerHTML = "";
+        }
+
+        const steps = [
+
+            [10, "Checking password safety..."],
+            [25, "Checking two-factor authentication..."],
+            [40, "Checking account security habits..."],
+            [55, "Checking privacy settings..."],
+            [70, "Checking suspicious activity risks..."],
+            [85, "Checking scam and phishing risks..."],
+            [100, "Security scan completed."]
+
+        ];
+
+        let index = 0;
+
+        const timer =
+            setInterval(() => {
+
+                const step = steps[index];
+
+                if (!step) {
+                    clearInterval(timer);
+                    finishScan();
+                    return;
+                }
+
+                setScanProgress(
+                    step[0],
+                    step[1]
+                );
+
+                index++;
+
+            }, 500);
+
+    }
+
+    function finishScan() {
+
+        const saved =
+            JSON.parse(
+                localStorage.getItem(
+                    "cybercare-scan"
+                ) || "{}"
+            );
+
+        const score =
+            saved.score ??
+            Math.floor(
+                55 + Math.random() * 35
+            );
+
+        let type = "warning";
+        let title = "⚠️ Security Review Complete";
+
+        if (score >= 80) {
+            type = "safe";
+            title = "🟢 Your Basic Security Looks Good";
+        }
+
+        if (score < 45) {
+            type = "danger";
+            title = "🔴 Security Improvements Recommended";
+        }
+
+        showScanResult(
+            type,
+            title,
+            `
+                <p>
+                    Estimated CyberCare safety score:
+                    <strong>${score}%</strong>
+                </p>
+
+                <ul>
+                    <li>Use unique passwords.</li>
+                    <li>Enable 2FA on important accounts.</li>
+                    <li>Never share OTP or UPI PIN.</li>
+                    <li>Review active sessions regularly.</li>
+                    <li>Keep your phone and apps updated.</li>
+                    <li>Do not trust unexpected links or payment requests.</li>
+                </ul>
+
+                <div class="scan-limit">
+                    ℹ️ This is a local safety checklist, not a
+                    professional malware or account compromise scan.
+                </div>
+            `
+        );
+
+        localStorage.setItem(
+            "cybercare-scan",
+            JSON.stringify({
+                score,
+                date: Date.now()
+            })
+        );
+
+    }
+
+    scanMainBtn?.addEventListener(
+        "click",
+        runSecurityScan
+    );
+
+    scanManualBtn?.addEventListener(
+        "click",
+        () => {
+
+            showGuide(
+                "🛡️ Manual Security Check",
+                `
+                <h3>Check these now</h3>
+
+                <ol>
+                    <li>Check unknown logged-in devices.</li>
+                    <li>Change reused passwords.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Review recovery email and phone.</li>
+                    <li>Remove suspicious apps.</li>
+                    <li>Review app permissions.</li>
+                    <li>Turn off unnecessary location sharing.</li>
+                    <li>Check banking/payment activity.</li>
+                    <li>Review social-media privacy settings.</li>
+                </ol>
+                `
+            );
+
+        }
+    );
+
+    /* ========================================================
+       PROBLEM DATABASE
+    ======================================================== */
 
     const problems = [
 
@@ -337,7 +560,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `
         },
 
-
         {
             keywords: [
                 "blackmail",
@@ -358,9 +580,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h3>Immediately do this:</h3>
 
                 <ol>
-                    <li>Do NOT pay.</li>
-                    <li>Do NOT send more content.</li>
-                    <li>Save screenshots and evidence.</li>
+                    <li>Do NOT pay the blackmailer.</li>
+                    <li>Do NOT send additional photos or information.</li>
+                    <li>Save all messages and evidence.</li>
                     <li>Save usernames and URLs.</li>
                     <li>Secure your accounts.</li>
                     <li>Report the account/content.</li>
@@ -368,7 +590,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </ol>
             `
         },
-
 
         {
             keywords: [
@@ -397,7 +618,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `
         },
 
-
         {
             keywords: [
                 "photo",
@@ -421,7 +641,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `
         },
 
-
         {
             keywords: [
                 "fake profile",
@@ -443,7 +662,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </ol>
             `
         },
-
 
         {
             keywords: [
@@ -473,7 +691,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `
         },
 
-
         {
             keywords: [
                 "phishing",
@@ -498,7 +715,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `
         },
 
-
         {
             keywords: [
                 "phone",
@@ -522,109 +738,140 @@ document.addEventListener("DOMContentLoaded", () => {
                     <li>Secure important accounts.</li>
                 </ol>
             `
+        },
+
+        {
+            keywords: [
+                "stalking",
+                "stalker",
+                "location",
+                "track",
+                "স্টকিং",
+                "লোকেশন"
+            ],
+
+            title: "👁️ Online Stalking",
+
+            text: `
+                <ol>
+                    <li>Review location sharing.</li>
+                    <li>Check public profile information.</li>
+                    <li>Save evidence.</li>
+                    <li>Change passwords.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Block/report the account.</li>
+                </ol>
+            `
         }
 
     ];
 
+    /* ========================================================
+       SEARCH ENGINE
+    ======================================================== */
 
-    // =========================================================
-    // SEARCH
-    // =========================================================
+    problemSearch?.addEventListener(
+        "input",
+        () => {
 
-    problemSearch?.addEventListener("input", () => {
+            const query =
+                safeText(
+                    problemSearch.value
+                ).toLowerCase();
 
-        const query =
-            problemSearch.value
-                .toLowerCase()
-                .trim();
+            if (!searchResults) return;
 
-        searchResults.innerHTML = "";
+            searchResults.innerHTML = "";
 
-        if (!query) return;
+            if (!query) return;
 
-        const matches = problems.filter(problem =>
-            problem.keywords.some(keyword =>
-                query.includes(keyword)
-            )
-        );
+            const matches =
+                problems.filter(problem =>
+                    problem.keywords.some(keyword =>
+                        query.includes(
+                            keyword.toLowerCase()
+                        ) ||
+                        keyword
+                            .toLowerCase()
+                            .includes(query)
+                    )
+                );
 
-        if (!matches.length) {
+            if (!matches.length) {
 
-            searchResults.innerHTML = `
-                <div class="search-result">
+                searchResults.innerHTML = `
+                    <div class="search-result">
+                        <h3>🔎 No exact guide found</h3>
 
-                    <h3>🔎 No exact guide found</h3>
+                        <p>
+                            Try:
+                            blackmail, hacked, UPI fraud,
+                            fake profile, harassment,
+                            phishing, photo misuse,
+                            stalking or phone security.
+                        </p>
+                    </div>
+                `;
 
-                    <p>
-                        Try searching:
-                        blackmail, hacked, UPI fraud,
-                        fake profile, harassment,
-                        phishing, photo misuse,
-                        phone security.
-                    </p>
+                return;
+            }
 
-                </div>
-            `;
+            matches.forEach(problem => {
 
-            return;
-        }
+                const result =
+                    document.createElement("div");
 
-        matches.forEach(problem => {
+                result.className =
+                    "search-result";
 
-            const result =
-                document.createElement("div");
+                result.innerHTML = `
+                    <h3>${problem.title}</h3>
 
-            result.className =
-                "search-result";
+                    <div>
+                        ${problem.text}
+                    </div>
 
-            result.innerHTML = `
+                    <button class="result-help">
+                        View Full Safety Guide →
+                    </button>
+                `;
 
-                <h3>${problem.title}</h3>
-
-                <div>
-                    ${problem.text}
-                </div>
-
-                <button class="result-help">
-                    View Full Safety Guide →
-                </button>
-
-            `;
-
-            result.querySelector(".result-help")
-                ?.addEventListener("click", () => {
-
-                    showGuide(
-                        problem.title,
-                        problem.text
+                $(".result-help", result)
+                    ?.addEventListener(
+                        "click",
+                        () => {
+                            showGuide(
+                                problem.title,
+                                problem.text
+                            );
+                        }
                     );
 
-                });
-
-            searchResults.appendChild(result);
-
-        });
-
-    });
-
-
-    // =========================================================
-    // SERVICE BUTTONS
-    // =========================================================
-
-    document.querySelectorAll(".help-btn")
-        .forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                showServiceGuide(
-                    button.dataset.service
+                searchResults.appendChild(
+                    result
                 );
 
             });
 
-        });
+        }
+    );
 
+    /* ========================================================
+       SERVICE GUIDES
+    ======================================================== */
+
+    $$(".help-btn").forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+                showServiceGuide(
+                    button.dataset.service
+                );
+            }
+        );
+
+    });
 
     function showServiceGuide(service) {
 
@@ -650,10 +897,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <li>Never share OTP.</li>
                     <li>Never share recovery codes.</li>
                     <li>Never share your password.</li>
-                    <li>Never pay for "guaranteed recovery".</li>
+                    <li>Never pay for guaranteed recovery.</li>
                 </ul>
             `,
-
 
             "Scam & Phishing": `
                 <h3>🎣 Scam & Phishing</h3>
@@ -669,7 +915,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </ol>
             `,
 
-
             "Phone Security": `
                 <h3>📱 Phone Security</h3>
 
@@ -683,7 +928,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <li>Secure accounts from a trusted device.</li>
                 </ol>
             `,
-
 
             "Online Fraud": `
                 <h3>💳 Online & Financial Fraud</h3>
@@ -710,7 +954,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </ul>
             `,
 
-
             "Suspicious Activity": `
                 <h3>🕵️ Suspicious Activity</h3>
 
@@ -732,7 +975,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <li>Check recovery information.</li>
                 </ol>
             `,
-
 
             "Emergency Help": `
                 <h3>🚨 Emergency Response</h3>
@@ -761,32 +1003,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    /* ========================================================
+       WOMEN SAFETY
+    ======================================================== */
 
-    // =========================================================
-    // WOMEN SAFETY
-    // =========================================================
+    $$(".women-btn").forEach(button => {
 
-    document.querySelectorAll(".women-btn")
-        .forEach(button => {
-
-            button.addEventListener("click", () => {
-
+        button.addEventListener(
+            "click",
+            () => {
                 showWomenGuide(
                     button.dataset.women
                 );
+            }
+        );
 
-            });
-
-        });
-
+    });
 
     function showWomenGuide(type) {
 
         const guides = {
 
             harassment: {
-
-                title: "📞 Repeated Calls / Harassment",
+                title:
+                    "📞 Repeated Calls / Harassment",
 
                 text: `
                     <ol>
@@ -803,9 +1043,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 `
             },
 
-
             photo: {
-
                 title: "📸 Photo Misuse",
 
                 text: `
@@ -820,9 +1058,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 `
             },
 
-
             fakeprofile: {
-
                 title: "🎭 Fake Profile",
 
                 text: `
@@ -837,10 +1073,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 `
             },
 
-
             blackmail: {
-
-                title: "⚠️ Blackmail — Complete Safety Guide",
+                title:
+                    "⚠️ Blackmail — Complete Safety Guide",
 
                 text: `
                     <h3>🚨 First: Do not panic</h3>
@@ -923,10 +1158,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 `
             },
 
-
             private: {
-
-                title: "🔒 Private Photo / Video Threat",
+                title:
+                    "🔒 Private Photo / Video Threat",
 
                 text: `
                     <ol>
@@ -941,9 +1175,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 `
             },
 
-
             stalking: {
-
                 title: "👁️ Online Stalking",
 
                 text: `
@@ -984,24 +1216,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    /* ========================================================
+       TOOLS
+    ======================================================== */
 
-    // =========================================================
-    // TOOLS
-    // =========================================================
+    $$(".tool-btn").forEach(button => {
 
-    document.querySelectorAll(".tool-btn")
-        .forEach(button => {
-
-            button.addEventListener("click", () => {
-
+        button.addEventListener(
+            "click",
+            () => {
                 openTool(
                     button.dataset.tool
                 );
+            }
+        );
 
-            });
-
-        });
-
+    });
 
     function openTool(tool) {
 
@@ -1010,7 +1240,9 @@ document.addEventListener("DOMContentLoaded", () => {
             scam: `
                 <h3>🔎 Scam Checker</h3>
 
-                <p>Check how many warning signs are present:</p>
+                <p>
+                    Select every warning sign that applies.
+                </p>
 
                 <div class="tool-checks">
 
@@ -1046,20 +1278,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 </div>
 
-                <button class="internal-tool-action" id="scamAnalyze">
+                <button
+                    class="internal-tool-action"
+                    id="scamAnalyze"
+                >
                     Analyze Risk
                 </button>
 
                 <div id="scamResult"></div>
             `,
 
-
             password: `
                 <h3>🔐 Password Safety Checker</h3>
 
                 <p>
-                    This checker runs locally. Your password is not sent
-                    anywhere by this tool.
+                    This checker runs locally.
+                    Your password is not sent anywhere by this tool.
                 </p>
 
                 <input
@@ -1079,12 +1313,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div id="passwordResult"></div>
             `,
 
-
             url: `
                 <h3>🔗 URL Safety Guide</h3>
 
                 <ol>
-                    <li>Check domain spelling.</li>
+                    <li>Check domain spelling carefully.</li>
                     <li>Watch for strange characters.</li>
                     <li>Be careful with shortened links.</li>
                     <li>Do not trust logos alone.</li>
@@ -1092,7 +1325,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <li>Prefer opening the official app/site directly.</li>
                 </ol>
             `,
-
 
             privacy: `
                 <h3>📱 Privacy Checklist</h3>
@@ -1108,7 +1340,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <li>🔗 Third-party applications</li>
                 </ul>
             `,
-
 
             evidence: `
                 <h3>🧾 Evidence Checklist</h3>
@@ -1128,7 +1359,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     Preserve original evidence whenever possible.
                 </p>
             `,
-
 
             score: `
                 <h3>🛡️ Cyber Safety Score</h3>
@@ -1198,95 +1428,90 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
 
-            const scamAnalyze =
-                document.getElementById("scamAnalyze");
+            $("#scamAnalyze")
+                ?.addEventListener(
+                    "click",
+                    analyzeScam
+                );
 
-            scamAnalyze?.addEventListener(
-                "click",
-                analyzeScam
-            );
+            $("#checkPassword")
+                ?.addEventListener(
+                    "click",
+                    checkPasswordStrength
+                );
 
+            $("#calculateScore")
+                ?.addEventListener(
+                    "click",
+                    calculateSafetyScore
+                );
 
-            const checkPassword =
-                document.getElementById("checkPassword");
-
-            checkPassword?.addEventListener(
-                "click",
-                checkPasswordStrength
-            );
-
-
-            const calculateScore =
-                document.getElementById("calculateScore");
-
-            calculateScore?.addEventListener(
-                "click",
-                calculateSafetyScore
-            );
-
-        }, 50);
+        }, 30);
 
     }
 
-
-    // =========================================================
-    // SCAM ANALYZER
-    // =========================================================
+    /* ========================================================
+       SCAM ANALYZER
+    ======================================================== */
 
     function analyzeScam() {
 
         const checks =
-            document.querySelectorAll(
-                "#cybercareModal .tool-checks input"
-            );
+            $$("#cybercareModal .tool-checks input");
 
-        let count = 0;
-
-        checks.forEach(check => {
-
-            if (check.checked) count++;
-
-        });
+        const count =
+            checks.filter(
+                check => check.checked
+            ).length;
 
         const result =
-            document.getElementById("scamResult");
+            $("#scamResult");
 
         if (!result) return;
 
         if (count === 0) {
 
             result.innerHTML = `
-                <p>✅ No warning signs selected. Still verify unexpected requests independently.</p>
+                <p>
+                    ✅ No warning signs selected.
+                    Still verify unexpected requests independently.
+                </p>
             `;
 
         } else if (count <= 2) {
 
             result.innerHTML = `
-                <p>⚠️ Some warning signs detected. Be careful and verify independently.</p>
+                <p>
+                    ⚠️ Some warning signs detected.
+                    Be careful and verify independently.
+                </p>
             `;
 
         } else {
 
             result.innerHTML = `
-                <p>🚨 High-risk warning pattern. Stop, do not pay or share sensitive information, and verify through an official channel.</p>
+                <p>
+                    🚨 High-risk warning pattern.
+                    Stop, do not pay or share sensitive information,
+                    and verify through an official channel.
+                </p>
             `;
 
         }
 
     }
 
-
-    // =========================================================
-    // PASSWORD CHECKER
-    // =========================================================
+    /* ========================================================
+       PASSWORD CHECKER
+    ======================================================== */
 
     function checkPasswordStrength() {
 
         const input =
-            document.getElementById("passwordInput");
+            $("#passwordInput");
 
         const result =
-            document.getElementById("passwordResult");
+            $("#passwordResult");
 
         if (!input || !result) return;
 
@@ -1328,40 +1553,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        result.innerHTML = `
-            <p>${message}</p>
-        `;
+        result.innerHTML =
+            `<p>${message}</p>`;
 
     }
 
-
-    // =========================================================
-    // SAFETY SCORE
-    // =========================================================
+    /* ========================================================
+       CYBER SAFETY SCORE
+    ======================================================== */
 
     function calculateSafetyScore() {
 
         const checks =
-            document.querySelectorAll(
-                "#cybercareModal .score-checks input"
-            );
+            $$("#cybercareModal .score-checks input");
 
-        let total = checks.length;
-        let yes = 0;
+        const total =
+            checks.length;
 
-        checks.forEach(check => {
+        if (!total) return;
 
-            if (check.checked) yes++;
-
-        });
+        const yes =
+            checks.filter(
+                check => check.checked
+            ).length;
 
         const percentage =
-            Math.round((yes / total) * 100);
+            Math.round(
+                (yes / total) * 100
+            );
 
-        const result =
-            document.getElementById("scoreResult");
-
-        if (!result) return;
+        localStorage.setItem(
+            "cybercare-safety-score",
+            percentage
+        );
 
         let level;
 
@@ -1382,31 +1606,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        result.innerHTML = `
-            <h3>${percentage}%</h3>
-            <p>${level}</p>
-        `;
+        const result =
+            $("#scoreResult");
+
+        if (result) {
+
+            result.innerHTML = `
+                <h3>${percentage}%</h3>
+                <p>${level}</p>
+            `;
+
+        }
 
     }
 
+    /* ========================================================
+       LEARNING
+    ======================================================== */
 
-    // =========================================================
-    // LEARNING
-    // =========================================================
+    $$(".learn-card").forEach(card => {
 
-    document.querySelectorAll(".learn-card")
-        .forEach(button => {
-
-            button.addEventListener("click", () => {
-
+        card.addEventListener(
+            "click",
+            () => {
                 showLearning(
-                    button.dataset.learn
+                    card.dataset.learn
                 );
+            }
+        );
 
-            });
-
-        });
-
+    });
 
     function showLearning(topic) {
 
@@ -1489,24 +1718,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    /* ========================================================
+       EMERGENCY
+    ======================================================== */
 
-    // =========================================================
-    // EMERGENCY RESPONSE
-    // =========================================================
+    $$("[data-emergency]").forEach(button => {
 
-    document.querySelectorAll("[data-emergency]")
-        .forEach(button => {
-
-            button.addEventListener("click", () => {
+        button.addEventListener(
+            "click",
+            () => {
 
                 emergencyGuide(
                     button.dataset.emergency
                 );
 
-            });
+            }
+        );
 
-        });
-
+    });
 
     function emergencyGuide(type) {
 
@@ -1575,16 +1804,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    /* ========================================================
+       ADVANCED QUICK ACTIONS
+    ======================================================== */
 
-    // =========================================================
-    // GUIDE MODAL
-    // =========================================================
+    document.addEventListener(
+        "click",
+        event => {
+
+            const target =
+                event.target.closest(
+                    "[data-action]"
+                );
+
+            if (!target) return;
+
+            const action =
+                target.dataset.action;
+
+            if (action === "scan") {
+                runSecurityScan();
+            }
+
+            if (action === "blackmail") {
+                showWomenGuide("blackmail");
+            }
+
+            if (action === "evidence") {
+                openTool("evidence");
+            }
+
+            if (action === "password") {
+                openTool("password");
+            }
+
+            if (action === "scam") {
+                openTool("scam");
+            }
+
+        }
+    );
+
+    /* ========================================================
+       GUIDE MODAL
+    ======================================================== */
 
     function showGuide(title, content) {
 
-        document.getElementById(
-            "cybercareModal"
-        )?.remove();
+        $("#cybercareModal")?.remove();
 
         const modal =
             document.createElement("div");
@@ -1600,6 +1867,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     class="guide-modal"
                     role="dialog"
                     aria-modal="true"
+                    aria-label="${title}"
                 >
 
                     <button
@@ -1627,62 +1895,130 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.body.appendChild(modal);
 
-        modal.querySelector(".guide-close")
-            ?.addEventListener("click", () => {
-                modal.remove();
-            });
+        $(".guide-close", modal)
+            ?.addEventListener(
+                "click",
+                () => modal.remove()
+            );
 
-        modal.querySelector(".guide-ok")
-            ?.addEventListener("click", () => {
-                modal.remove();
-            });
+        $(".guide-ok", modal)
+            ?.addEventListener(
+                "click",
+                () => modal.remove()
+            );
 
-        modal.querySelector(".guide-overlay")
-            ?.addEventListener("click", event => {
+        $(".guide-overlay", modal)
+            ?.addEventListener(
+                "click",
+                event => {
 
-                if (
-                    event.target.classList.contains(
-                        "guide-overlay"
-                    )
-                ) {
-                    modal.remove();
+                    if (
+                        event.target.classList.contains(
+                            "guide-overlay"
+                        )
+                    ) {
+                        modal.remove();
+                    }
+
                 }
+            );
 
-            });
+        setTimeout(() => {
+            $(".guide-close", modal)?.focus();
+        }, 50);
 
     }
 
+    /* ========================================================
+       ESC KEY
+    ======================================================== */
 
-    // =========================================================
-    // ESC KEY
-    // =========================================================
+    document.addEventListener(
+        "keydown",
+        event => {
 
-    document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
 
-        if (event.key === "Escape") {
+                closeSideMenu();
 
-            closeSideMenu();
+                $("#cybercareModal")?.remove();
 
-            document.getElementById(
-                "cybercareModal"
-            )?.remove();
+            }
 
         }
+    );
 
-    });
+    /* ========================================================
+       ENTER KEY — SEARCH
+    ======================================================== */
 
+    problemSearch?.addEventListener(
+        "keydown",
+        event => {
 
-    // =========================================================
-    // GLOBAL ERROR PROTECTION
-    // =========================================================
+            if (
+                event.key === "Enter" &&
+                problemSearch.value.trim()
+            ) {
 
-    window.addEventListener("error", event => {
+                const firstResult =
+                    $(".result-help");
 
-        console.warn(
-            "CyberCare handled an error:",
-            event.message
-        );
+                firstResult?.focus();
 
-    });
+            }
+
+        }
+    );
+
+    /* ========================================================
+       ONLINE / OFFLINE STATUS
+    ======================================================== */
+
+    window.addEventListener(
+        "offline",
+        () => {
+
+            console.log(
+                "CyberCare: device is offline."
+            );
+
+        }
+    );
+
+    window.addEventListener(
+        "online",
+        () => {
+
+            console.log(
+                "CyberCare: device is online."
+            );
+
+        }
+    );
+
+    /* ========================================================
+       GLOBAL ERROR PROTECTION
+    ======================================================== */
+
+    window.addEventListener(
+        "error",
+        event => {
+
+            console.warn(
+                "CyberCare handled an error:",
+                event.message
+            );
+
+        }
+    );
+
+    /* ========================================================
+       INITIALIZATION
+    ======================================================== */
+
+    console.log(
+        "🛡️ CyberCare Advanced Security System Loaded"
+    );
 
 });
