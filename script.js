@@ -1,29 +1,45 @@
 // ============================================================
-// CYBERCARE - ADVANCED SCRIPT.JS
-// Search + Safety Guides + Women Safety + Tools + Scanner
-// English / বাংলা + Dark Mode + Emergency Response
+// CYBERCARE — ADVANCED SCRIPT.JS
+// Digital Safety • Women's Safety • Emergency • Tools
+// Search • Bengali/English • Dark Mode • Share • Copy
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    "use strict";
 
     // =========================================================
     // ELEMENTS
     // =========================================================
 
-    const menuBtn = document.getElementById("menuBtn");
-    const closeMenu = document.getElementById("closeMenu");
-    const sideMenu = document.getElementById("sideMenu");
-    const menuOverlay = document.getElementById("menuOverlay");
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
 
-    const emergencyBtn = document.getElementById("emergencyBtn");
-    const quickHelpBtn = document.getElementById("quickHelpBtn");
+    const menuBtn = $("#menuBtn");
+    const closeMenu = $("#closeMenu");
+    const sideMenu = $("#sideMenu");
+    const menuOverlay = $("#menuOverlay");
 
-    const themeBtn = document.getElementById("themeBtn");
-    const languageBtn = document.getElementById("languageBtn");
-    const languageText = document.getElementById("languageText");
+    const emergencyBtn = $("#emergencyBtn");
+    const quickHelpBtn = $("#quickHelpBtn");
 
-    const problemSearch = document.getElementById("problemSearch");
-    const searchResults = document.getElementById("searchResults");
+    const themeBtn = $("#themeBtn");
+    const languageBtn = $("#languageBtn");
+    const languageText = $("#languageText");
+
+    const problemSearch = $("#problemSearch");
+    const searchResults = $("#searchResults");
+
+
+    // =========================================================
+    // STORAGE
+    // =========================================================
+
+    const STORAGE = {
+        theme: "cybercare-theme",
+        language: "cybercare-language",
+        history: "cybercare-history"
+    };
 
 
     // =========================================================
@@ -48,21 +64,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================================
-    // NAVIGATION
+    // SECTION NAVIGATION
     // =========================================================
 
     function scrollToSection(id) {
+
         const section = document.getElementById(id);
 
-        if (section) {
-            section.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
+        if (!section) return;
+
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     }
 
-    document.querySelectorAll(".menu-item").forEach(item => {
+    $$(".menu-item").forEach(item => {
 
         item.addEventListener("click", () => {
 
@@ -80,7 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (target === "emergency") {
                 document.querySelector(".emergency-section")
                     ?.scrollIntoView({
-                        behavior: "smooth"
+                        behavior: "smooth",
+                        block: "start"
                     });
             }
 
@@ -94,17 +112,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================================================
 
     emergencyBtn?.addEventListener("click", () => {
+
         document.querySelector(".emergency-section")
             ?.scrollIntoView({
-                behavior: "smooth"
+                behavior: "smooth",
+                block: "start"
             });
+
     });
+
 
     quickHelpBtn?.addEventListener("click", () => {
 
         document.querySelector(".search-section")
             ?.scrollIntoView({
-                behavior: "smooth"
+                behavior: "smooth",
+                block: "start"
             });
 
         setTimeout(() => {
@@ -119,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================================================
 
     let darkMode =
-        localStorage.getItem("cybercare-theme") === "dark";
+        localStorage.getItem(STORAGE.theme) === "dark";
 
     function applyTheme() {
 
@@ -131,6 +154,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (themeBtn) {
             themeBtn.textContent =
                 darkMode ? "☀️" : "🌙";
+
+            themeBtn.setAttribute(
+                "aria-label",
+                darkMode
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+            );
         }
     }
 
@@ -141,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         darkMode = !darkMode;
 
         localStorage.setItem(
-            "cybercare-theme",
+            STORAGE.theme,
             darkMode ? "dark" : "light"
         );
 
@@ -151,18 +181,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================================
-    // LANGUAGE
+    // LANGUAGE SYSTEM
     // =========================================================
 
-    let bengali = false;
+    let bengali =
+        localStorage.getItem(STORAGE.language) === "bn";
+
+    if (bengali && languageText) {
+        languageText.textContent = "বাংলা";
+    }
+
+    const translations = {
+
+        "Protecting People. Securing Digital Lives.":
+            "মানুষকে সুরক্ষিত রাখা। ডিজিটাল জীবনকে নিরাপদ রাখা।",
+
+        "What happened?":
+            "কী ঘটেছে?",
+
+        "How Can We Help You?":
+            "আমরা কীভাবে সাহায্য করতে পারি?",
+
+        "Women's Digital Safety":
+            "নারীদের ডিজিটাল নিরাপত্তা",
+
+        "CyberCare Tools":
+            "CyberCare টুলস",
+
+        "Learn Cybersecurity":
+            "সাইবার নিরাপত্তা শিখুন",
+
+        "Emergency Help":
+            "জরুরি সহায়তা",
+
+        "India Cyber Help":
+            "ভারতে সাইবার সহায়তা",
+
+        "About CyberCare":
+            "CyberCare সম্পর্কে",
+
+        "Repeated Calls / Harassment":
+            "বারবার ফোন / হয়রানি",
+
+        "Photo Misuse":
+            "ছবির অপব্যবহার",
+
+        "Fake Profile":
+            "ভুয়া প্রোফাইল",
+
+        "Blackmail":
+            "ব্ল্যাকমেইল",
+
+        "Private Photo / Video Threat":
+            "ব্যক্তিগত ছবি / ভিডিও নিয়ে হুমকি",
+
+        "Online Stalking":
+            "অনলাইন স্টকিং",
+
+        "What Should I Do?":
+            "আমি কী করব?",
+
+        "Get Help →":
+            "সাহায্য নিন →",
+
+        "Open Tool":
+            "টুল খুলুন",
+
+        "Start Test":
+            "পরীক্ষা শুরু করুন"
+
+    };
+
+
+    function translateToBangla() {
+
+        $$("h1,h2,h3,h4,p,button,strong,small").forEach(element => {
+
+            const text = element.textContent.trim();
+
+            if (translations[text]) {
+                element.textContent = translations[text];
+            }
+
+        });
+
+    }
+
 
     languageBtn?.addEventListener("click", () => {
 
         bengali = !bengali;
 
+        localStorage.setItem(
+            STORAGE.language,
+            bengali ? "bn" : "en"
+        );
+
         if (languageText) {
             languageText.textContent =
-                bengali ? "EN" : "বাংলা";
+                bengali ? "বাংলা" : "EN";
         }
 
         if (bengali) {
@@ -172,98 +289,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     });
-
-
-    function translateToBangla() {
-
-        const translations = {
-
-            "Protecting People. Securing Digital Lives.":
-                "মানুষকে সুরক্ষিত রাখা। ডিজিটাল জীবনকে নিরাপদ রাখা।",
-
-            "What happened?":
-                "কী ঘটেছে?",
-
-            "How Can We Help You?":
-                "আমরা কীভাবে সাহায্য করতে পারি?",
-
-            "Women's Digital Safety":
-                "নারীদের ডিজিটাল নিরাপত্তা",
-
-            "CyberCare Tools":
-                "CyberCare টুলস",
-
-            "Learn Cybersecurity":
-                "সাইবার নিরাপত্তা শিখুন",
-
-            "Emergency Help":
-                "জরুরি সহায়তা",
-
-            "India Cyber Help":
-                "ভারতে সাইবার সহায়তা",
-
-            "About CyberCare":
-                "CyberCare সম্পর্কে",
-
-            "Repeated Calls / Harassment":
-                "বারবার ফোন / হয়রানি",
-
-            "Photo Misuse":
-                "ছবির অপব্যবহার",
-
-            "Fake Profile":
-                "ভুয়া প্রোফাইল",
-
-            "Blackmail":
-                "ব্ল্যাকমেইল",
-
-            "Private Photo / Video Threat":
-                "ব্যক্তিগত ছবি / ভিডিও নিয়ে হুমকি",
-
-            "Online Stalking":
-                "অনলাইন স্টকিং",
-
-            "What Should I Do?":
-                "আমি কী করব?",
-
-            "Get Help →":
-                "সাহায্য নিন →",
-
-            "Open Tool":
-                "টুল খুলুন",
-
-            "Start Test":
-                "পরীক্ষা শুরু করুন",
-
-            "I Need Help Now":
-                "এখনই সাহায্য দরকার",
-
-            "Find My Problem":
-                "আমার সমস্যাটি খুঁজুন",
-
-            "Got it":
-                "বুঝেছি"
-
-        };
-
-        document.querySelectorAll(
-            "h1,h2,h3,h4,p,button,strong,small"
-        ).forEach(element => {
-
-            const original =
-                element.dataset.originalText ||
-                element.textContent.trim();
-
-            element.dataset.originalText = original;
-
-            if (translations[original]) {
-                element.textContent =
-                    translations[original];
-            }
-
-        });
-
-    }
 
 
     // =========================================================
@@ -285,19 +310,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 "login",
                 "password"
             ],
+
             title: "🔐 Account Recovery",
+
             text: `
-                <p>আপনার account compromise হয়ে থাকতে পারে।</p>
+                <p>Your account may be compromised.</p>
+
                 <ol>
-                    <li>Email account আগে secure করুন।</li>
-                    <li>Password পরিবর্তন করুন।</li>
-                    <li>2FA চালু করুন।</li>
-                    <li>Unknown device logout করুন।</li>
-                    <li>Recovery email ও phone check করুন।</li>
-                    <li>Official recovery process ব্যবহার করুন।</li>
+                    <li>Secure your email account first.</li>
+                    <li>Change the password.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Review active sessions.</li>
+                    <li>Remove unknown devices.</li>
+                    <li>Check recovery email and phone.</li>
+                    <li>Use only the platform's official recovery process.</li>
                 </ol>
             `
         },
+
 
         {
             keywords: [
@@ -308,18 +338,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 "leak",
                 "sextortion"
             ],
+
             title: "⚠️ Blackmail / Private Content Threat",
+
             text: `
                 <ol>
-                    <li>Blackmailer-কে টাকা দেবেন না।</li>
-                    <li>আর কোনো ছবি বা ভিডিও পাঠাবেন না।</li>
-                    <li>সব evidence সংরক্ষণ করুন।</li>
-                    <li>Password ও account security ঠিক করুন।</li>
-                    <li>প্রয়োজন হলে block/report করুন।</li>
-                    <li>বিশ্বস্ত কারও সাহায্য নিন।</li>
+                    <li>Do not pay.</li>
+                    <li>Do not send additional content.</li>
+                    <li>Save screenshots and evidence.</li>
+                    <li>Secure your accounts.</li>
+                    <li>Block/report when appropriate.</li>
+                    <li>Tell someone you trust.</li>
+                    <li>Use official reporting channels when necessary.</li>
                 </ol>
             `
         },
+
 
         {
             keywords: [
@@ -328,18 +362,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 "harassment",
                 "message",
                 "disturb",
-                "abuse"
+                "abuse",
+                "spam call"
             ],
+
             title: "📞 Repeated Calls / Harassment",
+
             text: `
                 <ol>
-                    <li>Call log ও messages-এর screenshot রাখুন।</li>
-                    <li>অপ্রয়োজনীয় reply করবেন না।</li>
-                    <li>প্রয়োজনে block করুন।</li>
-                    <li>Serious threat হলে official help নিন।</li>
+                    <li>Save call logs and messages.</li>
+                    <li>Do not unnecessarily engage.</li>
+                    <li>Block the person when appropriate.</li>
+                    <li>Review privacy settings.</li>
+                    <li>Report serious threats or abuse.</li>
                 </ol>
             `
         },
+
 
         {
             keywords: [
@@ -348,16 +387,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 "image",
                 "photo misuse"
             ],
+
             title: "📸 Photo Misuse",
+
             text: `
                 <ol>
-                    <li>Screenshot নিন।</li>
-                    <li>Profile/post URL save করুন।</li>
-                    <li>Platform-এ report করুন।</li>
-                    <li>Threat থাকলে evidence সংরক্ষণ করুন।</li>
+                    <li>Take screenshots.</li>
+                    <li>Save the profile/post URL.</li>
+                    <li>Report the content.</li>
+                    <li>Preserve evidence.</li>
+                    <li>Do not pay someone promising guaranteed removal.</li>
                 </ol>
             `
         },
+
 
         {
             keywords: [
@@ -365,16 +408,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 "fake account",
                 "impersonation"
             ],
+
             title: "🎭 Fake Profile",
+
             text: `
                 <ol>
-                    <li>Fake profile-এর screenshot নিন।</li>
-                    <li>Profile URL save করুন।</li>
-                    <li>Impersonation হিসেবে report করুন।</li>
-                    <li>প্রয়োজন হলে পরিচিতদের সতর্ক করুন।</li>
+                    <li>Save the profile URL.</li>
+                    <li>Take screenshots.</li>
+                    <li>Report the account as impersonation.</li>
+                    <li>Warn trusted contacts if necessary.</li>
+                    <li>Secure your real account.</li>
                 </ol>
             `
         },
+
 
         {
             keywords: [
@@ -384,19 +431,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 "fraud",
                 "payment",
                 "scam",
-                "transaction"
+                "transaction",
+                "financial fraud"
             ],
+
             title: "💳 Online & Financial Fraud",
+
             text: `
                 <ol>
-                    <li>Bank/payment provider-কে দ্রুত জানান।</li>
-                    <li>Transaction ID সংরক্ষণ করুন।</li>
-                    <li>Screenshot রাখুন।</li>
-                    <li>Payment account secure করুন।</li>
-                    <li>ভারতে official cybercrime reporting ব্যবহার করুন।</li>
+                    <li>Contact your bank/payment provider immediately.</li>
+                    <li>Report the fraudulent transaction.</li>
+                    <li>Save transaction IDs.</li>
+                    <li>Save screenshots and messages.</li>
+                    <li>Secure affected accounts.</li>
+                    <li>Use official cybercrime reporting channels.</li>
                 </ol>
             `
         },
+
 
         {
             keywords: [
@@ -404,18 +456,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 "link",
                 "otp",
                 "fake website",
-                "fake sms"
+                "fake sms",
+                "sms scam"
             ],
+
             title: "🎣 Scam & Phishing",
+
             text: `
                 <ol>
-                    <li>Suspicious link খুলবেন না।</li>
-                    <li>OTP/password/PIN দেবেন না।</li>
-                    <li>Sender independently verify করুন।</li>
-                    <li>Fake website হলে information দেবেন না।</li>
+                    <li>Do not open suspicious links.</li>
+                    <li>Never share OTPs.</li>
+                    <li>Never share passwords.</li>
+                    <li>Never share UPI PINs.</li>
+                    <li>Verify the sender independently.</li>
                 </ol>
             `
         },
+
 
         {
             keywords: [
@@ -425,14 +482,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 "malware",
                 "virus"
             ],
+
             title: "📱 Phone Security",
+
             text: `
                 <ol>
-                    <li>Unknown app check করুন।</li>
-                    <li>Permissions review করুন।</li>
-                    <li>Device update করুন।</li>
-                    <li>Suspicious app remove করুন।</li>
-                    <li>Important accounts secure করুন।</li>
+                    <li>Check unknown applications.</li>
+                    <li>Review permissions.</li>
+                    <li>Review accessibility access.</li>
+                    <li>Update the phone.</li>
+                    <li>Remove suspicious applications.</li>
+                    <li>Secure important accounts.</li>
                 </ol>
             `
         }
@@ -457,46 +517,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!query) return;
 
-        const matches = problems.filter(problem =>
-            problem.keywords.some(keyword =>
-                query.includes(keyword)
-            )
-        );
+        const words = query.split(/\s+/);
+
+        const matches = problems.filter(problem => {
+
+            return problem.keywords.some(keyword => {
+
+                const lowerKeyword =
+                    keyword.toLowerCase();
+
+                return words.some(word =>
+                    lowerKeyword.includes(word) ||
+                    word.includes(lowerKeyword)
+                );
+
+            });
+
+        });
+
 
         if (!matches.length) {
 
             searchResults.innerHTML = `
+
                 <div class="search-result">
+
                     <h3>🔎 No exact guide found</h3>
+
                     <p>
-                        Try: blackmail, hacked, UPI fraud,
-                        fake profile, harassment, phishing,
-                        photo misuse or phone security.
+                        Try searching:
+                        blackmail, hacked, UPI fraud,
+                        fake profile, harassment,
+                        phishing, photo misuse or
+                        phone security.
                     </p>
+
                 </div>
+
             `;
 
             return;
         }
+
 
         matches.forEach(problem => {
 
             const result =
                 document.createElement("div");
 
-            result.className = "search-result";
+            result.className =
+                "search-result";
 
             result.innerHTML = `
+
                 <h3>${problem.title}</h3>
+
                 ${problem.text}
 
                 <button class="result-help">
                     View Full Safety Guide →
                 </button>
+
             `;
 
-            result.querySelector(".result-help")
+            result
+                .querySelector(".result-help")
                 ?.addEventListener("click", () => {
+
+                    saveHistory(problem.title);
 
                     showGuide(
                         problem.title,
@@ -516,164 +604,172 @@ document.addEventListener("DOMContentLoaded", () => {
     // SERVICE BUTTONS
     // =========================================================
 
-    document.querySelectorAll(".help-btn")
-        .forEach(button => {
+    $$(".help-btn").forEach(button => {
 
-            button.addEventListener("click", () => {
+        button.addEventListener("click", () => {
 
-                showServiceGuide(
-                    button.dataset.service
-                );
-
-            });
+            showServiceGuide(
+                button.dataset.service
+            );
 
         });
+
+    });
 
 
     function showServiceGuide(service) {
 
         const guides = {
 
-            "Account Recovery": {
-                title: "🔐 Account Recovery — Full Guide",
-                text: `
-                    <h3>1. Secure your email</h3>
-                    <p>আপনার email account আগে secure করুন।</p>
+            "Account Recovery": `
+                <h3>1. Secure your email first</h3>
+                <p>Change the email password and enable 2FA.</p>
 
-                    <h3>2. Change password</h3>
-                    <p>একটি নতুন unique password ব্যবহার করুন।</p>
+                <h3>2. Change the compromised password</h3>
+                <p>Use a new password that you do not use elsewhere.</p>
 
-                    <h3>3. Check active sessions</h3>
-                    <p>Unknown device/session logout করুন।</p>
+                <h3>3. Check active sessions</h3>
+                <p>Remove devices or sessions you do not recognize.</p>
 
-                    <h3>4. Enable 2FA</h3>
-                    <p>Two-factor authentication চালু করুন।</p>
+                <h3>4. Enable 2FA</h3>
+                <p>Use the platform's official security settings.</p>
 
-                    <h3>5. Check recovery information</h3>
-                    <p>Recovery email ও phone number check করুন।</p>
+                <h3>5. Check recovery information</h3>
+                <p>Review recovery email, phone and security settings.</p>
 
-                    <h3>6. Official recovery</h3>
-                    <p>শুধু platform-এর official recovery process ব্যবহার করুন।</p>
+                <h3>6. Use official recovery</h3>
+                <p>If locked out, use only the official recovery process.</p>
 
-                    <h3>🚫 Never</h3>
-                    <ul>
-                        <li>OTP share করবেন না।</li>
-                        <li>Recovery code share করবেন না।</li>
-                        <li>Password কাউকে দেবেন না।</li>
-                        <li>Guaranteed recovery-এর জন্য অচেনা কাউকে টাকা দেবেন না।</li>
-                    </ul>
-                `
-            },
+                <h3>🚫 Never</h3>
+                <ul>
+                    <li>Never share OTPs.</li>
+                    <li>Never share recovery codes.</li>
+                    <li>Never give your password to "support".</li>
+                    <li>Never pay for guaranteed recovery.</li>
+                </ul>
+            `,
 
-            "Scam & Phishing": {
-                title: "🎣 Scam & Phishing — Full Guide",
-                text: `
-                    <h3>STOP</h3>
-                    <p>সন্দেহজনক link/message দেখে তাড়াহুড়ো করে কিছু করবেন না।</p>
 
-                    <h3>Never share</h3>
-                    <ul>
-                        <li>OTP</li>
-                        <li>Password</li>
-                        <li>UPI PIN</li>
-                        <li>Bank PIN</li>
-                        <li>Recovery code</li>
-                    </ul>
+            "Scam & Phishing": `
+                <h3>🛑 Stop first</h3>
+                <p>Do not click another link or send information.</p>
 
-                    <h3>Verify</h3>
-                    <p>Sender-এর দেওয়া link ব্যবহার না করে official app/website নিজে খুলে verify করুন।</p>
+                <h3>Never share</h3>
 
-                    <h3>If money was lost</h3>
-                    <p>Bank/payment provider-এর সঙ্গে দ্রুত যোগাযোগ করুন এবং transaction evidence রাখুন।</p>
-                `
-            },
+                <ul>
+                    <li>OTP</li>
+                    <li>Password</li>
+                    <li>UPI PIN</li>
+                    <li>Banking PIN</li>
+                    <li>Recovery code</li>
+                </ul>
 
-            "Phone Security": {
-                title: "📱 Phone Security — Full Guide",
-                text: `
-                    <h3>Check installed apps</h3>
-                    <p>Unknown application আছে কি না দেখুন।</p>
+                <h3>Verify independently</h3>
+                <p>
+                    Do not trust a message simply because it uses
+                    a company logo or official-looking language.
+                </p>
 
-                    <h3>Review permissions</h3>
-                    <p>Camera, microphone, SMS, contacts, location এবং accessibility permissions check করুন।</p>
+                <h3>If money was transferred</h3>
+                <p>
+                    Contact your bank/payment provider immediately
+                    and preserve transaction details.
+                </p>
+            `,
 
-                    <h3>Update</h3>
-                    <p>Official system/security updates install করুন।</p>
 
-                    <h3>Suspicious app</h3>
-                    <p>যে app চিনতে পারছেন না বা অপ্রয়োজনীয় access চায় সেটি review করুন।</p>
-                `
-            },
+            "Phone Security": `
+                <h3>📱 Check installed apps</h3>
+                <p>Look for apps you do not recognize.</p>
 
-            "Online Fraud": {
-                title: "💳 Online & Financial Fraud — Full Guide",
-                text: `
-                    <h3>🚨 Money already lost?</h3>
-                    <ol>
-                        <li>Bank/payment provider-কে immediately জানান।</li>
-                        <li>Fraudulent transaction সম্পর্কে জানান।</li>
-                        <li>Transaction ID save করুন।</li>
-                        <li>Screenshot রাখুন।</li>
-                        <li>Official cybercrime reporting channel ব্যবহার করুন।</li>
-                    </ol>
+                <h3>🔐 Check permissions</h3>
+                <p>
+                    Review camera, microphone, SMS,
+                    contacts, location and accessibility.
+                </p>
 
-                    <h3>Never</h3>
-                    <p>কেউ টাকা ফেরত দেওয়ার নামে আগে টাকা চাইলে বিশ্বাস করবেন না।</p>
-                `
-            },
+                <h3>🔄 Update your device</h3>
+                <p>Install official operating-system updates.</p>
 
-            "Suspicious Activity": {
-                title: "🕵️ Suspicious Activity — Full Guide",
-                text: `
-                    <h3>Warning signs</h3>
-                    <ul>
-                        <li>Unknown login</li>
-                        <li>Unknown device</li>
-                        <li>Unexpected password reset</li>
-                        <li>Unknown messages/posts</li>
-                        <li>Unexpected account changes</li>
-                    </ul>
+                <h3>🛡️ Secure accounts</h3>
+                <p>
+                    If you suspect compromise, secure important
+                    accounts from a trusted device.
+                </p>
+            `,
 
-                    <h3>What to do</h3>
-                    <ol>
-                        <li>Password change করুন।</li>
-                        <li>2FA চালু করুন।</li>
-                        <li>Active sessions check করুন।</li>
-                        <li>Unknown device remove করুন।</li>
-                        <li>Recovery information check করুন।</li>
-                    </ol>
-                `
-            },
 
-            "Emergency Help": {
-                title: "🚨 Emergency Cyber Response",
-                text: `
-                    <h3>1. Stop the damage</h3>
-                    <p>Reply, payment বা additional information sharing বন্ধ করুন।</p>
+            "Online Fraud": `
+                <h3>🚨 Act quickly</h3>
 
-                    <h3>2. Secure accounts</h3>
-                    <p>Email এবং গুরুত্বপূর্ণ accounts secure করুন।</p>
+                <ol>
+                    <li>Contact your bank/payment provider.</li>
+                    <li>Report the fraudulent transaction.</li>
+                    <li>Save transaction ID.</li>
+                    <li>Save screenshots.</li>
+                    <li>Secure payment accounts.</li>
+                    <li>Use official cybercrime reporting channels.</li>
+                </ol>
 
-                    <h3>3. Preserve evidence</h3>
-                    <p>Screenshot, URL, username, message এবং transaction details রাখুন।</p>
+                <h3>Never</h3>
+                <p>
+                    Never give your OTP or UPI PIN to anyone
+                    claiming they will reverse the transaction.
+                </p>
+            `,
 
-                    <h3>4. Report</h3>
-                    <p>Platform-এর official reporting system এবং প্রয়োজন হলে official authority ব্যবহার করুন।</p>
 
-                    <h3>5. Trusted person</h3>
-                    <p>বিশ্বস্ত কারও সঙ্গে বিষয়টি share করুন।</p>
-                `
-            }
+            "Suspicious Activity": `
+                <h3>Possible warning signs</h3>
+
+                <ul>
+                    <li>Unknown login alert</li>
+                    <li>Unknown device</li>
+                    <li>Unexpected password reset</li>
+                    <li>Messages sent without permission</li>
+                    <li>Unexpected profile changes</li>
+                </ul>
+
+                <h3>What to do</h3>
+
+                <ol>
+                    <li>Change password.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Review sessions.</li>
+                    <li>Remove unknown devices.</li>
+                    <li>Check recovery information.</li>
+                </ol>
+            `,
+
+
+            "Emergency Help": `
+                <h3>🚨 Emergency Response</h3>
+
+                <ol>
+                    <li>Stop sending money or information.</li>
+                    <li>Secure important accounts.</li>
+                    <li>Preserve evidence.</li>
+                    <li>Report through official channels.</li>
+                    <li>Tell someone you trust.</li>
+                </ol>
+
+                <h3>⚠️ Physical danger</h3>
+
+                <p>
+                    If there is immediate physical danger,
+                    prioritize personal safety and seek
+                    appropriate local emergency assistance.
+                </p>
+            `
 
         };
 
-        const guide = guides[service];
-
         showGuide(
-            guide?.title || service,
-            guide?.text ||
-            "<p>Official recovery এবং reporting process অনুসরণ করুন।</p>"
+            `🛡️ ${service}`,
+            guides[service] ||
+            "<p>Follow the official safety and reporting process.</p>"
         );
+
     }
 
 
@@ -681,559 +777,913 @@ document.addEventListener("DOMContentLoaded", () => {
     // WOMEN SAFETY
     // =========================================================
 
-    document.querySelectorAll(".women-btn")
-        .forEach(button => {
+    $$(".women-btn").forEach(button => {
 
-            button.addEventListener("click", () => {
+        button.addEventListener("click", () => {
 
-                showWomenGuide(
-                    button.dataset.women
-                );
-
-            });
+            showWomenGuide(
+                button.dataset.women
+            );
 
         });
+
+    });
 
 
     function showWomenGuide(type) {
 
         const guides = {
 
-            harassment: {
-                title: "📞 Repeated Calls / Harassment",
-                text: `
-                    <ol>
-                        <li>Call/message-এর screenshot রাখুন।</li>
-                        <li>Call logs save করুন।</li>
-                        <li>প্রয়োজন ছাড়া reply করবেন না।</li>
-                        <li>Block করুন।</li>
-                        <li>Privacy settings review করুন।</li>
-                        <li>বিশ্বস্ত মানুষকে জানান।</li>
-                        <li>Threat হলে official help নিন।</li>
-                    </ol>
-                `
-            },
+            harassment: `
+                <h3>📞 Repeated Calls / Harassment</h3>
 
-            photo: {
-                title: "📸 Photo Misuse",
-                text: `
-                    <ol>
-                        <li>Post/profile-এর screenshot নিন।</li>
-                        <li>URL save করুন।</li>
-                        <li>Username save করুন।</li>
-                        <li>Platform-এ report করুন।</li>
-                        <li>Threat থাকলে evidence preserve করুন।</li>
-                    </ol>
-                `
-            },
+                <ol>
+                    <li>Do not panic.</li>
+                    <li>Save screenshots.</li>
+                    <li>Save call logs.</li>
+                    <li>Save messages.</li>
+                    <li>Note dates and times.</li>
+                    <li>Block the person when appropriate.</li>
+                    <li>Review privacy settings.</li>
+                    <li>Tell someone you trust.</li>
+                </ol>
 
-            fakeprofile: {
-                title: "🎭 Fake Profile",
-                text: `
-                    <ol>
-                        <li>Fake profile-এর screenshot নিন।</li>
-                        <li>Profile URL save করুন।</li>
-                        <li>Impersonation হিসেবে report করুন।</li>
-                        <li>প্রয়োজনে পরিচিতদের সতর্ক করুন।</li>
-                        <li>নিজের account secure করুন।</li>
-                    </ol>
-                `
-            },
+                <p>
+                    If serious threats are involved, preserve evidence
+                    and seek appropriate official help.
+                </p>
+            `,
 
-            blackmail: {
-                title: "⚠️ Blackmail — Complete Safety Guide",
-                text: `
-                    <h3>🚨 প্রথমে শান্ত থাকুন</h3>
-                    <p>ভয় দেখিয়ে দ্রুত সিদ্ধান্ত নিতে বাধ্য করাই blackmailer-এর অন্যতম কৌশল।</p>
 
-                    <h3>1. টাকা দেবেন না</h3>
-                    <p>Payment করলেই threat বন্ধ হবে—এমন guarantee নেই।</p>
+            photo: `
+                <h3>📸 Photo Misuse</h3>
 
-                    <h3>2. আর কোনো content পাঠাবেন না</h3>
-                    <p>Photo, video, OTP, password বা personal information পাঠাবেন না।</p>
+                <ol>
+                    <li>Screenshot the content.</li>
+                    <li>Screenshot the profile.</li>
+                    <li>Save the URL.</li>
+                    <li>Report the content.</li>
+                    <li>Secure your account.</li>
+                    <li>Do not pay for guaranteed removal.</li>
+                </ol>
+            `,
 
-                    <h3>3. Evidence save করুন</h3>
-                    <ul>
-                        <li>Messages</li>
-                        <li>Username</li>
-                        <li>Profile URL</li>
-                        <li>Phone number</li>
-                        <li>Payment request</li>
-                        <li>Date/time</li>
-                    </ul>
 
-                    <h3>4. Account secure করুন</h3>
-                    <ol>
-                        <li>Password change করুন।</li>
-                        <li>2FA চালু করুন।</li>
-                        <li>Active sessions check করুন।</li>
-                        <li>Unknown device remove করুন।</li>
-                    </ol>
+            fakeprofile: `
+                <h3>🎭 Fake Profile</h3>
 
-                    <h3>5. Block & Report</h3>
-                    <p>Evidence সংরক্ষণের পর platform-এর official report/block tools ব্যবহার করুন।</p>
+                <ol>
+                    <li>Save the profile URL.</li>
+                    <li>Take screenshots.</li>
+                    <li>Save usernames.</li>
+                    <li>Report impersonation.</li>
+                    <li>Warn trusted contacts if necessary.</li>
+                    <li>Secure your real account.</li>
+                </ol>
+            `,
 
-                    <h3>6. Trusted person-কে জানান</h3>
-                    <p>একাই handle করার চেষ্টা করবেন না।</p>
 
-                    <h3>7. Money already sent?</h3>
-                    <p>Bank/payment provider-এর সঙ্গে দ্রুত যোগাযোগ করুন এবং transaction evidence রাখুন।</p>
+            blackmail: `
+                <h3>⚠️ BLACKMAIL — A TO Z SAFETY GUIDE</h3>
 
-                    <h3>❤️ মনে রাখুন</h3>
-                    <p>Blackmail-এর শিকার হওয়া আপনার দোষ নয়।</p>
-                `
-            },
+                <div class="danger-box">
+                    🚨 DO NOT PANIC
+                </div>
 
-            private: {
-                title: "🔒 Private Photo / Video Threat",
-                text: `
-                    <ol>
-                        <li>আর কোনো content পাঠাবেন না।</li>
-                        <li>চাপের মধ্যে payment করবেন না।</li>
-                        <li>Threat-এর screenshot রাখুন।</li>
-                        <li>Username ও URL save করুন।</li>
-                        <li>Account security বাড়ান।</li>
-                        <li>Platform-এ report করুন।</li>
-                        <li>বিশ্বস্ত মানুষকে জানান।</li>
-                    </ol>
-                `
-            },
+                <h3>1. Do NOT pay</h3>
 
-            stalking: {
-                title: "👁️ Online Stalking",
-                text: `
-                    <h3>Check what is public</h3>
-                    <ul>
-                        <li>Phone number</li>
-                        <li>Location</li>
-                        <li>Daily routine</li>
-                        <li>Workplace/school information</li>
-                        <li>Family information</li>
-                    </ul>
+                <p>
+                    Payment does not guarantee that the threats
+                    will stop or that content will be deleted.
+                </p>
 
-                    <h3>Secure</h3>
-                    <ol>
-                        <li>Password change করুন।</li>
-                        <li>2FA চালু করুন।</li>
-                        <li>Location sharing review করুন।</li>
-                        <li>Unknown sessions remove করুন।</li>
-                        <li>Repeated harassment-এর evidence রাখুন।</li>
-                    </ol>
-                `
-            }
+                <h3>2. Do NOT send more content</h3>
+
+                <p>
+                    Never send additional photos, videos,
+                    passwords, OTPs or personal information.
+                </p>
+
+                <h3>3. Preserve evidence</h3>
+
+                <ul>
+                    <li>📸 Screenshots</li>
+                    <li>👤 Username</li>
+                    <li>🔗 Profile URL</li>
+                    <li>☎️ Phone number</li>
+                    <li>💬 Messages</li>
+                    <li>💳 Payment requests</li>
+                    <li>🕐 Date and time</li>
+                </ul>
+
+                <h3>4. Secure your accounts</h3>
+
+                <ol>
+                    <li>Change passwords.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Review active sessions.</li>
+                    <li>Remove unknown devices.</li>
+                    <li>Check recovery information.</li>
+                </ol>
+
+                <h3>5. Block & report</h3>
+
+                <p>
+                    After preserving important evidence,
+                    block and report the account when appropriate.
+                </p>
+
+                <h3>6. Tell someone you trust</h3>
+
+                <p>
+                    You do not have to handle blackmail alone.
+                </p>
+
+                <h3>7. If money was already sent</h3>
+
+                <p>
+                    Contact your bank/payment provider immediately
+                    and preserve transaction details.
+                </p>
+
+                <h3>8. If content is published</h3>
+
+                <p>
+                    Save the URL and screenshots and report the
+                    content using the platform's official reporting tools.
+                </p>
+
+                <h3>❤️ Remember</h3>
+
+                <p>
+                    Being blackmailed is not your fault.
+                    Preserve evidence, protect yourself and seek help.
+                </p>
+            `,
+
+
+            private: `
+                <h3>🔒 Private Photo / Video Threat</h3>
+
+                <ol>
+                    <li>Stop sending content.</li>
+                    <li>Do not pay under pressure.</li>
+                    <li>Preserve threats and messages.</li>
+                    <li>Save usernames and URLs.</li>
+                    <li>Secure your accounts.</li>
+                    <li>Report the account/content.</li>
+                    <li>Tell someone you trust.</li>
+                </ol>
+            `,
+
+
+            stalking: `
+                <h3>👁️ Online Stalking</h3>
+
+                <h3>Check what is publicly visible</h3>
+
+                <ul>
+                    <li>Phone number</li>
+                    <li>Email</li>
+                    <li>Location</li>
+                    <li>Daily routine</li>
+                    <li>Work/school information</li>
+                    <li>Family/friend information</li>
+                </ul>
+
+                <h3>Secure yourself</h3>
+
+                <ol>
+                    <li>Review location sharing.</li>
+                    <li>Change passwords.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Review active sessions.</li>
+                    <li>Save evidence.</li>
+                    <li>Block/report repeated abuse.</li>
+                </ol>
+            `
 
         };
 
-        const guide = guides[type];
+        if (guides[type]) {
 
-        if (guide) {
+            saveHistory(
+                `Women's Safety: ${type}`
+            );
+
             showGuide(
-                guide.title,
-                guide.text
+                "👩 Women's Digital Safety",
+                guides[type]
             );
+
         }
+
     }
 
 
     // =========================================================
-    // ADVANCED SCAM SCANNER
+    // CYBERCARE TOOLS
     // =========================================================
 
-    function openScamScanner() {
+    $$(".tool-btn").forEach(button => {
 
-        const scannerHTML = `
+        button.addEventListener("click", () => {
 
-            <div class="scanner-box">
-
-                <h3>🔎 CyberCare Scam Scanner</h3>
-
-                <p>
-                    Suspicious message, SMS, email বা DM এখানে paste করুন।
-                    এটি কোনো server-এ পাঠানো হবে না।
-                </p>
-
-                <textarea
-                    id="scamInput"
-                    rows="7"
-                    placeholder="Paste suspicious message here..."
-                ></textarea>
-
-                <button id="runScamScan" class="guide-ok">
-                    🔍 Scan Now
-                </button>
-
-                <div id="scanResult"></div>
-
-            </div>
-        `;
-
-        showGuide(
-            "🔎 Scam Scanner",
-            scannerHTML
-        );
-
-        setTimeout(() => {
-
-            const scanButton =
-                document.getElementById("runScamScan");
-
-            scanButton?.addEventListener(
-                "click",
-                runScamScan
+            openTool(
+                button.dataset.tool
             );
-
-        }, 50);
-    }
-
-
-    function runScamScan() {
-
-        const input =
-            document.getElementById("scamInput");
-
-        const result =
-            document.getElementById("scanResult");
-
-        if (!input || !result) return;
-
-        const text =
-            input.value.toLowerCase().trim();
-
-        if (!text) {
-
-            result.innerHTML = `
-                <div class="scan-warning">
-                    ⚠️ আগে message paste করুন।
-                </div>
-            `;
-
-            return;
-        }
-
-        const checks = [
-
-            {
-                words: [
-                    "otp",
-                    "one time password",
-                    "verification code"
-                ],
-                title: "OTP Request",
-                message:
-                    "কেউ OTP চাইছে। এটি বড় warning sign।"
-            },
-
-            {
-                words: [
-                    "upi pin",
-                    "upi-pin",
-                    "pin"
-                ],
-                title: "PIN Request",
-                message:
-                    "UPI PIN/PIN চাওয়া হলে সতর্ক থাকুন।"
-            },
-
-            {
-                words: [
-                    "urgent",
-                    "immediately",
-                    "now",
-                    "hurry",
-                    "তাড়াতাড়ি",
-                    "জরুরি"
-                ],
-                title: "Urgency Pressure",
-                message:
-                    "তাড়াহুড়ো করিয়ে সিদ্ধান্ত নিতে বাধ্য করার চেষ্টা হতে পারে।"
-            },
-
-            {
-                words: [
-                    "click here",
-                    "click the link",
-                    "verify now",
-                    "login here"
-                ],
-                title: "Suspicious Link Request",
-                message:
-                    "Unexpected link ব্যবহার করার আগে independently verify করুন।"
-            },
-
-            {
-                words: [
-                    "prize",
-                    "lottery",
-                    "winner",
-                    "reward",
-                    "পুরস্কার",
-                    "লটারি"
-                ],
-                title: "Prize / Lottery Signal",
-                message:
-                    "অপ্রত্যাশিত prize/lottery claim scam হতে পারে।"
-            },
-
-            {
-                words: [
-                    "refund",
-                    "cashback",
-                    "রিফান্ড",
-                    "ক্যাশব্যাক"
-                ],
-                title: "Refund / Cashback Signal",
-                message:
-                    "Refund/cashback-এর নামে payment বা sensitive information চাইলে সতর্ক থাকুন।"
-            },
-
-            {
-                words: [
-                    "investment",
-                    "guaranteed profit",
-                    "double your money",
-                    "guaranteed return"
-                ],
-                title: "Investment Warning",
-                message:
-                    "Guaranteed profit বা দ্রুত টাকা বাড়ানোর দাবি বড় warning sign।"
-            },
-
-            {
-                words: [
-                    "police",
-                    "cyber police",
-                    "income tax",
-                    "customs",
-                    "arrest",
-                    "warrant"
-                ],
-                title: "Authority Impersonation",
-                message:
-                    "কর্তৃপক্ষের নাম ব্যবহার করে ভয় দেখানো scam হতে পারে।"
-            },
-
-            {
-                words: [
-                    "password",
-                    "recovery code",
-                    "security code"
-                ],
-                title: "Credential Request",
-                message:
-                    "Password বা recovery/security code কখনো share করবেন না।"
-            },
-
-            {
-                words: [
-                    "send money",
-                    "transfer money",
-                    "pay now",
-                    "payment required"
-                ],
-                title: "Payment Pressure",
-                message:
-                    "তাড়াহুড়ো করে payment করতে বললে আগে independently verify করুন।"
-            }
-
-        ];
-
-        const found = [];
-
-        checks.forEach(check => {
-
-            const matched =
-                check.words.some(word =>
-                    text.includes(word)
-                );
-
-            if (matched) {
-                found.push(check);
-            }
 
         });
 
-        let risk = "LOW";
-        let riskClass = "scan-safe";
-
-        if (found.length >= 5) {
-            risk = "HIGH";
-            riskClass = "scan-danger";
-        } else if (found.length >= 2) {
-            risk = "MEDIUM";
-            riskClass = "scan-warning";
-        }
-
-        let findingsHTML = "";
-
-        if (found.length) {
-
-            findingsHTML = `
-                <h4>⚠️ Warning signs found</h4>
-                <ul>
-                    ${found.map(item => `
-                        <li>
-                            <strong>${item.title}</strong><br>
-                            ${item.message}
-                        </li>
-                    `).join("")}
-                </ul>
-            `;
-
-        } else {
-
-            findingsHTML = `
-                <p>
-                    No obvious warning pattern was detected.
-                    This does NOT prove the message is safe.
-                </p>
-            `;
-
-        }
-
-        result.innerHTML = `
-
-            <div class="${riskClass}">
-
-                <h3>
-                    Risk Level: ${risk}
-                </h3>
-
-                <p>
-                    Detected warning signs:
-                    <strong>${found.length}</strong>
-                </p>
-
-                ${findingsHTML}
-
-                <hr>
-
-                <strong>🛡️ Safety rule:</strong>
-
-                <p>
-                    সন্দেহ থাকলে link খুলবেন না, OTP/PIN/password দেবেন না
-                    এবং independently verify করুন।
-                </p>
-
-            </div>
-
-        `;
-
-    }
-
-
-    // =========================================================
-    // TOOLS
-    // =========================================================
-
-    document.querySelectorAll(".tool-btn")
-        .forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                const tool =
-                    button.dataset.tool;
-
-                if (tool === "scam") {
-                    openScamScanner();
-                    return;
-                }
-
-                openTool(tool);
-
-            });
-
-        });
+    });
 
 
     function openTool(tool) {
 
         const tools = {
 
-            password: {
-                title: "🔐 Password Safety",
-                text: `
-                    <h3>Strong password habits</h3>
-                    <ul>
-                        <li>Long password/passphrase ব্যবহার করুন।</li>
-                        <li>Important accounts-এ unique password ব্যবহার করুন।</li>
-                        <li>Password reuse করবেন না।</li>
-                        <li>Personal information ব্যবহার এড়িয়ে চলুন।</li>
-                        <li>2FA চালু করুন।</li>
-                    </ul>
-                `
-            },
+            scam: `
+                <h3>🔎 Scam Risk Checker</h3>
 
-            url: {
-                title: "🔗 URL Safety Guide",
-                text: `
-                    <ol>
-                        <li>Domain spelling check করুন।</li>
-                        <li>Unusual characters খেয়াল করুন।</li>
-                        <li>Shortened link হলে extra সতর্ক থাকুন।</li>
-                        <li>Unexpected login link ব্যবহার করবেন না।</li>
-                        <li>প্রয়োজনে official app নিজে খুলুন।</li>
-                    </ol>
-                `
-            },
+                <p>
+                    Check how many warning signs are present.
+                </p>
 
-            privacy: {
-                title: "📱 Privacy Checklist",
-                text: `
-                    <ul>
-                        <li>Account privacy</li>
-                        <li>Location sharing</li>
-                        <li>Camera permission</li>
-                        <li>Microphone permission</li>
-                        <li>Contacts permission</li>
-                        <li>Connected devices</li>
-                        <li>Active sessions</li>
-                        <li>Third-party apps</li>
-                    </ul>
-                `
-            },
+                <div class="checker-list">
 
-            evidence: {
-                title: "🧾 Evidence Checklist",
-                text: `
-                    <ul>
-                        <li>📸 Screenshots</li>
-                        <li>👤 Username</li>
-                        <li>🔗 Profile URL</li>
-                        <li>💬 Messages</li>
-                        <li>☎️ Call logs</li>
-                        <li>🕐 Date/time</li>
-                        <li>💳 Transaction ID</li>
-                        <li>📧 Emails</li>
-                    </ul>
-                `
-            },
+                    <label>
+                        <input type="checkbox">
+                        Urgent pressure
+                    </label>
 
-            score: {
-                title: "🛡️ Cyber Safety Check",
-                text: `
-                    <ul>
-                        <li>✔ Unique passwords?</li>
-                        <li>✔ 2FA enabled?</li>
-                        <li>✔ OTP কখনো share করেন না?</li>
-                        <li>✔ Active sessions check করেন?</li>
-                        <li>✔ App permissions review করেন?</li>
-                        <li>✔ Phone updated রাখেন?</li>
-                        <li>✔ Payment request verify করেন?</li>
-                        <li>✔ Reporting channel জানেন?</li>
-                    </ul>
-                `
-            }
+                    <label>
+                        <input type="checkbox">
+                        Requests OTP/password
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Suspicious link
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Advance payment
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Guaranteed profit/reward
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Fake authority/company claim
+                    </label>
+
+                </div>
+
+                <button class="action-btn" id="calculateScam">
+                    Check Risk
+                </button>
+
+                <div id="scamResult"></div>
+            `,
+
+
+            password: `
+                <h3>🔐 Password Strength Checker</h3>
+
+                <p>
+                    This checker runs locally in your browser.
+                    Do not enter a real password you currently use.
+                </p>
+
+                <input
+                    id="passwordInput"
+                    type="password"
+                    placeholder="Enter a sample password"
+                    autocomplete="off"
+                >
+
+                <div id="passwordStrength"></div>
+
+                <button
+                    class="action-btn"
+                    id="checkPassword"
+                >
+                    Check Strength
+                </button>
+            `,
+
+
+            url: `
+                <h3>🔗 URL Safety Checker</h3>
+
+                <p>
+                    This tool performs a basic local pattern check.
+                    It does not guarantee that a website is safe.
+                </p>
+
+                <input
+                    id="urlInput"
+                    type="url"
+                    placeholder="https://example.com"
+                >
+
+                <button
+                    class="action-btn"
+                    id="checkUrl"
+                >
+                    Analyze URL
+                </button>
+
+                <div id="urlResult"></div>
+            `,
+
+
+            privacy: `
+                <h3>🔒 Privacy Checklist</h3>
+
+                <div class="checker-list">
+
+                    <label>
+                        <input type="checkbox">
+                        2FA enabled
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Location sharing reviewed
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        App permissions reviewed
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Active sessions reviewed
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Unknown devices removed
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Privacy settings reviewed
+                    </label>
+
+                </div>
+
+                <button
+                    class="action-btn"
+                    id="privacyScore"
+                >
+                    Calculate Score
+                </button>
+
+                <div id="privacyResult"></div>
+            `,
+
+
+            evidence: `
+                <h3>🧾 Evidence Checklist</h3>
+
+                <div class="checker-list">
+
+                    <label>
+                        <input type="checkbox">
+                        Screenshots saved
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Username saved
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Profile URL saved
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Messages saved
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Call logs saved
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Date/time noted
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Transaction ID saved
+                    </label>
+
+                </div>
+
+                <button
+                    class="action-btn"
+                    id="evidenceScore"
+                >
+                    Check Evidence
+                </button>
+
+                <div id="evidenceResult"></div>
+            `,
+
+
+            score: `
+                <h3>🛡️ Cyber Safety Score</h3>
+
+                <div class="checker-list">
+
+                    <label>
+                        <input type="checkbox">
+                        Unique passwords
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        2FA enabled
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        I never share OTP
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        I review account sessions
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        I review app permissions
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        My phone is updated
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        I verify payment requests
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        I know how to report cybercrime
+                    </label>
+
+                </div>
+
+                <button
+                    class="action-btn"
+                    id="safetyScore"
+                >
+                    Calculate Safety Score
+                </button>
+
+                <div id="safetyResult"></div>
+            `
 
         };
 
-        const selected = tools[tool];
+        if (!tools[tool]) return;
 
-        if (selected) {
-            showGuide(
-                selected.title,
-                selected.text
-            );
+        showGuide(
+            "🛠️ CyberCare Tool",
+            tools[tool]
+        );
+
+        initializeTool(tool);
+
+    }
+
+
+    // =========================================================
+    // TOOL ENGINE
+    // =========================================================
+
+    function initializeTool(tool) {
+
+
+        // -----------------------------------------------------
+        // SCAM CHECKER
+        // -----------------------------------------------------
+
+        if (tool === "scam") {
+
+            $("#calculateScam")
+                ?.addEventListener("click", () => {
+
+                    const checked =
+                        $$(".checker-list input:checked").length;
+
+                    const total =
+                        $$(".checker-list input").length;
+
+                    const result = $("#scamResult");
+
+                    if (!result) return;
+
+                    const percentage =
+                        Math.round(
+                            (checked / total) * 100
+                        );
+
+                    let message = "";
+
+                    if (checked >= 4) {
+
+                        message = `
+                            <div class="danger-box">
+                                🚨 HIGH RISK<br>
+                                Multiple scam warning signs detected.
+                                Stop and independently verify the request.
+                            </div>
+                        `;
+
+                    } else if (checked >= 2) {
+
+                        message = `
+                            <div class="warning-box">
+                                ⚠️ MEDIUM RISK<br>
+                                Several warning signs are present.
+                                Be very careful before taking action.
+                            </div>
+                        `;
+
+                    } else {
+
+                        message = `
+                            <div class="safe-box">
+                                🟢 LOW INDICATOR<br>
+                                Few warning signs selected.
+                                Still verify unexpected requests.
+                            </div>
+                        `;
+
+                    }
+
+                    result.innerHTML = `
+                        <p><strong>
+                            Warning indicators: ${percentage}%
+                        </strong></p>
+
+                        ${message}
+                    `;
+
+                });
+
         }
+
+
+        // -----------------------------------------------------
+        // PASSWORD CHECKER
+        // -----------------------------------------------------
+
+        if (tool === "password") {
+
+            $("#checkPassword")
+                ?.addEventListener("click", () => {
+
+                    const password =
+                        $("#passwordInput")?.value || "";
+
+                    const result =
+                        $("#passwordStrength");
+
+                    if (!result) return;
+
+                    if (!password) {
+
+                        result.innerHTML =
+                            `<p>Enter a sample password.</p>`;
+
+                        return;
+                    }
+
+                    let score = 0;
+
+                    if (password.length >= 12)
+                        score++;
+
+                    if (/[A-Z]/.test(password))
+                        score++;
+
+                    if (/[a-z]/.test(password))
+                        score++;
+
+                    if (/[0-9]/.test(password))
+                        score++;
+
+                    if (/[^A-Za-z0-9]/.test(password))
+                        score++;
+
+                    let strength;
+
+                    if (score <= 2) {
+
+                        strength = `
+                            <div class="danger-box">
+                                🔴 Weak
+                            </div>
+                        `;
+
+                    } else if (score <= 4) {
+
+                        strength = `
+                            <div class="warning-box">
+                                🟡 Moderate
+                            </div>
+                        `;
+
+                    } else {
+
+                        strength = `
+                            <div class="safe-box">
+                                🟢 Strong structure
+                            </div>
+                        `;
+
+                    }
+
+                    result.innerHTML = strength;
+
+                });
+
+        }
+
+
+        // -----------------------------------------------------
+        // URL CHECKER
+        // -----------------------------------------------------
+
+        if (tool === "url") {
+
+            $("#checkUrl")
+                ?.addEventListener("click", () => {
+
+                    const input =
+                        $("#urlInput")?.value.trim();
+
+                    const result =
+                        $("#urlResult");
+
+                    if (!result) return;
+
+                    if (!input) {
+
+                        result.innerHTML =
+                            "<p>Enter a URL to analyze.</p>";
+
+                        return;
+                    }
+
+                    let parsed;
+
+                    try {
+
+                        parsed =
+                            new URL(input);
+
+                    } catch {
+
+                        result.innerHTML = `
+                            <div class="danger-box">
+                                ❌ Invalid URL format.
+                            </div>
+                        `;
+
+                        return;
+                    }
+
+                    const warnings = [];
+
+                    if (parsed.protocol !== "https:") {
+                        warnings.push(
+                            "The URL is not using HTTPS."
+                        );
+                    }
+
+                    if (parsed.hostname.includes("@")) {
+                        warnings.push(
+                            "The URL contains an unusual @ pattern."
+                        );
+                    }
+
+                    if (parsed.hostname.length > 50) {
+                        warnings.push(
+                            "The domain is unusually long."
+                        );
+                    }
+
+                    if (
+                        /xn--/i.test(
+                            parsed.hostname
+                        )
+                    ) {
+                        warnings.push(
+                            "The domain contains punycode."
+                        );
+                    }
+
+                    if (
+                        /bit\.ly|tinyurl|t\.co/i.test(
+                            parsed.hostname
+                        )
+                    ) {
+                        warnings.push(
+                            "This appears to be a shortened URL."
+                        );
+                    }
+
+                    if (warnings.length) {
+
+                        result.innerHTML = `
+                            <div class="warning-box">
+                                ⚠️ Caution
+                            </div>
+
+                            <ul>
+                                ${warnings
+                                    .map(item =>
+                                        `<li>${item}</li>`
+                                    )
+                                    .join("")}
+                            </ul>
+
+                            <p>
+                                This is only a basic local check.
+                                It cannot confirm whether a website
+                                is malicious or trustworthy.
+                            </p>
+                        `;
+
+                    } else {
+
+                        result.innerHTML = `
+                            <div class="safe-box">
+                                🟢 No basic warning pattern detected.
+                            </div>
+
+                            <p>
+                                Still verify the domain before entering
+                                passwords, payment information or OTPs.
+                            </p>
+                        `;
+
+                    }
+
+                });
+
+        }
+
+
+        // -----------------------------------------------------
+        // PRIVACY SCORE
+        // -----------------------------------------------------
+
+        if (tool === "privacy") {
+
+            $("#privacyScore")
+                ?.addEventListener("click", () => {
+
+                    calculateChecklist(
+                        "privacyResult",
+                        "Privacy",
+                        "Review the remaining privacy settings."
+                    );
+
+                });
+
+        }
+
+
+        // -----------------------------------------------------
+        // EVIDENCE SCORE
+        // -----------------------------------------------------
+
+        if (tool === "evidence") {
+
+            $("#evidenceScore")
+                ?.addEventListener("click", () => {
+
+                    calculateChecklist(
+                        "evidenceResult",
+                        "Evidence",
+                        "Try to preserve the missing evidence."
+                    );
+
+                });
+
+        }
+
+
+        // -----------------------------------------------------
+        // SAFETY SCORE
+        // -----------------------------------------------------
+
+        if (tool === "score") {
+
+            $("#safetyScore")
+                ?.addEventListener("click", () => {
+
+                    calculateChecklist(
+                        "safetyResult",
+                        "Cyber Safety",
+                        "Keep improving your digital safety habits."
+                    );
+
+                });
+
+        }
+
+    }
+
+
+    function calculateChecklist(
+        resultId,
+        label,
+        advice
+    ) {
+
+        const result =
+            document.getElementById(resultId);
+
+        if (!result) return;
+
+        const all =
+            $$(".checker-list input");
+
+        const checked =
+            $$(".checker-list input:checked");
+
+        const total =
+            all.length;
+
+        const count =
+            checked.length;
+
+        const percentage =
+            total
+                ? Math.round((count / total) * 100)
+                : 0;
+
+        let box = "";
+
+        if (percentage >= 80) {
+
+            box = `
+                <div class="safe-box">
+                    🟢 Excellent ${label} level.
+                </div>
+            `;
+
+        } else if (percentage >= 50) {
+
+            box = `
+                <div class="warning-box">
+                    🟡 Moderate ${label} level.
+                </div>
+            `;
+
+        } else {
+
+            box = `
+                <div class="danger-box">
+                    🔴 Needs attention.
+                </div>
+            `;
+
+        }
+
+        result.innerHTML = `
+
+            <p>
+                <strong>
+                    Score: ${percentage}%
+                </strong>
+            </p>
+
+            ${box}
+
+            <p>${advice}</p>
+        `;
 
     }
 
@@ -1242,126 +1692,235 @@ document.addEventListener("DOMContentLoaded", () => {
     // LEARNING
     // =========================================================
 
-    document.querySelectorAll(".learn-card")
-        .forEach(button => {
+    $$(".learn-card").forEach(button => {
 
-            button.addEventListener("click", () => {
+        button.addEventListener("click", () => {
 
-                const topic =
-                    button.dataset.learn;
-
-                const content = {
-
-                    password: `
-                        <h3>🔐 Password Safety</h3>
-                        <p>Long, unique password ব্যবহার করুন এবং 2FA চালু রাখুন।</p>
-                    `,
-
-                    "2fa": `
-                        <h3>🔑 Two-Factor Authentication</h3>
-                        <p>Password চুরি হলেও 2FA অতিরিক্ত security layer দেয়।</p>
-                    `,
-
-                    phishing: `
-                        <h3>🎣 Phishing</h3>
-                        <p>Fake message, website বা account দিয়ে sensitive information নেওয়ার চেষ্টা হলো phishing।</p>
-                    `,
-
-                    privacy: `
-                        <h3>🔒 Privacy</h3>
-                        <p>আপনার personal information, location এবং contact visibility নিয়মিত review করুন।</p>
-                    `,
-
-                    phone: `
-                        <h3>📱 Phone Security</h3>
-                        <p>Phone update রাখুন, trusted source থেকে app install করুন এবং permissions review করুন।</p>
-                    `,
-
-                    financial: `
-                        <h3>💳 Financial Safety</h3>
-                        <p>OTP, UPI PIN, password বা banking credentials কখনো share করবেন না।</p>
-                    `
-
-                };
-
-                showGuide(
-                    "🎓 Learn Cybersecurity",
-                    content[topic] ||
-                    "<p>Stay safe online.</p>"
-                );
-
-            });
+            showLearning(
+                button.dataset.learn
+            );
 
         });
 
+    });
+
+
+    function showLearning(topic) {
+
+        const content = {
+
+            password: `
+                <h3>🔐 Password Safety</h3>
+
+                <p>
+                    Use long, unique passwords for important accounts.
+                </p>
+
+                <ul>
+                    <li>Do not reuse important passwords.</li>
+                    <li>Use a password manager if appropriate.</li>
+                    <li>Enable 2FA.</li>
+                </ul>
+            `,
+
+            "2fa": `
+                <h3>🔑 Two-Factor Authentication</h3>
+
+                <p>
+                    2FA adds another security layer beyond your password.
+                </p>
+
+                <ul>
+                    <li>Email</li>
+                    <li>Social media</li>
+                    <li>Financial services</li>
+                </ul>
+            `,
+
+            phishing: `
+                <h3>🎣 Phishing</h3>
+
+                <p>
+                    Phishing attempts to trick you into giving
+                    away sensitive information.
+                </p>
+
+                <p>
+                    Verify unexpected requests independently.
+                </p>
+            `,
+
+            privacy: `
+                <h3>🔒 Privacy</h3>
+
+                <p>
+                    Review who can see your information,
+                    contact you and access your location.
+                </p>
+            `,
+
+            phone: `
+                <h3>📱 Phone Security</h3>
+
+                <ul>
+                    <li>Keep the operating system updated.</li>
+                    <li>Install apps from trusted sources.</li>
+                    <li>Review permissions regularly.</li>
+                </ul>
+            `,
+
+            financial: `
+                <h3>💳 Financial Safety</h3>
+
+                <p>
+                    Never share OTPs, UPI PINs, passwords
+                    or banking credentials.
+                </p>
+
+                <p>
+                    Verify unexpected payment requests independently.
+                </p>
+            `
+
+        };
+
+        showGuide(
+            "🎓 Learn Cybersecurity",
+            content[topic] ||
+            "<p>Learn safe digital habits.</p>"
+        );
+
+    }
+
 
     // =========================================================
-    // EMERGENCY
+    // EMERGENCY RESPONSE
     // =========================================================
 
-    document.querySelectorAll("[data-emergency]")
-        .forEach(button => {
+    $$("[data-emergency]").forEach(button => {
 
-            button.addEventListener("click", () => {
+        button.addEventListener("click", () => {
 
-                const type =
-                    button.dataset.emergency;
-
-                const guides = {
-
-                    account: `
-                        <ol>
-                            <li>Email secure করুন।</li>
-                            <li>Password change করুন।</li>
-                            <li>2FA চালু করুন।</li>
-                            <li>Active sessions check করুন।</li>
-                            <li>Unknown device remove করুন।</li>
-                            <li>Official recovery ব্যবহার করুন।</li>
-                        </ol>
-                    `,
-
-                    money: `
-                        <ol>
-                            <li>Bank/payment provider-কে immediately জানান।</li>
-                            <li>Fraud transaction report করুন।</li>
-                            <li>Transaction ID save করুন।</li>
-                            <li>Payment account secure করুন।</li>
-                            <li>Official cybercrime reporting ব্যবহার করুন।</li>
-                        </ol>
-                    `,
-
-                    blackmail: `
-                        <ol>
-                            <li>টাকা দেবেন না।</li>
-                            <li>আর কোনো content পাঠাবেন না।</li>
-                            <li>Evidence save করুন।</li>
-                            <li>Account secure করুন।</li>
-                            <li>Block/report করুন।</li>
-                            <li>Trusted person-কে জানান।</li>
-                        </ol>
-                    `,
-
-                    phone: `
-                        <ol>
-                            <li>Suspicious app বন্ধ করুন।</li>
-                            <li>Permissions review করুন।</li>
-                            <li>Accessibility/device administrator access check করুন।</li>
-                            <li>Device update করুন।</li>
-                            <li>Trusted device থেকে important accounts secure করুন।</li>
-                        </ol>
-                    `
-
-                };
-
-                showGuide(
-                    "🚨 Emergency Cyber Response",
-                    guides[type] ||
-                    "<p>Stop, secure, preserve evidence and report.</p>"
-                );
-
-            });
+            emergencyGuide(
+                button.dataset.emergency
+            );
 
         });
+
+    });
+
+
+    function emergencyGuide(type) {
+
+        const guides = {
+
+            account: `
+                <h3>🔐 Account Compromised</h3>
+
+                <ol>
+                    <li>Secure your email.</li>
+                    <li>Change the password.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Review active sessions.</li>
+                    <li>Remove unknown devices.</li>
+                    <li>Check recovery information.</li>
+                    <li>Use official recovery.</li>
+                </ol>
+            `,
+
+            money: `
+                <h3>💳 Money at Risk</h3>
+
+                <ol>
+                    <li>Contact your bank/payment provider immediately.</li>
+                    <li>Report the transaction as fraudulent.</li>
+                    <li>Save transaction IDs.</li>
+                    <li>Secure payment accounts.</li>
+                    <li>Use official cybercrime reporting channels.</li>
+                </ol>
+
+                <div class="danger-box">
+                    Never send additional money to a person
+                    promising recovery.
+                </div>
+            `,
+
+            blackmail: `
+                <h3>⚠️ Blackmail / Threat</h3>
+
+                <ol>
+                    <li>Do not pay.</li>
+                    <li>Do not send more content.</li>
+                    <li>Preserve evidence.</li>
+                    <li>Secure accounts.</li>
+                    <li>Report the account/content.</li>
+                    <li>Tell someone you trust.</li>
+                    <li>Seek appropriate official help.</li>
+                </ol>
+            `,
+
+            phone: `
+                <h3>📱 Phone Compromised</h3>
+
+                <ol>
+                    <li>Stop using suspicious applications.</li>
+                    <li>Review permissions.</li>
+                    <li>Review accessibility access.</li>
+                    <li>Update the device.</li>
+                    <li>Secure important accounts from a trusted device.</li>
+                    <li>Preserve evidence before resetting if necessary.</li>
+                </ol>
+            `
+
+        };
+
+        if (guides[type]) {
+
+            showGuide(
+                "🚨 Emergency Response",
+                guides[type]
+            );
+
+        }
+
+    }
+
+
+    // =========================================================
+    // GUIDE HISTORY
+    // =========================================================
+
+    function saveHistory(title) {
+
+        let history = [];
+
+        try {
+
+            history =
+                JSON.parse(
+                    localStorage.getItem(
+                        STORAGE.history
+                    )
+                ) || [];
+
+        } catch {
+            history = [];
+        }
+
+        history.unshift({
+            title,
+            time: new Date().toISOString()
+        });
+
+        history =
+            history.slice(0, 10);
+
+        localStorage.setItem(
+            STORAGE.history,
+            JSON.stringify(history)
+        );
+
+    }
 
 
     // =========================================================
@@ -1370,20 +1929,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showGuide(title, content) {
 
-        document.getElementById(
-            "cybercareModal"
-        )?.remove();
+        $("#cybercareModal")?.remove();
 
         const modal =
             document.createElement("div");
 
-        modal.id = "cybercareModal";
+        modal.id =
+            "cybercareModal";
 
         modal.innerHTML = `
 
             <div class="guide-overlay">
 
-                <div class="guide-modal">
+                <div
+                    class="guide-modal"
+                    role="dialog"
+                    aria-modal="true"
+                >
 
                     <button
                         class="guide-close"
@@ -1398,28 +1960,64 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${content}
                     </div>
 
-                    <button class="guide-ok">
-                        Got it
-                    </button>
+                    <div class="guide-actions">
+
+                        <button
+                            class="guide-copy"
+                            type="button"
+                        >
+                            📋 Copy
+                        </button>
+
+                        <button
+                            class="guide-share"
+                            type="button"
+                        >
+                            📤 Share
+                        </button>
+
+                        <button
+                            class="guide-ok"
+                            type="button"
+                        >
+                            Got it
+                        </button>
+
+                    </div>
 
                 </div>
 
             </div>
+
         `;
 
         document.body.appendChild(modal);
 
-        modal.querySelector(".guide-close")
+
+        // -----------------------------------------------------
+        // CLOSE
+        // -----------------------------------------------------
+
+        modal
+            .querySelector(".guide-close")
             ?.addEventListener("click", () => {
+
                 modal.remove();
+
             });
 
-        modal.querySelector(".guide-ok")
+
+        modal
+            .querySelector(".guide-ok")
             ?.addEventListener("click", () => {
+
                 modal.remove();
+
             });
 
-        modal.querySelector(".guide-overlay")
+
+        modal
+            .querySelector(".guide-overlay")
             ?.addEventListener("click", event => {
 
                 if (
@@ -1432,11 +2030,139 @@ document.addEventListener("DOMContentLoaded", () => {
 
             });
 
+
+        // -----------------------------------------------------
+        // COPY
+        // -----------------------------------------------------
+
+        modal
+            .querySelector(".guide-copy")
+            ?.addEventListener("click", async () => {
+
+                const text =
+                    modal
+                        .querySelector(".guide-content")
+                        ?.innerText || "";
+
+                try {
+
+                    await navigator.clipboard.writeText(
+                        `${title}\n\n${text}`
+                    );
+
+                    showToast(
+                        "Guide copied successfully."
+                    );
+
+                } catch {
+
+                    showToast(
+                        "Copy was not available."
+                    );
+
+                }
+
+            });
+
+
+        // -----------------------------------------------------
+        // SHARE
+        // -----------------------------------------------------
+
+        modal
+            .querySelector(".guide-share")
+            ?.addEventListener("click", async () => {
+
+                const text =
+                    `${title}\n\n` +
+                    (
+                        modal
+                            .querySelector(".guide-content")
+                            ?.innerText || ""
+                    );
+
+                if (
+                    navigator.share
+                ) {
+
+                    try {
+
+                        await navigator.share({
+                            title: "CyberCare",
+                            text
+                        });
+
+                    } catch {
+                        // User cancelled sharing.
+                    }
+
+                } else {
+
+                    try {
+
+                        await navigator.clipboard.writeText(text);
+
+                        showToast(
+                            "Sharing is unavailable. Guide copied."
+                        );
+
+                    } catch {
+
+                        showToast(
+                            "Sharing is unavailable."
+                        );
+
+                    }
+
+                }
+
+            });
+
     }
 
 
     // =========================================================
-    // ESC KEY
+    // TOAST
+    // =========================================================
+
+    function showToast(message) {
+
+        document.querySelector(
+            ".cybercare-toast"
+        )?.remove();
+
+        const toast =
+            document.createElement("div");
+
+        toast.className =
+            "cybercare-toast";
+
+        toast.textContent =
+            message;
+
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+
+            toast.classList.add("show");
+
+        }, 10);
+
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+
+        }, 2500);
+
+    }
+
+
+    // =========================================================
+    // KEYBOARD
     // =========================================================
 
     document.addEventListener("keydown", event => {
@@ -1445,12 +2171,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
             closeSideMenu();
 
-            document.getElementById(
-                "cybercareModal"
-            )?.remove();
+            $("#cybercareModal")?.remove();
 
         }
 
     });
+
+
+    // =========================================================
+    // GLOBAL ERROR PROTECTION
+    // =========================================================
+
+    window.addEventListener(
+        "error",
+        event => {
+
+            console.warn(
+                "CyberCare handled an error:",
+                event.message
+            );
+
+        }
+    );
+
+
+    // =========================================================
+    // READY
+    // =========================================================
+
+    console.log(
+        "🛡️ CyberCare Advanced System Loaded Successfully"
+    );
 
 });
