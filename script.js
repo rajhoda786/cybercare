@@ -4489,3 +4489,279 @@ window.CyberCare = {
 /* ============================================================
    END OF CYBERCARE SCRIPT.JS
 ============================================================ */
+/* =========================================================
+   CYBERCARE — CLEAN HOME MODE
+   Only important items stay visible.
+   Other sections open from the 3-dot menu.
+========================================================= */
+
+(function () {
+    "use strict";
+
+    function initCyberCareCleanHome() {
+
+        document.body.classList.add("cybercare-clean-home");
+
+        /*
+         * Sections that should stay hidden on the home screen.
+         * They are revealed only when the user selects them
+         * from the 3-dot menu.
+         */
+
+        const hiddenSelectors = [
+            "#women",
+            "#tools",
+            "#learn",
+            "#india",
+            "#about",
+            "#socialHelpDesk",
+            "#scan",
+            "#feedback",
+            ".women-section",
+            ".tools-section",
+            ".learn-section",
+            ".india-section",
+            ".about-section",
+            ".social-section",
+            ".scan-section",
+            ".feedback-section"
+        ];
+
+        function hideSecondarySections() {
+            hiddenSelectors.forEach(selector => {
+                document.querySelectorAll(selector).forEach(section => {
+                    section.dataset.cybercareHidden = "true";
+                    section.style.display = "none";
+                });
+            });
+        }
+
+        function showSection(section) {
+            if (!section) return;
+
+            section.dataset.cybercareHidden = "false";
+            section.style.display = "";
+
+            /*
+             * Remove the CSS hidden state as well.
+             */
+            section.classList.remove("cc-hidden-section");
+
+            setTimeout(() => {
+                section.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 60);
+        }
+
+        function findMenuTarget(target) {
+
+            const map = {
+                services: [
+                    "#services",
+                    ".services-section"
+                ],
+
+                women: [
+                    "#women",
+                    ".women-section"
+                ],
+
+                tools: [
+                    "#tools",
+                    ".tools-section"
+                ],
+
+                learn: [
+                    "#learn",
+                    ".learn-section"
+                ],
+
+                india: [
+                    "#india",
+                    ".india-section"
+                ],
+
+                about: [
+                    "#about",
+                    ".about-section"
+                ],
+
+                socialHelpDesk: [
+                    "#socialHelpDesk",
+                    ".social-section"
+                ],
+
+                scan: [
+                    "#scan",
+                    ".scan-section"
+                ],
+
+                feedback: [
+                    "#feedback",
+                    ".feedback-section"
+                ],
+
+                emergency: [
+                    "#emergency",
+                    ".emergency-section"
+                ]
+            };
+
+            const selectors = map[target] || [];
+
+            for (const selector of selectors) {
+                const found = document.querySelector(selector);
+
+                if (found) {
+                    return found;
+                }
+            }
+
+            return null;
+        }
+
+        /*
+         * Initial clean state.
+         */
+        hideSecondarySections();
+
+        /*
+         * Re-check after a short delay because some CyberCare
+         * components are created dynamically by JavaScript.
+         */
+        setTimeout(hideSecondarySections, 300);
+        setTimeout(hideSecondarySections, 1000);
+
+        /*
+         * Intercept the 3-dot menu.
+         */
+        document.addEventListener("click", function (event) {
+
+            const item = event.target.closest(".menu-item");
+
+            if (!item) return;
+
+            const target = item.dataset.menu;
+
+            if (!target) return;
+
+            const section = findMenuTarget(target);
+
+            if (!section) return;
+
+            /*
+             * Emergency remains accessible immediately.
+             */
+            if (
+                target === "emergency" ||
+                section.classList.contains("emergency-section")
+            ) {
+                showSection(section);
+                return;
+            }
+
+            /*
+             * Reveal the requested section only when
+             * the user chooses it from the menu.
+             */
+            showSection(section);
+
+        }, true);
+
+        /*
+         * When user returns to the home by clicking the logo,
+         * restore clean mode.
+         */
+        document.addEventListener("click", function (event) {
+
+            const logo = event.target.closest(
+                ".logo, .brand, .site-logo, [data-home]"
+            );
+
+            if (!logo) return;
+
+            hiddenSelectors.forEach(selector => {
+                document.querySelectorAll(selector).forEach(section => {
+                    section.style.display = "none";
+                    section.dataset.cybercareHidden = "true";
+                });
+            });
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+        /*
+         * Prevent hidden sections from suddenly appearing after
+         * dynamically generated content is inserted.
+         */
+        const observer = new MutationObserver(() => {
+
+            hiddenSelectors.forEach(selector => {
+
+                document.querySelectorAll(selector).forEach(section => {
+
+                    if (section.dataset.cybercareHidden !== "false") {
+                        section.style.display = "none";
+                    }
+
+                });
+
+            });
+
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        /*
+         * Make the Quick Help button open the problem search.
+         */
+        const quickHelp = document.querySelector("#quickHelpBtn");
+
+        if (quickHelp) {
+
+            quickHelp.addEventListener("click", function () {
+
+                const search = document.querySelector(".search-section");
+
+                if (search) {
+
+                    search.style.display = "";
+
+                    search.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                    setTimeout(() => {
+                        document.querySelector("#problemSearch")?.focus();
+                    }, 400);
+
+                }
+
+            });
+
+        }
+
+        console.log("CyberCare Clean Home UI enabled.");
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            initCyberCareCleanHome,
+            { once: true }
+        );
+    } else {
+        initCyberCareCleanHome();
+    }
+
+})();
