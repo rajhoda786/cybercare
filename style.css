@@ -2483,3 +2483,415 @@ input:focus-visible {
     outline: 3px solid currentColor;
     outline-offset: 2px;
 }
+/* =========================================================
+   CYBERCARE — FINAL CLEAN COMPACT MOBILE UI
+   IMPORTANT CONTENT ONLY
+========================================================= */
+
+/* ---------- GLOBAL ---------- */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+}
+
+/* ---------- HEADER ---------- */
+
+header,
+.navbar,
+.site-header {
+    min-height: 74px !important;
+    padding: 8px 12px !important;
+}
+
+#menuBtn {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    border-radius: 14px !important;
+}
+
+/* ---------- SEARCH ---------- */
+
+/* Search should look like one clean compact box */
+
+.search-section {
+    padding: 10px 14px 8px !important;
+    margin: 0 !important;
+}
+
+.search-section h2,
+.search-section h3 {
+    margin: 0 0 8px !important;
+}
+
+.search-section input,
+#problemSearch {
+    width: 100% !important;
+    height: 52px !important;
+    min-height: 52px !important;
+
+    padding: 0 46px 0 16px !important;
+
+    border: 1px solid #d4d9e2 !important;
+    border-radius: 16px !important;
+
+    background: #ffffff !important;
+
+    font-size: 15px !important;
+    line-height: 52px !important;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.05) !important;
+}
+
+/* Search clear button */
+
+#clearSearch,
+.search-clear,
+.clear-search {
+    width: 34px !important;
+    height: 34px !important;
+
+    min-width: 34px !important;
+    min-height: 34px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: none !important;
+    border-radius: 50% !important;
+
+    background: transparent !important;
+
+    font-size: 22px !important;
+    line-height: 34px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* ---------- QUICK HELP ---------- */
+
+.services-section,
+#services {
+    width: 100% !important;
+
+    padding: 14px 12px 12px !important;
+    margin: 0 !important;
+}
+
+.services-section h2,
+#services h2 {
+    margin: 0 0 4px !important;
+
+    font-size: 25px !important;
+    line-height: 1.2 !important;
+}
+
+.services-section > p,
+#services > p {
+    margin: 0 0 12px !important;
+
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+}
+
+/* FORCE 2 COLUMN */
+
+.services-grid,
+.help-grid,
+.quick-help-grid {
+    width: 100% !important;
+
+    display: grid !important;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 8px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* QUICK HELP CARD */
+
+.help-btn {
+    width: 100% !important;
+    max-width: none !important;
+
+    min-width: 0 !important;
+    height: 78px !important;
+    min-height: 78px !important;
+
+    margin: 0 !important;
+    padding: 9px 8px !important;
+
+    border: none !important;
+    border-radius: 14px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+
+    font-size: 13px !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,.08) !important;
+}
+
+/* ---------- EMERGENCY ---------- */
+
+.emergency-section {
+    width: 100% !important;
+
+    padding: 16px 12px 18px !important;
+    margin: 4px 0 0 !important;
+
+    text-align: center !important;
+}
+
+.emergency-section h2 {
+    margin: 0 0 5px !important;
+
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+}
+
+.emergency-section > p {
+    margin: 0 auto 12px !important;
+
+    max-width: 330px !important;
+
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+}
+
+/* Emergency buttons */
+
+.emergency-grid {
+    width: 100% !important;
+
+    display: grid !important;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 8px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.emergency-grid button,
+.emergency-section button,
+[data-emergency] {
+    width: 100% !important;
+    min-width: 0 !important;
+
+    height: 54px !important;
+    min-height: 54px !important;
+
+    margin: 0 !important;
+    padding: 7px 6px !important;
+
+    border: 1px solid rgba(0,0,0,.08) !important;
+    border-radius: 12px !important;
+
+    background: #ffffff !important;
+
+    color: #111827 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+
+    font-size: 12.5px !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+
+    box-shadow: 0 2px 7px rgba(0,0,0,.07) !important;
+}
+
+/* ---------- REMOVE OLD HUGE SECTION SPACING ---------- */
+
+section {
+    max-width: 100% !important;
+}
+
+.services-section,
+.emergency-section {
+    box-sizing: border-box !important;
+}
+
+/* ---------- SEARCH RESULTS ---------- */
+
+#searchResults {
+    width: 100% !important;
+    margin-top: 8px !important;
+}
+
+.search-result {
+    width: 100% !important;
+
+    margin: 7px 0 !important;
+    padding: 13px !important;
+
+    border-radius: 13px !important;
+
+    font-size: 14px !important;
+}
+
+/* ---------- MENU ---------- */
+
+#sideMenu {
+    z-index: 10000 !important;
+}
+
+#menuOverlay {
+    z-index: 9999 !important;
+}
+
+.menu-item {
+    width: 100% !important;
+
+    min-height: 48px !important;
+
+    padding: 11px 14px !important;
+    margin: 3px 0 !important;
+
+    border-radius: 11px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    font-size: 15px !important;
+}
+
+/* ---------- HIDE SECONDARY CONTENT FROM HOME ---------- */
+
+/*
+   These stay inside the 3-dot menu.
+*/
+
+body.cybercare-clean-home #women,
+body.cybercare-clean-home #tools,
+body.cybercare-clean-home #learn,
+body.cybercare-clean-home #india,
+body.cybercare-clean-home #about,
+body.cybercare-clean-home #socialHelpDesk,
+body.cybercare-clean-home #scan,
+body.cybercare-clean-home #feedback,
+body.cybercare-clean-home .women-section,
+body.cybercare-clean-home .tools-section,
+body.cybercare-clean-home .learn-section,
+body.cybercare-clean-home .india-section,
+body.cybercare-clean-home .about-section,
+body.cybercare-clean-home .social-section,
+body.cybercare-clean-home .scan-section,
+body.cybercare-clean-home .feedback-section {
+    display: none !important;
+}
+
+/* ---------- SMALL PHONE ---------- */
+
+@media (max-width: 390px) {
+
+    header,
+    .navbar,
+    .site-header {
+        min-height: 70px !important;
+        padding: 7px 9px !important;
+    }
+
+    .services-section,
+    #services {
+        padding-left: 9px !important;
+        padding-right: 9px !important;
+    }
+
+    .services-grid,
+    .help-grid,
+    .quick-help-grid,
+    .emergency-grid {
+        gap: 7px !important;
+    }
+
+    .help-btn {
+        height: 74px !important;
+        min-height: 74px !important;
+
+        padding: 7px 6px !important;
+
+        font-size: 12.5px !important;
+    }
+
+    .emergency-grid button,
+    .emergency-section button,
+    [data-emergency] {
+        height: 52px !important;
+        min-height: 52px !important;
+
+        font-size: 12px !important;
+    }
+}
+
+/* ---------- VERY SMALL PHONE ---------- */
+
+@media (max-width: 340px) {
+
+    .services-grid,
+    .help-grid,
+    .quick-help-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .help-btn {
+        height: 62px !important;
+        min-height: 62px !important;
+    }
+
+    .emergency-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ---------- DARK MODE ---------- */
+
+body.dark-mode .search-section input,
+body.dark-mode #problemSearch {
+    background: #111827 !important;
+    color: #ffffff !important;
+    border-color: #374151 !important;
+}
+
+body.dark-mode .emergency-grid button,
+body.dark-mode .emergency-section button,
+body.dark-mode [data-emergency] {
+    background: #111827 !important;
+    color: #ffffff !important;
+    border-color: #374151 !important;
+}
+
+/* ---------- NO HORIZONTAL OVERFLOW ---------- */
+
+body * {
+    max-width: 100%;
+}
