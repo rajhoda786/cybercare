@@ -1,392 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1220">
-  <meta name="description" content="CyberCare - Digital Help, Troubleshooting and Cyber Safety Center">
-  <title>CyberCare — Digital Help & Safety Center</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCare - আপনার ডিজিটাল সহায়িকা</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            padding: 5px 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 50px;
+        }
+
+        .search-box button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .search-box button:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+            border-left: 4px solid #2563eb;
+            padding-left: 10px;
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* Trending Section */
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .trending-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .badge {
+            background: #dbeafe;
+            color: #1e40af;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
 <body>
 
-<header class="topbar">
-  <div class="brand">
-    <span class="brand-icon">🛡️</span>
-    <div>
-      <h1>CyberCare</h1>
-      <small data-i18n="tagline">Protecting People. Securing Digital Lives.</small>
-    </div>
-  </div>
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">🛡️ CyberCare</div>
+            <ul class="nav-links">
+                <li><a href="#">হোম</a></li>
+                <li><a href="#">ফেসবুক</a></li>
+                <li><a href="#">মোবাইল</a></li>
+                <li><a href="#">গুগল</a></li>
+                <li><a href="#">সাইবার হেল্প</a></li>
+            </ul>
+        </div>
+    </header>
 
-  <div class="top-actions">
-    <button id="languageBtn" class="icon-btn" title="Language">🌐</button>
-    <button id="scanBtn" class="scan-btn">📱 <span data-i18n="scanPhone">Scan Your Phone</span></button>
-    <button id="menuBtn" class="icon-btn" title="Menu">⋮</button>
-  </div>
-</header>
+    <!-- Hero Search Area -->
+    <section class="hero">
+        <h1>আপনার টেক সমস্যার সহজ ও সঠিক সমাধান</h1>
+        <p>ফেসবুক, জিমেইল, পেমেন্ট বা মোবাইল সংক্রান্ত সমস্যা লিখে সার্চ করুন</p>
+        <div class="search-box">
+            <input type="text" placeholder="যেমন: সিম ছাড়া ফেসবুক একাউন্ট রিকভারি...">
+            <button>খুঁজুন</button>
+        </div>
+    </section>
 
-<div id="sideMenu" class="side-menu">
-  <button id="closeMenu" class="close-btn">×</button>
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Category Section -->
+        <h2 class="section-title">ক্যাটাগরি অনুযায়ী সমাধান</h2>
+        <div class="categories-grid">
+            <div class="card">
+                <div class="card-icon">📘</div>
+                <h3>ফেসবুক সমস্যা</h3>
+                <p>পাসওয়ার্ড, হ্যাকড একাউন্ট, ওটিপি সমস্যা</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>মোবাইল ও সিম</h3>
+                <p>নেটওয়ার্ক, ওটিপি, স্লো ফোন সমাধান</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📧</div>
+                <h3>গুগল ও ইমেইল</h3>
+                <p>জিমেইল রিকভারি, প্লে-স্টোর এরর</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💳</div>
+                <h3>ডিজিটাল পেমেন্ট</h3>
+                <p>বিকাশ/নগদ পিন রিকভারি, ট্রানজেকশন</p>
+            </div>
+        </div>
 
-  <h2>☰ CyberCare</h2>
+        <!-- Trending Solutions Section -->
+        <h2 class="section-title">জরুরি ও জনপ্রিয় সমাধান</h2>
+        <div class="trending-grid">
+            <div class="trending-card">
+                <div>
+                    <span class="badge">Facebook</span>
+                    <h4 style="margin-top: 5px;">রেজিস্টার্ড সিম ছাড়াই ফেসবুক একাউন্ট ফেরত পাওয়ার উপায়</h4>
+                </div>
+            </div>
+            <div class="trending-card">
+                <div>
+                    <span class="badge">Security</span>
+                    <h4 style="margin-top: 5px;">ফোন হ্যাক বা ট্র্যাকিং হচ্ছে কিনা কিভাবে বুঝবেন?</h4>
+                </div>
+            </div>
+            <div class="trending-card">
+                <div>
+                    <span class="badge">Payment</span>
+                    <h4 style="margin-top: 5px;">ভুল নম্বরে টাকা চলে গেলে করণীয় ও ফেরতের নিয়ম</h4>
+                </div>
+            </div>
+        </div>
 
-  <button class="menu-item" data-section="home">🏠 Home</button>
-  <button class="menu-item" data-section="help">🆘 Help Desk</button>
-  <button class="menu-item" data-section="security">🛡️ Security Tools</button>
-  <button class="menu-item" data-section="emergency">🚨 Emergency Help</button>
-  <button class="menu-item" data-section="women">👩 Women's Digital Safety</button>
-  <button class="menu-item" data-section="learning">🎓 Cyber Security Learning</button>
-  <button class="menu-item" data-section="legal">⚖️ Cyber Law & Evidence</button>
-  <button class="menu-item" data-section="feedback">💬 Problem Feedback</button>
-
-  <hr>
-
-  <button id="themeBtn" class="menu-item">🌙 Dark / Light Mode</button>
-</div>
-
-<div id="overlay" class="overlay"></div>
-
-<main>
-
-<section id="home" class="hero section">
-  <div class="hero-content">
-    <span class="badge">🛡️ DIGITAL HELP & SAFETY CENTER</span>
-
-    <h2 data-i18n="heroTitle">What do you need help with?</h2>
-
-    <p data-i18n="heroText">
-      Search your problem and CyberCare will guide you step-by-step.
-    </p>
-
-    <div class="search-box">
-      <span>🔎</span>
-      <input
-        id="searchInput"
-        type="search"
-        placeholder="Example: WhatsApp hacked, phone overheating, Wi-Fi not working..."
-        autocomplete="off"
-      >
-      <button id="searchBtn">Search</button>
-    </div>
-
-    <div id="searchResults" class="search-results"></div>
-  </div>
-</section>
-
-<section class="quick-grid section">
-
-  <button class="quick-card" data-guide="phone">
-    <span>📱</span>
-    <strong>Phone Problems</strong>
-    <small>Android / iPhone</small>
-  </button>
-
-  <button class="quick-card" data-guide="internet">
-    <span>🌐</span>
-    <strong>Internet & Wi-Fi</strong>
-    <small>Connection problems</small>
-  </button>
-
-  <button class="quick-card" data-guide="accounts">
-    <span>🔐</span>
-    <strong>Accounts</strong>
-    <small>Login & recovery</small>
-  </button>
-
-  <button class="quick-card" data-guide="payments">
-    <span>💳</span>
-    <strong>UPI & Banking</strong>
-    <small>Payment safety</small>
-  </button>
-
-  <button class="quick-card" data-guide="social">
-    <span>📲</span>
-    <strong>Social Media</strong>
-    <small>WhatsApp, Instagram & more</small>
-  </button>
-
-  <button class="quick-card" data-guide="scam">
-    <span>🚨</span>
-    <strong>Scam Help</strong>
-    <small>Suspicious calls/messages</small>
-  </button>
-
-</section>
-
-<section id="help" class="section">
-  <div class="section-title">
-    <span>🆘</span>
-    <div>
-      <h2>Help Desk</h2>
-      <p>A–Z digital troubleshooting</p>
-    </div>
-  </div>
-
-  <div class="category-grid">
-
-    <button class="category-card" data-guide="phone">
-      📱
-      <strong>Phone & Device</strong>
-      <small>Heating, battery, storage, apps</small>
-    </button>
-
-    <button class="category-card" data-guide="internet">
-      🌐
-      <strong>Internet</strong>
-      <small>Wi-Fi, mobile data, DNS</small>
-    </button>
-
-    <button class="category-card" data-guide="google">
-      🔎
-      <strong>Google & Gmail</strong>
-      <small>Assistant, login, recovery</small>
-    </button>
-
-    <button class="category-card" data-guide="social">
-      📲
-      <strong>Social Media</strong>
-      <small>Account & privacy problems</small>
-    </button>
-
-    <button class="category-card" data-guide="payments">
-      💳
-      <strong>UPI & Banking</strong>
-      <small>Failed, suspicious or wrong payments</small>
-    </button>
-
-    <button class="category-card" data-guide="computer">
-      💻
-      <strong>Computer</strong>
-      <small>Windows, browser & software</small>
-    </button>
-
-    <button class="category-card" data-guide="adsense">
-      💰
-      <strong>AdSense</strong>
-      <small>Account and monetization help</small>
-    </button>
-
-    <button class="category-card" data-guide="documents">
-      📄
-      <strong>Documents</strong>
-      <small>PDF, files and digital documents</small>
-    </button>
-
-  </div>
-</section>
-
-<section id="security" class="section">
-  <div class="section-title">
-    <span>🛡️</span>
-    <div>
-      <h2>Security Tools</h2>
-      <p>Check and improve your digital safety</p>
-    </div>
-  </div>
-
-  <div class="tools-grid">
-
-    <button class="tool-card" id="phishingTool">
-      🎣
-      <strong>Phishing Scanner</strong>
-      <small>Analyze suspicious messages and links</small>
-    </button>
-
-    <button class="tool-card" id="passwordTool">
-      🔑
-      <strong>Password Checker</strong>
-      <small>Check password strength locally</small>
-    </button>
-
-    <button class="tool-card" id="privacyTool">
-      🔒
-      <strong>Privacy Checklist</strong>
-      <small>Review important privacy settings</small>
-    </button>
-
-    <button class="tool-card" id="scoreTool">
-      📊
-      <strong>Cyber Safety Score</strong>
-      <small>Calculate your basic safety score</small>
-    </button>
-
-    <button class="tool-card" id="leakTool">
-      🔓
-      <strong>Data Leak Check</strong>
-      <small>Learn how to safely check breaches</small>
-    </button>
-
-    <button class="tool-card" id="twoFATool">
-      🛡️
-      <strong>2FA Guide</strong>
-      <small>Protect important accounts</small>
-    </button>
-
-  </div>
-</section>
-
-<section id="emergency" class="section emergency-section">
-  <div class="section-title">
-    <span>🚨</span>
-    <div>
-      <h2>Emergency Cyber Help</h2>
-      <p>Act quickly when money, account or personal safety is at risk.</p>
-    </div>
-  </div>
-
-  <div class="emergency-grid">
-
-    <div class="emergency-card">
-      <h3>💳 Money / UPI Fraud</h3>
-      <ol>
-        <li>Contact your bank immediately.</li>
-        <li>Block or secure the affected payment method.</li>
-        <li>Save transaction IDs and screenshots.</li>
-        <li>In India, report financial cyber fraud quickly through the official channels.</li>
-      </ol>
     </div>
 
-    <div class="emergency-card">
-      <h3>🔐 Account Hacked</h3>
-      <ol>
-        <li>Secure your email first.</li>
-        <li>Change the compromised password.</li>
-        <li>Sign out unknown sessions.</li>
-        <li>Enable 2FA.</li>
-        <li>Use the platform's official recovery process.</li>
-      </ol>
-    </div>
-
-    <div class="emergency-card">
-      <h3>📸 Harassment / Blackmail</h3>
-      <ol>
-        <li>Do not send more money or sensitive material.</li>
-        <li>Preserve evidence.</li>
-        <li>Block/report the account when safe.</li>
-        <li>Use official law-enforcement/cybercrime reporting routes.</li>
-      </ol>
-    </div>
-
-  </div>
-
-  <div class="emergency-actions">
-    <a href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener">
-      🇮🇳 Cybercrime Portal
-    </a>
-    <a href="tel:1930">📞 Cyber Fraud Helpline — 1930</a>
-  </div>
-</section>
-
-<section id="women" class="section">
-  <div class="section-title">
-    <span>👩</span>
-    <div>
-      <h2>Women's Digital Safety</h2>
-      <p>Harassment, stalking, blackmail and privacy protection</p>
-    </div>
-  </div>
-
-  <div class="guide-list">
-
-    <article>
-      <h3>🚨 Online Harassment</h3>
-      <p>Save messages, profile URLs, usernames, dates and screenshots before deleting anything.</p>
-    </article>
-
-    <article>
-      <h3>👁️ Digital Stalking</h3>
-      <p>Review account sessions, location sharing, connected devices and app permissions.</p>
-    </article>
-
-    <article>
-      <h3>📸 Private Image Threat / Blackmail</h3>
-      <p>Do not negotiate blindly or send additional material. Preserve evidence and use official reporting routes.</p>
-    </article>
-
-    <article>
-      <h3>🔐 Privacy Protection</h3>
-      <p>Use strong unique passwords, 2FA and review who can see your personal information.</p>
-    </article>
-
-  </div>
-</section>
-
-<section id="learning" class="section">
-  <div class="section-title">
-    <span>🎓</span>
-    <div>
-      <h2>Cyber Security Learning</h2>
-      <p>Learn digital safety step-by-step.</p>
-    </div>
-  </div>
-
-  <div class="learning-grid">
-    <div>🔑 Password Security</div>
-    <div>🛡️ Two-Factor Authentication</div>
-    <div>🎣 Phishing Awareness</div>
-    <div>📱 Mobile Security</div>
-    <div>🌐 Safe Browsing</div>
-    <div>💳 Payment Safety</div>
-  </div>
-</section>
-
-<section id="legal" class="section">
-  <div class="section-title">
-    <span>⚖️</span>
-    <div>
-      <h2>Cyber Law & Evidence</h2>
-      <p>Preserve useful evidence before reporting.</p>
-    </div>
-  </div>
-
-  <div class="evidence-box">
-    <label><input type="checkbox"> Screenshots saved</label>
-    <label><input type="checkbox"> Profile/account URL saved</label>
-    <label><input type="checkbox"> Phone number/email saved</label>
-    <label><input type="checkbox"> Transaction ID saved</label>
-    <label><input type="checkbox"> Date and time recorded</label>
-    <label><input type="checkbox"> Original messages preserved</label>
-  </div>
-
-  <a class="official-link" href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener">
-    Open Official Cybercrime Portal →
-  </a>
-</section>
-
-<section id="feedback" class="section">
-  <div class="section-title">
-    <span>💬</span>
-    <div>
-      <h2>Problem Feedback Drop Box</h2>
-      <p>Tell CyberCare which problem you couldn't find.</p>
-    </div>
-  </div>
-
-  <textarea id="feedbackText" placeholder="Describe your problem..."></textarea>
-  <button id="saveFeedback" class="primary-btn">Save Feedback</button>
-  <p id="feedbackStatus"></p>
-</section>
-
-</main>
-
-<footer>
-  <strong>🛡️ CyberCare</strong>
-  <p>Protecting People. Securing Digital Lives.</p>
-  <small>CyberCare provides guidance and educational assistance. Always verify critical information with the relevant official service.</small>
-</footer>
-
-<div id="modal" class="modal">
-  <div class="modal-box">
-    <button id="closeModal" class="modal-close">×</button>
-    <div id="modalContent"></div>
-  </div>
-</div>
-
-<div id="toast" class="toast"></div>
-
-<script src="script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 CyberCare. সকল সমাধান সহজ ভাষায় মানুষের সেবায়।</p>
+    </footer>
 
 </body>
 </html>
