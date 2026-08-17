@@ -1,859 +1,835 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCare — Digital Safety Center</title>
 
-<title>CyberCare — Digital Safety Center</title>
-
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="shell">
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+    <!-- ================= HEADER ================= -->
 
-<header class="topbar">
+    <header class="topbar">
 
-    <div class="brand">
+        <div class="brand">
 
-        <div class="brand-shield">🛡️</div>
+            <div class="brand-shield">🛡️</div>
+
+            <div>
+                <strong>
+                    সাইবারকেয়ার <b>(CyberCare)</b>
+                </strong>
+
+                <small>
+                    আপনার ডিজিটাল বন্ধু, সব সমস্যার সহজ সমাধান।
+                </small>
+            </div>
+
+        </div>
+
+
+        <nav class="desktop-nav">
+
+            <a class="active" href="#home">হোম</a>
+            <a href="#categories">ফেসবুক</a>
+            <a href="#categories">মোবাইল</a>
+            <a href="#categories">ই-মেইল</a>
+            <a href="#categories">অ্যাকাউন্ট</a>
+            <a href="#services">ব্যাংকিং</a>
+            <a href="#services">সোশ্যাল</a>
+            <a href="#services">সাইবার নিরাপত্তা</a>
+            <a href="#tools">অনলাইন সহায়তা</a>
+            <a href="#tools">শিক্ষা</a>
+
+        </nav>
+
+
+        <div class="top-actions">
+
+            <button class="lang" type="button">
+                🌐 বাংলা⌄
+            </button>
+
+            <button
+                class="icon-btn"
+                id="themeBtn"
+                type="button"
+            >
+                ☾
+            </button>
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                type="button"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MOBILE MENU ================= -->
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="#home">হোম</a>
+        <a href="#categories">ফেসবুক</a>
+        <a href="#categories">মোবাইল ও সিম</a>
+        <a href="#categories">ই-মেইল</a>
+        <a href="#categories">অ্যাকাউন্ট</a>
+        <a href="#services">ব্যাংকিং ও পেমেন্ট</a>
+        <a href="#services">সোশ্যাল মিডিয়া</a>
+        <a href="#services">সাইবার নিরাপত্তা</a>
+        <a href="#tools">অনলাইন সহায়তা</a>
+
+    </div>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <!-- LEFT -->
+
+        <div class="hero-copy">
+
+            <div class="eyebrow">
+                CyberCare Digital Safety Center
+            </div>
+
+            <h1>
+                আপনার যে কোনো<br>
+                ডিজিটাল সমস্যার<br>
+                <span>সহজ ও কার্যকর সমাধান</span>
+            </h1>
+
+            <p>
+                ধাপে ধাপে গাইড, স্মার্ট সমস্যা সমাধান এবং
+                প্রয়োজনীয় নিরাপত্তা টুলস — সবকিছু এক জায়গায়।
+            </p>
+
+
+            <div class="trust-row">
+
+                <div>
+                    <b>✓</b>
+                    <span>
+                        সহজ ভাষায়<br>
+                        ধাপে ধাপে গাইড
+                    </span>
+                </div>
+
+                <div>
+                    <b>✓</b>
+                    <span>
+                        নিরাপত্তা-কেন্দ্রিক<br>
+                        সহায়তা
+                    </span>
+                </div>
+
+                <div>
+                    <b>✓</b>
+                    <span>
+                        প্রয়োজনীয়<br>
+                        টুলস ও গাইড
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= HERO IMAGE ================= -->
+
+        <div class="hero-visual">
+
+            <!-- তোমার আগের Hero Image এখানেই থাকবে -->
+            <img
+                src="hero-image.png"
+                alt="CyberCare Digital Safety"
+            >
+
+        </div>
+
+
+        <!-- ================= QUICK HELP ================= -->
+
+        <aside class="quick-panel">
+
+            <h3>
+                দ্রুত সহায়তা
+            </h3>
+
+
+            <button
+                class="quick-item"
+                data-action="emergency"
+                type="button"
+            >
+
+                <span class="qicon pink">☎</span>
+
+                <span>
+                    <b>ইমার্জেন্সি হেল্পলাইন</b>
+                    <small>জাতীয় সাইবার হেল্পলাইন 1930</small>
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-item"
+                data-action="report"
+                type="button"
+            >
+
+                <span class="qicon blue">🛡</span>
+
+                <span>
+                    <b>সাইবার ক্রাইম রিপোর্ট</b>
+                    <small>cybercrime.gov.in</small>
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-item"
+                data-action="scam"
+                type="button"
+            >
+
+                <span class="qicon rose">🔗</span>
+
+                <span>
+                    <b>সন্দেহজনক লিংক চেক করুন</b>
+                    <small>লিংক ও মেসেজ যাচাই করুন</small>
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-item"
+                data-action="account"
+                type="button"
+            >
+
+                <span class="qicon violet">👤</span>
+
+                <span>
+                    <b>অ্যাকাউন্ট হ্যাক?</b>
+                    <small>দ্রুত নিরাপত্তা গাইড</small>
+                </span>
+
+            </button>
+
+
+            <button
+                class="all-help"
+                type="button"
+            >
+                সব হেল্পলাইন দেখুন
+            </button>
+
+        </aside>
+
+    </section>
+
+
+    <!-- ================= SEARCH ================= -->
+
+    <section class="search-box">
+
+        <div class="search-title">
+            🔎 আপনার কি সমস্যা হচ্ছে? আমরা সাহায্য করব।
+        </div>
+
+        <form id="searchForm">
+
+            <input
+                id="problemInput"
+                type="text"
+                autocomplete="off"
+                placeholder="যেমন: Facebook লগইন হচ্ছে না, OTP আসছে না, মোবাইল গরম হচ্ছে..."
+            >
+
+            <button type="submit">
+                খুঁজুন
+            </button>
+
+        </form>
+
+
+        <div class="popular">
+
+            <span>জনপ্রিয় সার্চ:</span>
+
+            <button type="button">
+                ফেসবুক লগইন সমস্যা
+            </button>
+
+            <button type="button">
+                OTP আসছে না
+            </button>
+
+            <button type="button">
+                ফোন গরম হচ্ছে
+            </button>
+
+            <button type="button">
+                হ্যাকড অ্যাকাউন্ট
+            </button>
+
+            <button type="button">
+                ব্যাংক থেকে টাকা কেটে গেছে
+            </button>
+
+        </div>
+
+
+        <div
+            class="search-result"
+            id="searchResult"
+        ></div>
+
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section
+        class="categories"
+        id="categories"
+    >
+
+        <div class="section-heading">
+
+            <h2>
+                জনপ্রিয় সাহায্য
+            </h2>
+
+            <a href="#categories">
+                সব দেখুন →
+            </a>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <article class="category-card">
+
+                <span class="cat-icon">🔵</span>
+
+                <h3>ফেসবুক সমস্যা</h3>
+
+                <p>
+                    লগইন, হ্যাক, পাসওয়ার্ড,
+                    প্রোফাইল, সিকিউরিটি
+                </p>
+
+                <button
+                    data-action="facebook"
+                    type="button"
+                >
+                    সমাধান দেখুন
+                </button>
+
+            </article>
+
+
+            <article class="category-card">
+
+                <span class="cat-icon">📱</span>
+
+                <h3>মোবাইল ও সিম</h3>
+
+                <p>
+                    মোবাইল সমস্যা, সিম,
+                    নেটওয়ার্ক, ব্যাটারি
+                </p>
+
+                <button
+                    data-action="phone"
+                    type="button"
+                >
+                    সমাধান দেখুন
+                </button>
+
+            </article>
+
+
+            <article class="category-card">
+
+                <span class="cat-icon">✉️</span>
+
+                <h3>ই-মেইল</h3>
+
+                <p>
+                    Gmail, অ্যাকাউন্ট রিকভারি,
+                    OTP, 2-Step Verify
+                </p>
+
+                <button type="button">
+                    সমাধান দেখুন
+                </button>
+
+            </article>
+
+
+            <article class="category-card">
+
+                <span class="cat-icon">💳</span>
+
+                <h3>ব্যাংকিং ও পেমেন্ট</h3>
+
+                <p>
+                    UPI, ব্যাংক পেমেন্ট,
+                    চার্জ, রিফান্ড
+                </p>
+
+                <button
+                    data-action="upi"
+                    type="button"
+                >
+                    সমাধান দেখুন
+                </button>
+
+            </article>
+
+
+            <article class="category-card">
+
+                <span class="cat-icon">🔗</span>
+
+                <h3>সোশ্যাল মিডিয়া</h3>
+
+                <p>
+                    WhatsApp, YouTube,
+                    Instagram, X
+                </p>
+
+                <button type="button">
+                    সমাধান দেখুন
+                </button>
+
+            </article>
+
+
+            <article class="category-card">
+
+                <span class="cat-icon">🛡️</span>
+
+                <h3>সাইবার নিরাপত্তা</h3>
+
+                <p>
+                    ফিশিং, হ্যাক, স্ক্যাম,
+                    প্রাইভেসি ও সিকিউরিটি
+                </p>
+
+                <button
+                    data-action="scan"
+                    type="button"
+                >
+                    সমাধান দেখুন
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SERVICES ================= -->
+
+    <section
+        class="services"
+        id="services"
+    >
+
+        <div class="section-heading">
+
+            <h2>
+                সার্ভিস এরিয়া
+            </h2>
+
+            <a href="#services">
+                সব দেখুন →
+            </a>
+
+        </div>
+
+
+        <div class="service-grid">
+
+
+            <article class="service-card blue-card">
+
+                <span>ফেসবুক সমস্যা সমাধান</span>
+
+                <b>
+                    ফেসবুক অ্যাকাউন্ট
+                </b>
+
+                <small>
+                    লগইন, হ্যাক, পাসওয়ার্ড
+                </small>
+
+                <button
+                    data-action="facebook"
+                    type="button"
+                >
+                    শুরু করুন
+                </button>
+
+            </article>
+
+
+            <article class="service-card pink-card">
+
+                <span>হ্যাকড অ্যাকাউন্ট উদ্ধার</span>
+
+                <b>
+                    অ্যাকাউন্ট নিরাপত্তা
+                </b>
+
+                <small>
+                    দ্রুত নিরাপত্তা গাইড
+                </small>
+
+                <button
+                    data-action="hack"
+                    type="button"
+                >
+                    শুরু করুন
+                </button>
+
+            </article>
+
+
+            <article class="service-card green-card">
+
+                <span>OTP না আসলে</span>
+
+                <b>
+                    OTP সমস্যা
+                </b>
+
+                <small>
+                    সিম, নেটওয়ার্ক ও মেসেজ
+                </small>
+
+                <button
+                    data-action="otp"
+                    type="button"
+                >
+                    শুরু করুন
+                </button>
+
+            </article>
+
+
+            <article class="service-card orange-card">
+
+                <span>সিম নেই / নেটওয়ার্ক</span>
+
+                <b>
+                    মোবাইল সমস্যা সমাধান
+                </b>
+
+                <small>
+                    সিম, ফোন, নেটওয়ার্ক
+                </small>
+
+                <button
+                    data-action="phone"
+                    type="button"
+                >
+                    শুরু করুন
+                </button>
+
+            </article>
+
+
+            <article class="service-card purple-card">
+
+                <span>ব্যাংক থেকে টাকা কেটে গেছে?</span>
+
+                <b>
+                    পেমেন্ট ও ব্যাংকিং
+                </b>
+
+                <small>
+                    লেনদেন ও অভিযোগ
+                </small>
+
+                <button
+                    data-action="upi"
+                    type="button"
+                >
+                    শুরু করুন
+                </button>
+
+            </article>
+
+
+            <article class="service-card red-card">
+
+                <span>স্ক্যাম ও ফিশিং</span>
+
+                <b>
+                    প্রতারণা থেকে সুরক্ষা
+                </b>
+
+                <small>
+                    সন্দেহজনক লিংক ও মেসেজ
+                </small>
+
+                <button
+                    data-action="scam"
+                    type="button"
+                >
+                    শুরু করুন
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TOOLS ================= -->
+
+    <section
+        class="tools"
+        id="tools"
+    >
+
+        <div class="section-heading">
+
+            <h2>
+                নিরাপত্তা টুলস
+            </h2>
+
+            <a href="#tools">
+                সব টুলস →
+            </a>
+
+        </div>
+
+
+        <div class="tool-grid">
+
+            <article>
+
+                <span>🛡️</span>
+
+                <h3>
+                    Phone Safety Check
+                </h3>
+
+                <p>
+                    আপনার ফোনের সাধারণ নিরাপত্তা
+                    বিষয়গুলো ধাপে ধাপে পরীক্ষা করুন।
+                </p>
+
+                <button
+                    data-action="scan"
+                    type="button"
+                >
+                    চেক করুন
+                </button>
+
+            </article>
+
+
+            <article>
+
+                <span>🔐</span>
+
+                <h3>
+                    Password Checker
+                </h3>
+
+                <p>
+                    শক্তিশালী পাসওয়ার্ড তৈরির
+                    নিরাপদ গাইড।
+                </p>
+
+                <button type="button">
+                    শুরু করুন
+                </button>
+
+            </article>
+
+
+            <article>
+
+                <span>🎣</span>
+
+                <h3>
+                    Phishing Scanner
+                </h3>
+
+                <p>
+                    সন্দেহজনক লিংক বা মেসেজ
+                    যাচাই করার গাইড।
+                </p>
+
+                <button
+                    data-action="scam"
+                    type="button"
+                >
+                    চেক করুন
+                </button>
+
+            </article>
+
+
+            <article>
+
+                <span>🔑</span>
+
+                <h3>
+                    2FA Setup Guide
+                </h3>
+
+                <p>
+                    গুরুত্বপূর্ণ অ্যাকাউন্টে
+                    Two-Factor Authentication চালু করুন।
+                </p>
+
+                <button type="button">
+                    গাইড দেখুন
+                </button>
+
+            </article>
+
+
+            <article>
+
+                <span>📋</span>
+
+                <h3>
+                    Privacy Checklist
+                </h3>
+
+                <p>
+                    আপনার অনলাইন প্রাইভেসির
+                    গুরুত্বপূর্ণ সেটিংস চেক করুন।
+                </p>
+
+                <button type="button">
+                    চেক করুন
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EMERGENCY ================= -->
+
+    <section class="emergency">
 
         <div>
-            <strong>
-                Cyber<span>Care</span> <b>Digital Safety Center</b>
-            </strong>
 
-            <small>
-                Protecting People. Securing Digital Lives.
-            </small>
+            <div class="eyebrow">
+                জরুরি সহায়তা
+            </div>
+
+            <h2>
+                অনলাইন প্রতারণা বা সাইবার সমস্যায় দ্রুত ব্যবস্থা নিন
+            </h2>
+
+            <p>
+                সন্দেহজনক লেনদেন, অ্যাকাউন্ট হ্যাক,
+                অনলাইন প্রতারণা বা গুরুতর সাইবার সমস্যায়
+                দ্রুত প্রয়োজনীয় পদক্ষেপ নিন।
+            </p>
+
         </div>
 
-    </div>
+
+        <div class="emergency-actions">
+
+            <a href="tel:1930">
+                ☎ 1930
+            </a>
+
+            <a
+                href="https://cybercrime.gov.in/"
+                target="_blank"
+                rel="noopener"
+            >
+                সাইবার ক্রাইম রিপোর্ট
+            </a>
+
+        </div>
+
+    </section>
 
 
-    <nav class="desktop-nav">
+    <!-- ================= FOOTER ================= -->
 
-        <a href="#home" class="active">Home</a>
+    <footer class="footer">
 
-        <a href="#categories">Categories</a>
+        <div>
+            <b>২৪/৭ সহায়তা</b>
+            <span>
+                প্রয়োজনের সময় পাশে থাকার চেষ্টা
+            </span>
+        </div>
 
-        <a href="#services">Services</a>
+        <div>
+            <b>নিরাপত্তা আগে</b>
+            <span>
+                ব্যক্তিগত তথ্য সুরক্ষাকে গুরুত্ব
+            </span>
+        </div>
 
-        <a href="#tools">Security Tools</a>
+        <div>
+            <b>আপনার প্রাইভেসি</b>
+            <span>
+                প্রয়োজন ছাড়া সংবেদনশীল তথ্য শেয়ার করবেন না
+            </span>
+        </div>
 
-        <a href="#emergency">Emergency Help</a>
+        <div>
+            <b>সহজ ও দ্রুত</b>
+            <span>
+                সহজ ভাষায় সমস্যা সমাধানের গাইড
+            </span>
+        </div>
 
-    </nav>
+        <div>
+            <b>সম্পূর্ণ বিনামূল্যে</b>
+            <span>
+                প্রয়োজনীয় বেসিক সহায়তা
+            </span>
+        </div>
 
-
-    <div class="top-actions">
-
-        <button class="lang" id="langBtn">
-            বাংলা
-        </button>
-
-        <button class="icon-btn" id="themeBtn">
-            ☾
-        </button>
-
-        <button class="menu-btn" id="menuBtn">
-            ☰
-        </button>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     MOBILE MENU
-===================================================== -->
-
-<div class="mobile-menu" id="mobileMenu">
-
-    <a href="#home">Home</a>
-
-    <a href="#categories">Categories</a>
-
-    <a href="#services">Services</a>
-
-    <a href="#tools">Security Tools</a>
-
-    <a href="#emergency">Emergency Help</a>
+    </footer>
 
 </div>
 
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero" id="home">
-
-
-    <!-- HERO TEXT -->
-
-    <div class="hero-copy">
-
-        <div class="eyebrow">
-            CyberCare Digital Safety Center
-        </div>
-
-        <h1>
-            নিরাপদ ডিজিটাল <span>জীবন</span>
-        </h1>
-
-        <p>
-            আপনার প্রতিটি ডিজিটাল সমস্যার সহজ,
-            নির্ভরযোগ্য ও কার্যকর সমাধান।
-            ধাপে ধাপে নির্দেশনা, স্মার্ট সমস্যা সমাধান
-            এবং প্রয়োজনীয় নিরাপত্তা টুলস—
-            সবকিছু এক জায়গায়।
-        </p>
-
-
-        <div class="trust-row">
-
-            <div>
-                <span>✓</span>
-                <span>
-                    সহজ ও ধাপে ধাপে নির্দেশনা
-                </span>
-            </div>
-
-            <div>
-                <span>✓</span>
-                <span>
-                    নিরাপত্তা-কেন্দ্রিক সহায়তা
-                </span>
-            </div>
-
-            <div>
-                <span>✓</span>
-                <span>
-                    প্রয়োজনীয় টুলস ও গাইড
-                </span>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- HERO IMAGE -->
-
-    <div class="hero-visual">
-
-        <!--
-        IMPORTANT:
-        এখানে তোমার আগের CyberCare reference image-এর
-        src বসাবে।
-        -->
-
-        <img
-            src="hero-image.jpg"
-            alt="CyberCare Digital Safety"
-        >
-
-    </div>
-
-
-    <!-- QUICK HELP -->
-
-    <aside class="quick-panel">
-
-        <h3>
-            Quick Help
-        </h3>
-
-
-        <button class="quick-item" data-action="scan">
-
-            <span class="qicon">
-                📱
-            </span>
-
-            <span>
-                <b>Phone Safety</b>
-                <small>
-                    ফোনের নিরাপত্তা পরীক্ষা
-                </small>
-            </span>
-
-        </button>
-
-
-        <button class="quick-item" data-action="scam">
-
-            <span class="qicon">
-                🔎
-            </span>
-
-            <span>
-                <b>Scam Check</b>
-                <small>
-                    সন্দেহজনক বিষয় যাচাই করুন
-                </small>
-            </span>
-
-        </button>
-
-
-        <button class="quick-item" data-action="report">
-
-            <span class="qicon">
-                🚨
-            </span>
-
-            <span>
-                <b>Report Cybercrime</b>
-                <small>
-                    Cybercrime রিপোর্ট করুন
-                </small>
-            </span>
-
-        </button>
-
-
-        <a href="#categories" class="all-help">
-            সব ধরনের সাহায্য দেখুন →
-        </a>
-
-    </aside>
-
-</section>
-
-
-<!-- =====================================================
-     SEARCH
-===================================================== -->
-
-<section class="search-box">
-
-    <div class="search-title">
-        আপনার সমস্যাটি কী?
-    </div>
-
-
-    <form id="searchForm">
-
-        <input
-            type="text"
-            id="problemInput"
-            placeholder="যেমন: OTP আসছে না, Facebook hacked, ফোন গরম হচ্ছে..."
-            autocomplete="off"
-        >
-
-        <button type="submit">
-            সমাধান খুঁজুন
-        </button>
-
-    </form>
-
-
-    <div class="popular">
-
-        <span>জনপ্রিয়:</span>
-
-        <button type="button">
-            OTP আসছে না
-        </button>
-
-        <button type="button">
-            Facebook hacked
-        </button>
-
-        <button type="button">
-            WhatsApp সমস্যা
-        </button>
-
-        <button type="button">
-            ফোন গরম হচ্ছে
-        </button>
-
-        <button type="button">
-            UPI সমস্যা
-        </button>
-
-    </div>
-
-
-    <div
-        class="search-result"
-        id="searchResult">
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CATEGORIES
-===================================================== -->
-
-<section class="categories" id="categories">
-
-    <div class="section-heading">
-
-        <h2>
-            Digital Help Categories
-        </h2>
-
-        <a href="#">
-            View All →
-        </a>
-
-    </div>
-
-
-    <div class="category-grid">
-
-
-        <article class="category-card">
-
-            <span class="cat-icon">📱</span>
-
-            <h3>
-                Phone & Android
-            </h3>
-
-            <p>
-                ফোন, সেটিংস, ব্যাটারি ও পারফরম্যান্স
-            </p>
-
-            <button data-action="help">
-                সাহায্য নিন
-            </button>
-
-        </article>
-
-
-        <article class="category-card">
-
-            <span class="cat-icon">🌐</span>
-
-            <h3>
-                Internet
-            </h3>
-
-            <p>
-                Wi-Fi, mobile data ও connectivity
-            </p>
-
-            <button data-action="help">
-                সাহায্য নিন
-            </button>
-
-        </article>
-
-
-        <article class="category-card">
-
-            <span class="cat-icon">🔐</span>
-
-            <h3>
-                Accounts
-            </h3>
-
-            <p>
-                Login, password, recovery ও security
-            </p>
-
-            <button data-action="help">
-                সাহায্য নিন
-            </button>
-
-        </article>
-
-
-        <article class="category-card">
-
-            <span class="cat-icon">💬</span>
-
-            <h3>
-                Social Media
-            </h3>
-
-            <p>
-                Facebook, Instagram, WhatsApp ও আরও
-            </p>
-
-            <button data-action="help">
-                সাহায্য নিন
-            </button>
-
-        </article>
-
-
-        <article class="category-card">
-
-            <span class="cat-icon">💳</span>
-
-            <h3>
-                Banking & UPI
-            </h3>
-
-            <p>
-                UPI, payment, bank ও transaction
-            </p>
-
-            <button data-action="help">
-                সাহায্য নিন
-            </button>
-
-        </article>
-
-
-        <article class="category-card">
-
-            <span class="cat-icon">💻</span>
-
-            <h3>
-                Computer
-            </h3>
-
-            <p>
-                Windows, software ও computer সমস্যা
-            </p>
-
-            <button data-action="help">
-                সাহায্য নিন
-            </button>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SERVICES
-===================================================== -->
-
-<section class="services" id="services">
-
-    <div class="section-heading">
-
-        <h2>
-            Popular Help
-        </h2>
-
-        <a href="#">
-            Explore All →
-        </a>
-
-    </div>
-
-
-    <div class="service-grid">
-
-
-        <article class="service-card blue-card">
-
-            <span>
-                ACCOUNT SECURITY
-            </span>
-
-            <b>
-                Account Hacked
-            </b>
-
-            <small>
-                hacked account recovery ও security steps
-            </small>
-
-            <button data-action="help">
-                Get Help
-            </button>
-
-        </article>
-
-
-        <article class="service-card blue-card">
-
-            <span>
-                MESSAGING
-            </span>
-
-            <b>
-                WhatsApp Problem
-            </b>
-
-            <small>
-                OTP, login, backup ও linked devices
-            </small>
-
-            <button data-action="help">
-                Get Help
-            </button>
-
-        </article>
-
-
-        <article class="service-card blue-card">
-
-            <span>
-                SOCIAL MEDIA
-            </span>
-
-            <b>
-                Facebook Problem
-            </b>
-
-            <small>
-                login, hacked account ও privacy
-            </small>
-
-            <button data-action="help">
-                Get Help
-            </button>
-
-        </article>
-
-
-        <article class="service-card blue-card">
-
-            <span>
-                PAYMENTS
-            </span>
-
-            <b>
-                UPI Problem
-            </b>
-
-            <small>
-                failed payment, pending ও refund
-            </small>
-
-            <button data-action="help">
-                Get Help
-            </button>
-
-        </article>
-
-
-        <article class="service-card blue-card">
-
-            <span>
-                PHONE
-            </span>
-
-            <b>
-                Phone Overheating
-            </b>
-
-            <small>
-                heat, battery drain ও performance
-            </small>
-
-            <button data-action="help">
-                Get Help
-            </button>
-
-        </article>
-
-
-        <article class="service-card blue-card">
-
-            <span>
-                SECURITY
-            </span>
-
-            <b>
-                Suspicious Activity
-            </b>
-
-            <small>
-                account বা device নিরাপত্তা পরীক্ষা
-            </small>
-
-            <button data-action="help">
-                Get Help
-            </button>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SECURITY TOOLS
-===================================================== -->
-
-<section class="tools" id="tools">
-
-    <div class="section-heading">
-
-        <h2>
-            Security Tools
-        </h2>
-
-        <a href="#">
-            View All →
-        </a>
-
-    </div>
-
-
-    <div class="tool-grid">
-
-
-        <article>
-
-            <span>🛡️</span>
-
-            <h3>
-                Cyber Safety Score
-            </h3>
-
-            <p>
-                আপনার digital security কতটা শক্তিশালী
-                তা যাচাই করার জন্য checklist।
-            </p>
-
-            <button data-action="help">
-                Check Now
-            </button>
-
-        </article>
-
-
-        <article>
-
-            <span>🔑</span>
-
-            <h3>
-                Password Checker
-            </h3>
-
-            <p>
-                শক্তিশালী password তৈরি ও
-                নিরাপদ রাখার নির্দেশনা।
-            </p>
-
-            <button data-action="help">
-                Check Now
-            </button>
-
-        </article>
-
-
-        <article>
-
-            <span>🎣</span>
-
-            <h3>
-                Phishing Scanner
-            </h3>
-
-            <p>
-                সন্দেহজনক link বা message
-                সম্পর্কে সতর্কতা।
-            </p>
-
-            <button data-action="help">
-                Check Now
-            </button>
-
-        </article>
-
-
-        <article>
-
-            <span>🔒</span>
-
-            <h3>
-                Privacy Checklist
-            </h3>
-
-            <p>
-                আপনার account ও device privacy
-                settings যাচাই করুন।
-            </p>
-
-            <button data-action="help">
-                Check Now
-            </button>
-
-        </article>
-
-
-        <article>
-
-            <span>🔐</span>
-
-            <h3>
-                2FA Setup Guide
-            </h3>
-
-            <p>
-                গুরুত্বপূর্ণ account-এ
-                two-factor authentication চালু করুন।
-            </p>
-
-            <button data-action="help">
-                Setup Guide
-            </button>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     EMERGENCY
-===================================================== -->
-
-<section class="emergency" id="emergency">
-
-    <div>
-
-        <div class="eyebrow">
-            EMERGENCY DIGITAL HELP
-        </div>
-
-        <h2>
-            আপনি কি Cybercrime-এর শিকার?
-        </h2>
-
-        <p>
-            Financial fraud, account hacking, blackmail,
-            online harassment বা অন্য কোনো গুরুতর
-            cybercrime হলে দ্রুত পদক্ষেপ নিন।
-        </p>
-
-    </div>
-
-
-    <div class="emergency-actions">
-
-        <a
-            href="tel:1930">
-            📞 1930
-        </a>
-
-        <a
-            href="https://cybercrime.gov.in/"
-            target="_blank"
-            rel="noopener">
-            Report Cybercrime
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="footer">
-
-
-    <div>
-
-        <b>
-            CyberCare
-        </b>
-
-        <span>
-            Digital Help & Safety Center
-        </span>
-
-    </div>
-
-
-    <div>
-
-        <b>
-            Digital Safety
-        </b>
-
-        <span>
-            Account Security
-        </span>
-
-        <span>
-            Privacy Protection
-        </span>
-
-    </div>
-
-
-    <div>
-
-        <b>
-            Help
-        </b>
-
-        <span>
-            Phone & Internet
-        </span>
-
-        <span>
-            Social Media
-        </span>
-
-    </div>
-
-
-    <div>
-
-        <b>
-            Security Tools
-        </b>
-
-        <span>
-            Phishing Scanner
-        </span>
-
-        <span>
-            Password Checker
-        </span>
-
-    </div>
-
-
-    <div>
-
-        <b>
-            Emergency
-        </b>
-
-        <span>
-            Cybercrime Helpline: 1930
-        </span>
-
-        <span>
-            cybercrime.gov.in
-        </span>
-
-    </div>
-
-
-</footer>
-
-</div>
-
-
-<!-- =====================================================
-     SCRIPT
-===================================================== -->
 
 <script src="script.js"></script>
 
 </body>
-</html>
+                     </html>
