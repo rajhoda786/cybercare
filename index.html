@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberCare - আপনার ডিজিটাল সহায়িকা</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Noto Sans Bengali';
         }
 
         body {
-            background-color: #f8fafc;
-            color: #1e293b;
+            background-color: #fcfdfe;
+            color: #333;
         }
 
         /* Header / Navbar */
         header {
             background-color: #ffffff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -41,19 +43,24 @@
             color: #2563eb;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #2563eb;
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #475569;
+            color: #555;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: 0.2s;
         }
 
@@ -63,58 +70,72 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: white;
-            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
+            padding: 5rem 2rem;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            color: #000;
         }
 
         .search-box {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
             display: flex;
-            background: white;
+            background: #ffffff;
             border-radius: 50px;
-            padding: 5px 10px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 8px 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #ddd;
         }
 
         .search-box input {
             flex: 1;
             border: none;
             outline: none;
-            padding: 12px 20px;
-            font-size: 1rem;
-            border-radius: 50px;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            color: #666;
         }
 
         .search-box button {
-            background-color: #2563eb;
-            color: white;
+            background-color: transparent;
+            color: #999;
             border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
+            padding: 12px 15px;
             cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
+            font-size: 1.2rem;
         }
 
         .search-box button:hover {
-            background-color: #1d4ed8;
+            color: #333;
         }
 
-        /* Main Content Container */
+        /* Introduction Section */
+        .intro {
+            padding: 3rem 2rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .intro-text h2 {
+            font-size: 1.8rem;
+            color: #333;
+            max-width: 500px;
+        }
+
+        .intro-img i {
+            font-size: 12rem;
+            color: #ddd;
+        }
+
+        /* Categories Section */
         .container {
             max-width: 1200px;
             margin: 3rem auto;
@@ -123,90 +144,211 @@
 
         .section-title {
             font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #0f172a;
-            border-left: 4px solid #2563eb;
-            padding-left: 10px;
+            margin-bottom: 2rem;
+            color: #000;
+            font-weight: 600;
         }
 
-        /* Categories Grid */
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            padding: 2rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            border: 1px solid #eaeaea;
             text-align: center;
-            transition: transform 0.2s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
 
         .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
 
+        /* Custom Colors for Icons similar to image */
+        .icon-fb { color: #1877F2; }
+        .icon-mobile { color: #555; }
+        .icon-google { color: #EA4335; }
+        .icon-pay { color: #FF9800; }
+        .icon-security { color: #4CAF50; }
+
         .card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: #1e293b;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
         }
 
         .card p {
             font-size: 0.85rem;
-            color: #64748b;
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 0.8rem;
         }
 
         /* Trending Section */
+        .section-title.red {
+            color: #ef4444;
+        }
+
         .trending-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
+            margin-bottom: 4rem;
         }
 
         .trending-card {
-            background: white;
-            padding: 1.2rem;
+            background: #ffffff;
+            padding: 1.5rem;
             border-radius: 8px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #eaeaea;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            transition: box-shadow 0.3s ease;
         }
 
-        .badge {
-            background: #dbeafe;
-            color: #1e40af;
-            font-size: 0.75rem;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: bold;
+        .trending-card:hover {
+            box-shadow: 0 5px 10px rgba(0,0,0,0.03);
+        }
+
+        .trending-icon i {
+            font-size: 2.5rem;
+            color: #ddd;
+        }
+
+        .trending-card p {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .trending-card a {
+            text-decoration: none;
+            color: #ef4444;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         /* Footer */
         footer {
             background-color: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            color: #e2e8f0;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
         }
 
-        footer p {
-            opacity: 0.7;
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo i { color: #e2e8f0; }
+
+        .footer-col p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #e2e8f0;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .feedback-section .user-feedback {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #1e293b;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .feedback-section .user-icon {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .feedback-section h4 {
             font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            font-size: 1.2rem;
+        }
+
+        .social-links a {
+            color: #e2e8f0;
+            opacity: 0.8;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .intro {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .nav-links {
+                display: none; /* simple mobile hide for now */
+            }
         }
     </style>
 </head>
@@ -215,83 +357,138 @@
     <!-- Header Navigation -->
     <header>
         <div class="nav-container">
-            <div class="logo">🛡️ CyberCare</div>
+            <div class="logo"><i class="fa-solid fa-shield-halved"></i> সাইবারকেয়ার (CyberCare)</div>
             <ul class="nav-links">
                 <li><a href="#">হোম</a></li>
                 <li><a href="#">ফেসবুক</a></li>
                 <li><a href="#">মোবাইল</a></li>
                 <li><a href="#">গুগল</a></li>
-                <li><a href="#">সাইবার হেল্প</a></li>
+                <li><a href="#">ব্যাংকিং</a></li>
+                <li><a href="#">ক্যাটাগরি</a></li>
+                <li><a href="#">ব্লগ</a></li>
+                <li><a href="#">যোগাযোগ</a></li>
+                <li><a href="#">সাহায্য</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Search Area -->
     <section class="hero">
-        <h1>আপনার টেক সমস্যার সহজ ও সঠিক সমাধান</h1>
-        <p>ফেসবুক, জিমেইল, পেমেন্ট বা মোবাইল সংক্রান্ত সমস্যা লিখে সার্চ করুন</p>
+        <h1>আপনার কি সমস্যা হচ্ছে? আমাদের লিখুন।</h1>
         <div class="search-box">
-            <input type="text" placeholder="যেমন: সিম ছাড়া ফেসবুক একাউন্ট রিকভারি...">
-            <button>খুঁজুন</button>
+            <input type="text" placeholder="যেমন: ফেসবুক একাউন্ট লগিন হচ্ছে না...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </section>
+
+    <!-- Introduction with Image concept -->
+    <section class="intro">
+        <div class="intro-text">
+            <h2>আমরা আপনাকে ধাপ-ধাপ সমাধানে সাহায্য করব</h2>
+        </div>
+        <div class="intro-img">
+            <i class="fa-solid fa-laptop-code"></i>
         </div>
     </section>
 
     <!-- Main Container -->
     <div class="container">
         
-        <!-- Category Section -->
-        <h2 class="section-title">ক্যাটাগরি অনুযায়ী সমাধান</h2>
+        <!-- Category Section with updated Icons -->
         <div class="categories-grid">
             <div class="card">
-                <div class="card-icon">📘</div>
+                <div class="card-icon"><i class="fa-brands fa-facebook icon-fb"></i></div>
                 <h3>ফেসবুক সমস্যা</h3>
-                <p>পাসওয়ার্ড, হ্যাকড একাউন্ট, ওটিপি সমস্যা</p>
+                <p>লগইন, হ্যাকড,<br>পাসওয়ার্ড রিকভারি</p>
+                <a href="#">সমধান দেখুন</a>
             </div>
             <div class="card">
-                <div class="card-icon">📱</div>
+                <div class="card-icon"><i class="fa-solid fa-sim-card icon-mobile"></i></div>
                 <h3>মোবাইল ও সিম</h3>
-                <p>নেটওয়ার্ক, ওটিপি, স্লো ফোন সমাধান</p>
+                <p>নেটওয়ার্ক, ওটিপি,<br>কানেক্টিভিটি</p>
+                <a href="#">সমধান দেখুন</a>
             </div>
             <div class="card">
-                <div class="card-icon">📧</div>
-                <h3>গুগল ও ইমেইল</h3>
-                <p>জিমেইল রিকভারি, প্লে-স্টোর এরর</p>
+                <div class="card-icon"><i class="fa-brands fa-google icon-google"></i></div>
+                <h3>গুগল ও ইমেল</h3>
+                <p>জিমেইল, গুগল প্লে,<br>একাউন্ট উদ্ধার</p>
+                <a href="#">সমধান দেখুন</a>
             </div>
             <div class="card">
-                <div class="card-icon">💳</div>
-                <h3>ডিজিটাল পেমেন্ট</h3>
-                <p>বিকাশ/নগদ পিন রিকভারি, ট্রানজেকশন</p>
+                <div class="card-icon"><i class="fa-solid fa-money-check-dollar icon-pay"></i></div>
+                <h3>ব্যাংকিং ও পেমেন্ট</h3>
+                <p>বিকাশ, নগদ, পিন,<br>লেনদেন</p>
+                <a href="#">সমধান দেখুন</a>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-user-shield icon-security"></i></div>
+                <h3>সাইবার নিরাপত্তা</h3>
+                <p>হ্যাকিং, জালিয়াতি,<br>নিরাপদ থাকা</p>
+                <a href="#">সমধান দেখুন</a>
             </div>
         </div>
 
-        <!-- Trending Solutions Section -->
-        <h2 class="section-title">জরুরি ও জনপ্রিয় সমাধান</h2>
+        <!-- Trending Solutions Section with red title -->
+        <h2 class="section-title red">জনপ্ৰিয় সমস্যা</h2>
         <div class="trending-grid">
             <div class="trending-card">
+                <div class="trending-icon"><i class="fa-solid fa-file-signature"></i></div>
                 <div>
-                    <span class="badge">Facebook</span>
-                    <h4 style="margin-top: 5px;">রেজিস্টার্ড সিম ছাড়াই ফেসবুক একাউন্ট ফেরত পাওয়ার উপায়</h4>
+                    <p>রেজিস্টার্ড সিম ছাড়াই ফেসবুক রিকভার করুন</p>
+                    <a href="#">[ সমাধান দেখুন ]</a>
                 </div>
             </div>
             <div class="trending-card">
+                <div class="trending-icon"><i class="fa-solid fa-file-signature"></i></div>
                 <div>
-                    <span class="badge">Security</span>
-                    <h4 style="margin-top: 5px;">ফোন হ্যাক বা ট্র্যাকিং হচ্ছে কিনা কিভাবে বুঝবেন?</h4>
+                    <p>বিকাশ পিন ভুলে গেলে কি করবেন?</p>
+                    <a href="#">[ সমাধান দেখুন ]</a>
                 </div>
             </div>
             <div class="trending-card">
+                <div class="trending-icon"><i class="fa-solid fa-file-signature"></i></div>
                 <div>
-                    <span class="badge">Payment</span>
-                    <h4 style="margin-top: 5px;">ভুল নম্বরে টাকা চলে গেলে করণীয় ও ফেরতের নিয়ম</h4>
+                    <p>মোবাইলে ইন্টারনেট স্লো হলে দ্রুত সমাধান</p>
+                    <a href="#">[ সমাধান দেখুন ]</a>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <!-- Footer -->
+    <!-- Dark Footer -->
     <footer>
-        <p>© 2026 CyberCare. সকল সমাধান সহজ ভাষায় মানুষের সেবায়।</p>
+        <div class="footer-container">
+            <div class="footer-col footer-links">
+                <div class="footer-logo"><i class="fa-solid fa-shield-halved"></i> CyberCare</div>
+                <p>সাইবারকেয়ার (CyberCare) - আপনার ডিজিটাল বন্ধু। সব সমস্যার সহজ সমাধান।</p>
+            </div>
+            <div class="footer-col footer-links">
+                <ul>
+                    <li><a href="#">ফেসবুক</a></li>
+                    <li><a href="#">মোবাইল</a></li>
+                    <li><a href="#">গুগল</a></li>
+                    <li><a href="#">ব্যাংকিং</a></li>
+                    <li><a href="#">ক্যাটাগরি</a></li>
+                </ul>
+            </div>
+            <div class="footer-col feedback-section">
+                <div class="user-feedback">
+                    <i class="fa-solid fa-user-astronaut user-icon"></i>
+                    <div>
+                        <h4>ব্যবহারকারীর মতামত</h4>
+                        <p style="font-size: 0.8rem;">(২) মতামত</p>
+                    </div>
+                </div>
+                <h4>আমাদের সাথে থাকুন:</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
     </footer>
 
 </body>
