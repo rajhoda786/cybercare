@@ -1,72 +1,392 @@
-/* ============================================================
-   NESTED CYBERCARE MENU
-============================================================ */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="CyberCare - Digital Help, Troubleshooting and Cyber Safety Center">
+  <title>CyberCare — Digital Help & Safety Center</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-.menu-group {
-    width: 100%;
-}
+<body>
 
-.menu-group summary {
-    list-style: none;
-}
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-icon">🛡️</span>
+    <div>
+      <h1>CyberCare</h1>
+      <small data-i18n="tagline">Protecting People. Securing Digital Lives.</small>
+    </div>
+  </div>
 
-.menu-group summary::-webkit-details-marker {
-    display: none;
-}
+  <div class="top-actions">
+    <button id="languageBtn" class="icon-btn" title="Language">🌐</button>
+    <button id="scanBtn" class="scan-btn">📱 <span data-i18n="scanPhone">Scan Your Phone</span></button>
+    <button id="menuBtn" class="icon-btn" title="Menu">⋮</button>
+  </div>
+</header>
 
-.menu-group summary b {
-    margin-left: auto;
-    color: var(--text-muted);
-    font-size: 20px;
-    font-weight: 400;
-    transition: transform 180ms ease;
-}
+<div id="sideMenu" class="side-menu">
+  <button id="closeMenu" class="close-btn">×</button>
 
-.menu-group[open] summary b {
-    transform: rotate(90deg);
-}
+  <h2>☰ CyberCare</h2>
 
-.submenu {
-    margin: 2px 0 5px 17px;
-    padding-left: 14px;
+  <button class="menu-item" data-section="home">🏠 Home</button>
+  <button class="menu-item" data-section="help">🆘 Help Desk</button>
+  <button class="menu-item" data-section="security">🛡️ Security Tools</button>
+  <button class="menu-item" data-section="emergency">🚨 Emergency Help</button>
+  <button class="menu-item" data-section="women">👩 Women's Digital Safety</button>
+  <button class="menu-item" data-section="learning">🎓 Cyber Security Learning</button>
+  <button class="menu-item" data-section="legal">⚖️ Cyber Law & Evidence</button>
+  <button class="menu-item" data-section="feedback">💬 Problem Feedback</button>
 
-    border-left: 1px solid var(--border);
+  <hr>
 
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
+  <button id="themeBtn" class="menu-item">🌙 Dark / Light Mode</button>
+</div>
 
-.submenu-item {
-    width: 100%;
+<div id="overlay" class="overlay"></div>
 
-    display: flex;
-    align-items: center;
-    gap: 9px;
+<main>
 
-    padding: 9px 10px;
+<section id="home" class="hero section">
+  <div class="hero-content">
+    <span class="badge">🛡️ DIGITAL HELP & SAFETY CENTER</span>
 
-    border: 0;
-    border-radius: 9px;
+    <h2 data-i18n="heroTitle">What do you need help with?</h2>
 
-    background: transparent;
-    color: var(--text-secondary);
+    <p data-i18n="heroText">
+      Search your problem and CyberCare will guide you step-by-step.
+    </p>
 
-    font-size: 11px;
-    text-align: left;
+    <div class="search-box">
+      <span>🔎</span>
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Example: WhatsApp hacked, phone overheating, Wi-Fi not working..."
+        autocomplete="off"
+      >
+      <button id="searchBtn">Search</button>
+    </div>
 
-    transition:
-        background 180ms ease,
-        color 180ms ease;
-}
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</section>
 
-.submenu-item:hover {
-    background: var(--surface-soft);
-    color: var(--primary);
-}
+<section class="quick-grid section">
 
-.submenu-item span:first-child {
-    width: 24px;
-    text-align: center;
-    flex-shrink: 0;
-}
+  <button class="quick-card" data-guide="phone">
+    <span>📱</span>
+    <strong>Phone Problems</strong>
+    <small>Android / iPhone</small>
+  </button>
+
+  <button class="quick-card" data-guide="internet">
+    <span>🌐</span>
+    <strong>Internet & Wi-Fi</strong>
+    <small>Connection problems</small>
+  </button>
+
+  <button class="quick-card" data-guide="accounts">
+    <span>🔐</span>
+    <strong>Accounts</strong>
+    <small>Login & recovery</small>
+  </button>
+
+  <button class="quick-card" data-guide="payments">
+    <span>💳</span>
+    <strong>UPI & Banking</strong>
+    <small>Payment safety</small>
+  </button>
+
+  <button class="quick-card" data-guide="social">
+    <span>📲</span>
+    <strong>Social Media</strong>
+    <small>WhatsApp, Instagram & more</small>
+  </button>
+
+  <button class="quick-card" data-guide="scam">
+    <span>🚨</span>
+    <strong>Scam Help</strong>
+    <small>Suspicious calls/messages</small>
+  </button>
+
+</section>
+
+<section id="help" class="section">
+  <div class="section-title">
+    <span>🆘</span>
+    <div>
+      <h2>Help Desk</h2>
+      <p>A–Z digital troubleshooting</p>
+    </div>
+  </div>
+
+  <div class="category-grid">
+
+    <button class="category-card" data-guide="phone">
+      📱
+      <strong>Phone & Device</strong>
+      <small>Heating, battery, storage, apps</small>
+    </button>
+
+    <button class="category-card" data-guide="internet">
+      🌐
+      <strong>Internet</strong>
+      <small>Wi-Fi, mobile data, DNS</small>
+    </button>
+
+    <button class="category-card" data-guide="google">
+      🔎
+      <strong>Google & Gmail</strong>
+      <small>Assistant, login, recovery</small>
+    </button>
+
+    <button class="category-card" data-guide="social">
+      📲
+      <strong>Social Media</strong>
+      <small>Account & privacy problems</small>
+    </button>
+
+    <button class="category-card" data-guide="payments">
+      💳
+      <strong>UPI & Banking</strong>
+      <small>Failed, suspicious or wrong payments</small>
+    </button>
+
+    <button class="category-card" data-guide="computer">
+      💻
+      <strong>Computer</strong>
+      <small>Windows, browser & software</small>
+    </button>
+
+    <button class="category-card" data-guide="adsense">
+      💰
+      <strong>AdSense</strong>
+      <small>Account and monetization help</small>
+    </button>
+
+    <button class="category-card" data-guide="documents">
+      📄
+      <strong>Documents</strong>
+      <small>PDF, files and digital documents</small>
+    </button>
+
+  </div>
+</section>
+
+<section id="security" class="section">
+  <div class="section-title">
+    <span>🛡️</span>
+    <div>
+      <h2>Security Tools</h2>
+      <p>Check and improve your digital safety</p>
+    </div>
+  </div>
+
+  <div class="tools-grid">
+
+    <button class="tool-card" id="phishingTool">
+      🎣
+      <strong>Phishing Scanner</strong>
+      <small>Analyze suspicious messages and links</small>
+    </button>
+
+    <button class="tool-card" id="passwordTool">
+      🔑
+      <strong>Password Checker</strong>
+      <small>Check password strength locally</small>
+    </button>
+
+    <button class="tool-card" id="privacyTool">
+      🔒
+      <strong>Privacy Checklist</strong>
+      <small>Review important privacy settings</small>
+    </button>
+
+    <button class="tool-card" id="scoreTool">
+      📊
+      <strong>Cyber Safety Score</strong>
+      <small>Calculate your basic safety score</small>
+    </button>
+
+    <button class="tool-card" id="leakTool">
+      🔓
+      <strong>Data Leak Check</strong>
+      <small>Learn how to safely check breaches</small>
+    </button>
+
+    <button class="tool-card" id="twoFATool">
+      🛡️
+      <strong>2FA Guide</strong>
+      <small>Protect important accounts</small>
+    </button>
+
+  </div>
+</section>
+
+<section id="emergency" class="section emergency-section">
+  <div class="section-title">
+    <span>🚨</span>
+    <div>
+      <h2>Emergency Cyber Help</h2>
+      <p>Act quickly when money, account or personal safety is at risk.</p>
+    </div>
+  </div>
+
+  <div class="emergency-grid">
+
+    <div class="emergency-card">
+      <h3>💳 Money / UPI Fraud</h3>
+      <ol>
+        <li>Contact your bank immediately.</li>
+        <li>Block or secure the affected payment method.</li>
+        <li>Save transaction IDs and screenshots.</li>
+        <li>In India, report financial cyber fraud quickly through the official channels.</li>
+      </ol>
+    </div>
+
+    <div class="emergency-card">
+      <h3>🔐 Account Hacked</h3>
+      <ol>
+        <li>Secure your email first.</li>
+        <li>Change the compromised password.</li>
+        <li>Sign out unknown sessions.</li>
+        <li>Enable 2FA.</li>
+        <li>Use the platform's official recovery process.</li>
+      </ol>
+    </div>
+
+    <div class="emergency-card">
+      <h3>📸 Harassment / Blackmail</h3>
+      <ol>
+        <li>Do not send more money or sensitive material.</li>
+        <li>Preserve evidence.</li>
+        <li>Block/report the account when safe.</li>
+        <li>Use official law-enforcement/cybercrime reporting routes.</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <div class="emergency-actions">
+    <a href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener">
+      🇮🇳 Cybercrime Portal
+    </a>
+    <a href="tel:1930">📞 Cyber Fraud Helpline — 1930</a>
+  </div>
+</section>
+
+<section id="women" class="section">
+  <div class="section-title">
+    <span>👩</span>
+    <div>
+      <h2>Women's Digital Safety</h2>
+      <p>Harassment, stalking, blackmail and privacy protection</p>
+    </div>
+  </div>
+
+  <div class="guide-list">
+
+    <article>
+      <h3>🚨 Online Harassment</h3>
+      <p>Save messages, profile URLs, usernames, dates and screenshots before deleting anything.</p>
+    </article>
+
+    <article>
+      <h3>👁️ Digital Stalking</h3>
+      <p>Review account sessions, location sharing, connected devices and app permissions.</p>
+    </article>
+
+    <article>
+      <h3>📸 Private Image Threat / Blackmail</h3>
+      <p>Do not negotiate blindly or send additional material. Preserve evidence and use official reporting routes.</p>
+    </article>
+
+    <article>
+      <h3>🔐 Privacy Protection</h3>
+      <p>Use strong unique passwords, 2FA and review who can see your personal information.</p>
+    </article>
+
+  </div>
+</section>
+
+<section id="learning" class="section">
+  <div class="section-title">
+    <span>🎓</span>
+    <div>
+      <h2>Cyber Security Learning</h2>
+      <p>Learn digital safety step-by-step.</p>
+    </div>
+  </div>
+
+  <div class="learning-grid">
+    <div>🔑 Password Security</div>
+    <div>🛡️ Two-Factor Authentication</div>
+    <div>🎣 Phishing Awareness</div>
+    <div>📱 Mobile Security</div>
+    <div>🌐 Safe Browsing</div>
+    <div>💳 Payment Safety</div>
+  </div>
+</section>
+
+<section id="legal" class="section">
+  <div class="section-title">
+    <span>⚖️</span>
+    <div>
+      <h2>Cyber Law & Evidence</h2>
+      <p>Preserve useful evidence before reporting.</p>
+    </div>
+  </div>
+
+  <div class="evidence-box">
+    <label><input type="checkbox"> Screenshots saved</label>
+    <label><input type="checkbox"> Profile/account URL saved</label>
+    <label><input type="checkbox"> Phone number/email saved</label>
+    <label><input type="checkbox"> Transaction ID saved</label>
+    <label><input type="checkbox"> Date and time recorded</label>
+    <label><input type="checkbox"> Original messages preserved</label>
+  </div>
+
+  <a class="official-link" href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener">
+    Open Official Cybercrime Portal →
+  </a>
+</section>
+
+<section id="feedback" class="section">
+  <div class="section-title">
+    <span>💬</span>
+    <div>
+      <h2>Problem Feedback Drop Box</h2>
+      <p>Tell CyberCare which problem you couldn't find.</p>
+    </div>
+  </div>
+
+  <textarea id="feedbackText" placeholder="Describe your problem..."></textarea>
+  <button id="saveFeedback" class="primary-btn">Save Feedback</button>
+  <p id="feedbackStatus"></p>
+</section>
+
+</main>
+
+<footer>
+  <strong>🛡️ CyberCare</strong>
+  <p>Protecting People. Securing Digital Lives.</p>
+  <small>CyberCare provides guidance and educational assistance. Always verify critical information with the relevant official service.</small>
+</footer>
+
+<div id="modal" class="modal">
+  <div class="modal-box">
+    <button id="closeModal" class="modal-close">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
