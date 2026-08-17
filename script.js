@@ -1794,3 +1794,2262 @@ document.addEventListener(
 
     }
 );
+/* ============================================================
+   CYBERCARE — FINAL SYSTEM CONNECTOR
+   ------------------------------------------------------------
+   CONNECTS THE EXISTING HTML TO THE EXISTING A-Z ENGINE
+   ------------------------------------------------------------
+   DO NOT DELETE THE EXISTING SCRIPT.JS DATABASE.
+   PASTE THIS BLOCK AT THE VERY END OF script.js
+============================================================ */
+
+(function () {
+    "use strict";
+
+    /* =========================================================
+       SMALL HELPERS
+    ========================================================= */
+
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
+
+    function safeScrollTo(id) {
+        const el = document.getElementById(id);
+
+        if (!el) return false;
+
+        el.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        return true;
+    }
+
+    function closeMenu() {
+        const menu = $("#sideMenu");
+        const overlay = $("#menuOverlay");
+
+        if (menu) menu.classList.remove("active");
+        if (overlay) overlay.classList.remove("active");
+
+        document.body.classList.remove("menu-open");
+    }
+
+    function openMenu() {
+        const menu = $("#sideMenu");
+        const overlay = $("#menuOverlay");
+
+        if (menu) menu.classList.add("active");
+        if (overlay) overlay.classList.add("active");
+
+        document.body.classList.add("menu-open");
+    }
+
+    /* =========================================================
+       DYNAMIC GUIDE MODAL
+    ========================================================= */
+
+    function createGuideModal() {
+
+        let modal = $("#cybercareGuideModal");
+
+        if (modal) return modal;
+
+        modal = document.createElement("div");
+
+        modal.id = "cybercareGuideModal";
+        modal.className = "guide-overlay";
+
+        modal.innerHTML = `
+            <div
+                class="guide-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="ccGuideTitle"
+            >
+
+                <button
+                    type="button"
+                    class="guide-close"
+                    id="ccGuideClose"
+                    aria-label="Close"
+                >
+                    ✕
+                </button>
+
+                <h2 id="ccGuideTitle">
+                    CyberCare Guide
+                </h2>
+
+                <div
+                    id="ccGuideBody"
+                    class="guide-content"
+                ></div>
+
+                <button
+                    type="button"
+                    class="guide-ok"
+                    id="ccGuideOk"
+                >
+                    ✓ Got it
+                </button>
+
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        modal.addEventListener("click", function (event) {
+
+            if (event.target === modal) {
+                closeGuideModal();
+            }
+
+        });
+
+        $("#ccGuideClose").addEventListener(
+            "click",
+            closeGuideModal
+        );
+
+        $("#ccGuideOk").addEventListener(
+            "click",
+            closeGuideModal
+        );
+
+        return modal;
+    }
+
+    function closeGuideModal() {
+
+        const modal = $("#cybercareGuideModal");
+
+        if (modal) {
+            modal.remove();
+        }
+
+        document.body.classList.remove("modal-open");
+    }
+
+    function openGuide(item) {
+
+        if (!item) return;
+
+        const modal = createGuideModal();
+
+        const title = $("#ccGuideTitle");
+        const body = $("#ccGuideBody");
+
+        if (!title || !body) return;
+
+        title.textContent =
+            `${item.icon || "🛡️"} ${item.problem}`;
+
+        let html = "";
+
+        html += `
+            <div style="
+                margin-bottom:15px;
+                color:#64748b;
+                font-size:13px;
+                font-weight:700;
+            ">
+                ${item.service || ""}
+                •
+                ${item.category || ""}
+            </div>
+        `;
+
+        html += `
+            <h3>What you should do</h3>
+            <ol>
+        `;
+
+        (item.steps || []).forEach(function (step) {
+
+            html += `
+                <li>
+                    ${escapeHTML(step)}
+                </li>
+            `;
+
+        });
+
+        html += `</ol>`;
+
+        if (item.check) {
+
+            html += `
+                <div style="
+                    margin-top:15px;
+                    padding:13px;
+                    border-radius:12px;
+                    background:#eff6ff;
+                    color:#1e40af;
+                ">
+                    <strong>🔎 Check:</strong><br>
+                    ${escapeHTML(item.check)}
+                </div>
+            `;
+
+        }
+
+        if (item.dont) {
+
+            html += `
+                <div style="
+                    margin-top:12px;
+                    padding:13px;
+                    border-radius:12px;
+                    background:#fff7ed;
+                    color:#9a3412;
+                ">
+                    <strong>⚠️ Don't:</strong><br>
+                    ${escapeHTML(item.dont)}
+                </div>
+            `;
+
+        }
+
+        if (item.official) {
+
+            html += `
+                <a
+                    href="${escapeAttribute(item.official)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style="
+                        display:block;
+                        margin-top:15px;
+                        padding:13px;
+                        border-radius:11px;
+                        background:#2563eb;
+                        color:white;
+                        text-align:center;
+                        font-weight:800;
+                    "
+                >
+                    Official Help / Report →
+                </a>
+            `;
+
+        }
+
+        body.innerHTML = html;
+
+        modal.classList.add("active");
+
+        document.body.classList.add("modal-open");
+    }
+
+    function escapeHTML(value) {
+
+        return String(value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function escapeAttribute(value) {
+        return escapeHTML(value);
+    }
+
+    /* =========================================================
+       FIND BEST GUIDE
+    ========================================================= */
+
+    function findGuide(query) {
+
+        if (
+            typeof ccSearch !== "function" ||
+            typeof CYBERCARE_GUIDES === "undefined"
+        ) {
+            return null;
+        }
+
+        const results = ccSearch(query);
+
+        return results && results.length
+            ? results[0]
+            : null;
+    }
+
+    function openProblem(query) {
+
+        const item = findGuide(query);
+
+        if (item) {
+            openGuide(item);
+            return true;
+        }
+
+        return false;
+    }
+
+    /* =========================================================
+       SEARCH SYSTEM
+    ========================================================= */
+
+    function connectSearch() {
+
+        const input = $("#problemSearch");
+        const resultsBox = $("#searchResults");
+        const clearBtn = $("#clearSearch");
+
+        if (!input || !resultsBox) return;
+
+        let timer = null;
+
+        function renderSearchResults(query) {
+
+            query = String(query || "").trim();
+
+            if (!query) {
+
+                resultsBox.innerHTML = "";
+
+                return;
+            }
+
+            if (
+                typeof ccSearch !== "function"
+            ) {
+                resultsBox.innerHTML = `
+                    <div class="search-result">
+                        Search system unavailable.
+                    </div>
+                `;
+
+                return;
+            }
+
+            const results = ccSearch(query);
+
+            if (!results.length) {
+
+                resultsBox.innerHTML = `
+                    <div class="search-result">
+                        <h3>🔍 Problem not found</h3>
+
+                        <p>
+                            অন্যভাবে লিখে আবার চেষ্টা করুন।
+                            যেমন:
+                            <br>
+                            <b>account hacked</b>
+                            <br>
+                            <b>blackmail</b>
+                            <br>
+                            <b>UPI fraud</b>
+                            <br>
+                            <b>password ভুলে গেছি</b>
+                        </p>
+                    </div>
+                `;
+
+                return;
+            }
+
+            const topResults = results.slice(0, 6);
+
+            resultsBox.innerHTML =
+                topResults.map(function (item, index) {
+
+                    return `
+                        <div
+                            class="search-result"
+                            data-result-index="${index}"
+                        >
+
+                            <h3>
+                                ${item.icon || "🛡️"}
+                                ${escapeHTML(item.problem)}
+                            </h3>
+
+                            <p>
+                                ${escapeHTML(item.service)}
+                                •
+                                ${escapeHTML(item.category)}
+                            </p>
+
+                            <button
+                                type="button"
+                                class="result-help"
+                                data-open-result="${index}"
+                            >
+                                View Step-by-Step Help →
+                            </button>
+
+                        </div>
+                    `;
+
+                }).join("");
+
+            resultsBox
+                .querySelectorAll("[data-open-result]")
+                .forEach(function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const index =
+                                Number(
+                                    button.dataset.openResult
+                                );
+
+                            openGuide(topResults[index]);
+
+                        }
+                    );
+
+                });
+        }
+
+        input.addEventListener(
+            "input",
+            function () {
+
+                clearTimeout(timer);
+
+                timer = setTimeout(
+                    function () {
+                        renderSearchResults(
+                            input.value
+                        );
+                    },
+                    100
+                );
+
+            }
+        );
+
+        input.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    event.preventDefault();
+
+                    renderSearchResults(
+                        input.value
+                    );
+
+                }
+
+            }
+        );
+
+        if (clearBtn) {
+
+            clearBtn.addEventListener(
+                "click",
+                function () {
+
+                    input.value = "";
+
+                    resultsBox.innerHTML = "";
+
+                    input.focus();
+
+                }
+            );
+
+        }
+    }
+
+    /* =========================================================
+       QUICK HELP
+    ========================================================= */
+
+    const QUICK_HELP_MAP = {
+
+        "Account Recovery":
+            "Facebook account hacked",
+
+        "Scam & Phishing":
+            "Suspicious link পেয়েছি",
+
+        "Online Fraud":
+            "UPI fraud হয়েছে",
+
+        "Phone Security":
+            "Phone security"
+    };
+
+    function connectQuickHelp() {
+
+        $$("[data-service]").forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const service =
+                            button.dataset.service;
+
+                        const query =
+                            QUICK_HELP_MAP[service] ||
+                            service;
+
+                        closeMenu();
+
+                        const input =
+                            $("#problemSearch");
+
+                        if (input) {
+
+                            input.value = query;
+
+                            input.dispatchEvent(
+                                new Event("input", {
+                                    bubbles: true
+                                })
+                            );
+
+                            safeScrollTo("services");
+
+                            setTimeout(
+                                function () {
+
+                                    const item =
+                                        findGuide(query);
+
+                                    if (item) {
+                                        openGuide(item);
+                                    }
+
+                                },
+                                250
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+    }
+
+    /* =========================================================
+       3-DOT MENU
+    ========================================================= */
+
+    function connectMenu() {
+
+        const menuBtn = $("#menuBtn");
+        const closeBtn = $("#closeMenu");
+        const overlay = $("#menuOverlay");
+
+        if (menuBtn) {
+
+            menuBtn.addEventListener(
+                "click",
+                function () {
+
+                    const menu =
+                        $("#sideMenu");
+
+                    if (
+                        menu &&
+                        menu.classList.contains("active")
+                    ) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+
+                }
+            );
+
+        }
+
+        if (closeBtn) {
+
+            closeBtn.addEventListener(
+                "click",
+                closeMenu
+            );
+
+        }
+
+        if (overlay) {
+
+            overlay.addEventListener(
+                "click",
+                closeMenu
+            );
+
+        }
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+                    closeMenu();
+                    closeGuideModal();
+                }
+
+            }
+        );
+
+        $$(".menu-item").forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const target =
+                            button.dataset.menu;
+
+                        closeMenu();
+
+                        if (target === "services") {
+
+                            safeScrollTo(
+                                "services"
+                            );
+
+                            setTimeout(
+                                function () {
+
+                                    const input =
+                                        $("#problemSearch");
+
+                                    if (input) {
+                                        input.focus();
+                                    }
+
+                                },
+                                450
+                            );
+
+                            return;
+                        }
+
+                        if (
+                            target ===
+                            "womenSafety"
+                        ) {
+
+                            safeScrollTo(
+                                "womenSafety"
+                            );
+
+                            return;
+                        }
+
+                        if (
+                            target ===
+                            "emergency"
+                        ) {
+
+                            safeScrollTo(
+                                "emergency"
+                            );
+
+                            return;
+                        }
+
+                        if (target === "tools") {
+
+                            safeScrollTo(
+                                "tools"
+                            );
+
+                            return;
+                        }
+
+                        if (target === "learn") {
+
+                            safeScrollTo(
+                                "learn"
+                            );
+
+                            return;
+                        }
+
+                    }
+                );
+
+            }
+        );
+    }
+
+    /* =========================================================
+       DARK MODE
+    ========================================================= */
+
+    function connectDarkMode() {
+
+        const button = $("#themeBtn");
+
+        if (!button) return;
+
+        const saved =
+            localStorage.getItem(
+                "cybercare-dark-mode"
+            );
+
+        if (saved === "true") {
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+            button.textContent = "☀️";
+
+        } else {
+
+            button.textContent = "🌙";
+
+        }
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const active =
+                    document.body.classList.toggle(
+                        "dark-mode"
+                    );
+
+                localStorage.setItem(
+                    "cybercare-dark-mode",
+                    active ? "true" : "false"
+                );
+
+                button.textContent =
+                    active ? "☀️" : "🌙";
+
+            }
+        );
+    }
+
+    /* =========================================================
+       LANGUAGE
+       EN → বাংলা → हिन्दी → EN
+    ========================================================= */
+
+    const LANGS = [
+        "EN",
+        "বাংলা",
+        "हिन्दी"
+    ];
+
+    const LANGUAGE_TEXT = {
+
+        EN: {
+            placeholder:
+                "Example: someone is blackmailing me...",
+            help:
+                "Find My Problem",
+            emergency:
+                "🚨 I Need Help Now"
+        },
+
+        "বাংলা": {
+            placeholder:
+                "আপনার সমস্যাটি লিখুন...",
+            help:
+                "আমার সমস্যা খুঁজুন",
+            emergency:
+                "🚨 এখনই সাহায্য চাই"
+        },
+
+        "हिन्दी": {
+            placeholder:
+                "अपनी समस्या लिखें...",
+            help:
+                "मेरी समस्या खोजें",
+            emergency:
+                "🚨 मुझे अभी मदद चाहिए"
+        }
+
+    };
+
+    function setLanguage(lang) {
+
+        const data =
+            LANGUAGE_TEXT[lang] ||
+            LANGUAGE_TEXT.EN;
+
+        const languageText =
+            $("#languageText");
+
+        const search =
+            $("#problemSearch");
+
+        const helpButton =
+            $("#quickHelpBtn");
+
+        const emergencyButton =
+            $("#emergencyBtn");
+
+        if (languageText) {
+            languageText.textContent = lang;
+        }
+
+        if (search) {
+            search.placeholder =
+                data.placeholder;
+        }
+
+        if (helpButton) {
+            helpButton.textContent =
+                "🔎 " + data.help;
+        }
+
+        if (emergencyButton) {
+            emergencyButton.textContent =
+                data.emergency;
+        }
+
+        localStorage.setItem(
+            "cybercare-language",
+            lang
+        );
+    }
+
+    function connectLanguage() {
+
+        const button =
+            $("#languageBtn");
+
+        if (!button) return;
+
+        let current =
+            localStorage.getItem(
+                "cybercare-language"
+            ) || "EN";
+
+        if (!LANGS.includes(current)) {
+            current = "EN";
+        }
+
+        setLanguage(current);
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const index =
+                    LANGS.indexOf(current);
+
+                current =
+                    LANGS[
+                        (index + 1) %
+                        LANGS.length
+                    ];
+
+                setLanguage(current);
+
+            }
+        );
+    }
+
+    /* =========================================================
+       HERO BUTTONS
+    ========================================================= */
+
+    function connectHeroButtons() {
+
+        const emergency =
+            $("#emergencyBtn");
+
+        const quick =
+            $("#quickHelpBtn");
+
+        if (emergency) {
+
+            emergency.addEventListener(
+                "click",
+                function () {
+
+                    safeScrollTo(
+                        "emergency"
+                    );
+
+                }
+            );
+
+        }
+
+        if (quick) {
+
+            quick.addEventListener(
+                "click",
+                function () {
+
+                    safeScrollTo(
+                        "services"
+                    );
+
+                    setTimeout(
+                        function () {
+
+                            const input =
+                                $("#problemSearch");
+
+                            if (input) {
+                                input.focus();
+                            }
+
+                        },
+                        450
+                    );
+
+                }
+            );
+
+        }
+    }
+
+    /* =========================================================
+       WOMEN SAFETY
+    ========================================================= */
+
+    const WOMEN_MAP = {
+
+        harassment:
+            "ফোন করে বিরক্ত করছে",
+
+        blackmail:
+            "Private photo/video দিয়ে blackmail করছে",
+
+        private:
+            "Private photo/video দিয়ে blackmail করছে",
+
+        fakeprofile:
+            "fake profile",
+
+        photo:
+            "photo misuse",
+
+        stalking:
+            "কেউ online/offline stalk করছে"
+    };
+
+    function connectWomenSafety() {
+
+        $$("[data-women]").forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const key =
+                            button.dataset.women;
+
+                        const query =
+                            WOMEN_MAP[key] ||
+                            key;
+
+                        const item =
+                            findGuide(query);
+
+                        if (item) {
+                            openGuide(item);
+                        } else {
+
+                            openGenericGuide(
+                                button.innerText
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+    }
+
+    /* =========================================================
+       EMERGENCY
+    ========================================================= */
+
+    const EMERGENCY_MAP = {
+
+        account:
+            "কেউ আমার Facebook password পরিবর্তন করেছে",
+
+        money:
+            "UPI fraud হয়েছে",
+
+        blackmail:
+            "Private photo/video দিয়ে blackmail করছে",
+
+        phone:
+            "Phone hacked"
+    };
+
+    function connectEmergency() {
+
+        $$("[data-emergency]").forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const key =
+                            button.dataset.emergency;
+
+                        const query =
+                            EMERGENCY_MAP[key] ||
+                            key;
+
+                        const item =
+                            findGuide(query);
+
+                        if (item) {
+
+                            openGuide(item);
+
+                        } else {
+
+                            openGenericGuide(
+                                button.innerText
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+    }
+
+    /* =========================================================
+       GENERIC GUIDE
+    ========================================================= */
+
+    function openGenericGuide(title) {
+
+        const modal =
+            createGuideModal();
+
+        const heading =
+            $("#ccGuideTitle");
+
+        const body =
+            $("#ccGuideBody");
+
+        if (!heading || !body) return;
+
+        heading.textContent =
+            "🛡️ " + title;
+
+        body.innerHTML = `
+
+            <h3>Immediate Safety Steps</h3>
+
+            <ol>
+                <li>Stay calm and do not panic.</li>
+
+                <li>
+                    Save screenshots, messages,
+                    transaction IDs and other evidence.
+                </li>
+
+                <li>
+                    Do not share OTP, password,
+                    UPI PIN or recovery codes.
+                </li>
+
+                <li>
+                    Do not send additional money
+                    or sensitive information.
+                </li>
+
+                <li>
+                    Secure the affected account,
+                    device or payment method.
+                </li>
+
+                <li>
+                    Use the official support/reporting
+                    channel for the affected service.
+                </li>
+
+                <li>
+                    If there is immediate physical danger,
+                    contact local emergency services.
+                </li>
+            </ol>
+
+            <div style="
+                margin-top:15px;
+                padding:13px;
+                border-radius:12px;
+                background:#fff7ed;
+                color:#9a3412;
+            ">
+                <strong>⚠️ Important</strong><br>
+                Never give your OTP, password,
+                UPI PIN or recovery code to someone
+                claiming to be customer support.
+            </div>
+        `;
+
+        modal.classList.add("active");
+
+        document.body.classList.add(
+            "modal-open"
+        );
+    }
+
+    /* =========================================================
+       SAFETY TOOLS
+    ========================================================= */
+
+    function openTool(tool) {
+
+        const modal =
+            createGuideModal();
+
+        const heading =
+            $("#ccGuideTitle");
+
+        const body =
+            $("#ccGuideBody");
+
+        if (!heading || !body) return;
+
+        let title = "";
+        let content = "";
+
+        if (tool === "scam") {
+
+            title = "🎣 Scam Scanner";
+
+            content = `
+
+                <h3>Paste the suspicious message</h3>
+
+                <textarea
+                    id="ccScamInput"
+                    style="
+                        width:100%;
+                        min-height:130px;
+                        padding:12px;
+                        border:1px solid #cbd5e1;
+                        border-radius:12px;
+                        resize:vertical;
+                    "
+                    placeholder="Paste SMS / WhatsApp / email text here..."
+                ></textarea>
+
+                <button
+                    id="ccScamCheck"
+                    class="guide-ok"
+                    style="margin-top:10px;"
+                >
+                    🔍 Check Warning Signs
+                </button>
+
+                <div
+                    id="ccScamResult"
+                    style="margin-top:12px;"
+                ></div>
+            `;
+
+        }
+
+        else if (tool === "password") {
+
+            title = "🔐 Password Checker";
+
+            content = `
+
+                <h3>Basic password strength check</h3>
+
+                <input
+                    id="ccPasswordInput"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="Type a password to test"
+                    style="
+                        width:100%;
+                        height:48px;
+                        padding:0 12px;
+                        border:1px solid #cbd5e1;
+                        border-radius:12px;
+                    "
+                >
+
+                <button
+                    id="ccPasswordCheck"
+                    class="guide-ok"
+                    style="margin-top:10px;"
+                >
+                    Check Strength
+                </button>
+
+                <div
+                    id="ccPasswordResult"
+                    style="margin-top:12px;"
+                ></div>
+
+                <p style="
+                    margin-top:12px;
+                    font-size:12px;
+                    color:#64748b;
+                ">
+                    Password is checked locally in your browser.
+                    It is not sent anywhere by this tool.
+                </p>
+            `;
+
+        }
+
+        else if (tool === "url") {
+
+            title = "🔗 URL Checker";
+
+            content = `
+
+                <h3>Check basic suspicious patterns</h3>
+
+                <input
+                    id="ccUrlInput"
+                    type="url"
+                    placeholder="https://example.com"
+                    style="
+                        width:100%;
+                        height:48px;
+                        padding:0 12px;
+                        border:1px solid #cbd5e1;
+                        border-radius:12px;
+                    "
+                >
+
+                <button
+                    id="ccUrlCheck"
+                    class="guide-ok"
+                    style="margin-top:10px;"
+                >
+                    Check URL
+                </button>
+
+                <div
+                    id="ccUrlResult"
+                    style="margin-top:12px;"
+                ></div>
+            `;
+
+        }
+
+        else if (tool === "privacy") {
+
+            title = "🔒 Privacy Checklist";
+
+            content = `
+
+                <h3>Review these settings</h3>
+
+                <ol>
+                    <li>Use a screen lock.</li>
+                    <li>Enable 2FA on important accounts.</li>
+                    <li>Review logged-in devices.</li>
+                    <li>Remove unknown apps.</li>
+                    <li>Review app permissions.</li>
+                    <li>Keep Android/iOS updated.</li>
+                    <li>Keep recovery email and phone updated.</li>
+                    <li>Do not share OTP or recovery codes.</li>
+                </ol>
+            `;
+
+        }
+
+        else if (tool === "evidence") {
+
+            title = "🧾 Evidence Checklist";
+
+            content = `
+
+                <h3>Preserve evidence</h3>
+
+                <ol>
+                    <li>Take screenshots.</li>
+                    <li>Keep original messages.</li>
+                    <li>Save profile usernames and URLs.</li>
+                    <li>Record date and time.</li>
+                    <li>Save transaction ID / UTR for financial fraud.</li>
+                    <li>Keep email headers where relevant.</li>
+                    <li>Make a safe backup.</li>
+                    <li>Do not edit the original evidence.</li>
+                </ol>
+            `;
+
+        }
+
+        else if (tool === "score") {
+
+            title = "🛡️ Cyber Safety Score";
+
+            content = `
+
+                <h3>Quick Security Score</h3>
+
+                <p>
+                    Answer these questions:
+                </p>
+
+                <label>
+                    <input type="checkbox" class="cc-score">
+                    I use different passwords for important accounts.
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="checkbox" class="cc-score">
+                    I use 2FA.
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="checkbox" class="cc-score">
+                    My phone has a screen lock.
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="checkbox" class="cc-score">
+                    I review account login sessions.
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="checkbox" class="cc-score">
+                    I don't share OTP/PIN/passwords.
+                </label>
+
+                <button
+                    id="ccScoreCheck"
+                    class="guide-ok"
+                    style="margin-top:15px;"
+                >
+                    Calculate Score
+                </button>
+
+                <div
+                    id="ccScoreResult"
+                    style="margin-top:12px;"
+                ></div>
+            `;
+
+        }
+
+        else {
+
+            title = "🛡️ CyberCare Tool";
+
+            content = `
+                <p>
+                    This CyberCare tool is ready.
+                    Follow the safety steps shown here
+                    and use official support channels
+                    for serious incidents.
+                </p>
+            `;
+
+        }
+
+        heading.textContent = title;
+        body.innerHTML = content;
+
+        modal.classList.add("active");
+
+        document.body.classList.add(
+            "modal-open"
+        );
+
+        connectToolActions(tool);
+    }
+
+    function connectToolActions(tool) {
+
+        if (tool === "scam") {
+
+            const button =
+                $("#ccScamCheck");
+
+            if (!button) return;
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const text =
+                        (
+                            $("#ccScamInput")?.value ||
+                            ""
+                        ).toLowerCase();
+
+                    const warnings = [];
+
+                    const patterns = [
+                        ["otp", "Requests an OTP"],
+                        ["pin", "Requests a PIN"],
+                        ["password", "Requests a password"],
+                        ["urgent", "Uses urgency"],
+                        ["click", "Pushes you to click"],
+                        ["payment", "Requests payment"],
+                        ["refund", "Mentions a refund"],
+                        ["prize", "Promises a prize"],
+                        ["verify", "Requests verification"],
+                        ["account blocked", "Claims the account is blocked"]
+                    ];
+
+                    patterns.forEach(
+                        function (item) {
+
+                            if (
+                                text.includes(
+                                    item[0]
+                                )
+                            ) {
+                                warnings.push(
+                                    item[1]
+                                );
+                            }
+
+                        }
+                    );
+
+                    const result =
+                        $("#ccScamResult");
+
+                    if (!result) return;
+
+                    if (!text.trim()) {
+
+                        result.innerHTML = `
+                            <div style="
+                                padding:12px;
+                                border-radius:11px;
+                                background:#fff7ed;
+                                color:#9a3412;
+                            ">
+                                Paste a message first.
+                            </div>
+                        `;
+
+                        return;
+                    }
+
+                    if (warnings.length) {
+
+                        result.innerHTML = `
+                            <div style="
+                                padding:13px;
+                                border-radius:11px;
+                                background:#fef2f2;
+                                color:#991b1b;
+                            ">
+                                <strong>
+                                    ⚠️ Warning signs found
+                                </strong>
+
+                                <ul style="padding-left:20px;">
+                                    ${warnings.map(
+                                        x => `<li>${x}</li>`
+                                    ).join("")}
+                                </ul>
+
+                                <p>
+                                    Do not click suspicious
+                                    links or share OTP/PIN/passwords.
+                                </p>
+                            </div>
+                        `;
+
+                    } else {
+
+                        result.innerHTML = `
+                            <div style="
+                                padding:13px;
+                                border-radius:11px;
+                                background:#f0fdf4;
+                                color:#166534;
+                            ">
+                                No obvious warning keyword
+                                was detected. This does NOT prove
+                                the message is safe.
+                            </div>
+                        `;
+
+                    }
+
+                }
+            );
+
+        }
+
+        if (tool === "password") {
+
+            const button =
+                $("#ccPasswordCheck");
+
+            if (!button) return;
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const value =
+                        $("#ccPasswordInput")?.value ||
+                        "";
+
+                    const result =
+                        $("#ccPasswordResult");
+
+                    if (!result) return;
+
+                    let score = 0;
+
+                    if (value.length >= 12)
+                        score++;
+
+                    if (/[A-Z]/.test(value))
+                        score++;
+
+                    if (/[a-z]/.test(value))
+                        score++;
+
+                    if (/[0-9]/.test(value))
+                        score++;
+
+                    if (/[^A-Za-z0-9]/.test(value))
+                        score++;
+
+                    let message;
+
+                    if (score <= 2) {
+
+                        message =
+                            "🔴 Weak — use a longer unique passphrase.";
+
+                    } else if (score <= 4) {
+
+                        message =
+                            "🟠 Moderate — improve length and uniqueness.";
+
+                    } else {
+
+                        message =
+                            "🟢 Stronger pattern — still use 2FA and never reuse it.";
+
+                    }
+
+                    result.innerHTML = `
+                        <div style="
+                            padding:13px;
+                            border-radius:11px;
+                            background:#f8fafc;
+                        ">
+                            ${message}
+                        </div>
+                    `;
+
+                }
+            );
+
+        }
+
+        if (tool === "url") {
+
+            const button =
+                $("#ccUrlCheck");
+
+            if (!button) return;
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const value =
+                        $("#ccUrlInput")?.value ||
+                        "";
+
+                    const result =
+                        $("#ccUrlResult");
+
+                    if (!result) return;
+
+                    let warnings = [];
+
+                    try {
+
+                        const url =
+                            new URL(value);
+
+                        if (
+                            url.protocol !==
+                            "https:"
+                        ) {
+                            warnings.push(
+                                "The URL is not using HTTPS."
+                            );
+                        }
+
+                        if (
+                            url.hostname.includes(
+                                "xn--"
+                            )
+                        ) {
+                            warnings.push(
+                                "The domain uses punycode."
+                            );
+                        }
+
+                        if (
+                            url.hostname.split(".")
+                                .length > 4
+                        ) {
+                            warnings.push(
+                                "The domain has many subdomains."
+                            );
+                        }
+
+                    } catch (error) {
+
+                        warnings.push(
+                            "This is not a valid URL."
+                        );
+
+                    }
+
+                    if (warnings.length) {
+
+                        result.innerHTML = `
+                            <div style="
+                                padding:13px;
+                                border-radius:11px;
+                                background:#fff7ed;
+                                color:#9a3412;
+                            ">
+                                <strong>
+                                    ⚠️ Review carefully
+                                </strong>
+
+                                <ul style="padding-left:20px;">
+                                    ${warnings.map(
+                                        x => `<li>${x}</li>`
+                                    ).join("")}
+                                </ul>
+
+                                <p>
+                                    This is only a basic
+                                    pattern check and cannot
+                                    prove whether a website is safe.
+                                </p>
+                            </div>
+                        `;
+
+                    } else {
+
+                        result.innerHTML = `
+                            <div style="
+                                padding:13px;
+                                border-radius:11px;
+                                background:#f0fdf4;
+                                color:#166534;
+                            ">
+                                No basic warning pattern
+                                was detected. Still verify
+                                the domain before logging in.
+                            </div>
+                        `;
+
+                    }
+
+                }
+            );
+
+        }
+
+        if (tool === "score") {
+
+            const button =
+                $("#ccScoreCheck");
+
+            if (!button) return;
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const checks =
+                        $$(".cc-score");
+
+                    let score = 0;
+
+                    checks.forEach(
+                        function (check) {
+
+                            if (check.checked) {
+                                score++;
+                            }
+
+                        }
+                    );
+
+                    const result =
+                        $("#ccScoreResult");
+
+                    if (!result) return;
+
+                    let text = "";
+
+                    if (score <= 2) {
+
+                        text =
+                            "🔴 Your security needs improvement.";
+
+                    } else if (score <= 4) {
+
+                        text =
+                            "🟠 Good start, but there are still gaps.";
+
+                    } else {
+
+                        text =
+                            "🟢 Excellent basic security habits.";
+
+                    }
+
+                    result.innerHTML = `
+                        <div style="
+                            padding:13px;
+                            border-radius:11px;
+                            background:#eff6ff;
+                            color:#1e40af;
+                        ">
+                            <strong>
+                                Score: ${score}/5
+                            </strong>
+                            <br>
+                            ${text}
+                        </div>
+                    `;
+
+                }
+            );
+
+        }
+    }
+
+    function connectTools() {
+
+        $$("[data-tool]").forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        closeMenu();
+
+                        openTool(
+                            button.dataset.tool
+                        );
+
+                    }
+                );
+
+            }
+        );
+    }
+
+    /* =========================================================
+       LEARNING SYSTEM
+    ========================================================= */
+
+    const LEARN_GUIDES = {
+
+        password: {
+            title: "🔐 Password Safety",
+            text: `
+                <h3>Safer password habits</h3>
+                <ol>
+                    <li>Use a unique password for important accounts.</li>
+                    <li>Prefer a long passphrase.</li>
+                    <li>Use a password manager if suitable.</li>
+                    <li>Enable 2FA.</li>
+                    <li>Never share passwords or recovery codes.</li>
+                </ol>
+            `
+        },
+
+        "2fa": {
+            title: "🔑 Two-Factor Authentication",
+            text: `
+                <h3>Add another protection layer</h3>
+                <ol>
+                    <li>Open the account Security settings.</li>
+                    <li>Find Two-Factor Authentication.</li>
+                    <li>Choose an available secure method.</li>
+                    <li>Save recovery codes securely.</li>
+                    <li>Never share those codes.</li>
+                </ol>
+            `
+        },
+
+        phishing: {
+            title: "🎣 Phishing Awareness",
+            text: `
+                <h3>Common warning signs</h3>
+                <ul>
+                    <li>Unexpected urgent messages.</li>
+                    <li>Requests for OTP/password/PIN.</li>
+                    <li>Suspicious domains.</li>
+                    <li>Unexpected payment requests.</li>
+                    <li>Threats that your account will be blocked.</li>
+                </ul>
+            `
+        },
+
+        privacy: {
+            title: "🔒 Privacy",
+            text: `
+                <h3>Protect personal information</h3>
+                <ol>
+                    <li>Review app permissions.</li>
+                    <li>Limit unnecessary location access.</li>
+                    <li>Use strong screen lock.</li>
+                    <li>Review logged-in devices.</li>
+                    <li>Keep software updated.</li>
+                </ol>
+            `
+        },
+
+        phone: {
+            title: "📱 Phone Security",
+            text: `
+                <h3>Keep your phone safer</h3>
+                <ol>
+                    <li>Install updates.</li>
+                    <li>Remove unknown apps.</li>
+                    <li>Review accessibility permissions.</li>
+                    <li>Review device administrator apps.</li>
+                    <li>Use a screen lock.</li>
+                    <li>Secure important accounts.</li>
+                </ol>
+            `
+        },
+
+        financial: {
+            title: "💳 Financial Safety",
+            text: `
+                <h3>Protect payments</h3>
+                <ol>
+                    <li>Never share UPI PIN.</li>
+                    <li>Never share OTP.</li>
+                    <li>Verify the recipient before payment.</li>
+                    <li>Don't install remote-control apps on request.</li>
+                    <li>Report suspected fraud quickly.</li>
+                </ol>
+            `
+        }
+
+    };
+
+    function connectLearning() {
+
+        $$("[data-learn]").forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const key =
+                            button.dataset.learn;
+
+                        const guide =
+                            LEARN_GUIDES[key];
+
+                        if (!guide) return;
+
+                        const modal =
+                            createGuideModal();
+
+                        const heading =
+                            $("#ccGuideTitle");
+
+                        const body =
+                            $("#ccGuideBody");
+
+                        if (!heading || !body)
+                            return;
+
+                        heading.textContent =
+                            guide.title;
+
+                        body.innerHTML =
+                            guide.text;
+
+                        modal.classList.add(
+                            "active"
+                        );
+
+                        document.body.classList.add(
+                            "modal-open"
+                        );
+
+                    }
+                );
+
+            }
+        );
+    }
+
+    /* =========================================================
+       HOME MODE
+       Keep important sections visible.
+    ========================================================= */
+
+    function connectHomeMode() {
+
+        document.body.classList.add(
+            "cybercare-clean-home"
+        );
+
+        /*
+         * We DO NOT permanently hide sections.
+         * The user must be able to access them
+         * from the menu.
+         */
+
+        const hiddenSelectors = [
+            "#womenSafety",
+            "#tools",
+            "#learn"
+        ];
+
+        function hideSecondary() {
+
+            hiddenSelectors.forEach(
+                function (selector) {
+
+                    const el =
+                        document.querySelector(
+                            selector
+                        );
+
+                    if (el) {
+                        el.dataset.ccHidden =
+                            "true";
+
+                        el.style.display =
+                            "none";
+                    }
+
+                }
+            );
+        }
+
+        function showSection(id) {
+
+            const el =
+                document.getElementById(id);
+
+            if (!el) return;
+
+            el.style.display = "";
+
+            el.dataset.ccHidden =
+                "false";
+
+            el.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+        hideSecondary();
+
+        $$(".menu-item").forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const target =
+                            button.dataset.menu;
+
+                        if (
+                            target ===
+                            "womenSafety"
+                        ) {
+                            showSection(
+                                "womenSafety"
+                            );
+                        }
+
+                        if (
+                            target === "tools"
+                        ) {
+                            showSection(
+                                "tools"
+                            );
+                        }
+
+                        if (
+                            target === "learn"
+                        ) {
+                            showSection(
+                                "learn"
+                            );
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+    /* =========================================================
+       RE-OPEN HIDDEN SECTION FIX
+    ========================================================= */
+
+    function connectSectionVisibility() {
+
+        function reveal(id) {
+
+            const el =
+                document.getElementById(id);
+
+            if (!el) return;
+
+            el.style.display = "";
+
+            el.classList.add(
+                "cybercare-visible-section"
+            );
+
+        }
+
+        $$("[data-menu]").forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const target =
+                            button.dataset.menu;
+
+                        if (
+                            target ===
+                            "womenSafety"
+                        ) {
+                            reveal(
+                                "womenSafety"
+                            );
+                        }
+
+                        if (
+                            target === "tools"
+                        ) {
+                            reveal("tools");
+                        }
+
+                        if (
+                            target === "learn"
+                        ) {
+                            reveal("learn");
+                        }
+
+                        if (
+                            target === "emergency"
+                        ) {
+                            reveal(
+                                "emergency"
+                            );
+                        }
+
+                    }
+                );
+
+            }
+        );
+    }
+
+    /* =========================================================
+       BODY CLASS FIX
+       The old CSS hides secondary sections whenever
+       cybercare-clean-home exists.
+       Override that behavior here.
+    ========================================================= */
+
+    function installVisibilityCSS() {
+
+        const style =
+            document.createElement("style");
+
+        style.id =
+            "cybercare-final-visibility-fix";
+
+        style.textContent = `
+
+            body.cybercare-clean-home
+            #womenSafety.cybercare-visible-section,
+            body.cybercare-clean-home
+            #tools.cybercare-visible-section,
+            body.cybercare-clean-home
+            #learn.cybercare-visible-section {
+                display: block !important;
+            }
+
+            .guide-overlay {
+                display: flex;
+            }
+
+            .guide-overlay.active {
+                display: flex !important;
+            }
+
+            body.modal-open {
+                overflow: hidden;
+            }
+
+            .cc-dynamic-guide {
+                margin: 10px 0;
+            }
+
+            .cc-dynamic-step {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .cc-dynamic-step-number {
+                width: 27px;
+                min-width: 27px;
+                height: 27px;
+                border-radius: 50%;
+                background: #2563eb;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                font-size: 12px;
+            }
+
+            .cc-dynamic-step-text {
+                flex: 1;
+            }
+
+            @media (max-width:600px) {
+
+                .guide-overlay {
+                    padding: 10px !important;
+                }
+
+                .guide-modal {
+                    max-height: 92vh !important;
+                    padding: 18px !important;
+                }
+
+            }
+
+        `;
+
+        document.head.appendChild(style);
+    }
+
+    /* =========================================================
+       FINAL START
+    ========================================================= */
+
+    function startCyberCareFinalSystem() {
+
+        try {
+
+            installVisibilityCSS();
+
+            connectMenu();
+
+            connectSearch();
+
+            connectQuickHelp();
+
+            connectHeroButtons();
+
+            connectDarkMode();
+
+            connectLanguage();
+
+            connectWomenSafety();
+
+            connectEmergency();
+
+            connectTools();
+
+            connectLearning();
+
+            connectHomeMode();
+
+            connectSectionVisibility();
+
+            console.log(
+                "✅ CyberCare Final System Connected"
+            );
+
+            console.log(
+                "📚 Guides:",
+                typeof CYBERCARE_GUIDES !== "undefined"
+                    ? CYBERCARE_GUIDES.length
+                    : 0
+            );
+
+        } catch (error) {
+
+            console.error(
+                "❌ CyberCare System Error:",
+                error
+            );
+
+        }
+
+    }
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            startCyberCareFinalSystem
+        );
+
+    } else {
+
+        startCyberCareFinalSystem();
+
+    }
+
+})();
