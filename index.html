@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CyberCare — Digital Help & Safety Center</title>
+  <title>CyberCare — Digital Help Center</title>
 
   <meta
     name="description"
@@ -24,15 +24,14 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
+  <header class="header">
     <div class="container header-inner">
 
       <a href="#home" class="logo">
-        <span class="logo-icon">🛡️</span>
+        <span class="logo-shield">🛡️</span>
 
-        <span class="logo-text">
-          <strong>CyberCare</strong>
+        <span>
+          <strong>Cyber<span>Care</span></strong>
           <small>Digital Help & Safety Center</small>
         </span>
       </a>
@@ -40,55 +39,34 @@
       <nav class="desktop-nav">
         <a href="#home" class="active">হোম</a>
         <a href="#categories">সহায়তা</a>
-        <a href="#services">সার্ভিস</a>
-        <a href="#security">নিরাপত্তা</a>
+        <a href="#guides">গাইড</a>
+        <a href="#safety">নিরাপত্তা</a>
         <a href="#emergency">জরুরি সহায়তা</a>
       </nav>
 
       <div class="header-actions">
-
-        <button class="icon-btn" id="languageBtn" type="button">
-          🌐 <span>বাংলা</span>
-        </button>
-
-        <button class="icon-btn" id="themeBtn" type="button">
-          ☀️
-        </button>
-
-        <button class="icon-btn menu-btn" id="menuBtn" type="button">
-          ☰
-        </button>
-
+        <button class="small-btn" id="themeBtn" type="button">🌙</button>
+        <button class="small-btn menu-btn" id="menuBtn" type="button">☰</button>
       </div>
 
     </div>
   </header>
 
-
-  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-
     <a href="#home">হোম</a>
     <a href="#categories">সহায়তা</a>
-    <a href="#services">সার্ভিস</a>
-    <a href="#security">নিরাপত্তা</a>
+    <a href="#guides">গাইড</a>
+    <a href="#safety">নিরাপত্তা</a>
     <a href="#emergency">জরুরি সহায়তা</a>
-
   </div>
-
 
   <main>
 
-    <!-- HERO -->
     <section class="hero" id="home">
-
       <div class="container hero-grid">
 
         <div class="hero-content">
-
-          <div class="hero-badge">
-            🛡️ CyberCare Digital Safety Center
-          </div>
+          <span class="badge">🛡️ CyberCare Digital Safety Center</span>
 
           <h1>
             আপনার ডিজিটাল সমস্যার
@@ -96,836 +74,380 @@
           </h1>
 
           <p>
-            Facebook, Gmail, মোবাইল, OTP, ব্যাংকিং,
-            অ্যাকাউন্ট এবং সাইবার নিরাপত্তা—
-            প্রয়োজনীয় গাইড এক জায়গায়।
+            Internet, mobile, banking, Facebook, Instagram,
+            Gmail এবং online safety—সব সমস্যার practical
+            step-by-step help এক জায়গায়।
           </p>
 
           <div class="hero-buttons">
-
-            <button
-              class="btn btn-primary"
-              id="heroSearchBtn"
-              type="button"
-            >
+            <button class="btn primary-btn" id="heroSearchBtn">
               🔍 সমস্যা খুঁজুন
             </button>
 
-            <a
-              class="btn btn-secondary"
-              href="#services"
-            >
+            <a href="#guides" class="btn outline-btn">
               গাইড দেখুন →
             </a>
-
           </div>
 
-          <div class="hero-features">
+          <div class="hero-points">
             <span>✓ সহজ ভাষা</span>
             <span>✓ Step-by-Step</span>
-            <span>✓ Safety First</span>
+            <span>✓ সম্পূর্ণ Free</span>
           </div>
-
         </div>
 
-
-        <div class="hero-visual">
-
-          <div class="hero-circle"></div>
+        <div class="hero-image-box">
+          <div class="image-glow"></div>
 
           <img
-            src="assets/hero-person.png"
+            src="assets/hero-person.jpg"
             alt="CyberCare Digital Safety"
             class="hero-image"
-            onerror="this.style.display='none'; document.querySelector('.image-fallback').classList.add('show');"
           >
 
-          <div class="image-fallback">
-            <span>🛡️</span>
-            <strong>CyberCare</strong>
-            <small>Digital Safety</small>
+          <div class="floating-card floating-card-one">
+            <span>🔐</span>
+            <div>
+              <b>Safe Help</b>
+              <small>আপনার নিরাপত্তা আগে</small>
+            </div>
           </div>
 
+          <div class="floating-card floating-card-two">
+            <span>✓</span>
+            <div>
+              <b>Step-by-Step</b>
+              <small>সহজ সমাধান</small>
+            </div>
+          </div>
         </div>
 
-      </div>
+        <aside class="quick-panel">
+          <h3>⚡ দ্রুত সাহায্য</h3>
 
+          <button class="quick-item" data-guide="upi">
+            <span class="quick-icon pink">💳</span>
+            <span>
+              <b>টাকা প্রতারণা</b>
+              <small>UPI বা Bank fraud</small>
+            </span>
+          </button>
+
+          <button class="quick-item" data-guide="hack">
+            <span class="quick-icon blue">🔐</span>
+            <span>
+              <b>Account hacked</b>
+              <small>Account নিরাপদ করুন</small>
+            </span>
+          </button>
+
+          <button class="quick-item" data-guide="otp">
+            <span class="quick-icon green">💬</span>
+            <span>
+              <b>OTP সমস্যা</b>
+              <small>OTP না এলে করণীয়</small>
+            </span>
+          </button>
+
+          <button class="quick-item" data-guide="phone">
+            <span class="quick-icon violet">📱</span>
+            <span>
+              <b>ফোন সমস্যা</b>
+              <small>Phone ও SIM help</small>
+            </span>
+          </button>
+
+          <a href="#emergency" class="all-help">
+            সব জরুরি সাহায্য দেখুন →
+          </a>
+        </aside>
+
+      </div>
     </section>
 
-
-    <!-- TRUST -->
     <section class="trust-section">
+      <div class="container trust-grid">
 
-      <div class="container">
-
-        <div class="trust-grid">
-
-          <div class="trust-card">
-            <span>🛡️</span>
-
-            <div>
-              <strong>Safety First</strong>
-              <small>নিরাপত্তা-কেন্দ্রিক সহায়তা</small>
-            </div>
+        <div class="trust-card">
+          <span>🛡️</span>
+          <div>
+            <b>Safety First</b>
+            <small>নিরাপত্তা-কেন্দ্রিক help</small>
           </div>
+        </div>
 
-
-          <div class="trust-card">
-            <span>📖</span>
-
-            <div>
-              <strong>Step-by-Step</strong>
-              <small>সহজ ধাপে সমাধান</small>
-            </div>
+        <div class="trust-card">
+          <span>📖</span>
+          <div>
+            <b>Step-by-Step</b>
+            <small>সহজ ধাপে সমাধান</small>
           </div>
+        </div>
 
-
-          <div class="trust-card">
-            <span>🔎</span>
-
-            <div>
-              <strong>Smart Help</strong>
-              <small>সমস্যা অনুযায়ী গাইড</small>
-            </div>
+        <div class="trust-card">
+          <span>🔎</span>
+          <div>
+            <b>Smart Search</b>
+            <small>সমস্যা অনুযায়ী guide</small>
           </div>
+        </div>
 
-
-          <div class="trust-card">
-            <span>🚨</span>
-
-            <div>
-              <strong>Emergency</strong>
-              <small>জরুরি সহায়তা</small>
-            </div>
+        <div class="trust-card">
+          <span>🚨</span>
+          <div>
+            <b>Emergency Help</b>
+            <small>জরুরি সহায়তা</small>
           </div>
-
         </div>
 
       </div>
-
     </section>
 
-
-    <!-- SEARCH -->
     <section class="search-section" id="search">
-
       <div class="container">
 
         <div class="search-box">
-
-          <div class="section-title">
-
+          <div class="search-heading">
             <span>🔍</span>
-
             <div>
-              <h2>আপনার কি সমস্যা হচ্ছে?</h2>
-              <p>সমস্যাটা নিজের ভাষায় লিখুন।</p>
+              <h2>আপনার কী সমস্যা হচ্ছে?</h2>
+              <p>সমস্যাটি নিজের ভাষায় লিখুন।</p>
             </div>
-
           </div>
 
-
           <div class="search-row">
-
             <input
               type="text"
               id="problemSearch"
-              placeholder="যেমন: Facebook লগইন হচ্ছে না..."
+              placeholder="যেমন: Facebook login হচ্ছে না..."
               autocomplete="off"
             >
 
-            <button
-              class="btn btn-primary"
-              id="searchBtn"
-              type="button"
-            >
+            <button class="btn primary-btn" id="searchBtn">
               খুঁজুন
             </button>
-
           </div>
 
-
-          <div class="quick-searches">
-
+          <div class="quick-search">
             <span>জনপ্রিয়:</span>
 
-            <button
-              type="button"
-              class="quick-chip"
-              data-search="Facebook লগইন"
-            >
-              Facebook লগইন
-            </button>
-
-            <button
-              type="button"
-              class="quick-chip"
-              data-search="OTP আসছে না"
-            >
-              OTP সমস্যা
-            </button>
-
-            <button
-              type="button"
-              class="quick-chip"
-              data-search="অ্যাকাউন্ট হ্যাক"
-            >
-              অ্যাকাউন্ট হ্যাক
-            </button>
-
-            <button
-              type="button"
-              class="quick-chip"
-              data-search="ব্যাংক থেকে টাকা কেটে গেছে"
-            >
-              ব্যাংকিং সমস্যা
-            </button>
-
+            <button data-search="Facebook login">Facebook login</button>
+            <button data-search="OTP আসছে না">OTP সমস্যা</button>
+            <button data-search="Account hacked">Account hacked</button>
+            <button data-search="UPI fraud">Banking সমস্যা</button>
           </div>
 
-
-          <div
-            class="search-results"
-            id="searchResults"
-          ></div>
-
+          <div class="search-results" id="searchResults"></div>
         </div>
 
       </div>
-
     </section>
 
-
-    <!-- CATEGORIES -->
     <section class="section" id="categories">
-
       <div class="container">
 
         <div class="section-heading">
-
           <div>
             <span class="eyebrow">HELP CENTER</span>
-
             <h2>আপনার প্রয়োজনীয় সহায়তা</h2>
-
-            <p>
-              যে সমস্যায় পড়েছেন, সেটি বেছে নিন।
-            </p>
+            <p>যে সমস্যায় পড়েছেন, সেটি বেছে নিন।</p>
           </div>
-
         </div>
-
 
         <div class="category-grid">
 
-          <article
-            class="category-card"
-            data-category="facebook"
-          >
-
+          <article class="category-card">
             <div class="category-icon">📘</div>
-
-            <h3>ফেসবুক সমস্যা</h3>
-
-            <p>
-              Login, password, hacked account ও recovery.
-            </p>
-
-            <button type="button">
-              সমাধান দেখুন →
-            </button>
-
+            <h3>Facebook সমস্যা</h3>
+            <p>Login, password ও hacked account help.</p>
+            <button data-guide="facebook">সমাধান দেখুন →</button>
           </article>
 
-
-          <article
-            class="category-card"
-            data-category="mobile"
-          >
-
+          <article class="category-card">
             <div class="category-icon">📱</div>
-
-            <h3>মোবাইল ও সিম</h3>
-
-            <p>
-              Network, SIM, battery ও ফোনের সাধারণ সমস্যা।
-            </p>
-
-            <button type="button">
-              সমাধান দেখুন →
-            </button>
-
+            <h3>মোবাইল ও SIM</h3>
+            <p>Network, SIM, battery ও phone problem.</p>
+            <button data-guide="phone">সমাধান দেখুন →</button>
           </article>
 
-
-          <article
-            class="category-card"
-            data-category="email"
-          >
-
+          <article class="category-card">
             <div class="category-icon">📧</div>
-
-            <h3>Gmail ও ইমেইল</h3>
-
-            <p>
-              Password, recovery ও account security.
-            </p>
-
-            <button type="button">
-              সমাধান দেখুন →
-            </button>
-
+            <h3>Gmail ও Email</h3>
+            <p>Password, recovery ও account security.</p>
+            <button data-guide="password">সমাধান দেখুন →</button>
           </article>
 
-
-          <article
-            class="category-card"
-            data-category="bank"
-          >
-
+          <article class="category-card">
             <div class="category-icon">💳</div>
-
-            <h3>ব্যাংকিং ও পেমেন্ট</h3>
-
-            <p>
-              Fraud, unknown transaction ও payment সমস্যা।
-            </p>
-
-            <button type="button">
-              সমাধান দেখুন →
-            </button>
-
+            <h3>Banking ও Payment</h3>
+            <p>Fraud, unknown transaction ও UPI help.</p>
+            <button data-guide="upi">সমাধান দেখুন →</button>
           </article>
 
-
-          <article
-            class="category-card"
-            data-category="social"
-          >
-
+          <article class="category-card">
             <div class="category-icon">🔗</div>
-
-            <h3>সোশ্যাল মিডিয়া</h3>
-
-            <p>
-              WhatsApp, YouTube ও অন্যান্য social platform.
-            </p>
-
-            <button type="button">
-              সমাধান দেখুন →
-            </button>
-
+            <h3>Social Media</h3>
+            <p>WhatsApp, Facebook ও online account help.</p>
+            <button data-guide="whatsapp">সমাধান দেখুন →</button>
           </article>
 
-
-          <article
-            class="category-card"
-            data-category="security"
-          >
-
+          <article class="category-card">
             <div class="category-icon">🛡️</div>
-
-            <h3>সাইবার নিরাপত্তা</h3>
-
-            <p>
-              Scam, phishing, privacy ও account safety.
-            </p>
-
-            <button type="button">
-              সমাধান দেখুন →
-            </button>
-
+            <h3>Cyber Security</h3>
+            <p>Scam, phishing ও privacy safety.</p>
+            <button data-guide="scam">সমাধান দেখুন →</button>
           </article>
 
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- SERVICES -->
-    <section
-      class="section services-section"
-      id="services"
-    >
-
+    <section class="section guides-section" id="guides">
       <div class="container">
 
         <div class="section-heading">
-
           <div>
-
-            <span class="eyebrow">
-              SMART GUIDES
-            </span>
-
-            <h2>
-              জনপ্রিয় সমস্যা ও সমাধান
-            </h2>
-
-            <p>
-              ধাপে ধাপে গাইড খুলতে নিচের যেকোনো একটি বেছে নিন।
-            </p>
-
+            <span class="eyebrow">SMART GUIDES</span>
+            <h2>জনপ্রিয় সমস্যা ও সমাধান</h2>
+            <p>ধাপে ধাপে guide খুলতে একটি বেছে নিন।</p>
           </div>
-
         </div>
 
+        <div class="guide-grid">
 
-        <div class="service-grid">
-
-          <article class="service-card">
-
-            <div class="service-icon">📘</div>
-
-            <h3>
-              Facebook Login সমস্যা
-            </h3>
-
-            <p>
-              Facebook account-এ login করতে না পারলে কী করবেন।
-            </p>
-
-            <span>৪ Steps</span>
-
-            <button
-              type="button"
-              data-guide="facebook"
-            >
-              গাইড খুলুন →
-            </button>
-
+          <article class="guide-card blue-bg">
+            <span>📘</span>
+            <h3>Facebook Login সমস্যা</h3>
+            <p>Facebook account-এ login না হলে কী করবেন।</p>
+            <small>৫ Steps</small>
+            <button data-guide="facebook">গাইড খুলুন →</button>
           </article>
 
-
-          <article class="service-card">
-
-            <div class="service-icon">🔐</div>
-
-            <h3>
-              অ্যাকাউন্ট হ্যাকড
-            </h3>
-
-            <p>
-              Account নিরাপদ করার গুরুত্বপূর্ণ ধাপগুলো দেখুন।
-            </p>
-
-            <span>৪ Steps</span>
-
-            <button
-              type="button"
-              data-guide="hacked"
-            >
-              গাইড খুলুন →
-            </button>
-
+          <article class="guide-card pink-bg">
+            <span>🔐</span>
+            <h3>Account Hacked</h3>
+            <p>Account নিরাপদ করার গুরুত্বপূর্ণ ধাপ।</p>
+            <small>৫ Steps</small>
+            <button data-guide="hack">গাইড খুলুন →</button>
           </article>
 
-
-          <article class="service-card">
-
-            <div class="service-icon">💬</div>
-
-            <h3>
-              OTP আসছে না
-            </h3>
-
-            <p>
-              Verification code না এলে সম্ভাব্য সমাধান।
-            </p>
-
-            <span>৪ Steps</span>
-
-            <button
-              type="button"
-              data-guide="otp"
-            >
-              গাইড খুলুন →
-            </button>
-
+          <article class="guide-card green-bg">
+            <span>💬</span>
+            <h3>OTP আসছে না</h3>
+            <p>Verification code না এলে সম্ভাব্য সমাধান।</p>
+            <small>৫ Steps</small>
+            <button data-guide="otp">গাইড খুলুন →</button>
           </article>
 
-
-          <article class="service-card">
-
-            <div class="service-icon">📡</div>
-
-            <h3>
-              SIM / Network
-            </h3>
-
-            <p>
-              Signal, call, SMS ও network সমস্যা সমাধান।
-            </p>
-
-            <span>৪ Steps</span>
-
-            <button
-              type="button"
-              data-guide="network"
-            >
-              গাইড খুলুন →
-            </button>
-
+          <article class="guide-card orange-bg">
+            <span>📡</span>
+            <h3>SIM / Network</h3>
+            <p>Signal, call, SMS ও network help.</p>
+            <small>৫ Steps</small>
+            <button data-guide="network">গাইড খুলুন →</button>
           </article>
 
-
-          <article class="service-card">
-
-            <div class="service-icon">🏦</div>
-
-            <h3>
-              ব্যাংক থেকে টাকা কাটা
-            </h3>
-
-            <p>
-              Unknown transaction হলে কী করবেন।
-            </p>
-
-            <span>৪ Steps</span>
-
-            <button
-              type="button"
-              data-guide="bank"
-            >
-              গাইড খুলুন →
-            </button>
-
+          <article class="guide-card purple-bg">
+            <span>🏦</span>
+            <h3>Bank থেকে টাকা কাটা</h3>
+            <p>Unknown transaction হলে কী করবেন।</p>
+            <small>৫ Steps</small>
+            <button data-guide="upi">গাইড খুলুন →</button>
           </article>
 
-
-          <article class="service-card">
-
-            <div class="service-icon">⚠️</div>
-
-            <h3>
-              Scam ও Phishing
-            </h3>
-
-            <p>
-              Fake link ও online scam থেকে নিরাপদ থাকুন।
-            </p>
-
-            <span>৪ Steps</span>
-
-            <button
-              type="button"
-              data-guide="scam"
-            >
-              গাইড খুলুন →
-            </button>
-
-          </article>
-
-
-          <article class="service-card">
-
-            <div class="service-icon">🔋</div>
-
-            <h3>
-              মোবাইল গরম / Battery
-            </h3>
-
-            <p>
-              Phone বেশি গরম বা battery দ্রুত শেষ হলে।
-            </p>
-
-            <span>৪ Steps</span>
-
-            <button
-              type="button"
-              data-guide="battery"
-            >
-              গাইড খুলুন →
-            </button>
-
-          </article>
-
-
-          <article class="service-card">
-
-            <div class="service-icon">🔑</div>
-
-            <h3>
-              Password Security
-            </h3>
-
-            <p>
-              Strong ও unique password ব্যবহারের গাইড।
-            </p>
-
-            <span>৪ Steps</span>
-
-            <button
-              type="button"
-              data-guide="password"
-            >
-              গাইড খুলুন →
-            </button>
-
-          </article>
-
-
-          <article class="service-card">
-
-            <div class="service-icon">🎣</div>
-
-            <h3>
-              Phishing Safety
-            </h3>
-
-            <p>
-              সন্দেহজনক link ও message চিনে নিন।
-            </p>
-
-            <span>৪ Steps</span>
-
-            <button
-              type="button"
-              data-guide="phishing"
-            >
-              গাইড খুলুন →
-            </button>
-
+          <article class="guide-card red-bg">
+            <span>⚠️</span>
+            <h3>Scam ও Phishing</h3>
+            <p>Fake link ও online scam থেকে নিরাপদ থাকুন।</p>
+            <small>৫ Steps</small>
+            <button data-guide="scam">গাইড খুলুন →</button>
           </article>
 
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- SECURITY -->
-    <section
-      class="security-banner"
-      id="security"
-    >
-
-      <div class="container">
-
-        <div class="security-inner">
-
-          <div>
-
-            <span class="eyebrow">
-              CYBER SAFETY
-            </span>
-
-            <h2>
-              আপনার নিরাপত্তাই
-              <span>প্রথম</span>
-            </h2>
-
-            <p>
-              OTP, PIN, password বা sensitive information
-              কখনো কারও সঙ্গে শেয়ার করবেন না।
-            </p>
-
-          </div>
-
-
-          <button
-            class="btn btn-primary"
-            data-guide="phishing"
-            type="button"
-          >
-            নিরাপত্তা গাইড →
-          </button>
-
+    <section class="safety-banner" id="safety">
+      <div class="container safety-inner">
+        <div>
+          <span class="eyebrow">CYBER SAFETY</span>
+          <h2>আপনার নিরাপত্তাই <span>প্রথম</span></h2>
+          <p>OTP, PIN, password বা sensitive information কারও সঙ্গে share করবেন না।</p>
         </div>
 
+        <button class="btn primary-btn" data-guide="scam">
+          নিরাপত্তা গাইড →
+        </button>
       </div>
-
     </section>
 
-
-    <!-- EMERGENCY -->
-    <section
-      class="emergency-section"
-      id="emergency"
-    >
-
+    <section class="emergency-section" id="emergency">
       <div class="container">
 
         <div class="emergency-box">
+          <div class="emergency-icon">🚨</div>
 
-          <div class="emergency-icon">
-            🚨
+          <div class="emergency-text">
+            <span>জরুরি সাইবার সমস্যা?</span>
+            <h2>Cyber Fraud হলে দ্রুত ব্যবস্থা নিন</h2>
+            <p>Transaction details সংরক্ষণ করুন এবং দ্রুত সরকারি সহায়তা নিন।</p>
           </div>
 
-
-          <div class="emergency-content">
-
-            <span>
-              জরুরি সাইবার সমস্যা?
-            </span>
-
-            <h2>
-              Cyber Fraud হলে দ্রুত ব্যবস্থা নিন
-            </h2>
-
-            <p>
-              Transaction details সংরক্ষণ করুন এবং
-              দ্রুত সরকারি সহায়তা নিন।
-            </p>
-
+          <div class="emergency-actions">
+            <a href="tel:1930">📞 1930</a>
+            <a
+              href="https://cybercrime.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Online Complaint
+            </a>
           </div>
-
-
-          <a
-            href="tel:1930"
-            class="emergency-number"
-          >
-
-            <small>
-              Cyber Helpline
-            </small>
-
-            1930
-
-          </a>
-
         </div>
 
       </div>
-
     </section>
 
   </main>
 
-
-  <!-- FOOTER -->
-  <footer>
-
+  <footer class="footer">
     <div class="container footer-inner">
-
       <div>
-
-        <strong>
-          🛡️ CyberCare
-        </strong>
-
-        <p>
-          সহজ ডিজিটাল সহায়তা ও নিরাপত্তা সচেতনতার প্ল্যাটফর্ম।
-        </p>
-
+        <strong>🛡️ CyberCare</strong>
+        <p>সহজ digital help ও safety awareness platform.</p>
       </div>
-
 
       <div class="footer-links">
-
-        <a href="#home">
-          হোম
-        </a>
-
-        <a href="#categories">
-          সহায়তা
-        </a>
-
-        <a href="#services">
-          গাইড
-        </a>
-
-        <a href="#emergency">
-          জরুরি
-        </a>
-
+        <a href="#home">হোম</a>
+        <a href="#categories">সহায়তা</a>
+        <a href="#guides">গাইড</a>
+        <a href="#emergency">জরুরি</a>
       </div>
-
     </div>
-
 
     <div class="footer-bottom">
-
       © 2026 CyberCare — Protecting People. Securing Digital Lives.
-
     </div>
-
   </footer>
 
-
-  <!-- MOBILE BOTTOM NAV -->
   <nav class="mobile-bottom-nav">
-
-    <button
-      type="button"
-      class="active"
-      data-mobile-nav="home"
-    >
-      <span>⌂</span>
-      <small>হোম</small>
-    </button>
-
-
-    <button
-      type="button"
-      data-mobile-nav="search"
-    >
-      <span>⌕</span>
-      <small>সার্চ</small>
-    </button>
-
-
-    <button
-      type="button"
-      data-mobile-nav="services"
-    >
-      <span>📖</span>
-      <small>গাইড</small>
-    </button>
-
-
-    <button
-      type="button"
-      data-mobile-nav="emergency"
-    >
-      <span>🚨</span>
-      <small>জরুরি</small>
-    </button>
-
+    <button data-target="#home">⌂<small>হোম</small></button>
+    <button data-target="#search">⌕<small>সার্চ</small></button>
+    <button data-target="#guides">📖<small>গাইড</small></button>
+    <button data-target="#emergency">🚨<small>জরুরি</small></button>
   </nav>
 
-
-  <!-- GUIDE MODAL -->
-  <div
-    class="modal-overlay"
-    id="modalOverlay"
-  >
-
-    <div
-      class="modal"
-      role="dialog"
-      aria-modal="true"
-    >
-
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
       <div class="modal-header">
-
-        <h2 id="modalTitle">
-          CyberCare Guide
-        </h2>
-
-        <button
-          type="button"
-          class="close-modal"
-          id="closeModal"
-        >
-          ×
-        </button>
-
+        <h2 id="modalTitle">CyberCare Guide</h2>
+        <button id="closeModal">×</button>
       </div>
 
-
       <div id="modalContent"></div>
-
     </div>
-
   </div>
 
-
-  <!-- JAVASCRIPT -->
   <script src="script.js"></script>
-
 </body>
-   </html>
+        </html>
