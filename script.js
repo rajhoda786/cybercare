@@ -1,333 +1,391 @@
-const $ = s => document.querySelector(s);
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => document.querySelectorAll(selector);
 
+const guides = {
+  facebook: {
+    title: "Facebook Login বা Hack সমস্যা",
+    text: "Facebook account-এ ঢুকতে না পারলে বা hack সন্দেহ হলে নিচের ধাপগুলো অনুসরণ করুন।",
+    steps: [
+      "facebook.com/hacked খুলুন।",
+      "আপনার account identify করুন।",
+      "Password পরিবর্তন করুন।",
+      "অচেনা device থেকে logout করুন।",
+      "Two-factor authentication চালু করুন।"
+    ],
+    link: "https://www.facebook.com/hacked"
+  },
 
-/* =========================================================
-   CYBERCARE PROBLEM DATABASE
-========================================================= */
+  whatsapp: {
+    title: "WhatsApp সমস্যা",
+    text: "WhatsApp নম্বর, OTP, internet এবং Linked Devices পরীক্ষা করুন।",
+    steps: [
+      "Phone number সঠিক আছে কি না দেখুন।",
+      "Network signal ও SMS inbox পরীক্ষা করুন।",
+      "WhatsApp update করুন।",
+      "Linked Devices থেকে অচেনা device logout করুন।",
+      "OTP কারও সঙ্গে share করবেন না।"
+    ],
+    link: "https://faq.whatsapp.com/"
+  },
 
-const problems = {
+  otp: {
+    title: "OTP আসছে না",
+    text: "Network signal, SMS inbox, blocked numbers এবং SIM status পরীক্ষা করুন।",
+    steps: [
+      "Network signal পরীক্ষা করুন।",
+      "ফোন restart করুন।",
+      "SMS inbox full কি না দেখুন।",
+      "Blocked numbers list পরীক্ষা করুন।",
+      "কিছুক্ষণ পরে আবার OTP request করুন।"
+    ],
+    link: ""
+  },
 
-    facebook:
-        "Facebook লগইন বা হ্যাক সমস্যা হলে প্রথমে password পরিবর্তন করুন, Login Sessions চেক করুন এবং 2FA চালু করুন।",
+  phone: {
+    title: "ফোন গরম বা Battery সমস্যা",
+    text: "Background apps বন্ধ করুন এবং charger ও software update পরীক্ষা করুন।",
+    steps: [
+      "অপ্রয়োজনীয় apps বন্ধ করুন।",
+      "Original charger ব্যবহার করুন।",
+      "ফোন রোদে বা অতিরিক্ত গরম জায়গায় রাখবেন না।",
+      "Battery usage থেকে বেশি খরচ করা app দেখুন।",
+      "Software update থাকলে update করুন।"
+    ],
+    link: ""
+  },
 
-    whatsapp:
-        "WhatsApp সমস্যা হলে নম্বর, SMS/OTP, internet connection এবং Linked Devices চেক করুন।",
+  upi: {
+    title: "UPI বা Banking সমস্যা",
+    text: "Unknown transaction বা financial fraud হলে দ্রুত 1930-এ ফোন করুন।",
+    steps: [
+      "Transaction ID ও screenshot সংরক্ষণ করুন।",
+      "Bank-এর official customer-care-এ ফোন করুন।",
+      "UPI app-এ transaction report করুন।",
+      "Financial fraud হলে 1930-এ ফোন করুন।",
+      "cybercrime.gov.in-এ complaint করুন।"
+    ],
+    link: "https://cybercrime.gov.in/"
+  },
 
-    otp:
-        "OTP না এলে network signal, SMS inbox, blocked numbers এবং SIM status চেক করুন। কিছুক্ষণ পরে আবার চেষ্টা করুন।",
+  hack: {
+    title: "Account Hack সন্দেহ",
+    text: "Account নিরাপদ করতে দ্রুত password ও security settings পরিবর্তন করুন।",
+    steps: [
+      "Account-এ login করার চেষ্টা করুন।",
+      "Password পরিবর্তন করুন।",
+      "অচেনা email, phone number ও device সরিয়ে দিন।",
+      "সব active sessions logout করুন।",
+      "Two-factor authentication চালু করুন।"
+    ],
+    link: ""
+  },
 
-    phone:
-        "ফোন গরম হলে background apps বন্ধ করুন, charger/cable পরীক্ষা করুন, battery usage দেখুন এবং software update চেক করুন।",
+  scam: {
+    title: "Scam ও Phishing",
+    text: "সন্দেহজনক link, message বা call থেকে সাবধান থাকুন।",
+    steps: [
+      "সন্দেহজনক link খুলবেন না।",
+      "Click করে থাকলে page বন্ধ করুন।",
+      "Password দিয়ে থাকলে সঙ্গে সঙ্গে পরিবর্তন করুন।",
+      "Bank details দিলে 1930-এ ফোন করুন।",
+      "Message ও screenshot সংরক্ষণ করুন।"
+    ],
+    link: "https://cybercrime.gov.in/"
+  },
 
-    upi:
-        "UPI সমস্যা হলে transaction status, bank balance, UPI PIN এবং সংশ্লিষ্ট bank/app support চেক করুন।",
+  password: {
+    title: "Password Security",
+    text: "প্রতিটি account-এর জন্য আলাদা ও strong password ব্যবহার করুন।",
+    steps: [
+      "কমপক্ষে ১২ অক্ষরের password ব্যবহার করুন।",
+      "প্রতিটি account-এ আলাদা password রাখুন।",
+      "Password কারও সঙ্গে share করবেন না।",
+      "Password manager ব্যবহার করতে পারেন।",
+      "Two-factor authentication চালু করুন।"
+    ],
+    link: ""
+  },
 
-    hack:
-        "অ্যাকাউন্ট হ্যাক সন্দেহ হলে সঙ্গে সঙ্গে password পরিবর্তন করুন, অন্য সব sessions logout করুন এবং 2FA চালু করুন।"
+  network: {
+    title: "SIM ও Network সমস্যা",
+    text: "Signal, SIM, mobile data এবং operator settings পরীক্ষা করুন।",
+    steps: [
+      "Airplane mode on করে আবার off করুন।",
+      "Phone restart করুন।",
+      "SIM খুলে আবার বসান।",
+      "Mobile data settings পরীক্ষা করুন।",
+      "Operator customer-care-এ যোগাযোগ করুন।"
+    ],
+    link: ""
+  }
 };
 
+function identifyGuide(query) {
+  const text = query.toLowerCase();
 
-/* =========================================================
-   FIND PROBLEM
-========================================================= */
+  if (text.includes("facebook") || text.includes("ফেসবুক")) {
+    return "facebook";
+  }
 
-function findProblem(q){
+  if (
+    text.includes("whatsapp") ||
+    text.includes("হোয়াটসঅ্যাপ") ||
+    text.includes("হোয়াটসঅ্যাপ")
+  ) {
+    return "whatsapp";
+  }
 
-    q = q.toLowerCase();
+  if (text.includes("otp") || text.includes("ওটিপি")) {
+    return "otp";
+  }
 
-    if(
-        q.includes("facebook") ||
-        q.includes("ফেসবুক")
-    ){
-        return problems.facebook;
+  if (
+    text.includes("গরম") ||
+    text.includes("battery") ||
+    text.includes("ব্যাটারি")
+  ) {
+    return "phone";
+  }
+
+  if (
+    text.includes("upi") ||
+    text.includes("bank") ||
+    text.includes("ব্যাংক")
+  ) {
+    return "upi";
+  }
+
+  if (
+    text.includes("scam") ||
+    text.includes("phishing") ||
+    text.includes("প্রতারণা")
+  ) {
+    return "scam";
+  }
+
+  if (
+    text.includes("password") ||
+    text.includes("পাসওয়ার্ড") ||
+    text.includes("পাসওয়ার্ড")
+  ) {
+    return "password";
+  }
+
+  if (
+    text.includes("network") ||
+    text.includes("sim") ||
+    text.includes("সিম")
+  ) {
+    return "network";
+  }
+
+  if (text.includes("hack") || text.includes("হ্যাক")) {
+    return "hack";
+  }
+
+  return null;
+}
+
+function openGuide(key) {
+  const guide = guides[key];
+
+  if (!guide) return;
+
+  const overlay = $("#modalOverlay");
+  const title = $("#modalTitle");
+  const content = $("#modalContent");
+
+  if (!overlay || !title || !content) return;
+
+  title.textContent = guide.title;
+
+  content.innerHTML = `
+    <p>${guide.text}</p>
+
+    <h3>ধাপে ধাপে করুন</h3>
+
+    <ol>
+      ${guide.steps
+        .map((step) => `<li>${step}</li>`)
+        .join("")}
+    </ol>
+
+    <div class="guide-warning">
+      <strong>মনে রাখবেন:</strong>
+      OTP, PIN, CVV বা password কাউকে দেবেন না।
+    </div>
+
+    ${
+      guide.link
+        ? `
+          <a
+            class="btn primary-btn modal-link"
+            href="${guide.link}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Official Help খুলুন →
+          </a>
+        `
+        : ""
     }
+  `;
 
-    if(
-        q.includes("whatsapp") ||
-        q.includes("হোয়াটসঅ্যাপ") ||
-        q.includes("হোয়াটসঅ্যাপ")
-    ){
-        return problems.whatsapp;
-    }
+  overlay.classList.add("show");
+  document.body.classList.add("modal-open");
+}
 
-    if(
-        q.includes("otp") ||
-        q.includes("ওটিপি")
-    ){
-        return problems.otp;
-    }
+function closeGuide() {
+  $("#modalOverlay")?.classList.remove("show");
+  document.body.classList.remove("modal-open");
+}
 
-    if(
-        q.includes("গরম") ||
-        q.includes("overheat") ||
-        q.includes("battery") ||
-        q.includes("ব্যাটারি")
-    ){
-        return problems.phone;
-    }
+function searchProblem() {
+  const input = $("#problemSearch");
+  const result = $("#searchResults");
 
-    if(
-        q.includes("upi") ||
-        q.includes("bank") ||
-        q.includes("ব্যাংক") ||
-        q.includes("বাংক")
-    ){
-        return problems.upi;
-    }
+  if (!input || !result) return;
 
-    if(
-        q.includes("hack") ||
-        q.includes("হ্যাক")
-    ){
-        return problems.hack;
-    }
+  const query = input.value.trim();
 
-    return `
-        সমস্যাটি আরও নির্দিষ্ট করে লিখুন।
+  if (!query) {
+    result.innerHTML = "<p>একটি সমস্যা লিখে খুঁজুন।</p>";
+    result.style.display = "block";
+    return;
+  }
 
-        যেমন:
-        “OTP আসছে না”
-        “Facebook hacked”
-        “ফোন গরম হচ্ছে”
-        “UPI payment failed”
+  const key = identifyGuide(query);
+
+  if (!key) {
+    result.innerHTML = `
+      <p>এই সমস্যার guide এখনও যোগ করা হয়নি।</p>
+      <p>যেমন: Facebook hack, OTP সমস্যা, UPI fraud বা ফোন গরম।</p>
     `;
+
+    result.style.display = "block";
+    return;
+  }
+
+  const guide = guides[key];
+
+  result.innerHTML = `
+    <div class="result-card">
+      <h3>${guide.title}</h3>
+      <p>${guide.text}</p>
+
+      <button class="btn primary-btn" id="resultGuideBtn">
+        বিস্তারিত গাইড দেখুন →
+      </button>
+    </div>
+  `;
+
+  result.style.display = "block";
+
+  $("#resultGuideBtn")?.addEventListener("click", () => {
+    openGuide(key);
+  });
 }
 
+$("#searchBtn")?.addEventListener("click", searchProblem);
 
-/* =========================================================
-   SEARCH
-========================================================= */
-
-const searchForm = $("#searchForm");
-const problemInput = $("#problemInput");
-const searchResult = $("#searchResult");
-
-if(searchForm){
-
-    searchForm.addEventListener("submit", e => {
-
-        e.preventDefault();
-
-        const q = problemInput.value.trim();
-
-        if(!q){
-
-            searchResult.textContent =
-                "একটি সমস্যা লিখে খুঁজুন।";
-
-        }else{
-
-            searchResult.textContent =
-                "💡 " + findProblem(q);
-
-        }
-
-        searchResult.style.display = "block";
-
-    });
-
-}
-
-
-/* =========================================================
-   POPULAR SEARCH
-========================================================= */
-
-document
-.querySelectorAll(".popular button")
-.forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-        if(!problemInput || !searchForm){
-            return;
-        }
-
-        problemInput.value = btn.textContent.trim();
-
-        searchForm.dispatchEvent(
-            new Event("submit")
-        );
-
-    });
-
+$("#problemSearch")?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    searchProblem();
+  }
 });
 
+$("#heroSearchBtn")?.addEventListener("click", () => {
+  $("#search")?.scrollIntoView({
+    behavior: "smooth"
+  });
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuBtn = $("#menuBtn");
-const mobileMenu = $("#mobileMenu");
-
-if(menuBtn && mobileMenu){
-
-    menuBtn.addEventListener("click", () => {
-
-        mobileMenu.classList.toggle("show");
-
-    });
-
-}
-
-
-document
-.querySelectorAll("#mobileMenu a")
-.forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        mobileMenu.classList.remove("show");
-
-    });
-
+  setTimeout(() => {
+    $("#problemSearch")?.focus();
+  }, 500);
 });
 
+$$("[data-search]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const input = $("#problemSearch");
 
-/* =========================================================
-   DARK MODE
-========================================================= */
+    if (!input) return;
 
-const themeBtn = $("#themeBtn");
+    input.value = button.dataset.search;
+    searchProblem();
+  });
+});
 
-if(themeBtn){
+$$("[data-guide]").forEach((button) => {
+  button.addEventListener("click", () => {
+    openGuide(button.dataset.guide);
+  });
+});
 
-    themeBtn.addEventListener("click", () => {
+$("#closeModal")?.addEventListener("click", closeGuide);
 
-        document.body.classList.toggle("dark");
+$("#modalOverlay")?.addEventListener("click", (event) => {
+  if (event.target.id === "modalOverlay") {
+    closeGuide();
+  }
+});
 
-        const dark =
-            document.body.classList.contains("dark");
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeGuide();
+  }
+});
 
-        themeBtn.textContent =
-            dark ? "☀" : "☾";
+$("#menuBtn")?.addEventListener("click", () => {
+  const menu = $("#mobileMenu");
+  const button = $("#menuBtn");
 
-        localStorage.setItem(
-            "cybercare-theme",
-            dark ? "dark" : "light"
-        );
+  menu?.classList.toggle("show");
 
-    });
+  if (menu?.classList.contains("show")) {
+    button.textContent = "×";
+  } else {
+    button.textContent = "☰";
+  }
+});
 
+$$(".mobile-menu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    $("#mobileMenu")?.classList.remove("show");
 
-    const savedTheme =
-        localStorage.getItem("cybercare-theme");
-
-    if(savedTheme === "dark"){
-
-        document.body.classList.add("dark");
-
-        themeBtn.textContent = "☀";
-
+    if ($("#menuBtn")) {
+      $("#menuBtn").textContent = "☰";
     }
+  });
+});
 
+$("#themeBtn")?.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  const darkMode = document.body.classList.contains("dark");
+
+  localStorage.setItem(
+    "cybercare-theme",
+    darkMode ? "dark" : "light"
+  );
+
+  $("#themeBtn").textContent = darkMode ? "☀️" : "🌙";
+});
+
+if (localStorage.getItem("cybercare-theme") === "dark") {
+  document.body.classList.add("dark");
+
+  if ($("#themeBtn")) {
+    $("#themeBtn").textContent = "☀️";
+  }
 }
 
+$$(".mobile-bottom-nav button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const target = button.dataset.target;
 
-/* =========================================================
-   ACTIONS
-========================================================= */
-
-document
-.querySelectorAll("[data-action]")
-.forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-        const action =
-            btn.dataset.action;
-
-
-        if(action === "report"){
-
-            window.open(
-                "https://cybercrime.gov.in/",
-                "_blank"
-            );
-
-            return;
-        }
-
-
-        if(action === "emergency"){
-
-            window.location.href =
-                "tel:1930";
-
-            return;
-        }
-
-
-        if(action === "scan"){
-
-            alert(
-                "🛡️ CyberCare Phone Safety Check\n\n" +
-                "এই সেকশনটি আপনার অনুমতি নিয়ে " +
-                "সম্ভাব্য নিরাপত্তা checks করার জন্য তৈরি করা হবে।"
-            );
-
-            return;
-        }
-
-
-        if(action === "scam"){
-
-            alert(
-                "🔎 Scam Check\n\n" +
-                "সন্দেহজনক link বা message বিশ্লেষণের " +
-                "flow এখানে যুক্ত করা যাবে।"
-            );
-
-            return;
-        }
-
-
-        if(action === "facebook"){
-
-            alert(problems.facebook);
-
-            return;
-        }
-
-
-        if(action === "phone"){
-
-            alert(problems.phone);
-
-            return;
-        }
-
-
-        if(action === "otp"){
-
-            alert(problems.otp);
-
-            return;
-        }
-
-
-        if(action === "upi"){
-
-            alert(problems.upi);
-
-            return;
-        }
-
-
-        if(action === "hack"){
-
-            alert(problems.hack);
-
-            return;
-        }
-
-
-        alert(
-            "CyberCare Help Center\n\n" +
-            "এই sectionটি পরবর্তী A–Z guide ও smart diagnosis module-এর সঙ্গে যুক্ত হবে।"
-        );
-
+    document.querySelector(target)?.scrollIntoView({
+      behavior: "smooth"
     });
-
+  });
 });
