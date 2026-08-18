@@ -11,9 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
 /* =========================================================
-   RESET
+   CYBERCARE — FULL PROFESSIONAL WHITE UI
 ========================================================= */
 
 *{
@@ -27,46 +26,71 @@ html{
 }
 
 :root{
-    --blue:#1264d8;
-    --blue2:#084ca9;
-    --blueSoft:#edf5ff;
+    --blue:#1769e0;
+    --blue-dark:#0b4eb8;
+    --blue-light:#edf5ff;
+    --blue-soft:#f5f9ff;
 
     --text:#172033;
+    --heading:#101828;
     --muted:#667085;
 
-    --bg:#ffffff;
-    --card:#ffffff;
+    --white:#ffffff;
+    --page:#ffffff;
+    --surface:#ffffff;
+    --surface-soft:#f8fafc;
 
-    --border:#e5eaf1;
+    --border:#e8edf3;
+    --border-blue:#d9e8ff;
 
-    --danger:#df315d;
-    --green:#159570;
+    --green:#12966f;
+    --green-bg:#ecf9f4;
 
-    --shadow:0 10px 30px rgba(20,60,110,.07);
-    --shadow2:0 18px 45px rgba(20,60,110,.12);
+    --red:#d92d56;
+    --red-bg:#fff3f6;
+
+    --shadow-sm:0 4px 18px rgba(16,24,40,.045);
+    --shadow:0 12px 35px rgba(16,24,40,.065);
+    --shadow-lg:0 25px 60px rgba(16,24,40,.10);
+
+    --radius:20px;
 }
 
 body{
     font-family:"Noto Sans Bengali",Arial,sans-serif;
-    background:#fff;
+    background:var(--page);
     color:var(--text);
     line-height:1.6;
+    overflow-x:hidden;
 }
 
 body.dark{
-    --bg:#0c1725;
-    --card:#122235;
-    --text:#f4f7fb;
-    --muted:#aebaca;
-    --border:#263a50;
-    --blueSoft:#162d47;
+    --page:#0b1422;
+    --surface:#101d2d;
+    --surface-soft:#0e1927;
+    --white:#101d2d;
 
-    background:#0c1725;
+    --text:#e8eef7;
+    --heading:#ffffff;
+    --muted:#a8b4c4;
+
+    --border:#203249;
+    --border-blue:#284c79;
+
+    --blue-light:#122b49;
+    --blue-soft:#10243b;
+
+    background:#0b1422;
 }
 
 .container{
-    width:min(1380px,calc(100% - 48px));
+    width:min(1320px,calc(100% - 48px));
     margin:auto;
+}
+
+button,
+input{
+    font-family:inherit;
 }
 
 
@@ -75,93 +99,133 @@ body.dark{
 ========================================================= */
 
 header{
-    height:76px;
-    background:rgba(255,255,255,.97);
-    border-bottom:1px solid var(--border);
-
     position:sticky;
     top:0;
     z-index:1000;
 
-    backdrop-filter:blur(14px);
+    height:76px;
+
+    background:rgba(255,255,255,.94);
+    border-bottom:1px solid var(--border);
+
+    backdrop-filter:blur(18px);
 }
 
 body.dark header{
-    background:rgba(18,34,53,.97);
+    background:rgba(16,29,45,.94);
 }
 
 .header-inner{
     height:100%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:20px;
+
+    gap:25px;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:11px;
+
     text-decoration:none;
     color:var(--text);
+
+    min-width:max-content;
 }
 
 .logo-icon{
-    font-size:34px;
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--blue-light);
+    border:1px solid var(--border-blue);
+
+    border-radius:13px;
+
+    font-size:22px;
 }
 
 .logo-title{
-    font-size:20px;
-    font-weight:900;
     color:var(--blue);
-    line-height:1.15;
+
+    font-size:19px;
+    font-weight:900;
+
+    line-height:1.1;
 }
 
 .logo-sub{
-    font-size:9px;
     color:var(--muted);
+
+    font-size:8px;
     font-weight:600;
+
+    margin-top:2px;
 }
 
 .nav{
     display:flex;
     align-items:center;
-    gap:3px;
+    gap:2px;
 }
 
 .nav a{
-    color:var(--text);
-    text-decoration:none;
-    font-size:12px;
-    font-weight:700;
-    padding:9px 10px;
+    padding:9px 11px;
+
     border-radius:9px;
+
+    text-decoration:none;
+    color:var(--muted);
+
+    font-size:11px;
+    font-weight:700;
+
+    transition:.2s;
 }
 
 .nav a:hover,
 .nav a.active{
-    background:var(--blueSoft);
     color:var(--blue);
+    background:var(--blue-light);
 }
 
 .header-actions{
     display:flex;
+    align-items:center;
     gap:7px;
 }
 
 .action-btn{
-    height:40px;
-    min-width:40px;
+    height:39px;
+    min-width:39px;
+
+    padding:0 10px;
 
     border:1px solid var(--border);
-    background:var(--card);
+    border-radius:11px;
+
+    background:var(--surface);
     color:var(--text);
 
-    border-radius:11px;
     cursor:pointer;
 
-    font-family:inherit;
+    font-size:12px;
     font-weight:700;
+
+    transition:.2s;
+}
+
+.action-btn:hover{
+    border-color:var(--border-blue);
+    color:var(--blue);
+    background:var(--blue-light);
 }
 
 .menu-btn{
@@ -174,55 +238,86 @@ body.dark header{
 ========================================================= */
 
 .hero{
-    padding:72px 0 62px;
+    position:relative;
 
-    /* CLEAN WHITE PROFESSIONAL BACKGROUND */
-    background:#ffffff;
+    padding:76px 0 55px;
+
+    background:#fff;
+
+    overflow:hidden;
 }
 
 body.dark .hero{
-    background:var(--bg);
+    background:var(--page);
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    right:-170px;
+    top:-170px;
+
+    border-radius:50%;
+
+    background:#f5f9ff;
+
+    pointer-events:none;
+}
+
+body.dark .hero::before{
+    background:#10233b;
 }
 
 .hero-grid{
+    position:relative;
+    z-index:2;
+
     display:grid;
-    grid-template-columns:1.03fr .97fr;
+    grid-template-columns:1fr 1fr;
 
     align-items:center;
 
-    gap:45px;
+    gap:35px;
 }
 
 
 /* LEFT */
 
 .hero-content{
-    max-width:680px;
+    max-width:650px;
 }
 
 .badge{
     display:inline-flex;
     align-items:center;
-    gap:8px;
+    gap:7px;
 
-    background:var(--blueSoft);
-    color:var(--blue);
+    padding:8px 13px;
 
-    padding:8px 14px;
+    border:1px solid var(--border-blue);
     border-radius:999px;
 
-    font-size:12px;
+    background:var(--blue-light);
+    color:var(--blue);
+
+    font-size:10px;
     font-weight:800;
 
     margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:clamp(40px,4.5vw,64px);
+    color:var(--heading);
 
+    font-size:clamp(38px,4.3vw,61px);
     line-height:1.12;
 
-    letter-spacing:-1.7px;
+    letter-spacing:-2px;
 
     font-weight:900;
 }
@@ -232,53 +327,106 @@ body.dark .hero{
 }
 
 .hero-description{
-    font-size:16px;
+    max-width:570px;
+
+    margin:21px 0 25px;
+
     color:var(--muted);
 
-    max-width:620px;
+    font-size:14px;
+    line-height:1.8;
+}
 
-    margin:21px 0 27px;
+.hero-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin-bottom:27px;
+}
+
+.hero-primary{
+    height:47px;
+
+    padding:0 21px;
+
+    border:0;
+    border-radius:11px;
+
+    background:var(--blue);
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:11px;
+    font-weight:800;
+
+    box-shadow:0 8px 22px rgba(23,105,224,.20);
+}
+
+.hero-primary:hover{
+    background:var(--blue-dark);
+}
+
+.hero-secondary{
+    height:47px;
+
+    padding:0 18px;
+
+    border:1px solid var(--border);
+
+    border-radius:11px;
+
+    background:#fff;
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-size:11px;
+    font-weight:800;
+}
+
+body.dark .hero-secondary{
+    background:var(--surface);
 }
 
 .hero-points{
     display:flex;
     flex-wrap:wrap;
-
-    gap:14px 22px;
+    gap:10px 20px;
 }
 
 .hero-point{
     display:flex;
     align-items:center;
-
-    gap:8px;
+    gap:7px;
 
     color:var(--muted);
 
-    font-size:12px;
+    font-size:10px;
     font-weight:700;
 }
 
 .check{
-    width:25px;
-    height:25px;
-
-    border-radius:50%;
-
-    background:#edf8f4;
-    color:var(--green);
+    width:22px;
+    height:22px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
+    border-radius:50%;
+
+    background:var(--green-bg);
+    color:var(--green);
+
+    font-size:11px;
     font-weight:900;
 }
 
 
 /* =========================================================
-   HERO IMAGE AREA
-   IMPORTANT: NO WHITE BOX / NO CIRCLE / NO BUBBLE
+   HERO IMAGE
 ========================================================= */
 
 .hero-visual{
@@ -292,76 +440,146 @@ body.dark .hero{
 
     overflow:hidden;
 
-    background:#ffffff;
-
-    border-radius:0;
+    background:transparent;
 }
-
-
-/*
-   Very soft professional background shape
-*/
 
 .hero-visual::before{
     content:"";
 
     position:absolute;
 
-    width:470px;
-    height:470px;
+    width:440px;
+    height:440px;
 
-    right:15px;
-    bottom:0;
+    right:50%;
+    bottom:-55px;
+
+    transform:translateX(50%);
 
     border-radius:50%;
 
-    background:#f3f8ff;
+    background:#f1f7ff;
 
     z-index:0;
 }
 
+body.dark .hero-visual::before{
+    background:#112944;
+}
 
-/*
-   IMAGE
-*/
+.hero-visual::after{
+    content:"";
+
+    position:absolute;
+
+    width:330px;
+    height:75px;
+
+    left:50%;
+    bottom:12px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:rgba(24,72,130,.10);
+
+    filter:blur(22px);
+
+    z-index:1;
+}
 
 .hero-image{
     position:relative;
-
-    z-index:2;
-
-    width:100%;
-    height:510px;
-
-    object-fit:contain;
-
-    object-position:center bottom;
+    z-index:3;
 
     display:block;
 
-    /*
-      If PNG contains white background,
-      this helps it visually merge with white hero.
-    */
+    width:100%;
+    height:520px;
 
-    mix-blend-mode:multiply;
+    object-fit:contain;
+    object-position:center bottom;
 
-    filter:drop-shadow(0 22px 35px rgba(20,60,110,.14));
+    filter:drop-shadow(0 25px 30px rgba(16,45,85,.13));
 
-    transition:transform .3s ease;
+    transition:transform .35s ease;
 }
 
 .hero-image:hover{
-    transform:translateY(-5px);
+    transform:translateY(-7px);
 }
-
-
-/*
-   Hide old bubble completely
-*/
 
 .hero-bubble{
     display:none !important;
+}
+
+
+/* =========================================================
+   TRUST STRIP
+========================================================= */
+
+.trust-strip{
+    padding:0 0 35px;
+}
+
+.trust-box{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    border:1px solid var(--border);
+    border-radius:18px;
+
+    background:var(--surface);
+
+    box-shadow:var(--shadow-sm);
+
+    overflow:hidden;
+}
+
+.trust-item{
+    min-height:86px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    border-right:1px solid var(--border);
+}
+
+.trust-item:last-child{
+    border-right:0;
+}
+
+.trust-icon{
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:11px;
+
+    background:var(--blue-light);
+
+    font-size:18px;
+}
+
+.trust-item strong{
+    display:block;
+
+    font-size:11px;
+    color:var(--heading);
+}
+
+.trust-item span{
+    display:block;
+
+    font-size:8px;
+    color:var(--muted);
 }
 
 
@@ -370,26 +588,37 @@ body.dark .hero{
 ========================================================= */
 
 .search-section{
-    padding:0 0 25px;
+    padding:10px 0 35px;
 }
 
 .search-box{
-    background:var(--card);
+    position:relative;
 
-    border:1px solid var(--border);
+    padding:25px;
 
-    border-radius:20px;
+    border:1px solid var(--border-blue);
+    border-radius:22px;
 
-    padding:20px;
+    background:linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f8fbff 100%
+    );
 
     box-shadow:var(--shadow);
 }
 
+body.dark .search-box{
+    background:var(--surface);
+}
+
 .search-title{
-    font-size:18px;
+    color:var(--heading);
+
+    font-size:17px;
     font-weight:900;
 
-    margin-bottom:12px;
+    margin-bottom:13px;
 }
 
 .search-title span{
@@ -398,90 +627,104 @@ body.dark .hero{
 
 .search-row{
     display:flex;
-    gap:10px;
+    gap:9px;
 }
 
 .search-input{
     flex:1;
 
-    height:50px;
+    height:51px;
 
     border:1px solid var(--border);
-
-    background:var(--bg);
-    color:var(--text);
-
     border-radius:12px;
+
+    outline:none;
 
     padding:0 16px;
 
-    font:inherit;
-    font-size:13px;
+    background:#fff;
+    color:var(--text);
 
-    outline:none;
+    font-size:12px;
+
+    transition:.2s;
+}
+
+body.dark .search-input{
+    background:var(--surface-soft);
 }
 
 .search-input:focus{
     border-color:var(--blue);
+    box-shadow:0 0 0 3px rgba(23,105,224,.08);
 }
 
 .primary-btn{
-    height:50px;
+    height:51px;
+
+    padding:0 27px;
 
     border:0;
     border-radius:12px;
 
-    padding:0 27px;
-
     background:var(--blue);
     color:#fff;
 
-    font-family:inherit;
-    font-weight:800;
-
     cursor:pointer;
+
+    font-size:11px;
+    font-weight:800;
 }
 
 .primary-btn:hover{
-    background:var(--blue2);
+    background:var(--blue-dark);
 }
 
 .quick-searches{
     display:flex;
+    align-items:center;
     flex-wrap:wrap;
 
-    gap:7px;
+    gap:6px;
 
     margin-top:11px;
-
-    align-items:center;
 }
 
 .quick-label{
-    font-size:10px;
     color:var(--muted);
+
+    font-size:9px;
     font-weight:700;
 }
 
 .quick-chip{
-    border:1px solid var(--border);
-
-    background:var(--bg);
-    color:var(--muted);
-
-    border-radius:999px;
-
     padding:6px 10px;
 
-    font:inherit;
-    font-size:9px;
+    border:1px solid var(--border);
+    border-radius:999px;
+
+    background:#fff;
+    color:var(--muted);
 
     cursor:pointer;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+body.dark .quick-chip{
+    background:var(--surface);
+}
+
+.quick-chip:hover{
+    border-color:var(--border-blue);
+    color:var(--blue);
 }
 
 .search-results{
     display:none;
-    margin-top:13px;
+
+    margin-top:14px;
 }
 
 .search-results.show{
@@ -489,133 +732,154 @@ body.dark .hero{
 }
 
 .result-card{
-    background:var(--blueSoft);
-
-    border-radius:13px;
-
     padding:13px;
 
     margin-bottom:8px;
+
+    border:1px solid var(--border-blue);
+    border-radius:13px;
+
+    background:var(--blue-light);
 }
 
 .result-card h3{
-    font-size:13px;
     color:var(--blue);
+
+    font-size:12px;
 }
 
 .result-card p{
-    font-size:10px;
     color:var(--muted);
+
+    font-size:9px;
 
     margin:3px 0 7px;
 }
 
 
 /* =========================================================
-   SECTIONS
+   GENERAL SECTION
 ========================================================= */
 
 .section{
-    padding:22px 0 30px;
+    padding:30px 0;
 }
 
 .section-heading{
     display:flex;
+    align-items:flex-end;
     justify-content:space-between;
-    align-items:end;
 
-    margin-bottom:16px;
+    margin-bottom:17px;
 }
 
 .section-heading h2{
-    font-size:23px;
+    color:var(--heading);
+
+    font-size:24px;
     font-weight:900;
+
+    letter-spacing:-.5px;
 }
 
 .section-heading p{
-    font-size:11px;
     color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:2px;
 }
 
 .view-all{
-    font-size:11px;
     color:var(--blue);
-    font-weight:800;
+
     text-decoration:none;
+
+    font-size:10px;
+    font-weight:800;
 }
 
 
 /* =========================================================
-   CATEGORY
+   CATEGORIES
 ========================================================= */
 
 .category-grid{
     display:grid;
-
     grid-template-columns:repeat(6,1fr);
 
     gap:12px;
 }
 
 .category-card{
-    background:var(--card);
+    position:relative;
+
+    min-height:165px;
+
+    padding:18px 15px;
 
     border:1px solid var(--border);
+    border-radius:17px;
 
-    border-radius:16px;
+    background:var(--surface);
 
-    padding:16px 12px;
-
-    min-height:145px;
-
-    box-shadow:var(--shadow);
+    box-shadow:var(--shadow-sm);
 
     cursor:pointer;
 
-    transition:.2s;
+    transition:.25s;
 }
 
 .category-card:hover{
-    transform:translateY(-3px);
-    box-shadow:var(--shadow2);
+    transform:translateY(-5px);
+
+    border-color:var(--border-blue);
+
+    box-shadow:var(--shadow);
 }
 
 .category-icon{
-    width:43px;
-    height:43px;
-
-    border-radius:12px;
-
-    background:var(--blueSoft);
+    width:45px;
+    height:45px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:23px;
+    border-radius:13px;
+
+    background:var(--blue-light);
+
+    font-size:22px;
 }
 
 .category-card h3{
-    font-size:13px;
-    margin-top:10px;
+    color:var(--heading);
+
+    font-size:12px;
+
+    margin-top:11px;
 }
 
 .category-card p{
-    font-size:9px;
-
     color:var(--muted);
 
-    line-height:1.45;
+    font-size:8px;
+    line-height:1.55;
 
-    margin-top:2px;
+    margin-top:3px;
 }
 
 .card-link{
-    font-size:9px;
-    color:var(--blue);
-    font-weight:800;
+    position:absolute;
 
-    margin-top:7px;
+    left:15px;
+    bottom:14px;
+
+    color:var(--blue);
+
+    font-size:8px;
+    font-weight:800;
 }
 
 
@@ -626,9 +890,11 @@ body.dark .hero{
 .content-grid{
     display:grid;
 
-    grid-template-columns:1fr 315px;
+    grid-template-columns:minmax(0,1fr) 315px;
 
-    gap:24px;
+    gap:25px;
+
+    align-items:start;
 }
 
 .service-grid{
@@ -640,58 +906,95 @@ body.dark .hero{
 }
 
 .service-card{
-    background:var(--card);
+    position:relative;
+
+    min-height:190px;
+
+    padding:18px;
 
     border:1px solid var(--border);
+    border-radius:17px;
 
-    border-radius:16px;
+    background:var(--surface);
 
-    padding:17px;
+    box-shadow:var(--shadow-sm);
 
-    min-height:175px;
+    transition:.25s;
+}
+
+.service-card:hover{
+    transform:translateY(-4px);
+
+    border-color:var(--border-blue);
 
     box-shadow:var(--shadow);
 }
 
 .service-icon{
-    font-size:27px;
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:var(--blue-light);
+
+    font-size:21px;
 }
 
 .service-card h3{
-    font-size:13px;
-    margin-top:7px;
+    color:var(--heading);
+
+    font-size:12px;
+
+    margin-top:10px;
 }
 
 .service-card p{
-    font-size:9px;
     color:var(--muted);
+
+    font-size:8.5px;
+    line-height:1.6;
 
     margin-top:4px;
 }
 
 .steps{
-    font-size:9px;
+    color:var(--blue);
+
+    font-size:8px;
     font-weight:800;
 
     margin-top:9px;
 }
 
 .start-btn{
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
 
-    margin-top:9px;
+    margin-top:8px;
 
-    background:var(--blue);
-    color:#fff;
-
-    text-decoration:none;
+    padding:6px 10px;
 
     border-radius:8px;
 
-    padding:6px 11px;
+    background:var(--blue-light);
+    color:var(--blue);
 
-    font-size:9px;
+    text-decoration:none;
+
+    font-size:8px;
     font-weight:800;
+
+    transition:.2s;
+}
+
+.start-btn:hover{
+    background:var(--blue);
+    color:#fff;
 }
 
 
@@ -700,52 +1003,56 @@ body.dark .hero{
 ========================================================= */
 
 .quick-help{
-    background:var(--card);
+    position:sticky;
+    top:95px;
+
+    padding:19px;
 
     border:1px solid var(--border);
-
     border-radius:18px;
 
-    padding:18px;
+    background:var(--surface);
 
     box-shadow:var(--shadow);
-
-    position:sticky;
-    top:92px;
 }
 
 .quick-help h2{
-    font-size:17px;
+    color:var(--heading);
+
+    padding-bottom:12px;
 
     border-bottom:1px solid var(--border);
 
-    padding-bottom:11px;
+    font-size:16px;
+    font-weight:900;
 }
 
 .help-item{
     display:flex;
     align-items:center;
 
-    gap:10px;
+    gap:9px;
 
-    padding:11px 0;
+    padding:12px 0;
 
     border-bottom:1px solid var(--border);
 }
 
 .help-icon{
-    width:38px;
-    height:38px;
+    width:37px;
+    height:37px;
 
-    border-radius:11px;
-
-    background:var(--blueSoft);
+    flex:none;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:18px;
+    border-radius:10px;
+
+    background:var(--blue-light);
+
+    font-size:17px;
 }
 
 .help-text{
@@ -755,7 +1062,9 @@ body.dark .hero{
 .help-text strong{
     display:block;
 
-    font-size:10px;
+    color:var(--heading);
+
+    font-size:9px;
 }
 
 .help-text span{
@@ -763,7 +1072,7 @@ body.dark .hero{
 
     color:var(--muted);
 
-    font-size:8px;
+    font-size:7.5px;
 }
 
 .help-link{
@@ -771,8 +1080,8 @@ body.dark .hero{
 
     text-decoration:none;
 
-    font-size:9px;
-    font-weight:800;
+    font-size:8px;
+    font-weight:900;
 }
 
 .help-all{
@@ -782,17 +1091,118 @@ body.dark .hero{
     margin-top:12px;
 
     border:0;
-
     border-radius:10px;
 
-    background:var(--blueSoft);
-
+    background:var(--blue-light);
     color:var(--blue);
 
-    font-family:inherit;
+    cursor:pointer;
+
+    font-size:9px;
     font-weight:800;
+}
+
+
+/* =========================================================
+   FEATURE BANNER
+========================================================= */
+
+.feature-banner{
+    margin:25px 0;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:28px 30px;
+
+    border:1px solid var(--border-blue);
+    border-radius:22px;
+
+    background:linear-gradient(
+        110deg,
+        #f4f9ff,
+        #ffffff
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+body.dark .feature-banner{
+    background:var(--surface);
+}
+
+.feature-banner::after{
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    right:-70px;
+    top:-80px;
+
+    border-radius:50%;
+
+    background:#eaf3ff;
+}
+
+body.dark .feature-banner::after{
+    background:#122d4b;
+}
+
+.feature-content{
+    position:relative;
+    z-index:2;
+}
+
+.feature-label{
+    color:var(--blue);
+
+    font-size:9px;
+    font-weight:900;
+
+    text-transform:uppercase;
+}
+
+.feature-banner h2{
+    color:var(--heading);
+
+    font-size:23px;
+
+    margin:4px 0;
+}
+
+.feature-banner p{
+    color:var(--muted);
+
+    font-size:9px;
+
+    max-width:650px;
+}
+
+.feature-button{
+    position:relative;
+    z-index:2;
+
+    min-width:130px;
+    height:43px;
+
+    border:0;
+    border-radius:10px;
+
+    background:var(--blue);
+    color:#fff;
 
     cursor:pointer;
+
+    font-size:9px;
+    font-weight:800;
 }
 
 
@@ -801,38 +1211,41 @@ body.dark .hero{
 ========================================================= */
 
 .emergency{
-    margin:20px 0 35px;
+    margin:28px 0 42px;
 
-    border:1px solid #f1d5de;
+    padding:20px 22px;
 
-    background:#fff6f8;
-
+    border:1px solid #f1d6df;
     border-radius:18px;
 
-    padding:18px;
+    background:var(--red-bg);
 }
 
 .emergency-inner{
     display:flex;
 
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
 }
 
 .emergency h2{
-    font-size:17px;
+    color:#8d203c;
+
+    font-size:16px;
 }
 
 .emergency p{
-    font-size:10px;
     color:var(--muted);
+
+    font-size:9px;
 }
 
 .emergency-number{
-    color:var(--danger);
+    color:var(--red);
 
-    font-size:25px;
-
+    font-size:27px;
     font-weight:900;
 }
 
@@ -842,7 +1255,7 @@ body.dark .hero{
 ========================================================= */
 
 footer{
-    background:#102b49;
+    background:#0e2947;
     color:#fff;
 }
 
@@ -851,49 +1264,55 @@ footer{
 
     grid-template-columns:1.5fr 1fr 1fr 1fr;
 
-    gap:30px;
+    gap:35px;
 
-    padding:38px 0;
+    padding:45px 0;
 }
 
 .footer-brand h2{
     font-size:20px;
 }
 
-.footer-brand p,
-.footer-col a{
-    font-size:9px;
-    color:#afbed0;
-}
-
 .footer-brand p{
-    max-width:330px;
+    max-width:350px;
 
-    margin-top:7px;
+    color:#aebed0;
+
+    font-size:9px;
+
+    margin-top:8px;
 }
 
 .footer-col h3{
-    font-size:12px;
+    font-size:11px;
 
-    margin-bottom:9px;
+    margin-bottom:10px;
 }
 
 .footer-col a{
     display:block;
 
+    color:#aebed0;
+
     text-decoration:none;
 
-    margin:6px 0;
+    font-size:8.5px;
+
+    margin:7px 0;
+}
+
+.footer-col a:hover{
+    color:#fff;
 }
 
 .footer-bottom{
-    text-align:center;
+    padding:14px;
 
     border-top:1px solid rgba(255,255,255,.12);
 
-    padding:13px;
+    color:#92a7bc;
 
-    color:#9fb0c3;
+    text-align:center;
 
     font-size:8px;
 }
@@ -904,20 +1323,21 @@ footer{
 ========================================================= */
 
 .modal-overlay{
-    display:none;
-
     position:fixed;
-
     inset:0;
 
-    background:rgba(4,15,28,.62);
+    z-index:3000;
 
-    z-index:2000;
+    display:none;
 
     align-items:center;
     justify-content:center;
 
     padding:18px;
+
+    background:rgba(4,15,28,.64);
+
+    backdrop-filter:blur(5px);
 }
 
 .modal-overlay.show{
@@ -926,54 +1346,53 @@ footer{
 
 .modal{
     width:min(620px,100%);
-
     max-height:85vh;
 
     overflow:auto;
 
-    background:var(--card);
+    padding:23px;
 
     border-radius:20px;
 
-    padding:22px;
+    background:var(--surface);
+
+    box-shadow:0 30px 80px rgba(0,0,0,.20);
 }
 
 .modal-header{
     display:flex;
-
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .modal-header h2{
-    font-size:18px;
+    color:var(--heading);
+
+    font-size:17px;
 }
 
 .close-modal{
-    width:36px;
-    height:36px;
+    width:35px;
+    height:35px;
 
     border:0;
-
     border-radius:9px;
 
-    background:var(--blueSoft);
-
+    background:var(--blue-light);
     color:var(--blue);
 
-    font-size:20px;
-
     cursor:pointer;
+
+    font-size:20px;
 }
 
 .guide-step{
     display:flex;
-
     gap:12px;
 
-    padding:12px 0;
+    padding:13px 0;
 
     border-bottom:1px solid var(--border);
 }
@@ -984,29 +1403,29 @@ footer{
 
     flex:none;
 
-    border-radius:50%;
-
-    background:var(--blue);
-
-    color:#fff;
-
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:11px;
+    border-radius:50%;
 
+    background:var(--blue);
+    color:#fff;
+
+    font-size:10px;
     font-weight:900;
 }
 
 .guide-step h3{
-    font-size:12px;
+    color:var(--heading);
+
+    font-size:11px;
 }
 
 .guide-step p{
-    font-size:10px;
-
     color:var(--muted);
+
+    font-size:9px;
 
     margin-top:2px;
 }
@@ -1033,6 +1452,10 @@ footer{
 
     .menu-btn{
         display:block;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr 1fr;
     }
 
     .category-grid{
@@ -1077,7 +1500,10 @@ footer{
     }
 
     .logo-icon{
-        font-size:28px;
+        width:37px;
+        height:37px;
+
+        font-size:20px;
     }
 
     .logo-title{
@@ -1088,92 +1514,180 @@ footer{
         display:none;
     }
 
-    .header-actions .lang-text{
-        display:none;
+    .header-actions{
+        gap:5px;
     }
 
     .action-btn{
         height:36px;
         min-width:36px;
+
+        padding:0 8px;
+    }
+
+    .lang-text{
+        display:none;
     }
 
 
-    /* HERO MOBILE */
+    /* HERO */
 
     .hero{
-        padding:30px 0 22px;
+        padding:37px 0 20px;
+    }
+
+    .hero::before{
+        width:280px;
+        height:280px;
+
+        right:-130px;
+        top:-130px;
     }
 
     .hero-grid{
         grid-template-columns:1fr;
-        gap:10px;
+
+        gap:4px;
+    }
+
+    .hero-content{
+        max-width:none;
+    }
+
+    .badge{
+        margin-bottom:14px;
+
+        padding:7px 11px;
+
+        font-size:8px;
     }
 
     .hero h1{
-        font-size:36px;
-        letter-spacing:-.5px;
+        font-size:34px;
+
+        letter-spacing:-1px;
     }
 
     .hero-description{
-        font-size:12px;
-        margin:13px 0 18px;
+        margin:14px 0 18px;
+
+        font-size:10px;
+        line-height:1.75;
     }
 
-    .hero-point{
+    .hero-actions{
+        margin-bottom:20px;
+    }
+
+    .hero-primary,
+    .hero-secondary{
+        height:42px;
+
+        padding:0 15px;
+
         font-size:9px;
     }
 
+    .hero-points{
+        gap:7px 12px;
+    }
+
+    .hero-point{
+        font-size:8px;
+    }
+
     .check{
-        width:21px;
-        height:21px;
+        width:19px;
+        height:19px;
+
+        font-size:9px;
     }
 
 
-    /*
-       MOBILE IMAGE
-    */
+    /* IMAGE */
 
     .hero-visual{
-        min-height:340px;
+        min-height:350px;
 
-        background:#ffffff;
-
-        border-radius:0;
+        margin-top:5px;
     }
 
     .hero-visual::before{
-        width:310px;
-        height:310px;
+        width:315px;
+        height:315px;
 
-        right:50%;
-        transform:translateX(50%);
+        bottom:-35px;
+    }
 
-        bottom:5px;
+    .hero-visual::after{
+        width:230px;
     }
 
     .hero-image{
-        height:350px;
-
         width:100%;
+        height:365px;
+    }
 
-        object-fit:contain;
 
-        object-position:center bottom;
+    /* TRUST */
 
-        mix-blend-mode:multiply;
+    .trust-strip{
+        padding-bottom:20px;
+    }
+
+    .trust-box{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .trust-item{
+        min-height:70px;
+
+        justify-content:flex-start;
+
+        padding-left:15px;
+
+        border-bottom:1px solid var(--border);
+    }
+
+    .trust-item:nth-child(2){
+        border-right:0;
+    }
+
+    .trust-item:nth-child(3),
+    .trust-item:nth-child(4){
+        border-bottom:0;
+    }
+
+    .trust-icon{
+        width:32px;
+        height:32px;
+
+        font-size:15px;
+    }
+
+    .trust-item strong{
+        font-size:9px;
+    }
+
+    .trust-item span{
+        font-size:7px;
     }
 
 
     /* SEARCH */
 
-    .search-box{
-        padding:14px;
+    .search-section{
+        padding-top:5px;
+    }
 
-        border-radius:16px;
+    .search-box{
+        padding:15px;
+
+        border-radius:17px;
     }
 
     .search-title{
-        font-size:14px;
+        font-size:13px;
     }
 
     .search-row{
@@ -1181,20 +1695,24 @@ footer{
     }
 
     .search-input{
-        width:100%;
-        height:46px;
+        height:45px;
+
+        font-size:10px;
     }
 
     .primary-btn{
-        width:100%;
-        height:44px;
+        height:43px;
+    }
+
+    .quick-searches{
+        gap:5px;
     }
 
 
-    /* SECTIONS */
+    /* SECTION */
 
     .section{
-        padding:13px 0 22px;
+        padding:22px 0;
     }
 
     .section-heading h2{
@@ -1205,32 +1723,45 @@ footer{
         display:none;
     }
 
+    .view-all{
+        font-size:8px;
+    }
+
+
+    /* CATEGORY */
+
     .category-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:9px;
+        grid-template-columns:1fr 1fr;
+
+        gap:8px;
     }
 
     .category-card{
-        min-height:123px;
-        padding:12px;
+        min-height:132px;
+
+        padding:13px;
     }
 
     .category-icon{
-        width:38px;
-        height:38px;
-        font-size:20px;
+        width:37px;
+        height:37px;
+
+        font-size:18px;
     }
 
     .category-card h3{
-        font-size:11px;
+        font-size:10px;
     }
 
     .category-card p{
-        font-size:8px;
+        font-size:7.5px;
     }
 
     .card-link{
-        font-size:8px;
+        left:13px;
+        bottom:11px;
+
+        font-size:7px;
     }
 
 
@@ -1238,30 +1769,36 @@ footer{
 
     .service-grid{
         grid-template-columns:1fr 1fr;
-        gap:9px;
+
+        gap:8px;
     }
 
     .service-card{
-        min-height:155px;
-        padding:12px;
+        min-height:165px;
+
+        padding:13px;
     }
 
     .service-icon{
-        font-size:23px;
+        width:36px;
+        height:36px;
+
+        font-size:18px;
     }
 
     .service-card h3{
-        font-size:10px;
+        font-size:9px;
     }
 
     .service-card p,
     .steps{
-        font-size:8px;
+        font-size:7px;
     }
 
     .start-btn{
-        font-size:8px;
-        padding:5px 8px;
+        padding:5px 7px;
+
+        font-size:7px;
     }
 
 
@@ -1269,6 +1806,8 @@ footer{
 
     .quick-help{
         margin-top:18px;
+
+        padding:15px;
     }
 
     .quick-help-list{
@@ -1276,7 +1815,38 @@ footer{
     }
 
 
+    /* FEATURE */
+
+    .feature-banner{
+        padding:20px;
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+        gap:14px;
+    }
+
+    .feature-banner h2{
+        font-size:18px;
+    }
+
+    .feature-banner p{
+        font-size:8px;
+    }
+
+    .feature-button{
+        width:100%;
+    }
+
+
     /* EMERGENCY */
+
+    .emergency{
+        padding:15px;
+
+        margin:20px 0 28px;
+    }
 
     .emergency-inner{
         align-items:flex-start;
@@ -1286,16 +1856,16 @@ footer{
         gap:5px;
     }
 
-    .emergency{
-        padding:14px;
+    .emergency h2{
+        font-size:13px;
     }
 
-    .emergency h2{
-        font-size:14px;
+    .emergency p{
+        font-size:8px;
     }
 
     .emergency-number{
-        font-size:21px;
+        font-size:22px;
     }
 
 
@@ -1304,9 +1874,9 @@ footer{
     .footer-grid{
         grid-template-columns:1fr 1fr;
 
-        gap:18px;
+        gap:22px;
 
-        padding:25px 0;
+        padding:28px 0;
     }
 
     .footer-brand{
@@ -1314,30 +1884,30 @@ footer{
     }
 
 
-    /* BOTTOM NAV */
+    /* MOBILE NAV */
 
     .mobile-bottom-nav{
         position:fixed;
 
-        display:flex;
-
-        bottom:0;
         left:0;
         right:0;
+        bottom:0;
+
+        z-index:2000;
 
         height:63px;
 
-        z-index:1500;
+        display:flex;
 
         background:rgba(255,255,255,.97);
 
         border-top:1px solid var(--border);
 
-        justify-content:space-around;
+        backdrop-filter:blur(15px);
     }
 
     body.dark .mobile-bottom-nav{
-        background:rgba(18,34,53,.97);
+        background:rgba(16,29,45,.97);
     }
 
     .bottom-item{
@@ -1349,23 +1919,23 @@ footer{
 
         color:var(--muted);
 
+        cursor:pointer;
+
         font-family:inherit;
 
-        font-size:8px;
+        font-size:7px;
 
         display:flex;
-
         flex-direction:column;
 
         align-items:center;
-
         justify-content:center;
 
         gap:1px;
     }
 
     .bottom-item span:first-child{
-        font-size:18px;
+        font-size:17px;
     }
 
     .bottom-item.active{
@@ -1373,22 +1943,17 @@ footer{
 
         font-weight:800;
     }
-
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <!-- =========================================================
      HEADER
 ========================================================= -->
 
 <header>
-
 <div class="container header-inner">
 
 <a href="#home" class="logo">
@@ -1396,38 +1961,24 @@ footer{
 <div class="logo-icon">🛡️</div>
 
 <div>
-<div class="logo-title">
-সাইবারকেয়ার (CyberCare)
-</div>
-
-<div class="logo-sub">
-আপনার ডিজিটাল বন্ধু, সব সমস্যার সহজ সমাধান
-</div>
+<div class="logo-title">সাইবারকেয়ার (CyberCare)</div>
+<div class="logo-sub">আপনার ডিজিটাল বন্ধু, সব সমস্যার সহজ সমাধান</div>
 </div>
 
 </a>
 
-
 <nav class="nav">
 
 <a href="#home" class="active">হোম</a>
-
 <a href="#categories">ফেসবুক</a>
-
 <a href="#categories">মোবাইল</a>
-
 <a href="#categories">ইমেইল</a>
-
 <a href="#categories">অ্যাকাউন্ট</a>
-
 <a href="#categories">ব্যাংকিং</a>
-
 <a href="#services">সাইবার নিরাপত্তা</a>
-
 <a href="#help">জরুরি সহায়তা</a>
 
 </nav>
-
 
 <div class="header-actions">
 
@@ -1435,30 +1986,19 @@ footer{
 🌐 <span class="lang-text">বাংলা</span>
 </button>
 
-<button class="action-btn" id="themeBtn">
-☀️
-</button>
+<button class="action-btn" id="themeBtn">☀️</button>
 
-<button class="action-btn menu-btn" id="menuBtn">
-☰
-</button>
+<button class="action-btn menu-btn" id="menuBtn">☰</button>
 
 </div>
 
 </div>
-
 </header>
 
-
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
 
 <main id="home">
 
 <div class="container">
-
 
 <!-- =========================================================
      HERO
@@ -1468,60 +2008,49 @@ footer{
 
 <div class="hero-grid">
 
-
 <div class="hero-content">
 
 <div class="badge">
 🛡️ CyberCare Digital Safety Center
 </div>
 
-
 <h1>
-
 আপনার যে কোনো ডিজিটাল সমস্যার
-
 <br>
-
-<span>
-সহজ ও কার্যকর সমাধান
-</span>
-
+<span>সহজ ও কার্যকর সমাধান</span>
 </h1>
 
-
 <p class="hero-description">
-
 ধাপে ধাপে গাইড, স্মার্ট সমস্যা সমাধান এবং প্রয়োজনীয় নিরাপত্তা টুলস — আপনার ডিজিটাল সমস্যার সমাধান এখন এক জায়গায়।
-
 </p>
 
+<div class="hero-actions">
+
+<button class="hero-primary" onclick="focusSearch()">
+🔍 সমস্যার সমাধান খুঁজুন
+</button>
+
+<button class="hero-secondary" onclick="goServices()">
+গাইড দেখুন →
+</button>
+
+</div>
 
 <div class="hero-points">
 
 <div class="hero-point">
-
 <span class="check">✓</span>
-
 সহজ ভাষায় ধাপে ধাপে গাইড
-
 </div>
 
-
 <div class="hero-point">
-
 <span class="check">✓</span>
-
 নিরাপত্তা-কেন্দ্রিক সহায়তা
-
 </div>
-
 
 <div class="hero-point">
-
 <span class="check">✓</span>
-
 প্রয়োজনীয় টুলস ও গাইড
-
 </div>
 
 </div>
@@ -1529,10 +2058,7 @@ footer{
 </div>
 
 
-
-<!-- =========================================================
-     YOUR PHOTO
-========================================================= -->
+<!-- HERO IMAGE -->
 
 <div class="hero-visual">
 
@@ -1573,6 +2099,50 @@ assets/hero-person.png ফাইলটি GitHub-এ আছে কিনা দ�
 </section>
 
 
+<!-- =========================================================
+     TRUST STRIP
+========================================================= -->
+
+<section class="trust-strip">
+
+<div class="trust-box">
+
+<div class="trust-item">
+<div class="trust-icon">🛡️</div>
+<div>
+<strong>Safety First</strong>
+<span>নিরাপত্তা-কেন্দ্রিক গাইড</span>
+</div>
+</div>
+
+<div class="trust-item">
+<div class="trust-icon">📖</div>
+<div>
+<strong>Step-by-Step</strong>
+<span>সহজ ধাপে সমাধান</span>
+</div>
+</div>
+
+<div class="trust-item">
+<div class="trust-icon">🔎</div>
+<div>
+<strong>Smart Help</strong>
+<span>সমস্যা অনুযায়ী গাইড</span>
+</div>
+</div>
+
+<div class="trust-item">
+<div class="trust-icon">🚨</div>
+<div>
+<strong>Emergency</strong>
+<span>জরুরি সহায়তা</span>
+</div>
+</div>
+
+</div>
+
+</section>
+
 
 <!-- =========================================================
      SEARCH
@@ -1583,17 +2153,8 @@ assets/hero-person.png ফাইলটি GitHub-এ আছে কিনা দ�
 <div class="search-box">
 
 <div class="search-title">
-
-🔍
-
-<span>
-আপনার কি সমস্যা হচ্ছে?
-</span>
-
-আমরা সাহায্য করব।
-
+🔍 <span>আপনার কি সমস্যা হচ্ছে?</span> আমরা সাহায্য করব।
 </div>
-
 
 <div class="search-row">
 
@@ -1603,28 +2164,22 @@ class="search-input"
 placeholder="যেমন: Facebook লগইন হচ্ছে না, OTP আসছে না, মোবাইল গরম হচ্ছে..."
 >
 
-<button
-class="primary-btn"
-id="searchBtn"
->
+<button class="primary-btn" id="searchBtn">
 খুঁজুন
 </button>
 
 </div>
 
-
 <div class="quick-searches">
 
-<span class="quick-label">
-জনপ্রিয় সার্চ:
-</span>
+<span class="quick-label">জনপ্রিয় সার্চ:</span>
 
 <button class="quick-chip" data-search="Facebook লগইন হচ্ছে না">
-Facebook লগইন সমস্যা
+Facebook লগইন
 </button>
 
 <button class="quick-chip" data-search="OTP আসছে না">
-OTP আসছে না
+OTP সমস্যা
 </button>
 
 <button class="quick-chip" data-search="PIN ভুলে গেছি">
@@ -1636,18 +2191,16 @@ PIN ভুলে গেছি
 </button>
 
 <button class="quick-chip" data-search="ব্যাংক থেকে টাকা কেটে গেছে">
-ব্যাংক থেকে টাকা কেটে গেছে
+ব্যাংকিং সমস্যা
 </button>
 
 </div>
-
 
 <div class="search-results" id="searchResults"></div>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -1659,162 +2212,86 @@ PIN ভুলে গেছি
 <div class="section-heading">
 
 <div>
-
-<h2>
-আপনার প্রয়োজনীয় সহায়তা
-</h2>
-
-<p>
-বিভিন্ন ধরনের ডিজিটাল সমস্যার জন্য দ্রুত সমাধান
-</p>
-
+<h2>আপনার প্রয়োজনীয় সহায়তা</h2>
+<p>বিভিন্ন ধরনের ডিজিটাল সমস্যার জন্য দ্রুত সমাধান</p>
 </div>
 
-<a href="#services" class="view-all">
-সব দেখুন →
-</a>
+<a href="#services" class="view-all">সব দেখুন →</a>
 
 </div>
 
 
 <div class="category-grid">
 
-
 <div class="category-card" data-category="facebook">
-
-<div class="category-icon">
-📘
+<div class="category-icon">📘</div>
+<h3>ফেসবুক সমস্যা</h3>
+<p>লগইন, হ্যাক, পাসওয়ার্ড, প্রাইভেসি, রিকভারি</p>
+<div class="card-link">সমাধান দেখুন →</div>
 </div>
-
-<h3>
-ফেসবুক সমস্যা
-</h3>
-
-<p>
-লগইন, হ্যাক, পাসওয়ার্ড, প্রাইভেসি, রিকভারি
-</p>
-
-<div class="card-link">
-সমাধান দেখুন →
-</div>
-
-</div>
-
-
 
 <div class="category-card" data-category="mobile">
-
-<div class="category-icon">
-📱
+<div class="category-icon">📱</div>
+<h3>মোবাইল ও সিম</h3>
+<p>মোবাইল, সিম, নেটওয়ার্ক, ব্যাটারি</p>
+<div class="card-link">সমাধান দেখুন →</div>
 </div>
-
-<h3>
-মোবাইল ও সিম
-</h3>
-
-<p>
-মোবাইল, সিম, নেটওয়ার্ক, ব্যাটারি
-</p>
-
-<div class="card-link">
-সমাধান দেখুন →
-</div>
-
-</div>
-
-
 
 <div class="category-card" data-category="email">
-
-<div class="category-icon">
-📧
+<div class="category-icon">📧</div>
+<h3>Gmail ও ইমেইল</h3>
+<p>Gmail, পাসওয়ার্ড, রিকভারি, 2-Step Verify</p>
+<div class="card-link">সমাধান দেখুন →</div>
 </div>
-
-<h3>
-Gmail ও ইমেইল
-</h3>
-
-<p>
-Gmail, পাসওয়ার্ড, রিকভারি, 2-Step Verify
-</p>
-
-<div class="card-link">
-সমাধান দেখুন →
-</div>
-
-</div>
-
-
 
 <div class="category-card" data-category="bank">
-
-<div class="category-icon">
-💳
+<div class="category-icon">💳</div>
+<h3>ব্যাংকিং ও পেমেন্ট</h3>
+<p>UPI, ব্যাংক, টাকা কাটা, স্ক্যাম</p>
+<div class="card-link">সমাধান দেখুন →</div>
 </div>
-
-<h3>
-ব্যাংকিং ও পেমেন্ট
-</h3>
-
-<p>
-UPI, ব্যাংক, টাকা কাটা, স্ক্যাম
-</p>
-
-<div class="card-link">
-সমাধান দেখুন →
-</div>
-
-</div>
-
-
 
 <div class="category-card" data-category="social">
-
-<div class="category-icon">
-🔗
+<div class="category-icon">🔗</div>
+<h3>সোশ্যাল মিডিয়া</h3>
+<p>WhatsApp, YouTube, TikTok, X, Snapchat</p>
+<div class="card-link">সমাধান দেখুন →</div>
 </div>
-
-<h3>
-সোশ্যাল মিডিয়া
-</h3>
-
-<p>
-WhatsApp, YouTube, TikTok, X, Snapchat
-</p>
-
-<div class="card-link">
-সমাধান দেখুন →
-</div>
-
-</div>
-
-
 
 <div class="category-card" data-category="security">
-
-<div class="category-icon">
-🛡️
-</div>
-
-<h3>
-সাইবার নিরাপত্তা
-</h3>
-
-<p>
-ফিশিং, স্ক্যাম, হ্যাকিং, প্রাইভেসি
-</p>
-
-<div class="card-link">
-সমাধান দেখুন →
+<div class="category-icon">🛡️</div>
+<h3>সাইবার নিরাপত্তা</h3>
+<p>ফিশিং, স্ক্যাম, হ্যাকিং, প্রাইভেসি</p>
+<div class="card-link">সমাধান দেখুন →</div>
 </div>
 
 </div>
-
-
-</div>
-
 </section>
 
+
+<!-- =========================================================
+     FEATURE BANNER
+========================================================= -->
+
+<section class="feature-banner">
+
+<div class="feature-content">
+
+<div class="feature-label">CyberCare Smart Help</div>
+
+<h2>সমস্যা বুঝতে পারছেন না?</h2>
+
+<p>
+আপনার সমস্যাটা নিজের ভাষায় লিখুন। CyberCare আপনাকে সম্ভাব্য সমাধান ও প্রয়োজনীয় গাইড দেখাবে।
+</p>
+
+</div>
+
+<button class="feature-button" onclick="focusSearch()">
+Smart Search চালু করুন
+</button>
+
+</section>
 
 
 <!-- =========================================================
@@ -1825,21 +2302,13 @@ WhatsApp, YouTube, TikTok, X, Snapchat
 
 <div class="content-grid">
 
-
 <div>
 
 <div class="section-heading">
 
 <div>
-
-<h2>
-সার্ভিস এরিয়া
-</h2>
-
-<p>
-জনপ্রিয় ডিজিটাল সমস্যা ও নিরাপত্তা গাইড
-</p>
-
+<h2>সার্ভিস এরিয়া</h2>
+<p>জনপ্রিয় ডিজিটাল সমস্যা ও নিরাপত্তা গাইড</p>
 </div>
 
 </div>
@@ -1847,365 +2316,139 @@ WhatsApp, YouTube, TikTok, X, Snapchat
 
 <div class="service-grid">
 
-
 <div class="service-card">
-
 <div class="service-icon">📘</div>
-
-<h3>
-ফেসবুক লগইন সমস্যা
-</h3>
-
-<p>
-লগইন, পাসওয়ার্ড বা অ্যাকাউন্টে প্রবেশ করতে না পারলে কী করবেন।
-</p>
-
-<div class="steps">
-৩ Steps
+<h3>ফেসবুক লগইন সমস্যা</h3>
+<p>লগইন, পাসওয়ার্ড বা অ্যাকাউন্টে প্রবেশ করতে না পারলে কী করবেন।</p>
+<div class="steps">৪ Steps</div>
+<a href="#" class="start-btn" data-guide="facebook">শুরু করুন →</a>
 </div>
-
-<a href="#" class="start-btn" data-guide="facebook">
-শুরু করুন
-</a>
-
-</div>
-
-
 
 <div class="service-card">
-
-<div class="service-icon">
-🔐
+<div class="service-icon">🔐</div>
+<h3>অ্যাকাউন্ট হ্যাকড</h3>
+<p>অ্যাকাউন্ট হ্যাক হওয়ার সন্দেহ হলে নিরাপদ করার ধাপ।</p>
+<div class="steps">৪ Steps</div>
+<a href="#" class="start-btn" data-guide="hacked">শুরু করুন →</a>
 </div>
-
-<h3>
-অ্যাকাউন্ট হ্যাকড
-</h3>
-
-<p>
-অ্যাকাউন্ট হ্যাক হওয়ার সন্দেহ হলে নিরাপদ করার ধাপ।
-</p>
-
-<div class="steps">
-৪ Steps
-</div>
-
-<a href="#" class="start-btn" data-guide="hacked">
-শুরু করুন
-</a>
-
-</div>
-
-
 
 <div class="service-card">
-
-<div class="service-icon">
-💬
+<div class="service-icon">💬</div>
+<h3>OTP না আসলে</h3>
+<p>OTP না পাওয়া বা verification code-এর সমস্যা সমাধান।</p>
+<div class="steps">৪ Steps</div>
+<a href="#" class="start-btn" data-guide="otp">শুরু করুন →</a>
 </div>
-
-<h3>
-OTP না আসলে
-</h3>
-
-<p>
-OTP না পাওয়া বা verification code-এর সমস্যা সমাধান।
-</p>
-
-<div class="steps">
-৪ Steps
-</div>
-
-<a href="#" class="start-btn" data-guide="otp">
-শুরু করুন
-</a>
-
-</div>
-
-
 
 <div class="service-card">
-
-<div class="service-icon">
-📡
+<div class="service-icon">📡</div>
+<h3>সিম / নেটওয়ার্ক</h3>
+<p>সিগন্যাল, কল, SMS এবং মোবাইল নেটওয়ার্ক সমস্যা।</p>
+<div class="steps">৪ Steps</div>
+<a href="#" class="start-btn" data-guide="network">শুরু করুন →</a>
 </div>
-
-<h3>
-সিম / নেটওয়ার্ক
-</h3>
-
-<p>
-সিগন্যাল, কল, SMS এবং মোবাইল নেটওয়ার্ক সমস্যা।
-</p>
-
-<div class="steps">
-৪ Steps
-</div>
-
-<a href="#" class="start-btn" data-guide="network">
-শুরু করুন
-</a>
-
-</div>
-
-
 
 <div class="service-card">
-
-<div class="service-icon">
-🏦
+<div class="service-icon">🏦</div>
+<h3>ব্যাংক থেকে টাকা কেটে গেছে</h3>
+<p>অজানা transaction বা payment হলে নিরাপদ থাকার ধাপ।</p>
+<div class="steps">৪ Steps</div>
+<a href="#" class="start-btn" data-guide="bank">শুরু করুন →</a>
 </div>
-
-<h3>
-ব্যাংক থেকে টাকা কেটে গেছে
-</h3>
-
-<p>
-অজানা transaction বা payment হলে নিরাপদ থাকার ধাপ।
-</p>
-
-<div class="steps">
-৪ Steps
-</div>
-
-<a href="#" class="start-btn" data-guide="bank">
-শুরু করুন
-</a>
-
-</div>
-
-
 
 <div class="service-card">
-
-<div class="service-icon">
-⚠️
+<div class="service-icon">⚠️</div>
+<h3>স্ক্যাম ও ফিশিং</h3>
+<p>সন্দেহজনক link, message বা online scam চিনে নিন।</p>
+<div class="steps">৪ Steps</div>
+<a href="#" class="start-btn" data-guide="scam">শুরু করুন →</a>
 </div>
-
-<h3>
-স্ক্যাম ও ফিশিং
-</h3>
-
-<p>
-সন্দেহজনক link, message বা online scam চিনে নিন।
-</p>
-
-<div class="steps">
-৪ Steps
-</div>
-
-<a href="#" class="start-btn" data-guide="scam">
-শুরু করুন
-</a>
-
-</div>
-
-
 
 <div class="service-card">
-
-<div class="service-icon">
-🔋
+<div class="service-icon">🔋</div>
+<h3>মোবাইল গরম / ব্যাটারি</h3>
+<p>ফোন বেশি গরম হওয়া বা দ্রুত battery শেষ হওয়ার কারণ খুঁজুন।</p>
+<div class="steps">৪ Steps</div>
+<a href="#" class="start-btn" data-guide="battery">শুরু করুন →</a>
 </div>
-
-<h3>
-মোবাইল গরম / ব্যাটারি
-</h3>
-
-<p>
-ফোন বেশি গরম হওয়া বা দ্রুত battery শেষ হওয়ার কারণ খুঁজুন।
-</p>
-
-<div class="steps">
-৪ Steps
-</div>
-
-<a href="#" class="start-btn" data-guide="battery">
-শুরু করুন
-</a>
-
-</div>
-
-
 
 <div class="service-card">
-
-<div class="service-icon">
-🔑
+<div class="service-icon">🔑</div>
+<h3>পাসওয়ার্ড নিরাপত্তা</h3>
+<p>শক্তিশালী password তৈরি ও account নিরাপদ রাখুন।</p>
+<div class="steps">৪ Steps</div>
+<a href="#" class="start-btn" data-guide="password">শুরু করুন →</a>
 </div>
-
-<h3>
-পাসওয়ার্ড নিরাপত্তা
-</h3>
-
-<p>
-শক্তিশালী password তৈরি ও account নিরাপদ রাখুন।
-</p>
-
-<div class="steps">
-৪ Steps
-</div>
-
-<a href="#" class="start-btn" data-guide="password">
-শুরু করুন
-</a>
-
-</div>
-
-
 
 <div class="service-card">
-
-<div class="service-icon">
-🎣
-</div>
-
-<h3>
-Phishing Scanner
-</h3>
-
-<p>
-সন্দেহজনক link নিয়ে সতর্ক থাকার নিরাপত্তা গাইড।
-</p>
-
-<div class="steps">
-৪ Steps
-</div>
-
-<a href="#" class="start-btn" data-guide="phishing">
-শুরু করুন
-</a>
-
-</div>
-
-
+<div class="service-icon">🎣</div>
+<h3>Phishing Scanner</h3>
+<p>সন্দেহজনক link নিয়ে সতর্ক থাকার নিরাপত্তা গাইড।</p>
+<div class="steps">৪ Steps</div>
+<a href="#" class="start-btn" data-guide="phishing">শুরু করুন →</a>
 </div>
 
 </div>
-
+</div>
 
 
 <!-- QUICK HELP -->
 
 <aside class="quick-help" id="help">
 
-<h2>
-দ্রুত সহায়তা
-</h2>
-
+<h2>দ্রুত সহায়তা</h2>
 
 <div class="quick-help-list">
 
-
 <div class="help-item">
-
-<div class="help-icon">
-☎️
-</div>
+<div class="help-icon">☎️</div>
 
 <div class="help-text">
-
-<strong>
-ইমার্জেন্সি হেল্পলাইন
-</strong>
-
-<span>
-জাতীয় সাইবার হেল্পলাইন
-</span>
-
+<strong>ইমার্জেন্সি হেল্পলাইন</strong>
+<span>জাতীয় সাইবার হেল্পলাইন</span>
 </div>
 
-<a class="help-link" href="tel:1930">
-1930
-</a>
-
+<a class="help-link" href="tel:1930">1930</a>
 </div>
-
-
 
 <div class="help-item">
-
-<div class="help-icon">
-🛡️
-</div>
+<div class="help-icon">🛡️</div>
 
 <div class="help-text">
-
-<strong>
-সাইবার ক্রাইম রিপোর্ট
-</strong>
-
-<span>
-অপরাধ রিপোর্ট করার ব্যবস্থা
-</span>
-
+<strong>সাইবার ক্রাইম রিপোর্ট</strong>
+<span>অপরাধ রিপোর্ট করার ব্যবস্থা</span>
 </div>
 
-<a
-class="help-link"
+<a class="help-link"
 href="https://cybercrime.gov.in/"
-target="_blank"
->
+target="_blank">
 খুলুন
 </a>
-
 </div>
-
-
 
 <div class="help-item">
-
-<div class="help-icon">
-🔗
-</div>
+<div class="help-icon">🔗</div>
 
 <div class="help-text">
-
-<strong>
-সন্দেহজনক লিংক
-</strong>
-
-<span>
-Link ও message যাচাই করুন
-</span>
-
+<strong>সন্দেহজনক লিংক</strong>
+<span>Link ও message যাচাই করুন</span>
 </div>
 
-<a class="help-link" href="#services">
-চেক
-</a>
-
+<a class="help-link" href="#services">চেক</a>
 </div>
-
-
 
 <div class="help-item">
-
-<div class="help-icon">
-👤
-</div>
+<div class="help-icon">👤</div>
 
 <div class="help-text">
-
-<strong>
-অ্যাকাউন্ট সুরক্ষা
-</strong>
-
-<span>
-Account নিরাপদ করার গাইড
-</span>
-
+<strong>অ্যাকাউন্ট সুরক্ষা</strong>
+<span>Account নিরাপদ করার গাইড</span>
 </div>
 
-<a class="help-link" href="#services">
-দেখুন
-</a>
-
+<a class="help-link" href="#services">দেখুন</a>
 </div>
 
-
 </div>
-
 
 <button class="help-all" id="allHelpBtn">
 সব হেল্পলাইন দেখুন
@@ -2218,38 +2461,27 @@ Account নিরাপদ করার গাইড
 </section>
 
 
-
-<!-- EMERGENCY -->
+<!-- =========================================================
+     EMERGENCY
+========================================================= -->
 
 <section class="emergency">
 
 <div class="emergency-inner">
 
 <div>
-
-<h2>
-🚨 জরুরি সাইবার সমস্যায় পড়েছেন?
-</h2>
-
-<p>
-টাকা সংক্রান্ত fraud বা cyber crime হলে দ্রুত ব্যবস্থা নিন।
-</p>
-
+<h2>🚨 জরুরি সাইবার সমস্যায় পড়েছেন?</h2>
+<p>টাকা সংক্রান্ত fraud বা cyber crime হলে দ্রুত ব্যবস্থা নিন।</p>
 </div>
 
-<div class="emergency-number">
-1930
-</div>
+<div class="emergency-number">1930</div>
 
 </div>
 
 </section>
 
-
 </div>
-
 </main>
-
 
 
 <!-- =========================================================
@@ -2260,12 +2492,9 @@ Account নিরাপদ করার গাইড
 
 <div class="container footer-grid">
 
-
 <div class="footer-brand">
 
-<h2>
-🛡️ CyberCare
-</h2>
+<h2>🛡️ CyberCare</h2>
 
 <p>
 মানুষের ডিজিটাল সমস্যা সমাধান, নিরাপত্তা এবং সচেতনতার জন্য একটি সহজ ও ব্যবহারবান্ধব সহায়তা কেন্দ্র।
@@ -2273,66 +2502,42 @@ Account নিরাপদ করার গাইড
 
 </div>
 
-
 <div class="footer-col">
-
-<h3>
-সহায়তা
-</h3>
-
+<h3>সহায়তা</h3>
 <a href="#categories">ফেসবুক</a>
 <a href="#categories">মোবাইল</a>
 <a href="#categories">Gmail</a>
 <a href="#categories">ব্যাংকিং</a>
-
 </div>
 
-
 <div class="footer-col">
-
-<h3>
-নিরাপত্তা
-</h3>
-
+<h3>নিরাপত্তা</h3>
 <a href="#services">Phishing</a>
 <a href="#services">Scam</a>
 <a href="#services">Password</a>
 <a href="#services">Account Safety</a>
-
 </div>
 
-
 <div class="footer-col">
-
-<h3>
-জরুরি
-</h3>
+<h3>জরুরি</h3>
 
 <a href="tel:1930">
 Cyber Helpline 1930
 </a>
 
-<a
-href="https://cybercrime.gov.in/"
-target="_blank"
->
+<a href="https://cybercrime.gov.in/" target="_blank">
 Cyber Crime Report
 </a>
 
 </div>
 
-
 </div>
 
-
 <div class="footer-bottom">
-
 © 2026 CyberCare — Protecting People. Securing Digital Lives.
-
 </div>
 
 </footer>
-
 
 
 <!-- =========================================================
@@ -2342,46 +2547,31 @@ Cyber Crime Report
 <nav class="mobile-bottom-nav">
 
 <button class="bottom-item active" onclick="goHome()">
-
 <span>⌂</span>
 <span>হোম</span>
-
 </button>
-
 
 <button class="bottom-item" onclick="focusSearch()">
-
 <span>⌕</span>
 <span>সার্চ</span>
-
 </button>
-
 
 <button class="bottom-item" onclick="openEmergency()">
-
 <span>🚨</span>
 <span>ইমার্জেন্সি</span>
-
 </button>
-
 
 <button class="bottom-item" onclick="goServices()">
-
 <span>📖</span>
 <span>শিক্ষা</span>
-
 </button>
 
-
 <button class="bottom-item" onclick="goHelp()">
-
 <span>👤</span>
 <span>সহায়তা</span>
-
 </button>
 
 </nav>
-
 
 
 <!-- =========================================================
@@ -2411,7 +2601,6 @@ CyberCare Guide
 </div>
 
 
-
 <script>
 
 /* =========================================================
@@ -2422,7 +2611,6 @@ const guides={
 
 facebook:{
 title:"Facebook Login সমস্যা",
-
 steps:[
 ["ইন্টারনেট চেক করুন","Wi-Fi বা mobile data ঠিকভাবে কাজ করছে কিনা দেখুন।"],
 ["Password যাচাই করুন","সঠিক password দিয়ে আবার চেষ্টা করুন।"],
@@ -2433,7 +2621,6 @@ steps:[
 
 hacked:{
 title:"অ্যাকাউন্ট হ্যাক হলে কী করবেন",
-
 steps:[
 ["Password পরিবর্তন করুন","যদি access থাকে দ্রুত password পরিবর্তন করুন।"],
 ["অপরিচিত session logout করুন","অপরিচিত device ও location থেকে logout করুন।"],
@@ -2444,7 +2631,6 @@ steps:[
 
 otp:{
 title:"OTP না আসলে",
-
 steps:[
 ["Network পরীক্ষা করুন","মোবাইল signal ও SMS service পরীক্ষা করুন।"],
 ["কিছুক্ষণ অপেক্ষা করুন","বারবার OTP request না করে কয়েক মিনিট অপেক্ষা করুন।"],
@@ -2455,7 +2641,6 @@ steps:[
 
 network:{
 title:"SIM / Network সমস্যা",
-
 steps:[
 ["Airplane mode চালু ও বন্ধ করুন","১০ সেকেন্ড অপেক্ষা করে আবার বন্ধ করুন।"],
 ["SIM পরীক্ষা করুন","ফোন বন্ধ করে SIM ঠিকভাবে বসান।"],
@@ -2466,7 +2651,6 @@ steps:[
 
 bank:{
 title:"ব্যাংক থেকে অজানা টাকা কেটে গেলে",
-
 steps:[
 ["Transaction details সংরক্ষণ করুন","SMS, transaction ID এবং screenshot রাখুন।"],
 ["ব্যাংককে দ্রুত জানান","শুধু official banking channel ব্যবহার করুন।"],
@@ -2477,7 +2661,6 @@ steps:[
 
 scam:{
 title:"Scam / Phishing থেকে নিরাপদ থাকুন",
-
 steps:[
 ["সন্দেহজনক link খুলবেন না","অজানা link এড়িয়ে চলুন।"],
 ["OTP/PIN দেবেন না","OTP, PIN বা password কারও সঙ্গে শেয়ার করবেন না।"],
@@ -2488,7 +2671,6 @@ steps:[
 
 battery:{
 title:"মোবাইল গরম / Battery Drain",
-
 steps:[
 ["Battery usage দেখুন","কোন app বেশি battery ব্যবহার করছে পরীক্ষা করুন।"],
 ["Background apps পরীক্ষা করুন","অপ্রয়োজনীয় app বন্ধ করুন।"],
@@ -2499,7 +2681,6 @@ steps:[
 
 password:{
 title:"Password নিরাপত্তা",
-
 steps:[
 ["আলাদা password ব্যবহার করুন","এক password সব account-এ ব্যবহার করবেন না।"],
 ["দীর্ঘ password ব্যবহার করুন","শক্তিশালী ও unique password রাখুন।"],
@@ -2510,7 +2691,6 @@ steps:[
 
 phishing:{
 title:"Phishing নিরাপত্তা গাইড",
-
 steps:[
 ["URL পরীক্ষা করুন","Website address ভালোভাবে যাচাই করুন।"],
 ["ভয় দেখানো message এড়ান","অতিরিক্ত জরুরি বা ভয় দেখানো message থেকে সতর্ক থাকুন।"],
@@ -2527,11 +2707,8 @@ steps:[
 ========================================================= */
 
 const modalOverlay=document.getElementById("modalOverlay");
-
 const modalTitle=document.getElementById("modalTitle");
-
 const modalContent=document.getElementById("modalContent");
-
 
 function openGuide(type){
 
@@ -2545,20 +2722,11 @@ modalContent.innerHTML=g.steps.map((s,i)=>`
 
 <div class="guide-step">
 
-<div class="step-number">
-${i+1}
-</div>
+<div class="step-number">${i+1}</div>
 
 <div>
-
-<h3>
-${s[0]}
-</h3>
-
-<p>
-${s[1]}
-</p>
-
+<h3>${s[0]}</h3>
+<p>${s[1]}</p>
 </div>
 
 </div>
@@ -2568,7 +2736,6 @@ ${s[1]}
 modalOverlay.classList.add("show");
 
 }
-
 
 document.querySelectorAll("[data-guide]").forEach(b=>{
 
@@ -2582,31 +2749,22 @@ openGuide(b.dataset.guide);
 
 });
 
-
 document.getElementById("closeModal").onclick=()=>{
-
 modalOverlay.classList.remove("show");
-
 };
-
 
 modalOverlay.onclick=e=>{
 
 if(e.target===modalOverlay){
-
 modalOverlay.classList.remove("show");
-
 }
 
 };
 
-
 document.addEventListener("keydown",e=>{
 
 if(e.key==="Escape"){
-
 modalOverlay.classList.remove("show");
-
 }
 
 });
@@ -2617,9 +2775,7 @@ modalOverlay.classList.remove("show");
 ========================================================= */
 
 const searchInput=document.getElementById("problemSearch");
-
 const results=document.getElementById("searchResults");
-
 
 function performSearch(){
 
@@ -2627,21 +2783,15 @@ const q=searchInput.value.trim().toLowerCase();
 
 let m=[];
 
-
 if(!q){
 
 results.innerHTML=`
 
 <div class="result-card">
-
-<h3>
-আপনার সমস্যাটি লিখুন
-</h3>
-
+<h3>আপনার সমস্যাটি লিখুন</h3>
 <p>
 যেমন: Facebook হ্যাক, OTP আসছে না, ফোন গরম হচ্ছে, ব্যাংক থেকে টাকা কাটা গেছে।
 </p>
-
 </div>
 
 `;
@@ -2649,60 +2799,43 @@ results.innerHTML=`
 results.classList.add("show");
 
 return;
-
 }
 
-
 if(q.includes("facebook")||q.includes("ফেসবুক"))
-
 m.push(["facebook","Facebook Login সমস্যা"]);
 
-
 if(q.includes("otp")||q.includes("ওটিপি"))
-
 m.push(["otp","OTP না আসলে"]);
 
-
 if(q.includes("hack")||q.includes("হ্যাক"))
-
 m.push(["hacked","অ্যাকাউন্ট হ্যাক হলে কী করবেন"]);
 
-
 if(q.includes("bank")||q.includes("ব্যাংক")||q.includes("টাকা"))
-
 m.push(["bank","ব্যাংক / Payment সমস্যা"]);
 
-
 if(q.includes("sim")||q.includes("network")||q.includes("নেটওয়ার্ক")||q.includes("সিম"))
-
 m.push(["network","SIM / Network সমস্যা"]);
 
-
 if(q.includes("battery")||q.includes("ব্যাটারি")||q.includes("গরম"))
-
 m.push(["battery","মোবাইল গরম / Battery Drain"]);
 
-
 if(q.includes("scam")||q.includes("স্ক্যাম")||q.includes("fraud")||q.includes("ফিশিং"))
-
 m.push(["scam","Scam / Phishing"]);
 
-
-if(!m.length)
+if(!m.length){
 
 m=[
 ["password","Password নিরাপত্তা"],
 ["phishing","Phishing নিরাপত্তা"]
 ];
 
+}
 
 results.innerHTML=m.map(x=>`
 
 <div class="result-card">
 
-<h3>
-${x[1]}
-</h3>
+<h3>${x[1]}</h3>
 
 <p>
 এই সমস্যার ধাপে ধাপে সমাধান দেখতে গাইড খুলুন।
@@ -2710,8 +2843,7 @@ ${x[1]}
 
 <button
 class="start-btn"
-onclick="openGuide('${x[0]}')"
->
+onclick="openGuide('${x[0]}')">
 গাইড দেখুন →
 </button>
 
@@ -2719,23 +2851,19 @@ onclick="openGuide('${x[0]}')"
 
 `).join("");
 
-
 results.classList.add("show");
 
 }
 
-
 document.getElementById("searchBtn").onclick=performSearch;
-
 
 searchInput.onkeydown=e=>{
 
-if(e.key==="Enter")
-
+if(e.key==="Enter"){
 performSearch();
+}
 
 };
-
 
 document.querySelectorAll(".quick-chip").forEach(b=>{
 
@@ -2766,15 +2894,10 @@ c.onclick=()=>{
 const map={
 
 facebook:"facebook",
-
 mobile:"network",
-
 email:"password",
-
 bank:"bank",
-
 social:"facebook",
-
 security:"phishing"
 
 };
@@ -2792,7 +2915,6 @@ openGuide(map[c.dataset.category]);
 
 const themeBtn=document.getElementById("themeBtn");
 
-
 if(localStorage.getItem("cybercare-theme")==="dark"){
 
 document.body.classList.add("dark");
@@ -2801,25 +2923,24 @@ themeBtn.textContent="🌙";
 
 }
 
-
 themeBtn.onclick=()=>{
 
 document.body.classList.toggle("dark");
 
-let d=document.body.classList.contains("dark");
+const dark=document.body.classList.contains("dark");
 
 localStorage.setItem(
 "cybercare-theme",
-d?"dark":"light"
+dark?"dark":"light"
 );
 
-themeBtn.textContent=d?"🌙":"☀️";
+themeBtn.textContent=dark?"🌙":"☀️";
 
 };
 
 
 /* =========================================================
-   LANGUAGE
+   LANGUAGE BUTTON
 ========================================================= */
 
 document.getElementById("languageBtn").onclick=()=>{
@@ -2832,7 +2953,7 @@ const langs=[
 "हिन्दी"
 ];
 
-const i=(langs.indexOf(el.textContent)+1)%3;
+const i=(langs.indexOf(el.textContent)+1)%langs.length;
 
 el.textContent=langs[i];
 
@@ -2847,7 +2968,6 @@ document.getElementById("menuBtn").onclick=()=>{
 
 const n=document.querySelector(".nav");
 
-
 if(n.style.display==="flex"){
 
 n.style.display="";
@@ -2855,7 +2975,6 @@ n.style.display="";
 return;
 
 }
-
 
 n.style.display="flex";
 
@@ -2869,7 +2988,7 @@ n.style.right="14px";
 
 n.style.padding="10px";
 
-n.style.background="var(--card)";
+n.style.background="var(--surface)";
 
 n.style.border="1px solid var(--border)";
 
@@ -2885,32 +3004,25 @@ n.style.alignItems="stretch";
 
 
 /* =========================================================
-   HELP
+   ALL HELP
 ========================================================= */
 
 document.getElementById("allHelpBtn").onclick=()=>{
 
 modalTitle.textContent="জরুরি সহায়তা";
 
-
 modalContent.innerHTML=`
 
 <div class="guide-step">
 
-<div class="step-number">
-1
-</div>
+<div class="step-number">1</div>
 
 <div>
-
-<h3>
-Cyber Fraud হলে
-</h3>
+<h3>Cyber Fraud হলে</h3>
 
 <p>
 দ্রুত 1930 নম্বরে যোগাযোগ করুন এবং transaction details সংরক্ষণ করুন।
 </p>
-
 </div>
 
 </div>
@@ -2918,20 +3030,14 @@ Cyber Fraud হলে
 
 <div class="guide-step">
 
-<div class="step-number">
-2
-</div>
+<div class="step-number">2</div>
 
 <div>
-
-<h3>
-Cyber Crime Report
-</h3>
+<h3>Cyber Crime Report</h3>
 
 <p>
 সরকারি cybercrime reporting portal ব্যবহার করে অভিযোগ করুন।
 </p>
-
 </div>
 
 </div>
@@ -2939,26 +3045,19 @@ Cyber Crime Report
 
 <div class="guide-step">
 
-<div class="step-number">
-3
-</div>
+<div class="step-number">3</div>
 
 <div>
-
-<h3>
-Evidence সংরক্ষণ করুন
-</h3>
+<h3>Evidence সংরক্ষণ করুন</h3>
 
 <p>
 Screenshot, SMS, transaction ID, phone number ও relevant link সংরক্ষণ করুন।
 </p>
-
 </div>
 
 </div>
 
 `;
-
 
 modalOverlay.classList.add("show");
 
@@ -2978,7 +3077,6 @@ behavior:"smooth"
 
 }
 
-
 function focusSearch(){
 
 searchInput.scrollIntoView({
@@ -2986,30 +3084,27 @@ behavior:"smooth",
 block:"center"
 });
 
-setTimeout(()=>searchInput.focus(),350);
+setTimeout(()=>{
+searchInput.focus();
+},350);
 
 }
-
 
 function goServices(){
 
-document.getElementById("services")
-.scrollIntoView({
+document.getElementById("services").scrollIntoView({
 behavior:"smooth"
 });
 
 }
-
 
 function goHelp(){
 
-document.getElementById("help")
-.scrollIntoView({
+document.getElementById("help").scrollIntoView({
 behavior:"smooth"
 });
 
 }
-
 
 function openEmergency(){
 
