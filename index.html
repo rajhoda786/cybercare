@@ -1,3118 +1,931 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CyberCare — Digital Help & Safety Center</title>
+  <title>CyberCare — Digital Help & Safety Center</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta
+    name="description"
+    content="CyberCare — সহজ ভাষায় ডিজিটাল সমস্যা সমাধান ও সাইবার নিরাপত্তা সহায়তা।"
+  >
 
-<style>
-/* =========================================================
-   CYBERCARE — FULL PROFESSIONAL WHITE UI
-========================================================= */
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
 
-html{
-    scroll-behavior:smooth;
-}
-
-:root{
-    --blue:#1769e0;
-    --blue-dark:#0b4eb8;
-    --blue-light:#edf5ff;
-    --blue-soft:#f5f9ff;
-
-    --text:#172033;
-    --heading:#101828;
-    --muted:#667085;
-
-    --white:#ffffff;
-    --page:#ffffff;
-    --surface:#ffffff;
-    --surface-soft:#f8fafc;
-
-    --border:#e8edf3;
-    --border-blue:#d9e8ff;
-
-    --green:#12966f;
-    --green-bg:#ecf9f4;
-
-    --red:#d92d56;
-    --red-bg:#fff3f6;
-
-    --shadow-sm:0 4px 18px rgba(16,24,40,.045);
-    --shadow:0 12px 35px rgba(16,24,40,.065);
-    --shadow-lg:0 25px 60px rgba(16,24,40,.10);
-
-    --radius:20px;
-}
-
-body{
-    font-family:"Noto Sans Bengali",Arial,sans-serif;
-    background:var(--page);
-    color:var(--text);
-    line-height:1.6;
-    overflow-x:hidden;
-}
-
-body.dark{
-    --page:#0b1422;
-    --surface:#101d2d;
-    --surface-soft:#0e1927;
-    --white:#101d2d;
-
-    --text:#e8eef7;
-    --heading:#ffffff;
-    --muted:#a8b4c4;
-
-    --border:#203249;
-    --border-blue:#284c79;
-
-    --blue-light:#122b49;
-    --blue-soft:#10243b;
-
-    background:#0b1422;
-}
-
-.container{
-    width:min(1320px,calc(100% - 48px));
-    margin:auto;
-}
-
-button,
-input{
-    font-family:inherit;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    height:76px;
-
-    background:rgba(255,255,255,.94);
-    border-bottom:1px solid var(--border);
-
-    backdrop-filter:blur(18px);
-}
-
-body.dark header{
-    background:rgba(16,29,45,.94);
-}
-
-.header-inner{
-    height:100%;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:25px;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:11px;
-
-    text-decoration:none;
-    color:var(--text);
-
-    min-width:max-content;
-}
-
-.logo-icon{
-    width:42px;
-    height:42px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:var(--blue-light);
-    border:1px solid var(--border-blue);
-
-    border-radius:13px;
-
-    font-size:22px;
-}
-
-.logo-title{
-    color:var(--blue);
-
-    font-size:19px;
-    font-weight:900;
-
-    line-height:1.1;
-}
-
-.logo-sub{
-    color:var(--muted);
-
-    font-size:8px;
-    font-weight:600;
-
-    margin-top:2px;
-}
-
-.nav{
-    display:flex;
-    align-items:center;
-    gap:2px;
-}
-
-.nav a{
-    padding:9px 11px;
-
-    border-radius:9px;
-
-    text-decoration:none;
-    color:var(--muted);
-
-    font-size:11px;
-    font-weight:700;
-
-    transition:.2s;
-}
-
-.nav a:hover,
-.nav a.active{
-    color:var(--blue);
-    background:var(--blue-light);
-}
-
-.header-actions{
-    display:flex;
-    align-items:center;
-    gap:7px;
-}
-
-.action-btn{
-    height:39px;
-    min-width:39px;
-
-    padding:0 10px;
-
-    border:1px solid var(--border);
-    border-radius:11px;
-
-    background:var(--surface);
-    color:var(--text);
-
-    cursor:pointer;
-
-    font-size:12px;
-    font-weight:700;
-
-    transition:.2s;
-}
-
-.action-btn:hover{
-    border-color:var(--border-blue);
-    color:var(--blue);
-    background:var(--blue-light);
-}
-
-.menu-btn{
-    display:none;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-    position:relative;
-
-    padding:76px 0 55px;
-
-    background:#fff;
-
-    overflow:hidden;
-}
-
-body.dark .hero{
-    background:var(--page);
-}
-
-.hero::before{
-    content:"";
-
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    right:-170px;
-    top:-170px;
-
-    border-radius:50%;
-
-    background:#f5f9ff;
-
-    pointer-events:none;
-}
-
-body.dark .hero::before{
-    background:#10233b;
-}
-
-.hero-grid{
-    position:relative;
-    z-index:2;
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
-    align-items:center;
-
-    gap:35px;
-}
-
-
-/* LEFT */
-
-.hero-content{
-    max-width:650px;
-}
-
-.badge{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-
-    padding:8px 13px;
-
-    border:1px solid var(--border-blue);
-    border-radius:999px;
-
-    background:var(--blue-light);
-    color:var(--blue);
-
-    font-size:10px;
-    font-weight:800;
-
-    margin-bottom:20px;
-}
-
-.hero h1{
-    color:var(--heading);
-
-    font-size:clamp(38px,4.3vw,61px);
-    line-height:1.12;
-
-    letter-spacing:-2px;
-
-    font-weight:900;
-}
-
-.hero h1 span{
-    color:var(--blue);
-}
-
-.hero-description{
-    max-width:570px;
-
-    margin:21px 0 25px;
-
-    color:var(--muted);
-
-    font-size:14px;
-    line-height:1.8;
-}
-
-.hero-actions{
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    margin-bottom:27px;
-}
-
-.hero-primary{
-    height:47px;
-
-    padding:0 21px;
-
-    border:0;
-    border-radius:11px;
-
-    background:var(--blue);
-    color:#fff;
-
-    cursor:pointer;
-
-    font-size:11px;
-    font-weight:800;
-
-    box-shadow:0 8px 22px rgba(23,105,224,.20);
-}
-
-.hero-primary:hover{
-    background:var(--blue-dark);
-}
-
-.hero-secondary{
-    height:47px;
-
-    padding:0 18px;
-
-    border:1px solid var(--border);
-
-    border-radius:11px;
-
-    background:#fff;
-    color:var(--text);
-
-    cursor:pointer;
-
-    font-size:11px;
-    font-weight:800;
-}
-
-body.dark .hero-secondary{
-    background:var(--surface);
-}
-
-.hero-points{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px 20px;
-}
-
-.hero-point{
-    display:flex;
-    align-items:center;
-    gap:7px;
-
-    color:var(--muted);
-
-    font-size:10px;
-    font-weight:700;
-}
-
-.check{
-    width:22px;
-    height:22px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:var(--green-bg);
-    color:var(--green);
-
-    font-size:11px;
-    font-weight:900;
-}
-
-
-/* =========================================================
-   HERO IMAGE
-========================================================= */
-
-.hero-visual{
-    position:relative;
-
-    min-height:500px;
-
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-
-    overflow:hidden;
-
-    background:transparent;
-}
-
-.hero-visual::before{
-    content:"";
-
-    position:absolute;
-
-    width:440px;
-    height:440px;
-
-    right:50%;
-    bottom:-55px;
-
-    transform:translateX(50%);
-
-    border-radius:50%;
-
-    background:#f1f7ff;
-
-    z-index:0;
-}
-
-body.dark .hero-visual::before{
-    background:#112944;
-}
-
-.hero-visual::after{
-    content:"";
-
-    position:absolute;
-
-    width:330px;
-    height:75px;
-
-    left:50%;
-    bottom:12px;
-
-    transform:translateX(-50%);
-
-    border-radius:50%;
-
-    background:rgba(24,72,130,.10);
-
-    filter:blur(22px);
-
-    z-index:1;
-}
-
-.hero-image{
-    position:relative;
-    z-index:3;
-
-    display:block;
-
-    width:100%;
-    height:520px;
-
-    object-fit:contain;
-    object-position:center bottom;
-
-    filter:drop-shadow(0 25px 30px rgba(16,45,85,.13));
-
-    transition:transform .35s ease;
-}
-
-.hero-image:hover{
-    transform:translateY(-7px);
-}
-
-.hero-bubble{
-    display:none !important;
-}
-
-
-/* =========================================================
-   TRUST STRIP
-========================================================= */
-
-.trust-strip{
-    padding:0 0 35px;
-}
-
-.trust-box{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-
-    border:1px solid var(--border);
-    border-radius:18px;
-
-    background:var(--surface);
-
-    box-shadow:var(--shadow-sm);
-
-    overflow:hidden;
-}
-
-.trust-item{
-    min-height:86px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:10px;
-
-    border-right:1px solid var(--border);
-}
-
-.trust-item:last-child{
-    border-right:0;
-}
-
-.trust-icon{
-    width:38px;
-    height:38px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:11px;
-
-    background:var(--blue-light);
-
-    font-size:18px;
-}
-
-.trust-item strong{
-    display:block;
-
-    font-size:11px;
-    color:var(--heading);
-}
-
-.trust-item span{
-    display:block;
-
-    font-size:8px;
-    color:var(--muted);
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.search-section{
-    padding:10px 0 35px;
-}
-
-.search-box{
-    position:relative;
-
-    padding:25px;
-
-    border:1px solid var(--border-blue);
-    border-radius:22px;
-
-    background:linear-gradient(
-        135deg,
-        #ffffff 0%,
-        #f8fbff 100%
-    );
-
-    box-shadow:var(--shadow);
-}
-
-body.dark .search-box{
-    background:var(--surface);
-}
-
-.search-title{
-    color:var(--heading);
-
-    font-size:17px;
-    font-weight:900;
-
-    margin-bottom:13px;
-}
-
-.search-title span{
-    color:var(--blue);
-}
-
-.search-row{
-    display:flex;
-    gap:9px;
-}
-
-.search-input{
-    flex:1;
-
-    height:51px;
-
-    border:1px solid var(--border);
-    border-radius:12px;
-
-    outline:none;
-
-    padding:0 16px;
-
-    background:#fff;
-    color:var(--text);
-
-    font-size:12px;
-
-    transition:.2s;
-}
-
-body.dark .search-input{
-    background:var(--surface-soft);
-}
-
-.search-input:focus{
-    border-color:var(--blue);
-    box-shadow:0 0 0 3px rgba(23,105,224,.08);
-}
-
-.primary-btn{
-    height:51px;
-
-    padding:0 27px;
-
-    border:0;
-    border-radius:12px;
-
-    background:var(--blue);
-    color:#fff;
-
-    cursor:pointer;
-
-    font-size:11px;
-    font-weight:800;
-}
-
-.primary-btn:hover{
-    background:var(--blue-dark);
-}
-
-.quick-searches{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-
-    gap:6px;
-
-    margin-top:11px;
-}
-
-.quick-label{
-    color:var(--muted);
-
-    font-size:9px;
-    font-weight:700;
-}
-
-.quick-chip{
-    padding:6px 10px;
-
-    border:1px solid var(--border);
-    border-radius:999px;
-
-    background:#fff;
-    color:var(--muted);
-
-    cursor:pointer;
-
-    font-size:8px;
-    font-weight:700;
-}
-
-body.dark .quick-chip{
-    background:var(--surface);
-}
-
-.quick-chip:hover{
-    border-color:var(--border-blue);
-    color:var(--blue);
-}
-
-.search-results{
-    display:none;
-
-    margin-top:14px;
-}
-
-.search-results.show{
-    display:block;
-}
-
-.result-card{
-    padding:13px;
-
-    margin-bottom:8px;
-
-    border:1px solid var(--border-blue);
-    border-radius:13px;
-
-    background:var(--blue-light);
-}
-
-.result-card h3{
-    color:var(--blue);
-
-    font-size:12px;
-}
-
-.result-card p{
-    color:var(--muted);
-
-    font-size:9px;
-
-    margin:3px 0 7px;
-}
-
-
-/* =========================================================
-   GENERAL SECTION
-========================================================= */
-
-.section{
-    padding:30px 0;
-}
-
-.section-heading{
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-
-    margin-bottom:17px;
-}
-
-.section-heading h2{
-    color:var(--heading);
-
-    font-size:24px;
-    font-weight:900;
-
-    letter-spacing:-.5px;
-}
-
-.section-heading p{
-    color:var(--muted);
-
-    font-size:10px;
-
-    margin-top:2px;
-}
-
-.view-all{
-    color:var(--blue);
-
-    text-decoration:none;
-
-    font-size:10px;
-    font-weight:800;
-}
-
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-
-    gap:12px;
-}
-
-.category-card{
-    position:relative;
-
-    min-height:165px;
-
-    padding:18px 15px;
-
-    border:1px solid var(--border);
-    border-radius:17px;
-
-    background:var(--surface);
-
-    box-shadow:var(--shadow-sm);
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.category-card:hover{
-    transform:translateY(-5px);
-
-    border-color:var(--border-blue);
-
-    box-shadow:var(--shadow);
-}
-
-.category-icon{
-    width:45px;
-    height:45px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:13px;
-
-    background:var(--blue-light);
-
-    font-size:22px;
-}
-
-.category-card h3{
-    color:var(--heading);
-
-    font-size:12px;
-
-    margin-top:11px;
-}
-
-.category-card p{
-    color:var(--muted);
-
-    font-size:8px;
-    line-height:1.55;
-
-    margin-top:3px;
-}
-
-.card-link{
-    position:absolute;
-
-    left:15px;
-    bottom:14px;
-
-    color:var(--blue);
-
-    font-size:8px;
-    font-weight:800;
-}
-
-
-/* =========================================================
-   SERVICES
-========================================================= */
-
-.content-grid{
-    display:grid;
-
-    grid-template-columns:minmax(0,1fr) 315px;
-
-    gap:25px;
-
-    align-items:start;
-}
-
-.service-grid{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:12px;
-}
-
-.service-card{
-    position:relative;
-
-    min-height:190px;
-
-    padding:18px;
-
-    border:1px solid var(--border);
-    border-radius:17px;
-
-    background:var(--surface);
-
-    box-shadow:var(--shadow-sm);
-
-    transition:.25s;
-}
-
-.service-card:hover{
-    transform:translateY(-4px);
-
-    border-color:var(--border-blue);
-
-    box-shadow:var(--shadow);
-}
-
-.service-icon{
-    width:42px;
-    height:42px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:12px;
-
-    background:var(--blue-light);
-
-    font-size:21px;
-}
-
-.service-card h3{
-    color:var(--heading);
-
-    font-size:12px;
-
-    margin-top:10px;
-}
-
-.service-card p{
-    color:var(--muted);
-
-    font-size:8.5px;
-    line-height:1.6;
-
-    margin-top:4px;
-}
-
-.steps{
-    color:var(--blue);
-
-    font-size:8px;
-    font-weight:800;
-
-    margin-top:9px;
-}
-
-.start-btn{
-    display:inline-flex;
-    align-items:center;
-
-    margin-top:8px;
-
-    padding:6px 10px;
-
-    border-radius:8px;
-
-    background:var(--blue-light);
-    color:var(--blue);
-
-    text-decoration:none;
-
-    font-size:8px;
-    font-weight:800;
-
-    transition:.2s;
-}
-
-.start-btn:hover{
-    background:var(--blue);
-    color:#fff;
-}
-
-
-/* =========================================================
-   QUICK HELP
-========================================================= */
-
-.quick-help{
-    position:sticky;
-    top:95px;
-
-    padding:19px;
-
-    border:1px solid var(--border);
-    border-radius:18px;
-
-    background:var(--surface);
-
-    box-shadow:var(--shadow);
-}
-
-.quick-help h2{
-    color:var(--heading);
-
-    padding-bottom:12px;
-
-    border-bottom:1px solid var(--border);
-
-    font-size:16px;
-    font-weight:900;
-}
-
-.help-item{
-    display:flex;
-    align-items:center;
-
-    gap:9px;
-
-    padding:12px 0;
-
-    border-bottom:1px solid var(--border);
-}
-
-.help-icon{
-    width:37px;
-    height:37px;
-
-    flex:none;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:10px;
-
-    background:var(--blue-light);
-
-    font-size:17px;
-}
-
-.help-text{
-    flex:1;
-}
-
-.help-text strong{
-    display:block;
-
-    color:var(--heading);
-
-    font-size:9px;
-}
-
-.help-text span{
-    display:block;
-
-    color:var(--muted);
-
-    font-size:7.5px;
-}
-
-.help-link{
-    color:var(--blue);
-
-    text-decoration:none;
-
-    font-size:8px;
-    font-weight:900;
-}
-
-.help-all{
-    width:100%;
-    height:40px;
-
-    margin-top:12px;
-
-    border:0;
-    border-radius:10px;
-
-    background:var(--blue-light);
-    color:var(--blue);
-
-    cursor:pointer;
-
-    font-size:9px;
-    font-weight:800;
-}
-
-
-/* =========================================================
-   FEATURE BANNER
-========================================================= */
-
-.feature-banner{
-    margin:25px 0;
-
-    position:relative;
-
-    overflow:hidden;
-
-    padding:28px 30px;
-
-    border:1px solid var(--border-blue);
-    border-radius:22px;
-
-    background:linear-gradient(
-        110deg,
-        #f4f9ff,
-        #ffffff
-    );
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:30px;
-}
-
-body.dark .feature-banner{
-    background:var(--surface);
-}
-
-.feature-banner::after{
-    content:"";
-
-    position:absolute;
-
-    width:220px;
-    height:220px;
-
-    right:-70px;
-    top:-80px;
-
-    border-radius:50%;
-
-    background:#eaf3ff;
-}
-
-body.dark .feature-banner::after{
-    background:#122d4b;
-}
-
-.feature-content{
-    position:relative;
-    z-index:2;
-}
-
-.feature-label{
-    color:var(--blue);
-
-    font-size:9px;
-    font-weight:900;
-
-    text-transform:uppercase;
-}
-
-.feature-banner h2{
-    color:var(--heading);
-
-    font-size:23px;
-
-    margin:4px 0;
-}
-
-.feature-banner p{
-    color:var(--muted);
-
-    font-size:9px;
-
-    max-width:650px;
-}
-
-.feature-button{
-    position:relative;
-    z-index:2;
-
-    min-width:130px;
-    height:43px;
-
-    border:0;
-    border-radius:10px;
-
-    background:var(--blue);
-    color:#fff;
-
-    cursor:pointer;
-
-    font-size:9px;
-    font-weight:800;
-}
-
-
-/* =========================================================
-   EMERGENCY
-========================================================= */
-
-.emergency{
-    margin:28px 0 42px;
-
-    padding:20px 22px;
-
-    border:1px solid #f1d6df;
-    border-radius:18px;
-
-    background:var(--red-bg);
-}
-
-.emergency-inner{
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
-    gap:20px;
-}
-
-.emergency h2{
-    color:#8d203c;
-
-    font-size:16px;
-}
-
-.emergency p{
-    color:var(--muted);
-
-    font-size:9px;
-}
-
-.emergency-number{
-    color:var(--red);
-
-    font-size:27px;
-    font-weight:900;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    background:#0e2947;
-    color:#fff;
-}
-
-.footer-grid{
-    display:grid;
-
-    grid-template-columns:1.5fr 1fr 1fr 1fr;
-
-    gap:35px;
-
-    padding:45px 0;
-}
-
-.footer-brand h2{
-    font-size:20px;
-}
-
-.footer-brand p{
-    max-width:350px;
-
-    color:#aebed0;
-
-    font-size:9px;
-
-    margin-top:8px;
-}
-
-.footer-col h3{
-    font-size:11px;
-
-    margin-bottom:10px;
-}
-
-.footer-col a{
-    display:block;
-
-    color:#aebed0;
-
-    text-decoration:none;
-
-    font-size:8.5px;
-
-    margin:7px 0;
-}
-
-.footer-col a:hover{
-    color:#fff;
-}
-
-.footer-bottom{
-    padding:14px;
-
-    border-top:1px solid rgba(255,255,255,.12);
-
-    color:#92a7bc;
-
-    text-align:center;
-
-    font-size:8px;
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal-overlay{
-    position:fixed;
-    inset:0;
-
-    z-index:3000;
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:18px;
-
-    background:rgba(4,15,28,.64);
-
-    backdrop-filter:blur(5px);
-}
-
-.modal-overlay.show{
-    display:flex;
-}
-
-.modal{
-    width:min(620px,100%);
-    max-height:85vh;
-
-    overflow:auto;
-
-    padding:23px;
-
-    border-radius:20px;
-
-    background:var(--surface);
-
-    box-shadow:0 30px 80px rgba(0,0,0,.20);
-}
-
-.modal-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    margin-bottom:12px;
-}
-
-.modal-header h2{
-    color:var(--heading);
-
-    font-size:17px;
-}
-
-.close-modal{
-    width:35px;
-    height:35px;
-
-    border:0;
-    border-radius:9px;
-
-    background:var(--blue-light);
-    color:var(--blue);
-
-    cursor:pointer;
-
-    font-size:20px;
-}
-
-.guide-step{
-    display:flex;
-    gap:12px;
-
-    padding:13px 0;
-
-    border-bottom:1px solid var(--border);
-}
-
-.step-number{
-    width:29px;
-    height:29px;
-
-    flex:none;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:var(--blue);
-    color:#fff;
-
-    font-size:10px;
-    font-weight:900;
-}
-
-.guide-step h3{
-    color:var(--heading);
-
-    font-size:11px;
-}
-
-.guide-step p{
-    color:var(--muted);
-
-    font-size:9px;
-
-    margin-top:2px;
-}
-
-
-/* =========================================================
-   MOBILE BOTTOM NAV
-========================================================= */
-
-.mobile-bottom-nav{
-    display:none;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media(max-width:1100px){
-
-    .nav{
-        display:none;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-    .hero-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .category-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .content-grid{
-        grid-template-columns:1fr;
-    }
-
-    .quick-help{
-        position:static;
-    }
-
-    .quick-help-list{
-        display:grid;
-
-        grid-template-columns:1fr 1fr;
-
-        column-gap:20px;
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:700px){
-
-    body{
-        padding-bottom:65px;
-    }
-
-    .container{
-        width:calc(100% - 28px);
-    }
-
-    header{
-        height:65px;
-    }
-
-    .logo-icon{
-        width:37px;
-        height:37px;
-
-        font-size:20px;
-    }
-
-    .logo-title{
-        font-size:16px;
-    }
-
-    .logo-sub{
-        display:none;
-    }
-
-    .header-actions{
-        gap:5px;
-    }
-
-    .action-btn{
-        height:36px;
-        min-width:36px;
-
-        padding:0 8px;
-    }
-
-    .lang-text{
-        display:none;
-    }
-
-
-    /* HERO */
-
-    .hero{
-        padding:37px 0 20px;
-    }
-
-    .hero::before{
-        width:280px;
-        height:280px;
-
-        right:-130px;
-        top:-130px;
-    }
-
-    .hero-grid{
-        grid-template-columns:1fr;
-
-        gap:4px;
-    }
-
-    .hero-content{
-        max-width:none;
-    }
-
-    .badge{
-        margin-bottom:14px;
-
-        padding:7px 11px;
-
-        font-size:8px;
-    }
-
-    .hero h1{
-        font-size:34px;
-
-        letter-spacing:-1px;
-    }
-
-    .hero-description{
-        margin:14px 0 18px;
-
-        font-size:10px;
-        line-height:1.75;
-    }
-
-    .hero-actions{
-        margin-bottom:20px;
-    }
-
-    .hero-primary,
-    .hero-secondary{
-        height:42px;
-
-        padding:0 15px;
-
-        font-size:9px;
-    }
-
-    .hero-points{
-        gap:7px 12px;
-    }
-
-    .hero-point{
-        font-size:8px;
-    }
-
-    .check{
-        width:19px;
-        height:19px;
-
-        font-size:9px;
-    }
-
-
-    /* IMAGE */
-
-    .hero-visual{
-        min-height:350px;
-
-        margin-top:5px;
-    }
-
-    .hero-visual::before{
-        width:315px;
-        height:315px;
-
-        bottom:-35px;
-    }
-
-    .hero-visual::after{
-        width:230px;
-    }
-
-    .hero-image{
-        width:100%;
-        height:365px;
-    }
-
-
-    /* TRUST */
-
-    .trust-strip{
-        padding-bottom:20px;
-    }
-
-    .trust-box{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .trust-item{
-        min-height:70px;
-
-        justify-content:flex-start;
-
-        padding-left:15px;
-
-        border-bottom:1px solid var(--border);
-    }
-
-    .trust-item:nth-child(2){
-        border-right:0;
-    }
-
-    .trust-item:nth-child(3),
-    .trust-item:nth-child(4){
-        border-bottom:0;
-    }
-
-    .trust-icon{
-        width:32px;
-        height:32px;
-
-        font-size:15px;
-    }
-
-    .trust-item strong{
-        font-size:9px;
-    }
-
-    .trust-item span{
-        font-size:7px;
-    }
-
-
-    /* SEARCH */
-
-    .search-section{
-        padding-top:5px;
-    }
-
-    .search-box{
-        padding:15px;
-
-        border-radius:17px;
-    }
-
-    .search-title{
-        font-size:13px;
-    }
-
-    .search-row{
-        flex-direction:column;
-    }
-
-    .search-input{
-        height:45px;
-
-        font-size:10px;
-    }
-
-    .primary-btn{
-        height:43px;
-    }
-
-    .quick-searches{
-        gap:5px;
-    }
-
-
-    /* SECTION */
-
-    .section{
-        padding:22px 0;
-    }
-
-    .section-heading h2{
-        font-size:18px;
-    }
-
-    .section-heading p{
-        display:none;
-    }
-
-    .view-all{
-        font-size:8px;
-    }
-
-
-    /* CATEGORY */
-
-    .category-grid{
-        grid-template-columns:1fr 1fr;
-
-        gap:8px;
-    }
-
-    .category-card{
-        min-height:132px;
-
-        padding:13px;
-    }
-
-    .category-icon{
-        width:37px;
-        height:37px;
-
-        font-size:18px;
-    }
-
-    .category-card h3{
-        font-size:10px;
-    }
-
-    .category-card p{
-        font-size:7.5px;
-    }
-
-    .card-link{
-        left:13px;
-        bottom:11px;
-
-        font-size:7px;
-    }
-
-
-    /* SERVICES */
-
-    .service-grid{
-        grid-template-columns:1fr 1fr;
-
-        gap:8px;
-    }
-
-    .service-card{
-        min-height:165px;
-
-        padding:13px;
-    }
-
-    .service-icon{
-        width:36px;
-        height:36px;
-
-        font-size:18px;
-    }
-
-    .service-card h3{
-        font-size:9px;
-    }
-
-    .service-card p,
-    .steps{
-        font-size:7px;
-    }
-
-    .start-btn{
-        padding:5px 7px;
-
-        font-size:7px;
-    }
-
-
-    /* QUICK HELP */
-
-    .quick-help{
-        margin-top:18px;
-
-        padding:15px;
-    }
-
-    .quick-help-list{
-        display:block;
-    }
-
-
-    /* FEATURE */
-
-    .feature-banner{
-        padding:20px;
-
-        align-items:flex-start;
-
-        flex-direction:column;
-
-        gap:14px;
-    }
-
-    .feature-banner h2{
-        font-size:18px;
-    }
-
-    .feature-banner p{
-        font-size:8px;
-    }
-
-    .feature-button{
-        width:100%;
-    }
-
-
-    /* EMERGENCY */
-
-    .emergency{
-        padding:15px;
-
-        margin:20px 0 28px;
-    }
-
-    .emergency-inner{
-        align-items:flex-start;
-
-        flex-direction:column;
-
-        gap:5px;
-    }
-
-    .emergency h2{
-        font-size:13px;
-    }
-
-    .emergency p{
-        font-size:8px;
-    }
-
-    .emergency-number{
-        font-size:22px;
-    }
-
-
-    /* FOOTER */
-
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
-
-        gap:22px;
-
-        padding:28px 0;
-    }
-
-    .footer-brand{
-        grid-column:1/-1;
-    }
-
-
-    /* MOBILE NAV */
-
-    .mobile-bottom-nav{
-        position:fixed;
-
-        left:0;
-        right:0;
-        bottom:0;
-
-        z-index:2000;
-
-        height:63px;
-
-        display:flex;
-
-        background:rgba(255,255,255,.97);
-
-        border-top:1px solid var(--border);
-
-        backdrop-filter:blur(15px);
-    }
-
-    body.dark .mobile-bottom-nav{
-        background:rgba(16,29,45,.97);
-    }
-
-    .bottom-item{
-        flex:1;
-
-        border:0;
-
-        background:transparent;
-
-        color:var(--muted);
-
-        cursor:pointer;
-
-        font-family:inherit;
-
-        font-size:7px;
-
-        display:flex;
-        flex-direction:column;
-
-        align-items:center;
-        justify-content:center;
-
-        gap:1px;
-    }
-
-    .bottom-item span:first-child{
-        font-size:17px;
-    }
-
-    .bottom-item.active{
-        color:var(--blue);
-
-        font-weight:800;
-    }
-}
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
 
-<header>
-<div class="container header-inner">
+      <a href="#home" class="logo">
+        <span class="logo-icon">🛡️</span>
 
-<a href="#home" class="logo">
+        <span class="logo-text">
+          <strong>CyberCare</strong>
+          <small>Digital Help & Safety Center</small>
+        </span>
+      </a>
 
-<div class="logo-icon">🛡️</div>
+      <nav class="desktop-nav">
+        <a href="#home" class="active">হোম</a>
+        <a href="#categories">সহায়তা</a>
+        <a href="#services">সার্ভিস</a>
+        <a href="#security">নিরাপত্তা</a>
+        <a href="#emergency">জরুরি সহায়তা</a>
+      </nav>
 
-<div>
-<div class="logo-title">সাইবারকেয়ার (CyberCare)</div>
-<div class="logo-sub">আপনার ডিজিটাল বন্ধু, সব সমস্যার সহজ সমাধান</div>
-</div>
+      <div class="header-actions">
 
-</a>
+        <button class="icon-btn" id="languageBtn" type="button">
+          🌐 <span>বাংলা</span>
+        </button>
 
-<nav class="nav">
+        <button class="icon-btn" id="themeBtn" type="button">
+          ☀️
+        </button>
 
-<a href="#home" class="active">হোম</a>
-<a href="#categories">ফেসবুক</a>
-<a href="#categories">মোবাইল</a>
-<a href="#categories">ইমেইল</a>
-<a href="#categories">অ্যাকাউন্ট</a>
-<a href="#categories">ব্যাংকিং</a>
-<a href="#services">সাইবার নিরাপত্তা</a>
-<a href="#help">জরুরি সহায়তা</a>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button">
+          ☰
+        </button>
 
-</nav>
+      </div>
 
-<div class="header-actions">
+    </div>
+  </header>
 
-<button class="action-btn" id="languageBtn">
-🌐 <span class="lang-text">বাংলা</span>
-</button>
 
-<button class="action-btn" id="themeBtn">☀️</button>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
 
-<button class="action-btn menu-btn" id="menuBtn">☰</button>
+    <a href="#home">হোম</a>
+    <a href="#categories">সহায়তা</a>
+    <a href="#services">সার্ভিস</a>
+    <a href="#security">নিরাপত্তা</a>
+    <a href="#emergency">জরুরি সহায়তা</a>
 
-</div>
+  </div>
 
-</div>
-</header>
 
+  <main>
 
-<main id="home">
+    <!-- HERO -->
+    <section class="hero" id="home">
 
-<div class="container">
+      <div class="container hero-grid">
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+        <div class="hero-content">
 
-<section class="hero">
+          <div class="hero-badge">
+            🛡️ CyberCare Digital Safety Center
+          </div>
 
-<div class="hero-grid">
+          <h1>
+            আপনার ডিজিটাল সমস্যার
+            <span>সহজ সমাধান</span>
+          </h1>
 
-<div class="hero-content">
+          <p>
+            Facebook, Gmail, মোবাইল, OTP, ব্যাংকিং,
+            অ্যাকাউন্ট এবং সাইবার নিরাপত্তা—
+            প্রয়োজনীয় গাইড এক জায়গায়।
+          </p>
 
-<div class="badge">
-🛡️ CyberCare Digital Safety Center
-</div>
+          <div class="hero-buttons">
 
-<h1>
-আপনার যে কোনো ডিজিটাল সমস্যার
-<br>
-<span>সহজ ও কার্যকর সমাধান</span>
-</h1>
+            <button
+              class="btn btn-primary"
+              id="heroSearchBtn"
+              type="button"
+            >
+              🔍 সমস্যা খুঁজুন
+            </button>
 
-<p class="hero-description">
-ধাপে ধাপে গাইড, স্মার্ট সমস্যা সমাধান এবং প্রয়োজনীয় নিরাপত্তা টুলস — আপনার ডিজিটাল সমস্যার সমাধান এখন এক জায়গায়।
-</p>
+            <a
+              class="btn btn-secondary"
+              href="#services"
+            >
+              গাইড দেখুন →
+            </a>
 
-<div class="hero-actions">
+          </div>
 
-<button class="hero-primary" onclick="focusSearch()">
-🔍 সমস্যার সমাধান খুঁজুন
-</button>
+          <div class="hero-features">
+            <span>✓ সহজ ভাষা</span>
+            <span>✓ Step-by-Step</span>
+            <span>✓ Safety First</span>
+          </div>
 
-<button class="hero-secondary" onclick="goServices()">
-গাইড দেখুন →
-</button>
+        </div>
 
-</div>
 
-<div class="hero-points">
+        <div class="hero-visual">
 
-<div class="hero-point">
-<span class="check">✓</span>
-সহজ ভাষায় ধাপে ধাপে গাইড
-</div>
+          <div class="hero-circle"></div>
 
-<div class="hero-point">
-<span class="check">✓</span>
-নিরাপত্তা-কেন্দ্রিক সহায়তা
-</div>
+          <img
+            src="assets/hero-person.png"
+            alt="CyberCare Digital Safety"
+            class="hero-image"
+            onerror="this.style.display='none'; document.querySelector('.image-fallback').classList.add('show');"
+          >
 
-<div class="hero-point">
-<span class="check">✓</span>
-প্রয়োজনীয় টুলস ও গাইড
-</div>
+          <div class="image-fallback">
+            <span>🛡️</span>
+            <strong>CyberCare</strong>
+            <small>Digital Safety</small>
+          </div>
 
-</div>
+        </div>
 
-</div>
+      </div>
 
+    </section>
 
-<!-- HERO IMAGE -->
 
-<div class="hero-visual">
+    <!-- TRUST -->
+    <section class="trust-section">
 
-<img
-class="hero-image"
-src="assets/hero-person.png"
-alt="CyberCare Digital Safety"
-onerror="this.style.display='none'; document.getElementById('imageError').style.display='flex';"
->
+      <div class="container">
 
-<div id="imageError" style="
-display:none;
-position:absolute;
-inset:0;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-text-align:center;
-color:#667085;
-font-size:13px;
-z-index:5;
-">
+        <div class="trust-grid">
 
-<div style="font-size:35px;margin-bottom:8px;">🖼️</div>
+          <div class="trust-card">
+            <span>🛡️</span>
 
-<strong>Hero image পাওয়া যায়নি</strong>
+            <div>
+              <strong>Safety First</strong>
+              <small>নিরাপত্তা-কেন্দ্রিক সহায়তা</small>
+            </div>
+          </div>
 
-<span style="font-size:10px;margin-top:4px;">
-assets/hero-person.png ফাইলটি GitHub-এ আছে কিনা দেখুন
-</span>
 
-</div>
+          <div class="trust-card">
+            <span>📖</span>
 
-</div>
+            <div>
+              <strong>Step-by-Step</strong>
+              <small>সহজ ধাপে সমাধান</small>
+            </div>
+          </div>
 
-</div>
 
-</section>
+          <div class="trust-card">
+            <span>🔎</span>
 
+            <div>
+              <strong>Smart Help</strong>
+              <small>সমস্যা অনুযায়ী গাইড</small>
+            </div>
+          </div>
 
-<!-- =========================================================
-     TRUST STRIP
-========================================================= -->
 
-<section class="trust-strip">
+          <div class="trust-card">
+            <span>🚨</span>
 
-<div class="trust-box">
+            <div>
+              <strong>Emergency</strong>
+              <small>জরুরি সহায়তা</small>
+            </div>
+          </div>
 
-<div class="trust-item">
-<div class="trust-icon">🛡️</div>
-<div>
-<strong>Safety First</strong>
-<span>নিরাপত্তা-কেন্দ্রিক গাইড</span>
-</div>
-</div>
+        </div>
 
-<div class="trust-item">
-<div class="trust-icon">📖</div>
-<div>
-<strong>Step-by-Step</strong>
-<span>সহজ ধাপে সমাধান</span>
-</div>
-</div>
+      </div>
 
-<div class="trust-item">
-<div class="trust-icon">🔎</div>
-<div>
-<strong>Smart Help</strong>
-<span>সমস্যা অনুযায়ী গাইড</span>
-</div>
-</div>
+    </section>
 
-<div class="trust-item">
-<div class="trust-icon">🚨</div>
-<div>
-<strong>Emergency</strong>
-<span>জরুরি সহায়তা</span>
-</div>
-</div>
 
-</div>
+    <!-- SEARCH -->
+    <section class="search-section" id="search">
 
-</section>
+      <div class="container">
 
+        <div class="search-box">
 
-<!-- =========================================================
-     SEARCH
-========================================================= -->
+          <div class="section-title">
 
-<section class="search-section">
+            <span>🔍</span>
 
-<div class="search-box">
+            <div>
+              <h2>আপনার কি সমস্যা হচ্ছে?</h2>
+              <p>সমস্যাটা নিজের ভাষায় লিখুন।</p>
+            </div>
 
-<div class="search-title">
-🔍 <span>আপনার কি সমস্যা হচ্ছে?</span> আমরা সাহায্য করব।
-</div>
+          </div>
 
-<div class="search-row">
 
-<input
-id="problemSearch"
-class="search-input"
-placeholder="যেমন: Facebook লগইন হচ্ছে না, OTP আসছে না, মোবাইল গরম হচ্ছে..."
->
+          <div class="search-row">
 
-<button class="primary-btn" id="searchBtn">
-খুঁজুন
-</button>
+            <input
+              type="text"
+              id="problemSearch"
+              placeholder="যেমন: Facebook লগইন হচ্ছে না..."
+              autocomplete="off"
+            >
 
-</div>
+            <button
+              class="btn btn-primary"
+              id="searchBtn"
+              type="button"
+            >
+              খুঁজুন
+            </button>
 
-<div class="quick-searches">
+          </div>
 
-<span class="quick-label">জনপ্রিয় সার্চ:</span>
 
-<button class="quick-chip" data-search="Facebook লগইন হচ্ছে না">
-Facebook লগইন
-</button>
+          <div class="quick-searches">
 
-<button class="quick-chip" data-search="OTP আসছে না">
-OTP সমস্যা
-</button>
+            <span>জনপ্রিয়:</span>
 
-<button class="quick-chip" data-search="PIN ভুলে গেছি">
-PIN ভুলে গেছি
-</button>
+            <button
+              type="button"
+              class="quick-chip"
+              data-search="Facebook লগইন"
+            >
+              Facebook লগইন
+            </button>
 
-<button class="quick-chip" data-search="অ্যাকাউন্ট হ্যাক">
-অ্যাকাউন্ট হ্যাক
-</button>
+            <button
+              type="button"
+              class="quick-chip"
+              data-search="OTP আসছে না"
+            >
+              OTP সমস্যা
+            </button>
 
-<button class="quick-chip" data-search="ব্যাংক থেকে টাকা কেটে গেছে">
-ব্যাংকিং সমস্যা
-</button>
+            <button
+              type="button"
+              class="quick-chip"
+              data-search="অ্যাকাউন্ট হ্যাক"
+            >
+              অ্যাকাউন্ট হ্যাক
+            </button>
 
-</div>
+            <button
+              type="button"
+              class="quick-chip"
+              data-search="ব্যাংক থেকে টাকা কেটে গেছে"
+            >
+              ব্যাংকিং সমস্যা
+            </button>
 
-<div class="search-results" id="searchResults"></div>
+          </div>
 
-</div>
 
-</section>
+          <div
+            class="search-results"
+            id="searchResults"
+          ></div>
 
+        </div>
 
-<!-- =========================================================
-     CATEGORIES
-========================================================= -->
+      </div>
 
-<section class="section" id="categories">
+    </section>
 
-<div class="section-heading">
 
-<div>
-<h2>আপনার প্রয়োজনীয় সহায়তা</h2>
-<p>বিভিন্ন ধরনের ডিজিটাল সমস্যার জন্য দ্রুত সমাধান</p>
-</div>
+    <!-- CATEGORIES -->
+    <section class="section" id="categories">
 
-<a href="#services" class="view-all">সব দেখুন →</a>
+      <div class="container">
 
-</div>
+        <div class="section-heading">
 
+          <div>
+            <span class="eyebrow">HELP CENTER</span>
 
-<div class="category-grid">
+            <h2>আপনার প্রয়োজনীয় সহায়তা</h2>
 
-<div class="category-card" data-category="facebook">
-<div class="category-icon">📘</div>
-<h3>ফেসবুক সমস্যা</h3>
-<p>লগইন, হ্যাক, পাসওয়ার্ড, প্রাইভেসি, রিকভারি</p>
-<div class="card-link">সমাধান দেখুন →</div>
-</div>
+            <p>
+              যে সমস্যায় পড়েছেন, সেটি বেছে নিন।
+            </p>
+          </div>
 
-<div class="category-card" data-category="mobile">
-<div class="category-icon">📱</div>
-<h3>মোবাইল ও সিম</h3>
-<p>মোবাইল, সিম, নেটওয়ার্ক, ব্যাটারি</p>
-<div class="card-link">সমাধান দেখুন →</div>
-</div>
+        </div>
 
-<div class="category-card" data-category="email">
-<div class="category-icon">📧</div>
-<h3>Gmail ও ইমেইল</h3>
-<p>Gmail, পাসওয়ার্ড, রিকভারি, 2-Step Verify</p>
-<div class="card-link">সমাধান দেখুন →</div>
-</div>
 
-<div class="category-card" data-category="bank">
-<div class="category-icon">💳</div>
-<h3>ব্যাংকিং ও পেমেন্ট</h3>
-<p>UPI, ব্যাংক, টাকা কাটা, স্ক্যাম</p>
-<div class="card-link">সমাধান দেখুন →</div>
-</div>
+        <div class="category-grid">
 
-<div class="category-card" data-category="social">
-<div class="category-icon">🔗</div>
-<h3>সোশ্যাল মিডিয়া</h3>
-<p>WhatsApp, YouTube, TikTok, X, Snapchat</p>
-<div class="card-link">সমাধান দেখুন →</div>
-</div>
+          <article
+            class="category-card"
+            data-category="facebook"
+          >
 
-<div class="category-card" data-category="security">
-<div class="category-icon">🛡️</div>
-<h3>সাইবার নিরাপত্তা</h3>
-<p>ফিশিং, স্ক্যাম, হ্যাকিং, প্রাইভেসি</p>
-<div class="card-link">সমাধান দেখুন →</div>
-</div>
+            <div class="category-icon">📘</div>
 
-</div>
-</section>
+            <h3>ফেসবুক সমস্যা</h3>
 
+            <p>
+              Login, password, hacked account ও recovery.
+            </p>
 
-<!-- =========================================================
-     FEATURE BANNER
-========================================================= -->
+            <button type="button">
+              সমাধান দেখুন →
+            </button>
 
-<section class="feature-banner">
+          </article>
 
-<div class="feature-content">
 
-<div class="feature-label">CyberCare Smart Help</div>
+          <article
+            class="category-card"
+            data-category="mobile"
+          >
 
-<h2>সমস্যা বুঝতে পারছেন না?</h2>
+            <div class="category-icon">📱</div>
 
-<p>
-আপনার সমস্যাটা নিজের ভাষায় লিখুন। CyberCare আপনাকে সম্ভাব্য সমাধান ও প্রয়োজনীয় গাইড দেখাবে।
-</p>
+            <h3>মোবাইল ও সিম</h3>
 
-</div>
+            <p>
+              Network, SIM, battery ও ফোনের সাধারণ সমস্যা।
+            </p>
 
-<button class="feature-button" onclick="focusSearch()">
-Smart Search চালু করুন
-</button>
+            <button type="button">
+              সমাধান দেখুন →
+            </button>
 
-</section>
+          </article>
 
 
-<!-- =========================================================
-     SERVICES
-========================================================= -->
+          <article
+            class="category-card"
+            data-category="email"
+          >
 
-<section class="section" id="services">
+            <div class="category-icon">📧</div>
 
-<div class="content-grid">
+            <h3>Gmail ও ইমেইল</h3>
 
-<div>
+            <p>
+              Password, recovery ও account security.
+            </p>
 
-<div class="section-heading">
+            <button type="button">
+              সমাধান দেখুন →
+            </button>
 
-<div>
-<h2>সার্ভিস এরিয়া</h2>
-<p>জনপ্রিয় ডিজিটাল সমস্যা ও নিরাপত্তা গাইড</p>
-</div>
+          </article>
 
-</div>
 
+          <article
+            class="category-card"
+            data-category="bank"
+          >
 
-<div class="service-grid">
+            <div class="category-icon">💳</div>
 
-<div class="service-card">
-<div class="service-icon">📘</div>
-<h3>ফেসবুক লগইন সমস্যা</h3>
-<p>লগইন, পাসওয়ার্ড বা অ্যাকাউন্টে প্রবেশ করতে না পারলে কী করবেন।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="facebook">শুরু করুন →</a>
-</div>
+            <h3>ব্যাংকিং ও পেমেন্ট</h3>
 
-<div class="service-card">
-<div class="service-icon">🔐</div>
-<h3>অ্যাকাউন্ট হ্যাকড</h3>
-<p>অ্যাকাউন্ট হ্যাক হওয়ার সন্দেহ হলে নিরাপদ করার ধাপ।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="hacked">শুরু করুন →</a>
-</div>
+            <p>
+              Fraud, unknown transaction ও payment সমস্যা।
+            </p>
 
-<div class="service-card">
-<div class="service-icon">💬</div>
-<h3>OTP না আসলে</h3>
-<p>OTP না পাওয়া বা verification code-এর সমস্যা সমাধান।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="otp">শুরু করুন →</a>
-</div>
+            <button type="button">
+              সমাধান দেখুন →
+            </button>
 
-<div class="service-card">
-<div class="service-icon">📡</div>
-<h3>সিম / নেটওয়ার্ক</h3>
-<p>সিগন্যাল, কল, SMS এবং মোবাইল নেটওয়ার্ক সমস্যা।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="network">শুরু করুন →</a>
-</div>
+          </article>
 
-<div class="service-card">
-<div class="service-icon">🏦</div>
-<h3>ব্যাংক থেকে টাকা কেটে গেছে</h3>
-<p>অজানা transaction বা payment হলে নিরাপদ থাকার ধাপ।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="bank">শুরু করুন →</a>
-</div>
 
-<div class="service-card">
-<div class="service-icon">⚠️</div>
-<h3>স্ক্যাম ও ফিশিং</h3>
-<p>সন্দেহজনক link, message বা online scam চিনে নিন।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="scam">শুরু করুন →</a>
-</div>
+          <article
+            class="category-card"
+            data-category="social"
+          >
 
-<div class="service-card">
-<div class="service-icon">🔋</div>
-<h3>মোবাইল গরম / ব্যাটারি</h3>
-<p>ফোন বেশি গরম হওয়া বা দ্রুত battery শেষ হওয়ার কারণ খুঁজুন।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="battery">শুরু করুন →</a>
-</div>
+            <div class="category-icon">🔗</div>
 
-<div class="service-card">
-<div class="service-icon">🔑</div>
-<h3>পাসওয়ার্ড নিরাপত্তা</h3>
-<p>শক্তিশালী password তৈরি ও account নিরাপদ রাখুন।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="password">শুরু করুন →</a>
-</div>
+            <h3>সোশ্যাল মিডিয়া</h3>
 
-<div class="service-card">
-<div class="service-icon">🎣</div>
-<h3>Phishing Scanner</h3>
-<p>সন্দেহজনক link নিয়ে সতর্ক থাকার নিরাপত্তা গাইড।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="phishing">শুরু করুন →</a>
-</div>
+            <p>
+              WhatsApp, YouTube ও অন্যান্য social platform.
+            </p>
 
-</div>
-</div>
+            <button type="button">
+              সমাধান দেখুন →
+            </button>
 
+          </article>
 
-<!-- QUICK HELP -->
 
-<aside class="quick-help" id="help">
+          <article
+            class="category-card"
+            data-category="security"
+          >
 
-<h2>দ্রুত সহায়তা</h2>
+            <div class="category-icon">🛡️</div>
 
-<div class="quick-help-list">
+            <h3>সাইবার নিরাপত্তা</h3>
 
-<div class="help-item">
-<div class="help-icon">☎️</div>
+            <p>
+              Scam, phishing, privacy ও account safety.
+            </p>
 
-<div class="help-text">
-<strong>ইমার্জেন্সি হেল্পলাইন</strong>
-<span>জাতীয় সাইবার হেল্পলাইন</span>
-</div>
+            <button type="button">
+              সমাধান দেখুন →
+            </button>
 
-<a class="help-link" href="tel:1930">1930</a>
-</div>
+          </article>
 
-<div class="help-item">
-<div class="help-icon">🛡️</div>
+        </div>
 
-<div class="help-text">
-<strong>সাইবার ক্রাইম রিপোর্ট</strong>
-<span>অপরাধ রিপোর্ট করার ব্যবস্থা</span>
-</div>
+      </div>
 
-<a class="help-link"
-href="https://cybercrime.gov.in/"
-target="_blank">
-খুলুন
-</a>
-</div>
+    </section>
 
-<div class="help-item">
-<div class="help-icon">🔗</div>
 
-<div class="help-text">
-<strong>সন্দেহজনক লিংক</strong>
-<span>Link ও message যাচাই করুন</span>
-</div>
+    <!-- SERVICES -->
+    <section
+      class="section services-section"
+      id="services"
+    >
 
-<a class="help-link" href="#services">চেক</a>
-</div>
+      <div class="container">
 
-<div class="help-item">
-<div class="help-icon">👤</div>
+        <div class="section-heading">
 
-<div class="help-text">
-<strong>অ্যাকাউন্ট সুরক্ষা</strong>
-<span>Account নিরাপদ করার গাইড</span>
-</div>
+          <div>
 
-<a class="help-link" href="#services">দেখুন</a>
-</div>
+            <span class="eyebrow">
+              SMART GUIDES
+            </span>
 
-</div>
+            <h2>
+              জনপ্রিয় সমস্যা ও সমাধান
+            </h2>
 
-<button class="help-all" id="allHelpBtn">
-সব হেল্পলাইন দেখুন
-</button>
+            <p>
+              ধাপে ধাপে গাইড খুলতে নিচের যেকোনো একটি বেছে নিন।
+            </p>
 
-</aside>
+          </div>
 
-</div>
+        </div>
 
-</section>
 
+        <div class="service-grid">
 
-<!-- =========================================================
-     EMERGENCY
-========================================================= -->
+          <article class="service-card">
 
-<section class="emergency">
+            <div class="service-icon">📘</div>
 
-<div class="emergency-inner">
+            <h3>
+              Facebook Login সমস্যা
+            </h3>
 
-<div>
-<h2>🚨 জরুরি সাইবার সমস্যায় পড়েছেন?</h2>
-<p>টাকা সংক্রান্ত fraud বা cyber crime হলে দ্রুত ব্যবস্থা নিন।</p>
-</div>
+            <p>
+              Facebook account-এ login করতে না পারলে কী করবেন।
+            </p>
 
-<div class="emergency-number">1930</div>
+            <span>৪ Steps</span>
 
-</div>
+            <button
+              type="button"
+              data-guide="facebook"
+            >
+              গাইড খুলুন →
+            </button>
 
-</section>
+          </article>
 
-</div>
-</main>
 
+          <article class="service-card">
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+            <div class="service-icon">🔐</div>
 
-<footer>
+            <h3>
+              অ্যাকাউন্ট হ্যাকড
+            </h3>
 
-<div class="container footer-grid">
+            <p>
+              Account নিরাপদ করার গুরুত্বপূর্ণ ধাপগুলো দেখুন।
+            </p>
 
-<div class="footer-brand">
+            <span>৪ Steps</span>
 
-<h2>🛡️ CyberCare</h2>
+            <button
+              type="button"
+              data-guide="hacked"
+            >
+              গাইড খুলুন →
+            </button>
 
-<p>
-মানুষের ডিজিটাল সমস্যা সমাধান, নিরাপত্তা এবং সচেতনতার জন্য একটি সহজ ও ব্যবহারবান্ধব সহায়তা কেন্দ্র।
-</p>
+          </article>
 
-</div>
 
-<div class="footer-col">
-<h3>সহায়তা</h3>
-<a href="#categories">ফেসবুক</a>
-<a href="#categories">মোবাইল</a>
-<a href="#categories">Gmail</a>
-<a href="#categories">ব্যাংকিং</a>
-</div>
+          <article class="service-card">
 
-<div class="footer-col">
-<h3>নিরাপত্তা</h3>
-<a href="#services">Phishing</a>
-<a href="#services">Scam</a>
-<a href="#services">Password</a>
-<a href="#services">Account Safety</a>
-</div>
+            <div class="service-icon">💬</div>
 
-<div class="footer-col">
-<h3>জরুরি</h3>
+            <h3>
+              OTP আসছে না
+            </h3>
 
-<a href="tel:1930">
-Cyber Helpline 1930
-</a>
+            <p>
+              Verification code না এলে সম্ভাব্য সমাধান।
+            </p>
 
-<a href="https://cybercrime.gov.in/" target="_blank">
-Cyber Crime Report
-</a>
+            <span>৪ Steps</span>
 
-</div>
+            <button
+              type="button"
+              data-guide="otp"
+            >
+              গাইড খুলুন →
+            </button>
 
-</div>
+          </article>
 
-<div class="footer-bottom">
-© 2026 CyberCare — Protecting People. Securing Digital Lives.
-</div>
 
-</footer>
+          <article class="service-card">
 
+            <div class="service-icon">📡</div>
 
-<!-- =========================================================
-     MOBILE NAV
-========================================================= -->
+            <h3>
+              SIM / Network
+            </h3>
 
-<nav class="mobile-bottom-nav">
+            <p>
+              Signal, call, SMS ও network সমস্যা সমাধান।
+            </p>
 
-<button class="bottom-item active" onclick="goHome()">
-<span>⌂</span>
-<span>হোম</span>
-</button>
+            <span>৪ Steps</span>
 
-<button class="bottom-item" onclick="focusSearch()">
-<span>⌕</span>
-<span>সার্চ</span>
-</button>
+            <button
+              type="button"
+              data-guide="network"
+            >
+              গাইড খুলুন →
+            </button>
 
-<button class="bottom-item" onclick="openEmergency()">
-<span>🚨</span>
-<span>ইমার্জেন্সি</span>
-</button>
+          </article>
 
-<button class="bottom-item" onclick="goServices()">
-<span>📖</span>
-<span>শিক্ষা</span>
-</button>
 
-<button class="bottom-item" onclick="goHelp()">
-<span>👤</span>
-<span>সহায়তা</span>
-</button>
+          <article class="service-card">
 
-</nav>
+            <div class="service-icon">🏦</div>
 
+            <h3>
+              ব্যাংক থেকে টাকা কাটা
+            </h3>
 
-<!-- =========================================================
-     MODAL
-========================================================= -->
+            <p>
+              Unknown transaction হলে কী করবেন।
+            </p>
 
-<div class="modal-overlay" id="modalOverlay">
+            <span>৪ Steps</span>
 
-<div class="modal">
+            <button
+              type="button"
+              data-guide="bank"
+            >
+              গাইড খুলুন →
+            </button>
 
-<div class="modal-header">
+          </article>
 
-<h2 id="modalTitle">
-CyberCare Guide
-</h2>
 
-<button class="close-modal" id="closeModal">
-×
-</button>
+          <article class="service-card">
 
-</div>
+            <div class="service-icon">⚠️</div>
 
-<div id="modalContent"></div>
+            <h3>
+              Scam ও Phishing
+            </h3>
 
-</div>
+            <p>
+              Fake link ও online scam থেকে নিরাপদ থাকুন।
+            </p>
 
-</div>
+            <span>৪ Steps</span>
 
+            <button
+              type="button"
+              data-guide="scam"
+            >
+              গাইড খুলুন →
+            </button>
 
-<script>
+          </article>
 
-/* =========================================================
-   GUIDES
-========================================================= */
 
-const guides={
+          <article class="service-card">
 
-facebook:{
-title:"Facebook Login সমস্যা",
-steps:[
-["ইন্টারনেট চেক করুন","Wi-Fi বা mobile data ঠিকভাবে কাজ করছে কিনা দেখুন।"],
-["Password যাচাই করুন","সঠিক password দিয়ে আবার চেষ্টা করুন।"],
-["Forgot Password ব্যবহার করুন","প্রয়োজনে Facebook recovery option ব্যবহার করুন।"],
-["Login Activity দেখুন","অপরিচিত device থাকলে logout করুন।"]
-]
-},
+            <div class="service-icon">🔋</div>
 
-hacked:{
-title:"অ্যাকাউন্ট হ্যাক হলে কী করবেন",
-steps:[
-["Password পরিবর্তন করুন","যদি access থাকে দ্রুত password পরিবর্তন করুন।"],
-["অপরিচিত session logout করুন","অপরিচিত device ও location থেকে logout করুন।"],
-["2FA চালু করুন","Two-factor authentication চালু করুন।"],
-["Recovery information দেখুন","Email ও phone number ঠিক আছে কিনা পরীক্ষা করুন।"]
-]
-},
+            <h3>
+              মোবাইল গরম / Battery
+            </h3>
 
-otp:{
-title:"OTP না আসলে",
-steps:[
-["Network পরীক্ষা করুন","মোবাইল signal ও SMS service পরীক্ষা করুন।"],
-["কিছুক্ষণ অপেক্ষা করুন","বারবার OTP request না করে কয়েক মিনিট অপেক্ষা করুন।"],
-["Spam/Blocked দেখুন","Blocked numbers ও spam messages পরীক্ষা করুন।"],
-["অন্য verification method চেষ্টা করুন","Email বা অন্য available method ব্যবহার করুন।"]
-]
-},
+            <p>
+              Phone বেশি গরম বা battery দ্রুত শেষ হলে।
+            </p>
 
-network:{
-title:"SIM / Network সমস্যা",
-steps:[
-["Airplane mode চালু ও বন্ধ করুন","১০ সেকেন্ড অপেক্ষা করে আবার বন্ধ করুন।"],
-["SIM পরীক্ষা করুন","ফোন বন্ধ করে SIM ঠিকভাবে বসান।"],
-["Network mode পরীক্ষা করুন","4G/5G/Auto mode ঠিক আছে কিনা দেখুন।"],
-["Operator status দেখুন","এলাকায় network outage আছে কিনা পরীক্ষা করুন।"]
-]
-},
+            <span>৪ Steps</span>
 
-bank:{
-title:"ব্যাংক থেকে অজানা টাকা কেটে গেলে",
-steps:[
-["Transaction details সংরক্ষণ করুন","SMS, transaction ID এবং screenshot রাখুন।"],
-["ব্যাংককে দ্রুত জানান","শুধু official banking channel ব্যবহার করুন।"],
-["Payment method নিরাপদ করুন","প্রয়োজনে card/UPI block করুন।"],
-["1930-এ যোগাযোগ করুন","Cyber fraud হলে দ্রুত 1930-এ জানান।"]
-]
-},
+            <button
+              type="button"
+              data-guide="battery"
+            >
+              গাইড খুলুন →
+            </button>
 
-scam:{
-title:"Scam / Phishing থেকে নিরাপদ থাকুন",
-steps:[
-["সন্দেহজনক link খুলবেন না","অজানা link এড়িয়ে চলুন।"],
-["OTP/PIN দেবেন না","OTP, PIN বা password কারও সঙ্গে শেয়ার করবেন না।"],
-["Sender যাচাই করুন","Official website/app থেকে তথ্য যাচাই করুন।"],
-["Fraud হলে রিপোর্ট করুন","প্রমাণ সংরক্ষণ করে দ্রুত রিপোর্ট করুন।"]
-]
-},
+          </article>
 
-battery:{
-title:"মোবাইল গরম / Battery Drain",
-steps:[
-["Battery usage দেখুন","কোন app বেশি battery ব্যবহার করছে পরীক্ষা করুন।"],
-["Background apps পরীক্ষা করুন","অপ্রয়োজনীয় app বন্ধ করুন।"],
-["ফোন ঠান্ডা হতে দিন","অতিরিক্ত গরম হলে ব্যবহার ও charging বন্ধ রাখুন।"],
-["Charger পরীক্ষা করুন","নিরাপদ compatible charger ব্যবহার করুন।"]
-]
-},
 
-password:{
-title:"Password নিরাপত্তা",
-steps:[
-["আলাদা password ব্যবহার করুন","এক password সব account-এ ব্যবহার করবেন না।"],
-["দীর্ঘ password ব্যবহার করুন","শক্তিশালী ও unique password রাখুন।"],
-["2FA চালু করুন","সম্ভব হলে two-factor authentication চালু করুন।"],
-["Password শেয়ার করবেন না","কাউকে password বা verification code দেবেন না।"]
-]
-},
+          <article class="service-card">
 
-phishing:{
-title:"Phishing নিরাপত্তা গাইড",
-steps:[
-["URL পরীক্ষা করুন","Website address ভালোভাবে যাচাই করুন।"],
-["ভয় দেখানো message এড়ান","অতিরিক্ত জরুরি বা ভয় দেখানো message থেকে সতর্ক থাকুন।"],
-["Sensitive information দেবেন না","OTP, PIN, password দেবেন না।"],
-["নিজে official site খুলুন","Message-এর link না খুলে নিজে official website/app খুলুন।"]
-]
-}
+            <div class="service-icon">🔑</div>
 
-};
+            <h3>
+              Password Security
+            </h3>
 
+            <p>
+              Strong ও unique password ব্যবহারের গাইড।
+            </p>
 
-/* =========================================================
-   MODAL
-========================================================= */
+            <span>৪ Steps</span>
 
-const modalOverlay=document.getElementById("modalOverlay");
-const modalTitle=document.getElementById("modalTitle");
-const modalContent=document.getElementById("modalContent");
+            <button
+              type="button"
+              data-guide="password"
+            >
+              গাইড খুলুন →
+            </button>
 
-function openGuide(type){
+          </article>
 
-const g=guides[type];
 
-if(!g)return;
+          <article class="service-card">
 
-modalTitle.textContent=g.title;
+            <div class="service-icon">🎣</div>
 
-modalContent.innerHTML=g.steps.map((s,i)=>`
+            <h3>
+              Phishing Safety
+            </h3>
 
-<div class="guide-step">
+            <p>
+              সন্দেহজনক link ও message চিনে নিন।
+            </p>
 
-<div class="step-number">${i+1}</div>
+            <span>৪ Steps</span>
 
-<div>
-<h3>${s[0]}</h3>
-<p>${s[1]}</p>
-</div>
+            <button
+              type="button"
+              data-guide="phishing"
+            >
+              গাইড খুলুন →
+            </button>
 
-</div>
+          </article>
 
-`).join("");
+        </div>
 
-modalOverlay.classList.add("show");
+      </div>
 
-}
+    </section>
 
-document.querySelectorAll("[data-guide]").forEach(b=>{
 
-b.onclick=e=>{
+    <!-- SECURITY -->
+    <section
+      class="security-banner"
+      id="security"
+    >
 
-e.preventDefault();
+      <div class="container">
 
-openGuide(b.dataset.guide);
+        <div class="security-inner">
 
-};
+          <div>
 
-});
+            <span class="eyebrow">
+              CYBER SAFETY
+            </span>
 
-document.getElementById("closeModal").onclick=()=>{
-modalOverlay.classList.remove("show");
-};
+            <h2>
+              আপনার নিরাপত্তাই
+              <span>প্রথম</span>
+            </h2>
 
-modalOverlay.onclick=e=>{
+            <p>
+              OTP, PIN, password বা sensitive information
+              কখনো কারও সঙ্গে শেয়ার করবেন না।
+            </p>
 
-if(e.target===modalOverlay){
-modalOverlay.classList.remove("show");
-}
+          </div>
 
-};
 
-document.addEventListener("keydown",e=>{
+          <button
+            class="btn btn-primary"
+            data-guide="phishing"
+            type="button"
+          >
+            নিরাপত্তা গাইড →
+          </button>
 
-if(e.key==="Escape"){
-modalOverlay.classList.remove("show");
-}
+        </div>
 
-});
+      </div>
 
+    </section>
 
-/* =========================================================
-   SEARCH
-========================================================= */
 
-const searchInput=document.getElementById("problemSearch");
-const results=document.getElementById("searchResults");
+    <!-- EMERGENCY -->
+    <section
+      class="emergency-section"
+      id="emergency"
+    >
 
-function performSearch(){
+      <div class="container">
 
-const q=searchInput.value.trim().toLowerCase();
+        <div class="emergency-box">
 
-let m=[];
+          <div class="emergency-icon">
+            🚨
+          </div>
 
-if(!q){
 
-results.innerHTML=`
+          <div class="emergency-content">
 
-<div class="result-card">
-<h3>আপনার সমস্যাটি লিখুন</h3>
-<p>
-যেমন: Facebook হ্যাক, OTP আসছে না, ফোন গরম হচ্ছে, ব্যাংক থেকে টাকা কাটা গেছে।
-</p>
-</div>
+            <span>
+              জরুরি সাইবার সমস্যা?
+            </span>
 
-`;
+            <h2>
+              Cyber Fraud হলে দ্রুত ব্যবস্থা নিন
+            </h2>
 
-results.classList.add("show");
+            <p>
+              Transaction details সংরক্ষণ করুন এবং
+              দ্রুত সরকারি সহায়তা নিন।
+            </p>
 
-return;
-}
+          </div>
 
-if(q.includes("facebook")||q.includes("ফেসবুক"))
-m.push(["facebook","Facebook Login সমস্যা"]);
 
-if(q.includes("otp")||q.includes("ওটিপি"))
-m.push(["otp","OTP না আসলে"]);
+          <a
+            href="tel:1930"
+            class="emergency-number"
+          >
 
-if(q.includes("hack")||q.includes("হ্যাক"))
-m.push(["hacked","অ্যাকাউন্ট হ্যাক হলে কী করবেন"]);
+            <small>
+              Cyber Helpline
+            </small>
 
-if(q.includes("bank")||q.includes("ব্যাংক")||q.includes("টাকা"))
-m.push(["bank","ব্যাংক / Payment সমস্যা"]);
+            1930
 
-if(q.includes("sim")||q.includes("network")||q.includes("নেটওয়ার্ক")||q.includes("সিম"))
-m.push(["network","SIM / Network সমস্যা"]);
+          </a>
 
-if(q.includes("battery")||q.includes("ব্যাটারি")||q.includes("গরম"))
-m.push(["battery","মোবাইল গরম / Battery Drain"]);
+        </div>
 
-if(q.includes("scam")||q.includes("স্ক্যাম")||q.includes("fraud")||q.includes("ফিশিং"))
-m.push(["scam","Scam / Phishing"]);
+      </div>
 
-if(!m.length){
+    </section>
 
-m=[
-["password","Password নিরাপত্তা"],
-["phishing","Phishing নিরাপত্তা"]
-];
+  </main>
 
-}
 
-results.innerHTML=m.map(x=>`
+  <!-- FOOTER -->
+  <footer>
 
-<div class="result-card">
+    <div class="container footer-inner">
 
-<h3>${x[1]}</h3>
+      <div>
 
-<p>
-এই সমস্যার ধাপে ধাপে সমাধান দেখতে গাইড খুলুন।
-</p>
+        <strong>
+          🛡️ CyberCare
+        </strong>
 
-<button
-class="start-btn"
-onclick="openGuide('${x[0]}')">
-গাইড দেখুন →
-</button>
+        <p>
+          সহজ ডিজিটাল সহায়তা ও নিরাপত্তা সচেতনতার প্ল্যাটফর্ম।
+        </p>
 
-</div>
+      </div>
 
-`).join("");
 
-results.classList.add("show");
+      <div class="footer-links">
 
-}
+        <a href="#home">
+          হোম
+        </a>
 
-document.getElementById("searchBtn").onclick=performSearch;
+        <a href="#categories">
+          সহায়তা
+        </a>
 
-searchInput.onkeydown=e=>{
+        <a href="#services">
+          গাইড
+        </a>
 
-if(e.key==="Enter"){
-performSearch();
-}
+        <a href="#emergency">
+          জরুরি
+        </a>
 
-};
+      </div>
 
-document.querySelectorAll(".quick-chip").forEach(b=>{
+    </div>
 
-b.onclick=()=>{
 
-searchInput.value=b.dataset.search;
+    <div class="footer-bottom">
 
-performSearch();
+      © 2026 CyberCare — Protecting People. Securing Digital Lives.
 
-searchInput.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
+    </div>
 
-};
+  </footer>
 
-});
 
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="mobile-bottom-nav">
 
-/* =========================================================
-   CATEGORY
-========================================================= */
+    <button
+      type="button"
+      class="active"
+      data-mobile-nav="home"
+    >
+      <span>⌂</span>
+      <small>হোম</small>
+    </button>
 
-document.querySelectorAll(".category-card").forEach(c=>{
 
-c.onclick=()=>{
+    <button
+      type="button"
+      data-mobile-nav="search"
+    >
+      <span>⌕</span>
+      <small>সার্চ</small>
+    </button>
 
-const map={
 
-facebook:"facebook",
-mobile:"network",
-email:"password",
-bank:"bank",
-social:"facebook",
-security:"phishing"
+    <button
+      type="button"
+      data-mobile-nav="services"
+    >
+      <span>📖</span>
+      <small>গাইড</small>
+    </button>
 
-};
 
-openGuide(map[c.dataset.category]);
+    <button
+      type="button"
+      data-mobile-nav="emergency"
+    >
+      <span>🚨</span>
+      <small>জরুরি</small>
+    </button>
 
-};
+  </nav>
 
-});
 
+  <!-- GUIDE MODAL -->
+  <div
+    class="modal-overlay"
+    id="modalOverlay"
+  >
 
-/* =========================================================
-   DARK MODE
-========================================================= */
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+    >
 
-const themeBtn=document.getElementById("themeBtn");
+      <div class="modal-header">
 
-if(localStorage.getItem("cybercare-theme")==="dark"){
+        <h2 id="modalTitle">
+          CyberCare Guide
+        </h2>
 
-document.body.classList.add("dark");
+        <button
+          type="button"
+          class="close-modal"
+          id="closeModal"
+        >
+          ×
+        </button>
 
-themeBtn.textContent="🌙";
+      </div>
 
-}
 
-themeBtn.onclick=()=>{
+      <div id="modalContent"></div>
 
-document.body.classList.toggle("dark");
+    </div>
 
-const dark=document.body.classList.contains("dark");
+  </div>
 
-localStorage.setItem(
-"cybercare-theme",
-dark?"dark":"light"
-);
 
-themeBtn.textContent=dark?"🌙":"☀️";
-
-};
-
-
-/* =========================================================
-   LANGUAGE BUTTON
-========================================================= */
-
-document.getElementById("languageBtn").onclick=()=>{
-
-const el=document.querySelector(".lang-text");
-
-const langs=[
-"বাংলা",
-"English",
-"हिन्दी"
-];
-
-const i=(langs.indexOf(el.textContent)+1)%langs.length;
-
-el.textContent=langs[i];
-
-};
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-document.getElementById("menuBtn").onclick=()=>{
-
-const n=document.querySelector(".nav");
-
-if(n.style.display==="flex"){
-
-n.style.display="";
-
-return;
-
-}
-
-n.style.display="flex";
-
-n.style.position="absolute";
-
-n.style.top="65px";
-
-n.style.left="14px";
-
-n.style.right="14px";
-
-n.style.padding="10px";
-
-n.style.background="var(--surface)";
-
-n.style.border="1px solid var(--border)";
-
-n.style.borderRadius="15px";
-
-n.style.boxShadow="var(--shadow)";
-
-n.style.flexDirection="column";
-
-n.style.alignItems="stretch";
-
-};
-
-
-/* =========================================================
-   ALL HELP
-========================================================= */
-
-document.getElementById("allHelpBtn").onclick=()=>{
-
-modalTitle.textContent="জরুরি সহায়তা";
-
-modalContent.innerHTML=`
-
-<div class="guide-step">
-
-<div class="step-number">1</div>
-
-<div>
-<h3>Cyber Fraud হলে</h3>
-
-<p>
-দ্রুত 1930 নম্বরে যোগাযোগ করুন এবং transaction details সংরক্ষণ করুন।
-</p>
-</div>
-
-</div>
-
-
-<div class="guide-step">
-
-<div class="step-number">2</div>
-
-<div>
-<h3>Cyber Crime Report</h3>
-
-<p>
-সরকারি cybercrime reporting portal ব্যবহার করে অভিযোগ করুন।
-</p>
-</div>
-
-</div>
-
-
-<div class="guide-step">
-
-<div class="step-number">3</div>
-
-<div>
-<h3>Evidence সংরক্ষণ করুন</h3>
-
-<p>
-Screenshot, SMS, transaction ID, phone number ও relevant link সংরক্ষণ করুন।
-</p>
-</div>
-
-</div>
-
-`;
-
-modalOverlay.classList.add("show");
-
-};
-
-
-/* =========================================================
-   MOBILE FUNCTIONS
-========================================================= */
-
-function goHome(){
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-function focusSearch(){
-
-searchInput.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-setTimeout(()=>{
-searchInput.focus();
-},350);
-
-}
-
-function goServices(){
-
-document.getElementById("services").scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-function goHelp(){
-
-document.getElementById("help").scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-function openEmergency(){
-
-window.location.href="tel:1930";
-
-}
-
-</script>
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
 
 </body>
-</html>
+   </html>
