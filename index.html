@@ -11,6 +11,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   CYBERCARE — COMPLETE PROFESSIONAL ONE-FILE VERSION
+========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -25,17 +30,23 @@ html{
     --primary:#1264d8;
     --primary-dark:#084ca9;
     --primary-light:#eaf3ff;
+
     --text:#142033;
     --muted:#667085;
-    --bg:#f5f8fc;
-    --white:#fff;
-    --border:#e1e8f0;
-    --shadow:0 10px 35px rgba(25,65,120,.08);
-    --shadow-hover:0 18px 45px rgba(25,65,120,.14);
+
+    --bg:#f7faff;
+    --white:#ffffff;
+
+    --border:#e2e8f0;
+
+    --shadow:0 8px 30px rgba(25,65,120,.08);
+    --shadow-hover:0 14px 35px rgba(25,65,120,.14);
+
     --danger:#e53967;
     --success:#159570;
     --warning:#e58b19;
-    --radius:20px;
+
+    --radius:18px;
 }
 
 body{
@@ -46,35 +57,46 @@ body{
     min-height:100vh;
 }
 
+/* =========================================================
+   DARK MODE
+========================================================= */
+
 body.dark{
-    --bg:#091522;
+    --bg:#0c1928;
     --white:#122337;
     --text:#f4f7fb;
     --muted:#a9b7c8;
     --border:#263b52;
     --primary-light:#162e4a;
-    --shadow:0 10px 35px rgba(0,0,0,.28);
-    --shadow-hover:0 18px 45px rgba(0,0,0,.4);
+
+    --shadow:0 8px 30px rgba(0,0,0,.25);
+    --shadow-hover:0 14px 35px rgba(0,0,0,.35);
 }
+
+/* =========================================================
+   CONTAINER
+========================================================= */
 
 .container{
     width:min(1400px,calc(100% - 48px));
     margin:auto;
 }
 
-/* ================= HEADER ================= */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(255,255,255,.94);
+    background:rgba(255,255,255,.96);
     border-bottom:1px solid var(--border);
-    backdrop-filter:blur(16px);
+    backdrop-filter:blur(14px);
 }
 
 body.dark header{
-    background:rgba(18,35,55,.94);
+    background:rgba(18,35,55,.96);
 }
 
 .header-inner{
@@ -82,13 +104,13 @@ body.dark header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:20px;
+    gap:25px;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:11px;
     text-decoration:none;
     color:var(--text);
     min-width:max-content;
@@ -100,7 +122,7 @@ body.dark header{
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:33px;
+    font-size:34px;
 }
 
 .logo-text{
@@ -124,22 +146,23 @@ body.dark header{
 .nav{
     display:flex;
     align-items:center;
-    gap:4px;
+    gap:5px;
 }
 
 .nav a{
     text-decoration:none;
     color:var(--text);
-    font-size:12px;
-    font-weight:700;
-    padding:9px 10px;
+    font-size:13px;
+    font-weight:600;
+    padding:9px 12px;
     border-radius:10px;
+    transition:.2s;
 }
 
 .nav a:hover,
 .nav a.active{
-    color:var(--primary);
     background:var(--primary-light);
+    color:var(--primary);
 }
 
 .header-actions{
@@ -158,19 +181,22 @@ body.dark header{
     border-radius:12px;
     cursor:pointer;
     font-family:inherit;
-    font-weight:700;
+    font-weight:600;
+    transition:.2s;
 }
 
 .action-btn:hover{
-    color:var(--primary);
     border-color:var(--primary);
+    color:var(--primary);
 }
 
 .menu-btn{
     display:none;
 }
 
-/* ================= HERO ================= */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     padding:55px 0 35px;
@@ -178,13 +204,13 @@ body.dark header{
 
 .hero-grid{
     display:grid;
-    grid-template-columns:1.02fr .98fr;
-    gap:40px;
+    grid-template-columns:1.05fr .95fr;
+    gap:35px;
     align-items:center;
 }
 
 .hero-content{
-    max-width:720px;
+    max-width:700px;
 }
 
 .badge{
@@ -195,7 +221,7 @@ body.dark header{
     color:var(--primary);
     padding:8px 15px;
     border-radius:999px;
-    font-size:12px;
+    font-size:13px;
     font-weight:800;
     margin-bottom:18px;
 }
@@ -204,6 +230,7 @@ body.dark header{
     font-size:clamp(38px,4.5vw,66px);
     line-height:1.12;
     letter-spacing:-1.5px;
+    margin-bottom:8px;
     font-weight:900;
 }
 
@@ -221,7 +248,7 @@ body.dark header{
 .hero-points{
     display:flex;
     flex-wrap:wrap;
-    gap:18px;
+    gap:22px;
 }
 
 .hero-point{
@@ -245,93 +272,72 @@ body.dark header{
     font-weight:900;
 }
 
-/* ================= HERO IMAGE ================= */
+/* =========================================================
+   HERO IMAGE
+   IMPORTANT:
+   assets/hero-person.jpg
+========================================================= */
 
 .hero-visual{
+    min-height:390px;
     position:relative;
-    min-height:460px;
-    border-radius:32px;
-    overflow:hidden;
-    background:#dcecff;
+    border-radius:30px;
+    background:linear-gradient(135deg,#eaf3ff,#ffffff);
     border:1px solid var(--border);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     box-shadow:var(--shadow);
 }
 
-.hero-image{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
-    display:block;
+body.dark .hero-visual{
+    background:linear-gradient(135deg,#142d47,#102235);
 }
 
-.hero-overlay{
+.hero-visual::before{
+    content:"";
     position:absolute;
-    inset:0;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(7,76,169,.15),
-            rgba(255,255,255,.03) 50%,
-            rgba(7,76,169,.22)
-        );
-    z-index:1;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:rgba(18,100,216,.10);
+    top:-100px;
+    right:-80px;
+    z-index:0;
 }
 
-.hero-glow{
+.hero-visual::after{
+    content:"";
     position:absolute;
     width:220px;
     height:220px;
     border-radius:50%;
-    background:rgba(255,255,255,.20);
-    filter:blur(4px);
-    top:-70px;
-    right:-60px;
+    background:rgba(18,100,216,.07);
+    bottom:-100px;
+    left:-80px;
+    z-index:0;
+}
+
+.hero-image{
+    position:relative;
     z-index:2;
-}
-
-.hero-bubble{
-    position:absolute;
-    z-index:3;
-    right:22px;
-    bottom:22px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    background:rgba(255,255,255,.94);
-    border:1px solid rgba(255,255,255,.7);
-    padding:12px 15px;
-    border-radius:15px;
-    box-shadow:0 12px 35px rgba(0,0,0,.15);
-    color:#142033;
-}
-
-.hero-bubble-icon{
-    width:40px;
-    height:40px;
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#eaf3ff;
-    font-size:21px;
-}
-
-.hero-bubble strong{
+    width:100%;
+    height:390px;
     display:block;
-    font-size:12px;
-    font-weight:900;
+    object-fit:cover;
+    object-position:center;
+    border-radius:30px;
+    transition:transform .4s ease;
 }
 
-.hero-bubble span{
-    display:block;
-    font-size:9px;
-    color:#667085;
+.hero-visual:hover .hero-image{
+    transform:scale(1.025);
 }
 
-/* ================= SEARCH ================= */
+/* =========================================================
+   QUICK SEARCH
+========================================================= */
 
 .search-section{
     margin:15px 0 30px;
@@ -392,10 +398,12 @@ body.dark header{
     font-family:inherit;
     font-weight:800;
     cursor:pointer;
+    transition:.2s;
 }
 
 .primary-btn:hover{
     background:var(--primary-dark);
+    transform:translateY(-1px);
 }
 
 .quick-searches{
@@ -422,6 +430,10 @@ body.dark header{
     font-size:10px;
     cursor:pointer;
 }
+
+/* =========================================================
+   SEARCH RESULTS
+========================================================= */
 
 .search-results{
     display:none;
@@ -451,7 +463,9 @@ body.dark header{
     font-size:12px;
 }
 
-/* ================= SECTIONS ================= */
+/* =========================================================
+   CATEGORY
+========================================================= */
 
 .section{
     padding:18px 0 32px;
@@ -481,8 +495,6 @@ body.dark header{
     font-size:12px;
     font-weight:800;
 }
-
-/* ================= CATEGORY ================= */
 
 .category-grid{
     display:grid;
@@ -529,6 +541,7 @@ body.dark header{
 .category-card p{
     font-size:10px;
     color:var(--muted);
+    line-height:1.5;
 }
 
 .card-link{
@@ -538,7 +551,9 @@ body.dark header{
     margin-top:9px;
 }
 
-/* ================= CONTENT ================= */
+/* =========================================================
+   SERVICES
+========================================================= */
 
 .content-grid{
     display:grid;
@@ -616,12 +631,14 @@ body.dark header{
     font-weight:800;
     position:relative;
     z-index:2;
-    border:0;
+    border:none;
     cursor:pointer;
     font-family:inherit;
 }
 
-/* ================= QUICK HELP ================= */
+/* =========================================================
+   QUICK HELP
+========================================================= */
 
 .quick-help{
     background:var(--white);
@@ -699,11 +716,13 @@ body.dark header{
     cursor:pointer;
 }
 
-/* ================= EMERGENCY ================= */
+/* =========================================================
+   EMERGENCY
+========================================================= */
 
 .emergency{
     margin:25px 0;
-    background:linear-gradient(135deg,#fff3f6,#fff);
+    background:linear-gradient(135deg,#fff3f6,#ffffff);
     border:1px solid #f2d6df;
     border-radius:20px;
     padding:20px;
@@ -735,9 +754,12 @@ body.dark .emergency{
     color:var(--danger);
     font-size:25px;
     font-weight:900;
+    white-space:nowrap;
 }
 
-/* ================= FOOTER ================= */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
     margin-top:35px;
@@ -784,13 +806,17 @@ footer{
     text-align:center;
 }
 
-/* ================= MOBILE NAV ================= */
+/* =========================================================
+   MOBILE BOTTOM NAV
+========================================================= */
 
 .mobile-bottom-nav{
     display:none;
 }
 
-/* ================= MODAL ================= */
+/* =========================================================
+   MODAL
+========================================================= */
 
 .modal-overlay{
     display:none;
@@ -822,6 +848,7 @@ footer{
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:10px;
     margin-bottom:18px;
 }
 
@@ -871,7 +898,9 @@ footer{
     margin-top:3px;
 }
 
-/* ================= TABLET ================= */
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media(max-width:1100px){
 
@@ -902,7 +931,9 @@ footer{
     }
 }
 
-/* ================= MOBILE ================= */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
@@ -973,20 +1004,19 @@ footer{
         height:21px;
     }
 
+    /* HERO IMAGE MOBILE */
+
     .hero-visual{
-        min-height:330px;
+        min-height:300px;
+        height:300px;
         border-radius:22px;
     }
 
-    .hero-bubble{
-        right:12px;
-        bottom:12px;
-        padding:9px 11px;
-    }
-
-    .hero-bubble-icon{
-        width:34px;
-        height:34px;
+    .hero-image{
+        min-height:300px;
+        height:300px;
+        border-radius:22px;
+        object-position:center;
     }
 
     .search-box{
@@ -1221,10 +1251,24 @@ footer{
     }
 }
 
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
 @media(max-width:380px){
 
     .hero h1{
         font-size:31px;
+    }
+
+    .hero-visual{
+        height:270px;
+        min-height:270px;
+    }
+
+    .hero-image{
+        height:270px;
+        min-height:270px;
     }
 
     .category-grid,
@@ -1232,11 +1276,33 @@ footer{
         gap:7px;
     }
 
-    .category-card,
+    .category-card{
+        padding:10px;
+    }
+
     .service-card{
         padding:10px;
     }
 }
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media(min-width:1400px){
+
+    .hero{
+        padding-top:70px;
+    }
+
+    .hero h1{
+        font-size:66px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
 
 button,
 input{
@@ -1249,23 +1315,35 @@ a:focus-visible{
     outline:3px solid rgba(18,100,216,.25);
     outline-offset:2px;
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
 <header>
+
 <div class="container header-inner">
 
 <a href="#home" class="logo">
+
     <div class="logo-icon">🛡️</div>
+
     <div class="logo-text">
         <div class="logo-title">সাইবারকেয়ার (CyberCare)</div>
-        <div class="logo-sub">আপনার ডিজিটাল বন্ধু, সব সমস্যার সহজ সমাধান</div>
+        <div class="logo-sub">
+            আপনার ডিজিটাল বন্ধু, সব সমস্যার সহজ সমাধান
+        </div>
     </div>
+
 </a>
 
 <nav class="nav">
+
     <a href="#home" class="active">হোম</a>
     <a href="#categories">ফেসবুক</a>
     <a href="#categories">মোবাইল</a>
@@ -1275,31 +1353,41 @@ a:focus-visible{
     <a href="#categories">সোশ্যাল</a>
     <a href="#services">সাইবার নিরাপত্তা</a>
     <a href="#help">জরুরি সহায়তা</a>
+
 </nav>
 
 <div class="header-actions">
 
-<button class="action-btn" id="languageBtn">
-    🌐 <span class="lang-text">বাংলা</span>
-</button>
+    <button class="action-btn" id="languageBtn">
+        🌐 <span class="lang-text">বাংলা</span>
+    </button>
 
-<button class="action-btn" id="themeBtn">
-    ☀️
-</button>
+    <button class="action-btn" id="themeBtn" title="Dark Mode">
+        ☀️
+    </button>
 
-<button class="action-btn menu-btn" id="menuBtn">
-    ☰
-</button>
+    <button class="action-btn menu-btn" id="menuBtn">
+        ☰
+    </button>
 
 </div>
+
 </div>
+
 </header>
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
 
 <main id="home">
 
 <div class="container">
 
-<!-- ================= HERO ================= -->
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <section class="hero">
 
@@ -1341,54 +1429,54 @@ a:focus-visible{
 </div>
 
 </div>
+
 </div>
 
-<!-- REAL HERO IMAGE -->
+
+<!-- =======================================================
+     HERO IMAGE
+======================================================= -->
+
 <div class="hero-visual">
 
-<img
-    src="assets/hero-person.jpg"
-    alt="CyberCare Digital Safety"
-    class="hero-image"
->
-
-<div class="hero-overlay"></div>
-<div class="hero-glow"></div>
-
-<div class="hero-bubble">
-
-<div class="hero-bubble-icon">🛡️</div>
-
-<div>
-<strong>CyberCare Protection</strong>
-<span>Digital Help & Safety Center</span>
-</div>
+    <img
+        src="assets/hero-person.jpg"
+        alt="CyberCare Digital Safety"
+        class="hero-image"
+    >
 
 </div>
 
 </div>
 
-</div>
 </section>
 
-<!-- ================= SEARCH ================= -->
+
+<!-- =======================================================
+     SEARCH
+======================================================= -->
 
 <section class="search-section">
 
 <div class="search-box">
 
 <div class="search-title">
+
 <span class="search-title-icon">🔍</span>
-<span>আপনার কি সমস্যা হচ্ছে? আমরা সাহায্য করব।</span>
+
+<span>
+    আপনার কি সমস্যা হচ্ছে? আমরা সাহায্য করব।
+</span>
+
 </div>
 
 <div class="search-row">
 
 <input
-type="text"
-id="problemSearch"
-class="search-input"
-placeholder="যেমন: Facebook লগইন হচ্ছে না, OTP আসছে না, মোবাইল গরম হচ্ছে..."
+    type="text"
+    id="problemSearch"
+    class="search-input"
+    placeholder="যেমন: Facebook লগইন হচ্ছে না, OTP আসছে না, মোবাইল গরম হচ্ছে..."
 >
 
 <button class="primary-btn" id="searchBtn">
@@ -1402,23 +1490,23 @@ placeholder="যেমন: Facebook লগইন হচ্ছে না, OTP আ
 <span class="quick-label">জনপ্রিয় সার্চ:</span>
 
 <button class="quick-chip" data-search="Facebook লগইন হচ্ছে না">
-Facebook লগইন সমস্যা
+    Facebook লগইন সমস্যা
 </button>
 
 <button class="quick-chip" data-search="OTP আসছে না">
-OTP আসছে না
+    OTP আসছে না
 </button>
 
 <button class="quick-chip" data-search="PIN ভুলে গেছি">
-PIN ভুলে গেছি
+    PIN ভুলে গেছি
 </button>
 
 <button class="quick-chip" data-search="অ্যাকাউন্ট হ্যাক">
-অ্যাকাউন্ট হ্যাক
+    অ্যাকাউন্ট হ্যাক
 </button>
 
 <button class="quick-chip" data-search="ব্যাংক থেকে টাকা কেটে গেছে">
-ব্যাংক থেকে টাকা কেটে গেছে
+    ব্যাংক থেকে টাকা কেটে গেছে
 </button>
 
 </div>
@@ -1426,85 +1514,117 @@ PIN ভুলে গেছি
 <div class="search-results" id="searchResults"></div>
 
 </div>
+
 </section>
 
-<!-- ================= CATEGORIES ================= -->
+
+<!-- =======================================================
+     CATEGORIES
+======================================================= -->
 
 <section class="section" id="categories">
 
 <div class="section-heading">
 
 <div>
-<h2>আপনার প্রয়োজনীয় সহায়তা</h2>
-<p>বিভিন্ন ধরনের ডিজিটাল সমস্যার জন্য দ্রুত সমাধান</p>
+    <h2>আপনার প্রয়োজনীয় সহায়তা</h2>
+    <p>বিভিন্ন ধরনের ডিজিটাল সমস্যার জন্য দ্রুত সমাধান</p>
 </div>
 
 <a href="#services" class="view-all">
-সব দেখুন →
+    সব দেখুন →
 </a>
 
 </div>
 
+
 <div class="category-grid">
 
 <div class="category-card" data-category="facebook">
+
 <div>
-<div class="category-icon">📘</div>
-<h3>ফেসবুক সমস্যা</h3>
-<p>লগইন, হ্যাক, পাসওয়ার্ড, প্রাইভেসি, রিকভারি</p>
+    <div class="category-icon">📘</div>
+    <h3>ফেসবুক সমস্যা</h3>
+    <p>লগইন, হ্যাক, পাসওয়ার্ড, প্রাইভেসি, রিকভারি</p>
 </div>
+
 <div class="card-link">সমাধান দেখুন →</div>
+
 </div>
+
 
 <div class="category-card" data-category="mobile">
+
 <div>
-<div class="category-icon">📱</div>
-<h3>মোবাইল ও সিম</h3>
-<p>মোবাইল সমস্যা, সিম, নেটওয়ার্ক, ব্যাটারি</p>
+    <div class="category-icon">📱</div>
+    <h3>মোবাইল ও সিম</h3>
+    <p>মোবাইল সমস্যা, সিম, নেটওয়ার্ক, ব্যাটারি</p>
 </div>
+
 <div class="card-link">সমাধান দেখুন →</div>
+
 </div>
+
 
 <div class="category-card" data-category="email">
+
 <div>
-<div class="category-icon">📧</div>
-<h3>Gmail ও ইমেইল</h3>
-<p>Gmail, পাসওয়ার্ড, রিকভারি, 2-Step Verify</p>
+    <div class="category-icon">📧</div>
+    <h3>Gmail ও ইমেইল</h3>
+    <p>Gmail, পাসওয়ার্ড, রিকভারি, 2-Step Verify</p>
 </div>
+
 <div class="card-link">সমাধান দেখুন →</div>
+
 </div>
+
 
 <div class="category-card" data-category="bank">
+
 <div>
-<div class="category-icon">💳</div>
-<h3>ব্যাংকিং ও পেমেন্ট</h3>
-<p>UPI, ব্যাংক, টাকা কাটা, স্ক্যাম</p>
+    <div class="category-icon">💳</div>
+    <h3>ব্যাংকিং ও পেমেন্ট</h3>
+    <p>UPI, ব্যাংক, টাকা কাটা, স্ক্যাম</p>
 </div>
+
 <div class="card-link">সমাধান দেখুন →</div>
+
 </div>
+
 
 <div class="category-card" data-category="social">
+
 <div>
-<div class="category-icon">🔗</div>
-<h3>সোশ্যাল মিডিয়া</h3>
-<p>WhatsApp, YouTube, TikTok, X, Snapchat</p>
+    <div class="category-icon">🔗</div>
+    <h3>সোশ্যাল মিডিয়া</h3>
+    <p>WhatsApp, YouTube, TikTok, X, Snapchat</p>
 </div>
+
 <div class="card-link">সমাধান দেখুন →</div>
+
 </div>
+
 
 <div class="category-card" data-category="security">
+
 <div>
-<div class="category-icon">🛡️</div>
-<h3>সাইবার নিরাপত্তা</h3>
-<p>ফিশিং, স্ক্যাম, হ্যাকিং, প্রাইভেসি</p>
+    <div class="category-icon">🛡️</div>
+    <h3>সাইবার নিরাপত্তা</h3>
+    <p>ফিশিং, স্ক্যাম, হ্যাকিং, প্রাইভেসি</p>
 </div>
+
 <div class="card-link">সমাধান দেখুন →</div>
+
 </div>
 
 </div>
+
 </section>
 
-<!-- ================= SERVICES ================= -->
+
+<!-- =======================================================
+     SERVICES + QUICK HELP
+======================================================= -->
 
 <section class="section" id="services">
 
@@ -1513,90 +1633,197 @@ PIN ভুলে গেছি
 <div>
 
 <div class="section-heading">
+
 <div>
-<h2>সার্ভিস এরিয়া</h2>
-<p>জনপ্রিয় ডিজিটাল সমস্যা ও নিরাপত্তা গাইড</p>
+    <h2>সার্ভিস এরিয়া</h2>
+    <p>জনপ্রিয় ডিজিটাল সমস্যা ও নিরাপত্তা গাইড</p>
 </div>
+
+<a href="#services" class="view-all">সব দেখুন →</a>
+
 </div>
+
 
 <div class="service-grid">
 
+
 <div class="service-card">
+
 <div class="service-icon">📘</div>
+
 <h3>ফেসবুক লগইন সমস্যা</h3>
-<p>লগইন, পাসওয়ার্ড বা অ্যাকাউন্টে প্রবেশ করতে না পারলে কী করবেন।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="facebook">শুরু করুন</a>
+
+<p>
+লগইন, পাসওয়ার্ড বা অ্যাকাউন্টে প্রবেশ করতে না পারলে কী করবেন।
+</p>
+
+<div class="steps">৩ Steps</div>
+
+<button class="start-btn" data-guide="facebook">
+    শুরু করুন
+</button>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="service-icon">🔐</div>
+
 <h3>অ্যাকাউন্ট হ্যাকড</h3>
-<p>অ্যাকাউন্ট হ্যাক হওয়ার সন্দেহ হলে নিরাপদ করার ধাপ।</p>
+
+<p>
+অ্যাকাউন্ট হ্যাক হওয়ার সন্দেহ হলে নিরাপদ করার ধাপ।
+</p>
+
 <div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="hacked">শুরু করুন</a>
+
+<button class="start-btn" data-guide="hacked">
+    শুরু করুন
+</button>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="service-icon">💬</div>
+
 <h3>OTP না আসলে</h3>
-<p>OTP না পাওয়া বা verification code-এর সমস্যা সমাধান।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="otp">শুরু করুন</a>
+
+<p>
+OTP না পাওয়া বা verification code-এর সমস্যা সমাধান।
+</p>
+
+<div class="steps">৫ Steps</div>
+
+<button class="start-btn" data-guide="otp">
+    শুরু করুন
+</button>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="service-icon">📡</div>
+
 <h3>সিম / নেটওয়ার্ক</h3>
-<p>সিগন্যাল, কল, SMS এবং মোবাইল নেটওয়ার্ক সমস্যা।</p>
+
+<p>
+সিগন্যাল, কল, SMS এবং মোবাইল নেটওয়ার্ক সমস্যা।
+</p>
+
 <div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="network">শুরু করুন</a>
+
+<button class="start-btn" data-guide="network">
+    শুরু করুন
+</button>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="service-icon">🏦</div>
+
 <h3>ব্যাংক থেকে টাকা কেটে গেছে</h3>
-<p>অজানা transaction বা payment হলে নিরাপদ থাকার ধাপ।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="bank">শুরু করুন</a>
+
+<p>
+অজানা transaction বা payment হলে নিরাপদ থাকার ধাপ।
+</p>
+
+<div class="steps">৬ Steps</div>
+
+<button class="start-btn" data-guide="bank">
+    শুরু করুন
+</button>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="service-icon">⚠️</div>
+
 <h3>স্ক্যাম ও ফিশিং</h3>
-<p>সন্দেহজনক link, message বা online scam চিনে নিন।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="scam">শুরু করুন</a>
+
+<p>
+সন্দেহজনক link, message বা online scam চিনে নিন।
+</p>
+
+<div class="steps">৫ Steps</div>
+
+<button class="start-btn" data-guide="scam">
+    শুরু করুন
+</button>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="service-icon">🔋</div>
+
 <h3>মোবাইল গরম / ব্যাটারি</h3>
-<p>ফোন বেশি গরম হওয়া বা দ্রুত battery শেষ হওয়ার কারণ খুঁজুন।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="battery">শুরু করুন</a>
+
+<p>
+ফোন বেশি গরম হওয়া বা দ্রুত battery শেষ হওয়ার কারণ খুঁজুন।
+</p>
+
+<div class="steps">৬ Steps</div>
+
+<button class="start-btn" data-guide="battery">
+    শুরু করুন
+</button>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="service-icon">🔑</div>
+
 <h3>পাসওয়ার্ড নিরাপত্তা</h3>
-<p>শক্তিশালী password তৈরি ও account নিরাপদ রাখার গাইড।</p>
-<div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="password">শুরু করুন</a>
+
+<p>
+শক্তিশালী password তৈরি ও account নিরাপদ রাখার গাইড।
+</p>
+
+<div class="steps">৫ Steps</div>
+
+<button class="start-btn" data-guide="password">
+    শুরু করুন
+</button>
+
 </div>
+
 
 <div class="service-card">
+
 <div class="service-icon">🎣</div>
+
 <h3>Phishing Scanner</h3>
-<p>সন্দেহজনক link নিয়ে সতর্ক থাকার জন্য নিরাপত্তা গাইড।</p>
+
+<p>
+সন্দেহজনক link নিয়ে সতর্ক থাকার জন্য নিরাপত্তা গাইড।
+</p>
+
 <div class="steps">৪ Steps</div>
-<a href="#" class="start-btn" data-guide="phishing">শুরু করুন</a>
+
+<button class="start-btn" data-guide="phishing">
+    শুরু করুন
+</button>
+
+</div>
+
+
 </div>
 
 </div>
-</div>
 
-<!-- ================= QUICK HELP ================= -->
+
+<!-- QUICK HELP -->
 
 <aside class="quick-help" id="help">
 
@@ -1605,149 +1832,224 @@ PIN ভুলে গেছি
 <div class="quick-help-list">
 
 <div class="help-item">
+
 <div class="help-icon">☎️</div>
+
 <div class="help-text">
 <strong>ইমার্জেন্সি হেল্পলাইন</strong>
 <span>জাতীয় সাইবার হেল্পলাইন</span>
 </div>
+
 <a class="help-link" href="tel:1930">1930</a>
+
 </div>
 
+
 <div class="help-item">
+
 <div class="help-icon">🛡️</div>
+
 <div class="help-text">
 <strong>সাইবার ক্রাইম রিপোর্ট</strong>
 <span>অপরাধ রিপোর্ট করার ব্যবস্থা</span>
 </div>
-<a class="help-link" href="https://cybercrime.gov.in/" target="_blank">খুলুন</a>
+
+<a
+    class="help-link"
+    href="https://cybercrime.gov.in/"
+    target="_blank"
+    rel="noopener"
+>
+    খুলুন
+</a>
+
 </div>
 
+
 <div class="help-item">
+
 <div class="help-icon">🔗</div>
+
 <div class="help-text">
 <strong>সন্দেহজনক লিংক</strong>
 <span>Link ও message যাচাই করুন</span>
 </div>
-<a class="help-link" href="#services">চেক</a>
+
+<a class="help-link" href="#services">
+    চেক
+</a>
+
 </div>
 
+
 <div class="help-item">
+
 <div class="help-icon">👤</div>
+
 <div class="help-text">
 <strong>অ্যাকাউন্ট সুরক্ষা</strong>
 <span>Account নিরাপদ করার গাইড</span>
 </div>
-<a class="help-link" href="#services">দেখুন</a>
+
+<a class="help-link" href="#services">
+    দেখুন
+</a>
+
 </div>
 
 </div>
 
 <button class="help-all" id="allHelpBtn">
-সব হেল্পলাইন দেখুন
+    সব হেল্পলাইন দেখুন
 </button>
 
 </aside>
 
 </div>
+
 </section>
 
-<!-- ================= EMERGENCY ================= -->
+
+<!-- =======================================================
+     EMERGENCY
+======================================================= -->
 
 <section class="emergency">
 
 <div class="emergency-inner">
 
 <div>
+
 <h2>🚨 জরুরি সাইবার সমস্যায় পড়েছেন?</h2>
-<p>টাকা সংক্রান্ত fraud বা cyber crime হলে দ্রুত ব্যবস্থা নিন।</p>
+
+<p>
+টাকা সংক্রান্ত fraud বা cyber crime হলে দ্রুত ব্যবস্থা নিন।
+</p>
+
 </div>
 
 <div class="emergency-number">
-1930
+    1930
 </div>
 
 </div>
+
 </section>
 
 </div>
+
 </main>
 
-<!-- ================= FOOTER ================= -->
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 
 <footer>
 
 <div class="container footer-grid">
 
 <div class="footer-brand">
+
 <h2>🛡️ CyberCare</h2>
+
 <p>
 মানুষের ডিজিটাল সমস্যা সমাধান, নিরাপত্তা এবং সচেতনতার জন্য
 একটি সহজ ও ব্যবহারবান্ধব সহায়তা কেন্দ্র।
 </p>
+
 </div>
 
+
 <div class="footer-col">
+
 <h3>সহায়তা</h3>
+
 <a href="#categories">ফেসবুক</a>
 <a href="#categories">মোবাইল</a>
 <a href="#categories">Gmail</a>
 <a href="#categories">ব্যাংকিং</a>
+
 </div>
 
+
 <div class="footer-col">
+
 <h3>নিরাপত্তা</h3>
+
 <a href="#services">Phishing</a>
 <a href="#services">Scam</a>
 <a href="#services">Password</a>
 <a href="#services">Account Safety</a>
+
 </div>
+
 
 <div class="footer-col">
+
 <h3>জরুরি</h3>
+
 <a href="tel:1930">Cyber Helpline 1930</a>
-<a href="https://cybercrime.gov.in/" target="_blank">Cyber Crime Report</a>
+
+<a
+    href="https://cybercrime.gov.in/"
+    target="_blank"
+    rel="noopener"
+>
+    Cyber Crime Report
+</a>
+
 </div>
 
 </div>
+
 
 <div class="footer-bottom">
+
 © 2026 CyberCare — Protecting People. Securing Digital Lives.
+
 </div>
 
 </footer>
 
-<!-- ================= MOBILE NAV ================= -->
+
+<!-- =======================================================
+     MOBILE BOTTOM NAV
+======================================================= -->
 
 <nav class="mobile-bottom-nav">
 
 <button class="bottom-item active" onclick="goHome()">
-<span>⌂</span>
-<span>হোম</span>
+    <span>⌂</span>
+    <span>হোম</span>
 </button>
 
 <button class="bottom-item" onclick="focusSearch()">
-<span>⌕</span>
-<span>সার্চ</span>
+    <span>⌕</span>
+    <span>সার্চ</span>
 </button>
 
 <button class="bottom-item" onclick="openEmergency()">
-<span>🚨</span>
-<span>ইমার্জেন্সি</span>
+    <span>🚨</span>
+    <span>ইমার্জেন্সি</span>
 </button>
 
 <button class="bottom-item" onclick="goServices()">
-<span>📖</span>
-<span>শিক্ষা</span>
+    <span>📖</span>
+    <span>শিক্ষা</span>
 </button>
 
 <button class="bottom-item" onclick="goHelp()">
-<span>👤</span>
-<span>প্রোফাইল</span>
+    <span>👤</span>
+    <span>প্রোফাইল</span>
 </button>
 
 </nav>
 
-<!-- ================= MODAL ================= -->
+
+<!-- =======================================================
+     MODAL
+======================================================= -->
 
 <div class="modal-overlay" id="modalOverlay">
 
@@ -1755,253 +2057,533 @@ PIN ভুলে গেছি
 
 <div class="modal-header">
 
-<h2 id="modalTitle">CyberCare Guide</h2>
+<h2 id="modalTitle">
+    CyberCare Guide
+</h2>
 
-<button class="close-modal" id="closeModal">×</button>
+<button class="close-modal" id="closeModal">
+    ×
+</button>
 
 </div>
 
 <div id="modalContent"></div>
 
 </div>
+
 </div>
+
 
 <script>
 
-/* ================= THEME ================= */
+/* =========================================================
+   CYBERCARE — JAVASCRIPT
+========================================================= */
 
-const themeBtn=document.getElementById("themeBtn");
 
-const savedTheme=localStorage.getItem("cybercare-theme");
+/* =========================================================
+   THEME
+========================================================= */
 
-if(savedTheme==="dark"){
+const themeBtn =
+    document.getElementById("themeBtn");
+
+const savedTheme =
+    localStorage.getItem("cybercare-theme");
+
+if(savedTheme === "dark"){
+
     document.body.classList.add("dark");
-    themeBtn.textContent="🌙";
+
+    themeBtn.textContent = "🌙";
+
 }
 
 themeBtn.addEventListener("click",()=>{
 
     document.body.classList.toggle("dark");
 
-    const dark=document.body.classList.contains("dark");
+    const dark =
+        document.body.classList.contains("dark");
 
     localStorage.setItem(
         "cybercare-theme",
         dark ? "dark" : "light"
     );
 
-    themeBtn.textContent=dark ? "🌙" : "☀️";
+    themeBtn.textContent =
+        dark ? "🌙" : "☀️";
 
 });
 
-/* ================= LANGUAGE ================= */
 
-document.getElementById("languageBtn")
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+document
+.getElementById("languageBtn")
 .addEventListener("click",()=>{
 
-    const languages=["বাংলা","English","हिन्दी"];
+    const languages = [
+        "বাংলা",
+        "English",
+        "हिन्दी"
+    ];
 
-    const span=document.querySelector(".lang-text");
+    const langText =
+        document.querySelector(".lang-text");
 
-    let index=languages.indexOf(span.textContent);
+    const current =
+        langText.textContent;
+
+    let index =
+        languages.indexOf(current);
 
     index++;
 
-    if(index>=languages.length){
-        index=0;
+    if(index >= languages.length){
+        index = 0;
     }
 
-    span.textContent=languages[index];
+    langText.textContent =
+        languages[index];
 
 });
 
-/* ================= GUIDE DATABASE ================= */
 
-const guides={
+/* =========================================================
+   GUIDES
+========================================================= */
+
+const guides = {
 
 facebook:{
-title:"Facebook Login সমস্যা",
-steps:[
-["ইন্টারনেট চেক করুন","Wi-Fi বা mobile data ঠিকভাবে কাজ করছে কিনা দেখুন।"],
-["Password যাচাই করুন","সঠিক password দিয়ে আবার চেষ্টা করুন।"],
-["Forgot Password ব্যবহার করুন","প্রয়োজনে Facebook recovery option ব্যবহার করুন।"],
-["Login Activity পরীক্ষা করুন","Account-এ ঢুকতে পারলে অপরিচিত device logout করুন।"]
-]
+    title:"Facebook Login সমস্যা",
+    steps:[
+        [
+            "ইন্টারনেট চেক করুন",
+            "Wi-Fi বা mobile data ঠিকভাবে কাজ করছে কিনা দেখুন।"
+        ],
+        [
+            "Password যাচাই করুন",
+            "সঠিক password দিয়ে আবার চেষ্টা করুন।"
+        ],
+        [
+            "Forgot Password ব্যবহার করুন",
+            "প্রয়োজনে Facebook-এর recovery option ব্যবহার করুন।"
+        ],
+        [
+            "অপরিচিত Login দেখুন",
+            "Account-এ ঢুকতে পারলে Login Activity পরীক্ষা করুন।"
+        ]
+    ]
 },
 
 hacked:{
-title:"অ্যাকাউন্ট হ্যাক হলে কী করবেন",
-steps:[
-["Password পরিবর্তন করুন","যদি এখনও access থাকে, দ্রুত password পরিবর্তন করুন।"],
-["অপরিচিত session logout করুন","অপরিচিত device বা location থেকে logout করুন।"],
-["2FA চালু করুন","Two-factor authentication চালু করুন।"],
-["Recovery information পরীক্ষা করুন","Email ও phone number ঠিক আছে কিনা দেখুন।"]
-]
+    title:"অ্যাকাউন্ট হ্যাক হলে কী করবেন",
+    steps:[
+        [
+            "প্রথমে Password পরিবর্তন করুন",
+            "যদি এখনও account-এ access থাকে, দ্রুত password পরিবর্তন করুন।"
+        ],
+        [
+            "সব অপরিচিত Session Logout করুন",
+            "অপরিচিত device বা location থেকে logout করুন।"
+        ],
+        [
+            "2FA চালু করুন",
+            "Two-factor authentication চালু করুন।"
+        ],
+        [
+            "Recovery information পরীক্ষা করুন",
+            "Email ও phone number ঠিক আছে কিনা দেখুন।"
+        ]
+    ]
 },
 
 otp:{
-title:"OTP না আসলে",
-steps:[
-["Network check করুন","মোবাইল network এবং signal পরীক্ষা করুন।"],
-["কিছুক্ষণ অপেক্ষা করুন","বারবার OTP request না করে কয়েক মিনিট অপেক্ষা করুন।"],
-["Blocked SMS পরীক্ষা করুন","Blocked numbers ও spam message পরীক্ষা করুন।"],
-["অন্য verification option দেখুন","Email বা অন্য available method ব্যবহার করুন।"]
-]
+    title:"OTP না আসলে",
+    steps:[
+        [
+            "Network check করুন",
+            "মোবাইল network এবং signal পরীক্ষা করুন।"
+        ],
+        [
+            "কিছুক্ষণ অপেক্ষা করুন",
+            "বারবার OTP request না করে কয়েক মিনিট অপেক্ষা করুন।"
+        ],
+        [
+            "SMS block হয়েছে কিনা দেখুন",
+            "Blocked numbers ও spam message পরীক্ষা করুন।"
+        ],
+        [
+            "অন্য Verification option দেখুন",
+            "Email বা অন্য available method ব্যবহার করুন।"
+        ]
+    ]
 },
 
 network:{
-title:"SIM / Network সমস্যা",
-steps:[
-["Airplane mode চালু ও বন্ধ করুন","১০ সেকেন্ড অপেক্ষা করে আবার বন্ধ করুন।"],
-["SIM পরীক্ষা করুন","ফোন বন্ধ করে SIM ঠিকভাবে বসানো আছে কিনা দেখুন।"],
-["Network mode পরীক্ষা করুন","4G/5G/Auto mode ঠিক আছে কিনা দেখুন।"],
-["Operator status পরীক্ষা করুন","এলাকায় network outage আছে কিনা দেখুন।"]
-]
+    title:"SIM / Network সমস্যা",
+    steps:[
+        [
+            "Airplane mode চালু ও বন্ধ করুন",
+            "১০ সেকেন্ড অপেক্ষা করে আবার বন্ধ করুন।"
+        ],
+        [
+            "SIM পুনরায় বসান",
+            "ফোন বন্ধ করে SIM ঠিকভাবে বসান।"
+        ],
+        [
+            "Network mode পরীক্ষা করুন",
+            "4G/5G/Auto mode ঠিক আছে কিনা দেখুন।"
+        ],
+        [
+            "Operator status পরীক্ষা করুন",
+            "এলাকায় network outage আছে কিনা দেখুন।"
+        ]
+    ]
 },
 
 bank:{
-title:"ব্যাংক থেকে অজানা টাকা কেটে গেলে",
-steps:[
-["Transaction details সংরক্ষণ করুন","SMS, transaction ID ও screenshot রাখুন।"],
-["ব্যাংককে দ্রুত জানান","Official banking channel দিয়ে যোগাযোগ করুন।"],
-["UPI / Card নিরাপদ করুন","প্রয়োজনে সংশ্লিষ্ট payment method block করুন।"],
-["1930-এ রিপোর্ট করুন","Cyber fraud হলে দ্রুত 1930-এ যোগাযোগ করুন।"]
-]
+    title:"ব্যাংক থেকে অজানা টাকা কেটে গেলে",
+    steps:[
+        [
+            "Transaction details সংরক্ষণ করুন",
+            "SMS, transaction ID ও screenshot রাখুন।"
+        ],
+        [
+            "ব্যাংককে দ্রুত জানান",
+            "Official banking channel দিয়ে যোগাযোগ করুন।"
+        ],
+        [
+            "UPI / Card block করুন",
+            "প্রয়োজনে সংশ্লিষ্ট payment method block করুন।"
+        ],
+        [
+            "1930-এ রিপোর্ট করুন",
+            "Cyber fraud হলে দ্রুত জাতীয় cyber helpline-এ যোগাযোগ করুন।"
+        ]
+    ]
 },
 
 scam:{
-title:"Scam / Phishing থেকে নিরাপদ থাকুন",
-steps:[
-["Link-এ ক্লিক করবেন না","সন্দেহজনক link এড়িয়ে চলুন।"],
-["OTP/PIN দেবেন না","OTP, PIN বা password কাউকে দেবেন না।"],
-["Sender যাচাই করুন","Official website বা app থেকে তথ্য যাচাই করুন।"],
-["Fraud হলে রিপোর্ট করুন","প্রয়োজনে সংশ্লিষ্ট কর্তৃপক্ষকে জানান।"]
-]
+    title:"Scam / Phishing থেকে নিরাপদ থাকুন",
+    steps:[
+        [
+            "Link-এ ক্লিক করবেন না",
+            "সন্দেহজনক link এড়িয়ে চলুন।"
+        ],
+        [
+            "OTP/PIN দেবেন না",
+            "কেউ চাইলে OTP, PIN বা password শেয়ার করবেন না।"
+        ],
+        [
+            "Sender যাচাই করুন",
+            "Official website বা app থেকে তথ্য যাচাই করুন।"
+        ],
+        [
+            "প্রয়োজনে রিপোর্ট করুন",
+            "Fraud হলে দ্রুত সংশ্লিষ্ট কর্তৃপক্ষকে জানান।"
+        ]
+    ]
 },
 
 battery:{
-title:"মোবাইল গরম / Battery Drain",
-steps:[
-["Background apps পরীক্ষা করুন","অপ্রয়োজনীয় app বন্ধ করুন।"],
-["Battery usage দেখুন","কোন app বেশি battery ব্যবহার করছে দেখুন।"],
-["ফোন ঠান্ডা হতে দিন","অতিরিক্ত গরম হলে ব্যবহার বন্ধ রাখুন।"],
-["চার্জার পরীক্ষা করুন","নিরাপদ ও compatible charger ব্যবহার করুন।"]
-]
+    title:"মোবাইল গরম / Battery Drain",
+    steps:[
+        [
+            "Background apps পরীক্ষা করুন",
+            "অপ্রয়োজনীয় app বন্ধ করুন।"
+        ],
+        [
+            "Battery usage দেখুন",
+            "কোন app বেশি battery ব্যবহার করছে দেখুন।"
+        ],
+        [
+            "ফোন ঠান্ডা হতে দিন",
+            "অতিরিক্ত গরম হলে কিছুক্ষণ ব্যবহার বন্ধ রাখুন।"
+        ],
+        [
+            "চার্জার পরীক্ষা করুন",
+            "নিরাপদ ও compatible charger ব্যবহার করুন।"
+        ]
+    ]
 },
 
 password:{
-title:"Password নিরাপত্তা",
-steps:[
-["আলাদা password ব্যবহার করুন","এক password সব account-এ ব্যবহার করবেন না।"],
-["দীর্ঘ password ব্যবহার করুন","অক্ষর, সংখ্যা ও symbol ব্যবহার করুন।"],
-["2FA চালু করুন","সম্ভব হলে Two-factor authentication ব্যবহার করুন।"],
-["Password শেয়ার করবেন না","কোনো ব্যক্তি বা সন্দেহজনক website-কে দেবেন না।"]
-]
+    title:"Password নিরাপত্তা",
+    steps:[
+        [
+            "প্রতিটি account-এ আলাদা password ব্যবহার করুন",
+            "এক password সব জায়গায় ব্যবহার করবেন না।"
+        ],
+        [
+            "দীর্ঘ password ব্যবহার করুন",
+            "অক্ষর, সংখ্যা ও symbol ব্যবহার করুন।"
+        ],
+        [
+            "2FA চালু করুন",
+            "সম্ভব হলে Two-factor authentication ব্যবহার করুন।"
+        ],
+        [
+            "Password শেয়ার করবেন না",
+            "কোনো ব্যক্তি বা সন্দেহজনক website-কে password দেবেন না।"
+        ]
+    ]
 },
 
 phishing:{
-title:"Phishing নিরাপত্তা গাইড",
-steps:[
-["URL পরীক্ষা করুন","Website address ভালোভাবে দেখুন।"],
-["অস্বাভাবিক message চিনুন","ভয় দেখানো বা জরুরি message থেকে সতর্ক থাকুন।"],
-["Sensitive information দেবেন না","OTP, PIN বা password দেবেন না।"],
-["Official source ব্যবহার করুন","নিজে browser/app খুলে official service ব্যবহার করুন।"]
-]
+    title:"Phishing সম্পর্কে নিরাপত্তা গাইড",
+    steps:[
+        [
+            "URL পরীক্ষা করুন",
+            "Website address ভালোভাবে দেখুন।"
+        ],
+        [
+            "অস্বাভাবিক Message চিনুন",
+            "ভয় দেখানো বা অতিরিক্ত জরুরি message থেকে সতর্ক থাকুন।"
+        ],
+        [
+            "Sensitive information দেবেন না",
+            "OTP, PIN, password দেবেন না।"
+        ],
+        [
+            "Official source ব্যবহার করুন",
+            "নিজে browser/app খুলে official service ব্যবহার করুন।"
+        ]
+    ]
 }
 
 };
 
-/* ================= SEARCH ================= */
 
-const searchInput=document.getElementById("problemSearch");
-const searchBtn=document.getElementById("searchBtn");
-const searchResults=document.getElementById("searchResults");
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchInput =
+    document.getElementById("problemSearch");
+
+const searchBtn =
+    document.getElementById("searchBtn");
+
+const searchResults =
+    document.getElementById("searchResults");
+
 
 function performSearch(){
 
-    const query=searchInput.value.trim().toLowerCase();
+    const query =
+        searchInput.value.trim().toLowerCase();
 
     if(!query){
 
-        searchResults.innerHTML=`
-        <div class="result-card">
-        <h3>আপনার সমস্যাটি লিখুন</h3>
-        <p>যেমন: Facebook হ্যাক, OTP আসছে না, ফোন গরম হচ্ছে, ব্যাংক থেকে টাকা কাটা গেছে।</p>
-        </div>`;
+        searchResults.innerHTML = `
+
+            <div class="result-card">
+
+                <h3>
+                    আপনার সমস্যাটি লিখুন
+                </h3>
+
+                <p>
+                    যেমন: Facebook হ্যাক,
+                    OTP আসছে না,
+                    ফোন গরম হচ্ছে,
+                    ব্যাংক থেকে টাকা কাটা গেছে।
+                </p>
+
+            </div>
+
+        `;
 
         searchResults.classList.add("show");
+
         return;
     }
 
-    let matches=[];
 
-    if(query.includes("facebook")||query.includes("ফেসবুক"))
-        matches.push(["facebook","Facebook Login সমস্যা"]);
+    let matches = [];
 
-    if(query.includes("otp")||query.includes("ওটিপি"))
-        matches.push(["otp","OTP না আসলে"]);
 
-    if(query.includes("hack")||query.includes("হ্যাক"))
-        matches.push(["hacked","অ্যাকাউন্ট হ্যাক হলে কী করবেন"]);
+    if(
+        query.includes("facebook") ||
+        query.includes("ফেসবুক")
+    ){
 
-    if(query.includes("bank")||query.includes("ব্যাংক")||query.includes("টাকা"))
-        matches.push(["bank","ব্যাংক / Payment সমস্যা"]);
+        matches.push([
+            "facebook",
+            "Facebook Login সমস্যা"
+        ]);
 
-    if(query.includes("sim")||query.includes("network")||query.includes("নেটওয়ার্ক")||query.includes("সিম"))
-        matches.push(["network","SIM / Network সমস্যা"]);
-
-    if(query.includes("battery")||query.includes("ব্যাটারি")||query.includes("গরম"))
-        matches.push(["battery","মোবাইল গরম / Battery Drain"]);
-
-    if(query.includes("scam")||query.includes("স্ক্যাম")||query.includes("fraud")||query.includes("ফিশিং"))
-        matches.push(["scam","Scam / Phishing"]);
-
-    if(query.includes("password")||query.includes("পাসওয়ার্ড")||query.includes("pin"))
-        matches.push(["password","Password নিরাপত্তা"]);
-
-    if(!matches.length){
-        matches=[
-            ["password","Password নিরাপত্তা"],
-            ["phishing","Phishing নিরাপত্তা"]
-        ];
     }
 
-    searchResults.innerHTML=matches.map(item=>`
 
-    <div class="result-card">
+    if(
+        query.includes("otp") ||
+        query.includes("ওটিপি")
+    ){
 
-    <h3>${item[1]}</h3>
+        matches.push([
+            "otp",
+            "OTP না আসলে"
+        ]);
 
-    <p>
-    এই সমস্যার ধাপে ধাপে সমাধান দেখতে নিচের button ব্যবহার করুন।
-    </p>
+    }
 
-    <button
-    class="start-btn"
-    onclick="openGuide('${item[0]}')">
-    গাইড দেখুন →
-    </button>
 
-    </div>
+    if(
+        query.includes("hack") ||
+        query.includes("হ্যাক")
+    ){
 
-    `).join("");
+        matches.push([
+            "hacked",
+            "অ্যাকাউন্ট হ্যাক হলে কী করবেন"
+        ]);
+
+    }
+
+
+    if(
+        query.includes("bank") ||
+        query.includes("ব্যাংক") ||
+        query.includes("টাকা")
+    ){
+
+        matches.push([
+            "bank",
+            "ব্যাংক / Payment সমস্যা"
+        ]);
+
+    }
+
+
+    if(
+        query.includes("sim") ||
+        query.includes("network") ||
+        query.includes("নেটওয়ার্ক") ||
+        query.includes("সিম")
+    ){
+
+        matches.push([
+            "network",
+            "SIM / Network সমস্যা"
+        ]);
+
+    }
+
+
+    if(
+        query.includes("battery") ||
+        query.includes("ব্যাটারি") ||
+        query.includes("গরম")
+    ){
+
+        matches.push([
+            "battery",
+            "মোবাইল গরম / Battery Drain"
+        ]);
+
+    }
+
+
+    if(
+        query.includes("scam") ||
+        query.includes("স্ক্যাম") ||
+        query.includes("fraud") ||
+        query.includes("ফিশিং")
+    ){
+
+        matches.push([
+            "scam",
+            "Scam / Phishing"
+        ]);
+
+    }
+
+
+    if(!matches.length){
+
+        matches = [
+            [
+                "password",
+                "Password নিরাপত্তা"
+            ],
+            [
+                "phishing",
+                "Phishing নিরাপত্তা"
+            ]
+        ];
+
+    }
+
+
+    searchResults.innerHTML =
+        matches.map(item=>`
+
+            <div class="result-card">
+
+                <h3>
+                    ${item[1]}
+                </h3>
+
+                <p>
+                    এই সমস্যার ধাপে ধাপে সমাধান দেখতে
+                    নিচের button ব্যবহার করুন।
+                </p>
+
+                <button
+                    class="start-btn"
+                    onclick="openGuide('${item[0]}')"
+                >
+                    গাইড দেখুন →
+                </button>
+
+            </div>
+
+        `).join("");
+
 
     searchResults.classList.add("show");
+
 }
 
-searchBtn.addEventListener("click",performSearch);
 
-searchInput.addEventListener("keydown",e=>{
-    if(e.key==="Enter") performSearch();
-});
+searchBtn.addEventListener(
+    "click",
+    performSearch
+);
 
-/* ================= QUICK SEARCH ================= */
 
-document.querySelectorAll(".quick-chip").forEach(button=>{
+searchInput.addEventListener(
+    "keydown",
+    e=>{
+
+        if(e.key === "Enter"){
+
+            performSearch();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   QUICK SEARCH BUTTONS
+========================================================= */
+
+document
+.querySelectorAll(".quick-chip")
+.forEach(button=>{
 
     button.addEventListener("click",()=>{
 
-        searchInput.value=button.dataset.search;
+        searchInput.value =
+            button.dataset.search;
 
         performSearch();
 
@@ -2014,121 +2596,197 @@ document.querySelectorAll(".quick-chip").forEach(button=>{
 
 });
 
-/* ================= MODAL ================= */
 
-const modalOverlay=document.getElementById("modalOverlay");
-const modalTitle=document.getElementById("modalTitle");
-const modalContent=document.getElementById("modalContent");
+/* =========================================================
+   MODAL
+========================================================= */
+
+const modalOverlay =
+    document.getElementById("modalOverlay");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalContent =
+    document.getElementById("modalContent");
+
 
 function openGuide(type){
 
-    const guide=guides[type];
+    const guide =
+        guides[type];
 
     if(!guide) return;
 
-    modalTitle.textContent=guide.title;
 
-    modalContent.innerHTML=guide.steps.map((step,index)=>`
+    modalTitle.textContent =
+        guide.title;
 
-    <div class="guide-step">
 
-    <div class="step-number">
-    ${index+1}
-    </div>
+    modalContent.innerHTML =
+        guide.steps.map((step,index)=>`
 
-    <div>
-    <h3>${step[0]}</h3>
-    <p>${step[1]}</p>
-    </div>
+            <div class="guide-step">
 
-    </div>
+                <div class="step-number">
+                    ${index + 1}
+                </div>
 
-    `).join("");
+                <div>
+
+                    <h3>
+                        ${step[0]}
+                    </h3>
+
+                    <p>
+                        ${step[1]}
+                    </p>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
 
     modalOverlay.classList.add("show");
+
 }
 
-document.querySelectorAll("[data-guide]").forEach(button=>{
 
-    button.addEventListener("click",e=>{
+document
+.querySelectorAll("[data-guide]")
+.forEach(button=>{
 
-        e.preventDefault();
+    button.addEventListener("click",()=>{
 
-        openGuide(button.dataset.guide);
+        openGuide(
+            button.dataset.guide
+        );
 
     });
 
 });
 
-document.getElementById("closeModal")
+
+document
+.getElementById("closeModal")
 .addEventListener("click",()=>{
+
     modalOverlay.classList.remove("show");
+
 });
+
 
 modalOverlay.addEventListener("click",e=>{
 
-    if(e.target===modalOverlay){
+    if(e.target === modalOverlay){
+
         modalOverlay.classList.remove("show");
+
     }
 
 });
 
-/* ================= CATEGORY CLICK ================= */
 
-document.querySelectorAll(".category-card").forEach(card=>{
+/* =========================================================
+   CATEGORY CLICK
+========================================================= */
+
+document
+.querySelectorAll(".category-card")
+.forEach(card=>{
 
     card.addEventListener("click",()=>{
 
-        const category=card.dataset.category;
+        const category =
+            card.dataset.category;
 
-        const map={
+
+        const map = {
+
             facebook:"facebook",
             mobile:"network",
             email:"password",
             bank:"bank",
             social:"facebook",
             security:"phishing"
+
         };
 
+
         if(map[category]){
-            openGuide(map[category]);
+
+            openGuide(
+                map[category]
+            );
+
         }
 
     });
 
 });
 
-/* ================= MOBILE MENU ================= */
 
-document.getElementById("menuBtn")
-.addEventListener("click",()=>{
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-    const nav=document.querySelector(".nav");
+const menuBtn =
+    document.getElementById("menuBtn");
 
-    if(nav.style.display==="flex"){
+menuBtn.addEventListener("click",()=>{
 
-        nav.style.display="";
+    const nav =
+        document.querySelector(".nav");
 
-    }else{
 
-        nav.style.display="flex";
-        nav.style.position="absolute";
-        nav.style.top="65px";
-        nav.style.left="14px";
-        nav.style.right="14px";
-        nav.style.padding="10px";
-        nav.style.background="var(--white)";
-        nav.style.border="1px solid var(--border)";
-        nav.style.borderRadius="15px";
-        nav.style.boxShadow="var(--shadow)";
-        nav.style.flexDirection="column";
-        nav.style.alignItems="stretch";
+    if(nav.style.display === "flex"){
+
+        nav.style.display = "";
+
+    }
+
+    else{
+
+        nav.style.display = "flex";
+
+        nav.style.position = "absolute";
+
+        nav.style.top = "65px";
+
+        nav.style.left = "14px";
+
+        nav.style.right = "14px";
+
+        nav.style.padding = "10px";
+
+        nav.style.background =
+            "var(--white)";
+
+        nav.style.border =
+            "1px solid var(--border)";
+
+        nav.style.borderRadius =
+            "15px";
+
+        nav.style.boxShadow =
+            "var(--shadow)";
+
+        nav.style.flexDirection =
+            "column";
+
+        nav.style.alignItems =
+            "stretch";
 
     }
 
 });
 
-/* ================= MOBILE FUNCTIONS ================= */
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
 
 function goHome(){
 
@@ -2139,6 +2797,7 @@ function goHome(){
 
 }
 
+
 function focusSearch(){
 
     searchInput.scrollIntoView({
@@ -2147,96 +2806,163 @@ function focusSearch(){
     });
 
     setTimeout(()=>{
+
         searchInput.focus();
+
     },400);
 
 }
 
+
 function goServices(){
 
-    document.getElementById("services")
+    document
+    .getElementById("services")
     .scrollIntoView({
         behavior:"smooth"
     });
 
 }
+
 
 function goHelp(){
 
-    document.getElementById("help")
+    document
+    .getElementById("help")
     .scrollIntoView({
         behavior:"smooth"
     });
 
 }
 
+
 function openEmergency(){
 
-    window.location.href="tel:1930";
+    window.location.href =
+        "tel:1930";
 
 }
 
-/* ================= ALL HELP ================= */
 
-document.getElementById("allHelpBtn")
+/* =========================================================
+   ALL HELP
+========================================================= */
+
+document
+.getElementById("allHelpBtn")
 .addEventListener("click",()=>{
 
-    modalTitle.textContent="জরুরি সহায়তা";
+    modalTitle.textContent =
+        "জরুরি সহায়তা";
 
-    modalContent.innerHTML=`
 
-    <div class="guide-step">
+    modalContent.innerHTML = `
 
-    <div class="step-number">1</div>
+        <div class="guide-step">
 
-    <div>
-    <h3>Cyber Fraud হলে</h3>
-    <p>
-    দ্রুত 1930 নম্বরে যোগাযোগ করুন এবং transaction details সংরক্ষণ করুন।
-    </p>
-    </div>
+            <div class="step-number">
+                1
+            </div>
 
-    </div>
+            <div>
 
-    <div class="guide-step">
+                <h3>
+                    Cyber Fraud হলে
+                </h3>
 
-    <div class="step-number">2</div>
+                <p>
+                    দ্রুত 1930 নম্বরে যোগাযোগ করুন
+                    এবং transaction details সংরক্ষণ করুন।
+                </p>
 
-    <div>
-    <h3>Cyber Crime Report</h3>
-    <p>
-    সরকারি cybercrime reporting portal ব্যবহার করে অভিযোগ করতে পারেন।
-    </p>
-    </div>
+            </div>
 
-    </div>
+        </div>
 
-    <div class="guide-step">
 
-    <div class="step-number">3</div>
+        <div class="guide-step">
 
-    <div>
-    <h3>Evidence সংরক্ষণ করুন</h3>
-    <p>
-    Screenshot, SMS, transaction ID, phone number এবং relevant link সংরক্ষণ করুন।
-    </p>
-    </div>
+            <div class="step-number">
+                2
+            </div>
 
-    </div>
+            <div>
+
+                <h3>
+                    Cyber Crime Report
+                </h3>
+
+                <p>
+                    সরকারি cybercrime reporting portal
+                    ব্যবহার করে অভিযোগ করতে পারেন।
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="guide-step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <div>
+
+                <h3>
+                    Evidence সংরক্ষণ করুন
+                </h3>
+
+                <p>
+                    Screenshot, SMS, transaction ID,
+                    phone number এবং relevant link সংরক্ষণ করুন।
+                </p>
+
+            </div>
+
+        </div>
 
     `;
+
 
     modalOverlay.classList.add("show");
 
 });
 
-/* ================= ESC ================= */
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
 
 document.addEventListener("keydown",e=>{
 
-    if(e.key==="Escape"){
+    if(e.key === "Escape"){
+
         modalOverlay.classList.remove("show");
+
     }
+
+});
+
+
+/* =========================================================
+   CLOSE MOBILE MENU AFTER CLICK
+========================================================= */
+
+document
+.querySelectorAll(".nav a")
+.forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        if(window.innerWidth <= 1100){
+
+            document.querySelector(".nav").style.display = "";
+
+        }
+
+    });
 
 });
 
