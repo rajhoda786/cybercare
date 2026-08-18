@@ -30,12 +30,8 @@
     <!-- Google Font (Noto Sans Bengali) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Noto Sans Bengali', sans-serif;
-        }
-        .modal-active {
-            overflow: hidden;
-        }
+        body { font-family: 'Noto Sans Bengali', sans-serif; }
+        .modal-active { overflow: hidden; }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300 pb-20 md:pb-0">
@@ -65,7 +61,6 @@
 
             <!-- Actions -->
             <div class="flex items-center gap-3">
-                <!-- Theme Toggle Button -->
                 <button id="themeToggle" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-amber-400 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-600 transition">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
                 </button>
@@ -130,30 +125,24 @@
                 </div>
             </div>
 
-            <!-- Hero Right Illustration + Quick Help Box -->
+            <!-- Hero Right Illustration + Emergency Box -->
             <div class="lg:col-span-5 space-y-6">
-                <!-- Tech Illustration Image -->
-                <div class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700 bg-slate-800">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" 
-                         alt="Cyber Security CyberCare Illustration" 
-                         class="w-full h-56 sm:h-64 object-cover hover:scale-105 transition duration-500"
-                         onerror="this.onerror=null; this.src='https://placehold.co/800x500/1e293b/ffffff?text=CyberCare+Security+Center';">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-4">
-                        <p class="text-xs text-slate-200 flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                            আপনার সুরক্ষায় সাইবারকেয়ার টিমের নিয়মিত গাইড আপডেট
-                        </p>
-                    </div>
+                <!-- SVG Tech Illustration -->
+                <div class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-6 flex flex-col items-center justify-center text-center min-h-[240px]">
+                    <svg class="w-24 h-24 text-blue-500 mb-3 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <h3 class="text-white font-bold text-lg">CyberCare Digital Security</h3>
+                    <p class="text-blue-200 text-xs mt-1">সুরক্ষিত থাকুন সব সময়</p>
                 </div>
 
-                <!-- Emergency Sidebar Card -->
+                <!-- Emergency Helpline Card -->
                 <div id="helpline" class="bg-white dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
                     <h3 class="font-bold text-base text-slate-900 dark:text-white mb-3 flex items-center gap-2">
                         <i class="fa-solid fa-bolt text-amber-500"></i> দ্রুত সহায়তা (Quick Helplines)
                     </h3>
                     
                     <div class="space-y-3">
-                        <!-- Emergency Phone -->
                         <a href="tel:1930" class="flex items-center justify-between p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-100 dark:border-red-900/50 hover:bg-red-100 transition">
                             <div class="flex items-center gap-3">
                                 <div class="w-9 h-9 rounded-lg bg-red-500 text-white flex items-center justify-center font-bold">
@@ -161,13 +150,12 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">সাইবার হেল্পলাইন</h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400">জাতীয় সরকারি সাহায্য নম্বর</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">জাতীয় সরকারি নম্বর</p>
                                 </div>
                             </div>
                             <span class="font-black text-red-600 dark:text-red-400 text-lg">1930</span>
                         </a>
 
-                        <!-- Cyber Crime Portal -->
                         <a href="https://cybercrime.gov.in" target="_blank" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-200/60 dark:border-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-3">
                                 <div class="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold">
@@ -189,19 +177,19 @@
 
     <!-- SEARCH SECTION -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
-            <div class="relative z-10 max-w-3xl">
+        <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg">
+            <div class="max-w-3xl">
                 <h3 class="text-xl sm:text-2xl font-bold mb-2 flex items-center gap-2">
                     <i class="fa-solid fa-magnifying-glass"></i> আপনার কি সমস্যা হচ্ছে? আমরা সাহায্য করব।
                 </h3>
                 <p class="text-blue-100 text-xs sm:text-sm mb-5">
-                    নিচে সমস্যার নাম লিখুন (যেমন: Facebook, OTP, Bank, Lock, Hacked)
+                    নিচে সমস্যার নাম লিখুন (যেমন: Facebook, OTP, Bank, Hacked)
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-2">
                     <div class="relative flex-1">
                         <input type="text" id="searchInput" onkeyup="filterServices()" 
-                               placeholder="যেমন: ফেসবুক অ্যাকাউন্ট লক, OTP আসছে না, টাকা জালিয়াতি..." 
+                               placeholder="যেমন: ফেসবুক অ্যাকাউন্ট লক, OTP আসছে না..." 
                                class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-inner font-medium">
                         <i class="fa-solid fa-search absolute left-4 top-4 text-slate-400"></i>
                     </div>
@@ -210,212 +198,95 @@
                     </button>
                 </div>
 
-                <!-- Popular Search Tags -->
                 <div class="mt-4 flex flex-wrap items-center gap-2 text-xs">
                     <span class="text-blue-200">জনপ্রিয় সার্চ:</span>
-                    <button onclick="setSearch('ফেসবুক')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white backdrop-blur-sm transition">ফেসবুক সমস্যা</button>
-                    <button onclick="setSearch('OTP')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white backdrop-blur-sm transition">OTP আসছে না</button>
-                    <button onclick="setSearch('হ্যাক')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white backdrop-blur-sm transition">অ্যাাকাউন্ট হ্যাক</button>
-                    <button onclick="setSearch('ব্যাংক')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white backdrop-blur-sm transition">ব্যাঙ্কিং ও পেমেন্ট</button>
+                    <button onclick="setSearch('ফেসবুক')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white transition">ফেসবুক সমস্যা</button>
+                    <button onclick="setSearch('OTP')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white transition">OTP আসছে না</button>
+                    <button onclick="setSearch('হ্যাক')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white transition">অ্যাকাউন্ট হ্যাক</button>
+                    <button onclick="setSearch('ব্যাংক')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white transition">ব্যাঙ্কিং ও পেমেন্ট</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- HELP CENTER CATEGORIES -->
+    <!-- CATEGORIES -->
     <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div class="mb-6">
             <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">আপনার প্রয়োজনীয় সহায়তা ক্যাটাগরি</h3>
             <p class="text-sm text-slate-500 dark:text-slate-400">যে সমস্যায় পড়েছেন, সেই ক্যাটাগরিতে ক্লিক করুন</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="categoryGrid">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <!-- Category 1: Facebook -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition">
+            <!-- Facebook Card -->
+            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl font-bold mb-4">
                     <i class="fa-brands fa-facebook"></i>
                 </div>
                 <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">ফেসবুক সমস্যা</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">লগইন, হ্যাকড অ্যাকাউন্ট, পাসওয়ার্ড রিসেট, প্রোফাইল লক ও টু-ফ্যাক্টর গাইড।</p>
-                <button onclick="openGuide('facebook')" class="w-full py-2.5 rounded-xl bg-blue-50 dark:bg-slate-700 text-blue-600 dark:text-blue-300 font-bold text-sm hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition flex items-center justify-center gap-2">
-                    সমাধান দেখুন <i class="fa-solid fa-arrow-right text-xs"></i>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">লগইন, হ্যাকড অ্যাকাউন্ট, পাসওয়ার্ড রিসেট ও প্রোফাইল লক।</p>
+                <button onclick="openGuide('facebook')" class="w-full py-2.5 rounded-xl bg-blue-50 dark:bg-slate-700 text-blue-600 dark:text-blue-300 font-bold text-sm hover:bg-blue-600 hover:text-white transition">
+                    সমাধান দেখুন
                 </button>
             </div>
 
-            <!-- Category 2: Mobile & SIM -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition">
+            <!-- Mobile Card -->
+            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div class="w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-2xl font-bold mb-4">
                     <i class="fa-solid fa-mobile-screen-button"></i>
                 </div>
                 <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">মোবাইল ও সিম</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">সিম হারানো, নেটওয়ার্ক সমস্যা, OTP না আসা ও ফোন গরম হওয়ার ফিক্স।</p>
-                <button onclick="openGuide('mobile')" class="w-full py-2.5 rounded-xl bg-cyan-50 dark:bg-slate-700 text-cyan-600 dark:text-cyan-300 font-bold text-sm hover:bg-cyan-600 hover:text-white dark:hover:bg-cyan-600 transition flex items-center justify-center gap-2">
-                    সমাধান দেখুন <i class="fa-solid fa-arrow-right text-xs"></i>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">সিম হারানো, নেটওয়ার্ক সমস্যা, OTP না আসা ও ফোন গরম হওয়া।</p>
+                <button onclick="openGuide('mobile')" class="w-full py-2.5 rounded-xl bg-cyan-50 dark:bg-slate-700 text-cyan-600 dark:text-cyan-300 font-bold text-sm hover:bg-cyan-600 hover:text-white transition">
+                    সমাধান দেখুন
                 </button>
             </div>
 
-            <!-- Category 3: Gmail & Email -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition">
+            <!-- Gmail Card -->
+            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 flex items-center justify-center text-2xl font-bold mb-4">
                     <i class="fa-solid fa-envelope"></i>
                 </div>
                 <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">জিমেইল ও ইমেইল</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">জিমেইল রিকভারি, ২-স্টেপ ভেরিফিকেশন কোড না আসা ও অ্যাকাউন্ট রিকভারি।</p>
-                <button onclick="openGuide('gmail')" class="w-full py-2.5 rounded-xl bg-red-50 dark:bg-slate-700 text-red-600 dark:text-red-300 font-bold text-sm hover:bg-red-600 hover:text-white dark:hover:bg-red-600 transition flex items-center justify-center gap-2">
-                    সমাধান দেখুন <i class="fa-solid fa-arrow-right text-xs"></i>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">জিমেইল রিকভারি, ২-স্টেপ ভেরিফিকেশন কোড না আসা।</p>
+                <button onclick="openGuide('gmail')" class="w-full py-2.5 rounded-xl bg-red-50 dark:bg-slate-700 text-red-600 dark:text-red-300 font-bold text-sm hover:bg-red-600 hover:text-white transition">
+                    সমাধান দেখুন
                 </button>
             </div>
 
-            <!-- Category 4: Banking & UPI -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition">
+            <!-- Banking Card -->
+            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl font-bold mb-4">
                     <i class="fa-solid fa-building-columns"></i>
                 </div>
                 <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">ব্যাঙ্কিং ও পেমেন্ট</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">UPI জালিয়াতি, ব্যাংক অ্যাকাউন্ট থেকে ভুলবশত টাকা কাটা ও রিফান্ড হেল্প।</p>
-                <button onclick="openGuide('banking')" class="w-full py-2.5 rounded-xl bg-emerald-50 dark:bg-slate-700 text-emerald-600 dark:text-emerald-300 font-bold text-sm hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 transition flex items-center justify-center gap-2">
-                    সমাধান দেখুন <i class="fa-solid fa-arrow-right text-xs"></i>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">UPI জালিয়াতি, ব্যাংক অ্যাকাউন্ট থেকে ভুলবশত টাকা কাটা।</p>
+                <button onclick="openGuide('banking')" class="w-full py-2.5 rounded-xl bg-emerald-50 dark:bg-slate-700 text-emerald-600 dark:text-emerald-300 font-bold text-sm hover:bg-emerald-600 hover:text-white transition">
+                    সমাধান দেখুন
                 </button>
             </div>
 
-            <!-- Category 5: Social Media -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition">
+            <!-- Social Card -->
+            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-2xl font-bold mb-4">
                     <i class="fa-solid fa-share-nodes"></i>
                 </div>
-                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">সোশ্যাল মিডিয়া (Insta/WA)</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">হোয়াটসঅ্যাপ হ্যাক প্রতিরোধ, ইনস্টাগ্রাম পাসওয়ার্ড ফিক্স ও ভুয়া আইডি রিপোর্ট।</p>
-                <button onclick="openGuide('social')" class="w-full py-2.5 rounded-xl bg-purple-50 dark:bg-slate-700 text-purple-600 dark:text-purple-300 font-bold text-sm hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 transition flex items-center justify-center gap-2">
-                    সমাধান দেখুন <i class="fa-solid fa-arrow-right text-xs"></i>
+                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">সোশ্যাল মিডিয়া</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">হোয়াটসঅ্যাপ হ্যাক প্রতিরোধ, ইনস্টাগ্রাম পাসওয়ার্ড ফিক্স।</p>
+                <button onclick="openGuide('social')" class="w-full py-2.5 rounded-xl bg-purple-50 dark:bg-slate-700 text-purple-600 dark:text-purple-300 font-bold text-sm hover:bg-purple-600 hover:text-white transition">
+                    সমাধান দেখুন
                 </button>
             </div>
 
-            <!-- Category 6: Cyber Security -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition">
+            <!-- Cyber Security Card -->
+            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-2xl font-bold mb-4">
                     <i class="fa-solid fa-shield-virus"></i>
                 </div>
-                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">সাইবার নিরাপত্তা ও ফির্সিং</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">ভুয়া বা সন্দেহজনক লিঙ্ক চেনা, স্ক্যাম কল চেনা ও ব্যক্তিগত তথ্য সুরক্ষা।</p>
-                <button onclick="openGuide('phishing')" class="w-full py-2.5 rounded-xl bg-amber-50 dark:bg-slate-700 text-amber-600 dark:text-amber-300 font-bold text-sm hover:bg-amber-600 hover:text-white dark:hover:bg-amber-600 transition flex items-center justify-center gap-2">
-                    সমাধান দেখুন <i class="fa-solid fa-arrow-right text-xs"></i>
-                </button>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SMART GUIDES (STEP BY STEP SOLUTIONS) -->
-    <section id="guides" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div class="mb-6 flex justify-between items-end">
-            <div>
-                <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Smart Guides</span>
-                <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">জনপ্রিয় সমস্যা ও ধাপে ধাপে সমাধান</h3>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <!-- Guide Card 1 -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm hover:border-blue-500 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-slate-700 text-blue-600 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-user-lock"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-base">ফেসবুক অ্যাকাউন্ট লকড?</h4>
-                        <span class="text-[11px] text-slate-500 dark:text-slate-400">৪ টি সহজ ধাপে রিকভারি</span>
-                    </div>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300 mb-4">আইডি কার্ড সাবমিট বা কনফার্মেশন কোড দিয়ে খুব সহজেই লকড ফেসবুক অ্যাকাউন্ট খুলে নিন।</p>
-                <button onclick="openGuide('fb_lock')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl transition">
-                    শুরু করুন
-                </button>
-            </div>
-
-            <!-- Guide Card 2 -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm hover:border-red-500 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg bg-red-100 dark:bg-slate-700 text-red-600 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-base">হ্যাকড অ্যাকাউন্ট উদ্ধার</h4>
-                        <span class="text-[11px] text-slate-500 dark:text-slate-400">৫ টি জরুরী পদক্ষেপ</span>
-                    </div>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300 mb-4">পাসওয়ার্ড ও ইমেইল বদলে গেলেও অফিসিয়াল রিকভারি লিঙ্কের মাধ্যমে অ্যাকাউন্ট উদ্ধার করুন।</p>
-                <button onclick="openGuide('hacked_acc')" class="w-full py-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl transition">
-                    শুরু করুন
-                </button>
-            </div>
-
-            <!-- Guide Card 3 -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm hover:border-emerald-500 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-slate-700 text-emerald-600 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-comment-sms"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-base">OTP না আসলে করণীয়</h4>
-                        <span class="text-[11px] text-slate-500 dark:text-slate-400">৩ টি কুইক সেটিং</span>
-                    </div>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300 mb-4">মোবাইলে ওটিপি মেসেজ না আসলে এসএমএস সেন্টার নম্বর ও ডিএনডি সার্ভিস চেক করার নিয়ম।</p>
-                <button onclick="openGuide('otp_issue')" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition">
-                    শুরু করুন
-                </button>
-            </div>
-
-            <!-- Guide Card 4 -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm hover:border-indigo-500 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-slate-700 text-indigo-600 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-base">ব্যাংক জালিয়াতি ও রিফান্ড</h4>
-                        <span class="text-[11px] text-slate-500 dark:text-slate-400">২৪ ঘণ্টার মধ্যে রিপোর্ট</span>
-                    </div>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300 mb-4">অনাধিকার টাকা কেটে নিলে ২৪ ঘণ্টার মধ্যে ১৯৩০ নম্বরে ফোন করে টাকা ব্লক করার নিয়ম।</p>
-                <button onclick="openGuide('bank_fraud')" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition">
-                    শুরু করুন
-                </button>
-            </div>
-
-            <!-- Guide Card 5 -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm hover:border-amber-500 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-slate-700 text-amber-600 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-link-slash"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-base">ভুয়া লিঙ্ক চেনার উপায়</h4>
-                        <span class="text-[11px] text-slate-500 dark:text-slate-400">নিরাপত্তা টিপস</span>
-                    </div>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300 mb-4">কোনো লিঙ্কে ক্লিক করার আগে https এবং ডোমেইন চেক করার সহজ নিয়মাবলী।</p>
-                <button onclick="openGuide('phishing')" class="w-full py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl transition">
-                    শুরু করুন
-                </button>
-            </div>
-
-            <!-- Guide Card 6 -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm hover:border-purple-500 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-slate-700 text-purple-600 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-sim-card"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-base">সিম কার্ড হারিয়ে গেলে?</h4>
-                        <span class="text-[11px] text-slate-500 dark:text-slate-400">সিম ব্লক করার নিয়ম</span>
-                    </div>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300 mb-4">মোবাইল হারিয়ে গেলে তাৎক্ষণিক কাস্টমার কেয়ারে কল করে সিম ব্লক ও নতুন সিম তোলার নিয়ম।</p>
-                <button onclick="openGuide('sim_lost')" class="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl transition">
-                    শুরু করুন
+                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">সাইবার নিরাপত্তা</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">ভুয়া বা সন্দেহজনক লিঙ্ক চেনা, স্ক্যাম কল প্রতিরোধ।</p>
+                <button onclick="openGuide('phishing')" class="w-full py-2.5 rounded-xl bg-amber-50 dark:bg-slate-700 text-amber-600 dark:text-amber-300 font-bold text-sm hover:bg-amber-600 hover:text-white transition">
+                    সমাধান দেখুন
                 </button>
             </div>
 
@@ -426,7 +297,6 @@
     <div id="guideModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white dark:bg-slate-800 w-full max-w-2xl rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
             
-            <!-- Modal Header -->
             <div class="p-5 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm">
@@ -434,20 +304,17 @@
                     </div>
                     <h3 id="modalTitle" class="font-bold text-lg text-slate-900 dark:text-white">সমস্যার সমাধান গাইড</h3>
                 </div>
-                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600 transition">
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <!-- Modal Content Body -->
             <div id="modalBody" class="p-6 overflow-y-auto space-y-4 text-slate-700 dark:text-slate-200 text-sm">
-                <!-- Content will be injected dynamically by JavaScript -->
             </div>
 
-            <!-- Modal Footer -->
             <div class="p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 flex justify-between items-center text-xs text-slate-500 dark:text-slate-400">
                 <span>সাইবারকেয়ার ফ্রি গাইড সেবা</span>
-                <button onclick="closeModal()" class="px-5 py-2 bg-slate-800 text-white dark:bg-slate-100 dark:text-slate-900 font-bold rounded-xl hover:opacity-90 transition">
+                <button onclick="closeModal()" class="px-5 py-2 bg-slate-800 text-white dark:bg-slate-100 dark:text-slate-900 font-bold rounded-xl">
                     বন্ধ করুন
                 </button>
             </div>
@@ -455,189 +322,86 @@
         </div>
     </div>
 
-    <!-- FOOTER INFO BAR -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-            <div class="flex justify-center items-center gap-2 text-white font-bold text-base">
-                <i class="fa-solid fa-shield-halved text-blue-500"></i> সাইবারকেয়ার (CyberCare)
-            </div>
-            <p class="max-w-xl mx-auto text-slate-400">
-                আমাদের উদ্দেশ্য হল প্রতিটি সাধারণ মানুষকে অনলাইনে সুরক্ষিত রাখা এবং ডিজিটাল সমস্যার সহজ সমাধান দেওয়া।
-            </p>
-            <p class="text-slate-500">© CyberCare. All Rights Reserved. | সম্পূর্ণ বিনামূল্যে ব্যবহারের জন্য উন্মুক্ত।</p>
-        </div>
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs text-center">
+        <p class="text-white font-bold text-base mb-2"><i class="fa-solid fa-shield-halved text-blue-500"></i> সাইবারকেয়ার (CyberCare)</p>
+        <p>© CyberCare. All Rights Reserved. | সম্পূর্ণ বিনামূল্যে ব্যবহারের জন্য উন্মুক্ত।</p>
     </footer>
 
-    <!-- MOBILE BOTTOM NAVIGATION BAR -->
-    <div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 md:hidden z-40 flex justify-around py-2">
-        <a href="#home" class="flex flex-col items-center text-blue-600 dark:text-blue-400">
-            <i class="fa-solid fa-house text-lg"></i>
-            <span class="text-[10px] font-medium mt-0.5">হোম</span>
-        </a>
-        <a href="#services" class="flex flex-col items-center text-slate-500 dark:text-slate-400 hover:text-blue-600">
-            <i class="fa-solid fa-grid-2 text-lg"></i>
-            <span class="text-[10px] font-medium mt-0.5">ক্যাটাগরি</span>
-        </a>
-        <a href="#helpline" class="flex flex-col items-center text-slate-500 dark:text-slate-400 hover:text-blue-600">
-            <i class="fa-solid fa-phone-volume text-lg"></i>
-            <span class="text-[10px] font-medium mt-0.5">ইমার্জেন্সি</span>
-        </a>
-        <a href="#guides" class="flex flex-col items-center text-slate-500 dark:text-slate-400 hover:text-blue-600">
-            <i class="fa-solid fa-book text-lg"></i>
-            <span class="text-[10px] font-medium mt-0.5">শিক্ষা</span>
-        </a>
-    </div>
-
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT -->
     <script>
-        // DARK MODE TOGGLE
+        // Dark mode
         const themeToggleBtn = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
-        
         themeToggleBtn.addEventListener('click', () => {
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
                 themeIcon.className = 'fa-solid fa-moon';
-                localStorage.setItem('theme', 'light');
             } else {
                 document.documentElement.classList.add('dark');
                 themeIcon.className = 'fa-solid fa-sun text-amber-400';
-                localStorage.setItem('theme', 'dark');
             }
         });
 
-        // SEARCH FILTER FUNCTION
+        // Search
         function filterServices() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const cards = document.querySelectorAll('.service-card');
-
             cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
+                card.style.display = card.innerText.toLowerCase().includes(query) ? "block" : "none";
             });
         }
-
         function setSearch(term) {
             document.getElementById('searchInput').value = term;
             filterServices();
         }
 
-        // STEP-BY-STEP MODAL DATA
+        // Guides Data
         const guidesData = {
             'facebook': {
-                title: "ফেসবুক সম্পর্কিত সকল সমস্যার সমাধান",
+                title: "ফেসবুক সমস্যার সমাধান",
                 steps: [
-                    { step: "১. অ্যাকাউন্ট লগইন না হলে", desc: "facebook.com/login/identify তে গিয়ে আপনার রেজিস্টার্ড ফোন নম্বর বা ইমেইল দিয়ে সার্চ করুন এবং পাসওয়ার্ড রিকভার করুন।" },
-                    { step: "২. টু-ফ্যাক্টর (2FA) কোড না আসলে", desc: "আপনার অনুমোদিত অন্য ডিভাইসে (যেমন ল্যাপটপ বা অন্য ফোন) নোটিফিকেশন চেক করুন অথবা রিকভারি কোড ব্যবহার করুন।" },
-                    { step: "৩. আইডি হ্যাক হলে", desc: "তাত্ক্ষণিক facebook.com/hacked ওয়েবসাইটে যান এবং 'My Account Is Compromised' বিকল্প বেছে নিয়ে পদক্ষেপ নিন।" }
+                    { step: "১. পাসওয়ার্ড ভুলে গেলে", desc: "facebook.com/login/identify তে যান এবং আপনার ইমেইল/নম্বর দিয়ে সার্চ করুন।" },
+                    { step: "২. অ্যাকাউন্ট হ্যাক হলে", desc: "facebook.com/hacked ওয়েবসাইটে যান এবং পদক্ষেপ অনুসরণ করুন।" }
                 ],
-                warning: "সতর্কতা: কাউকে কোনো অবস্থাতেই আপনার পাসওয়ার্ড বা OTP বলবেন না।"
+                warning: "কারো সাথে OTP বা পাসওয়ার্ড শেয়ার করবেন না।"
             },
-            'fb_lock': {
-                title: "ফেসবুক অ্যাকাউন্ট লক হলে কী করবেন?",
+            'mobile': {
+                title: "মোবাইল ও সিম সমাধান",
                 steps: [
-                    { step: "ধাপ ১: ব্রাউজার থেকে লগইন করুন", desc: "প্রথমে যেকোনো মোবাইল ব্রাউজারে facebook.com খুলুন এবং আইডি ও পাসওয়ার্ড দিন।" },
-                    { step: "ধাপ ২: Get Started চাপুন", desc: "স্ক্রিনে ভেসে ওঠা 'Get Started' বা 'Get Code' বাটনে ক্লিক করুন।" },
-                    { step: "ধাপ ৩: পরিচয় নিশ্চিত করুন", desc: "আপনার ইমেইল/নম্বরে আসা OTP দিন অথবা আপনার আধার কার্ড/প্যান কার্ড/ভোটার আইডির ছবি আপলোড করুন।" },
-                    { step: "ধাপ ৪: অপেক্ষা করুন", desc: "২৪-৪৮ ঘণ্টার মধ্যে ফেসবুক টিম পর্যালোচনা করে আপনার অ্যাকাউন্ট আনলক করে দেবে।" }
-                ],
-                warning: "সব সময় সঠিক নামের সরকারী আইডি প্রুফ আপলোড করুন।"
-            },
-            'hacked_acc': {
-                title: "হ্যাকড অ্যাকাউন্ট উদ্ধারের নিয়ম",
-                steps: [
-                    { step: "ধাপ ১: অফিসিয়াল পোর্টালে যান", desc: "facebook.com/hacked অথবা আপনার ইমেইল প্রদানকারীর সিকিউরিটি পেজে যান।" },
-                    { step: "ধাপ ২: সিকিউরিটি মেইল চেক করুন", desc: "ইমেইলে আসা 'Was this you?' বা 'Password changed' নোটিফিকেশনের Secured option-এ ক্লিক করুন।" },
-                    { step: "ধাপ ৩: বিশ্বস্ত ডিভাইসে লগইন করুন", desc: "যে ফোন বা ল্যাপটপে আগে আইডি লগইন ছিল, সেখান থেকে রিকভারির চেষ্টা করুন।" },
-                    { step: "ধাপ ৪: জাতীয় পোর্টালে ডায়েরি করুন", desc: "যদি ব্যক্তিগত ছবি বা টাকা জালিয়াতির ঘটনা ঘটে, তবে cybercrime.gov.in-এ অভিযোগ জানান।" }
-                ],
-                warning: "টাকা দিয়ে অ্যাকাউন্ট আনলক করে দেওয়ার নাম করে ভুয়ো পেজ থেকে দূরে থাকুন।"
-            },
-            'otp_issue': {
-                title: "মোবাইলে OTP না আসলে করণীয়",
-                steps: [
-                    { step: "ধাপ ১: নেটওয়ার্ক ও মেমোরি চেক", desc: "ফোনের মেসেজ ইনবক্স পূর্ণ থাকলে নতুন মেসেজ বাতিল করুন এবং ফোনটি রিস্টার্ট দিন।" },
-                    { step: "ধাপ ২: DND সার্ভিস চেক করুন", desc: "আপনার সিমে DND (Do Not Disturb) চালু থাকলে ট্রানজেকশনাল এসএমএস ব্লক হতে পারে।" },
-                    { step: "ধাপ ৩: SMSC নম্বর সেট করুন", desc: "মোবাইল সেটিংস > মেসেজিং সেটিংস-এ গিয়ে আপনার অপারেটরের সঠিক SMS Center Number চেক করুন।" }
-                ],
-                warning: "অন্য কাউকে ফোনে স্ক্রিন শেয়ারিং অ্যাপ (যেমন AnyDesk) চালু করতে দেবেন না।"
+                    { step: "১. OTP না আসলে", desc: "মোবাইল রিস্টার্ট দিন এবং মেসেজ ইনবক্সের জায়গা খালি করুন।" },
+                    { step: "২. সিম হারিয়ে গেলে", desc: "দ্রুত কাস্টমার কেয়ারে কল দিয়ে সিমটি ব্লক করান।" }
+                ]
             },
             'banking': {
-                title: "ব্যাঙ্কিং ও UPI টাকা জালিয়াতির সমাধান",
+                title: "ব্যাঙ্কিং জালিয়াতির সমাধান",
                 steps: [
-                    { step: "ধাপ ১: ১৯৩০ নম্বরে কল করুন", desc: "টাকা কেটে নেওয়ার সাথে সাথে জাতীয় সাইবার হেল্পলাইন ১৯৩০ নম্বরে কল করে কমপ্লেইন রেজিস্টার করুন।" },
-                    { step: "ধাপ ২: ব্যাংক অ্যাকাউন্ট ব্লক করুন", desc: "আপনার ব্যাংকের কাস্টমার কেয়ারে ফোন করে ডেবিট কার্ড ও UPI অবিলম্বে ব্লক করুন।" },
-                    { step: "ধাপ ৩: ৩ দিনের মধ্যে ব্যাংকে আবেদন", desc: "আরবিআই (RBI) এর নিয়ম অনুযায়ী ৩ কার্যদিবসের মধ্যে ব্যাংকে লিখিত জানালে টাকা ফেরত পাওয়ার সম্ভাবনা থাকে।" }
-                ],
-                warning: "জরুরি: কখনো কোনো কাস্টমার কেয়ার এক্সিকিউটিভকে পিন বা ওটিপি দেবেন না।"
-            },
-            'phishing': {
-                title: "ভুয়া ও ফির্সিং লিঙ্ক চেনার নিয়ম",
-                steps: [
-                    { step: "ধাপ ১: URL ডোমেইন চেক করুন", desc: "সব সময় ওয়েবসাইটের নাম খেয়াল করুন। যেমন: facebook.com এর বদলে fac3book.com বা fb-login-free.ru এমন থাকলে এড়িয়ে চলুন।" },
-                    { step: "ধাপ ২: HTTPS প্যাডলক দেখুন", desc: "ব্রাউজারের ওপরে তালা (🔒) চিহ্ন আছে কি না দেখুন। তালা না থাকলে তথ্য দেওয়া থেকে বিরত থাকুন।" },
-                    { step: "ধাপ ৩: লটারি বা উপহারের লোভনীয় মেসেজ", desc: "'বিনামূল্যে রিচার্জ' বা 'লটারি জিতেন' এমন মেসেজের সাথে আসা লিঙ্কে ক্লিক করবেন না।" }
-                ],
-                warning: "অন অচেনা লিঙ্কে ক্লিক করে কখনোই মোবাইল রিচার্জ বা লগইন করার চেষ্টা করবেন না।"
-            },
-            'sim_lost': {
-                title: "সিম কার্ড হারিয়ে গেলে করণীয়",
-                steps: [
-                    { step: "ধাপ ১: দ্রুত সিম ব্লক করুন", desc: "আপনার অপারেটরের (Airtel/Jio/VI/BSNL) কাস্টমার কেয়ার নম্বরে ফোন করে সিম ব্লক করান।" },
-                    { step: "ধাপ ২: নিকটস্থ দোকানে যান", desc: "আধার কার্ড নিয়ে নিজস্ব টেলিকম আউটলেটে গিয়ে একই নম্বরের নতুন সিম তুলে নিন।" }
-                ],
-                warning: "হারিয়ে যাওয়া সিম দিয়ে অপব্যবহার রোধ করতে দ্রুত সিম ব্লক করা আবশ্যক।"
+                    { step: "১. তাৎক্ষণিক কল", desc: "১৯৩০ নম্বরে কল করে কমপ্লেইন ফাইল করুন।" },
+                    { step: "২. কার্ড ব্লক", desc: "ব্যাংকের অ্যাপ থেকে এটিএম কার্ড ও ইউপিআই ব্লক করুন।" }
+                ]
             }
         };
 
         function openGuide(key) {
             const guide = guidesData[key] || guidesData['facebook'];
-            const modal = document.getElementById('guideModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.getElementById('modalBody');
-
-            modalTitle.innerText = guide.title;
-            
-            let htmlContent = '<div class="space-y-4">';
+            document.getElementById('modalTitle').innerText = guide.title;
+            let html = '<div class="space-y-3">';
             guide.steps.forEach(s => {
-                htmlContent += `
-                    <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-slate-700">
-                        <h5 class="font-extrabold text-blue-600 dark:text-blue-400 text-sm mb-1">${s.step || s.title}</h5>
-                        <p class="text-xs text-slate-700 dark:text-slate-300">${s.desc}</p>
-                    </div>
-                `;
+                html += `<div class="p-3 bg-slate-100 dark:bg-slate-700/60 rounded-xl">
+                            <h5 class="font-bold text-blue-600 dark:text-blue-400 text-xs mb-1">${s.step}</h5>
+                            <p class="text-xs">${s.desc}</p>
+                         </div>`;
             });
-
-            if (guide.warning) {
-                htmlContent += `
-                    <div class="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-300 text-xs flex items-center gap-2 font-medium">
-                        <i class="fa-solid fa-triangle-exclamation text-base"></i> ${guide.warning}
-                    </div>
-                `;
+            if(guide.warning) {
+                html += `<div class="p-3 bg-red-50 text-red-700 text-xs rounded-xl font-medium">⚠️ ${guide.warning}</div>`;
             }
-
-            htmlContent += '</div>';
-            modalBody.innerHTML = htmlContent;
-
-            modal.classList.remove('hidden');
-            document.body.classList.add('modal-active');
+            html += '</div>';
+            document.getElementById('modalBody').innerHTML = html;
+            document.getElementById('guideModal').classList.remove('hidden');
         }
 
         function closeModal() {
             document.getElementById('guideModal').classList.add('hidden');
-            document.body.classList.remove('modal-active');
-        }
-
-        // Close modal on click outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('guideModal');
-            if (event.target == modal) {
-                closeModal();
-            }
         }
     </script>
 </body>
