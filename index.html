@@ -1,404 +1,935 @@
 <!DOCTYPE html>
-<html lang="bn" class="light">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>সাইবারকেয়ার (CyberCare) - আপনার ডিজিটাল বন্ধু</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#1e3a8a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font (Noto Sans Bengali) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Noto Sans Bengali', sans-serif; }
-        .modal-active { overflow: hidden; }
-    </style>
-</head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300 pb-20 md:pb-0">
 
-    <!-- TOP HEADER -->
-    <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            
-            <!-- Logo -->
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-blue-500/20">
-                    <i class="fa-solid fa-shield-halved text-xl"></i>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="CyberCare - আপনার ডিজিটাল সমস্যার সহজ ও কার্যকর সমাধান"
+    >
+
+    <title>সাইবারকেয়ার (CyberCare)</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         MAIN APP
+    ========================== -->
+
+    <div class="app-shell">
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <header class="top-header">
+
+            <div class="header-inner">
+
+                <!-- Mobile Menu -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+
+                <!-- Logo -->
+                <a href="#" class="brand">
+
+                    <div class="brand-icon">
+                        <span>🛡️</span>
+                    </div>
+
+                    <div class="brand-text">
+
+                        <strong>
+                            সাইবারকেয়ার
+                            <span>(CyberCare)</span>
+                        </strong>
+
+                        <small>
+                            আপনার ডিজিটাল বন্ধু, সব সমস্যার সহজ সমাধান।
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav" id="desktopNav">
+
+                    <a href="#" class="active">হোম</a>
+                    <a href="#">ফেসবুক</a>
+                    <a href="#">মোবাইল</a>
+                    <a href="#">ইন্টারনেট</a>
+                    <a href="#">অ্যাকাউন্ট</a>
+                    <a href="#">ব্যাংকিং</a>
+                    <a href="#">সোশ্যাল মিডিয়া</a>
+                    <a href="#">আইন সহায়তা</a>
+                    <a href="#">শিখুন</a>
+                    <a href="#">যোগাযোগ</a>
+
+                </nav>
+
+
+                <!-- Header Actions -->
+                <div class="header-actions">
+
+                    <button class="language-btn">
+                        <span class="globe">◎</span>
+                        বাংলা
+                        <span class="arrow">⌄</span>
+                    </button>
+
+                    <button
+                        class="theme-btn"
+                        id="themeBtn"
+                        aria-label="Dark Mode"
+                    >
+                        ☾
+                    </button>
+
                 </div>
-                <div>
-                    <h1 class="font-extrabold text-lg md:text-xl text-blue-950 dark:text-blue-400 leading-tight">সাইবারকেয়ার <span class="text-xs font-normal text-blue-600 dark:text-blue-300">(CyberCare)</span></h1>
-                    <p class="text-[10px] md:text-xs text-slate-500 dark:text-slate-400">আপনার ডিজিটাল বন্ধু, সব সমস্যার সহজ সমাধান</p>
-                </div>
+
             </div>
 
-            <!-- Navigation Links (Desktop) -->
-            <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
-                <a href="#home" class="px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 font-semibold">হোম</a>
-                <a href="#services" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">ক্যাটাগরি</a>
-                <a href="#guides" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">স্মার্ট গাইড</a>
-                <a href="#helpline" class="px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">জরুরি সহায়তা</a>
+        </header>
+
+
+        <!-- =========================
+             MOBILE MENU
+        ========================== -->
+
+        <aside class="mobile-sidebar" id="mobileSidebar">
+
+            <div class="sidebar-top">
+
+                <div class="sidebar-brand">
+                    <span>🛡️</span>
+                    <strong>CyberCare</strong>
+                </div>
+
+                <button id="closeMenu">✕</button>
+
+            </div>
+
+            <nav class="mobile-nav">
+
+                <a href="#" class="active">🏠 হোম</a>
+                <a href="#">🔵 ফেসবুক</a>
+                <a href="#">📱 মোবাইল</a>
+                <a href="#">🌐 ইন্টারনেট</a>
+                <a href="#">🔐 অ্যাকাউন্ট</a>
+                <a href="#">💳 ব্যাংকিং</a>
+                <a href="#">🔗 সোশ্যাল মিডিয়া</a>
+                <a href="#">⚖️ আইন সহায়তা</a>
+                <a href="#">🎓 শিখুন</a>
+                <a href="#">💬 যোগাযোগ</a>
+
             </nav>
 
-            <!-- Actions -->
-            <div class="flex items-center gap-3">
-                <button id="themeToggle" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-amber-400 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-600 transition">
-                    <i id="themeIcon" class="fa-solid fa-moon"></i>
-                </button>
-                <div class="hidden sm:flex items-center gap-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs px-3 py-1.5 rounded-lg font-medium">
-                    <i class="fa-solid fa-globe text-blue-600"></i> বাংলা
-                </div>
-            </div>
-        </div>
-    </header>
+        </aside>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            <!-- Hero Left Text -->
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-xs font-semibold">
-                    <i class="fa-solid fa-shield-check"></i> CyberCare Digital Safety Center
-                </div>
-                
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
-                    আপনার যে কোনো <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">ডিজিটাল সমস্যার</span> <br>
-                    সহজ ও কার্যকর সমাধান
-                </h2>
+        <div class="menu-overlay" id="menuOverlay"></div>
 
-                <p class="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed max-w-2xl">
-                    ইন্টারনেট, মোবাইল, ব্যাঙ্কিং, ফেসবুক বা অনলাইন নিরাপত্তার যে কোনো সমস্যায় ধাপে ধাপে গাইড এবং সঠিক সমাধান পান—সম্পূর্ণ বিনামূল্যে।
-                </p>
 
-                <!-- Value Props -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                    <div class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700 shadow-sm">
-                        <div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-slate-700 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-book-open"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-900 dark:text-white">সহজ ভাষায়</h4>
-                            <p class="text-xs text-slate-500 dark:text-slate-400">ধাপে ধাপে সমাধান</p>
-                        </div>
-                    </div>
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
 
-                    <div class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700 shadow-sm">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-badge-check"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-900 dark:text-white">বিশ্বস্ত তথ্য</h4>
-                            <p class="text-xs text-slate-500 dark:text-slate-400">যাচাইকৃত গাইড</p>
-                        </div>
-                    </div>
+        <main>
 
-                    <div class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700 shadow-sm">
-                        <div class="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold">
-                            <i class="fa-solid fa-user-shield"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-900 dark:text-white">১০০% ফ্রি</h4>
-                            <p class="text-xs text-slate-500 dark:text-slate-400">কোনো চার্জ নেই</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Hero Right Image + Emergency Box -->
-            <div class="lg:col-span-5 space-y-6">
-                <!-- User Image -->
-                <div class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700">
-                    <img src="assets/hero-person.jpg" alt="CyberCare Digital Safety" class="w-full h-full object-cover aspect-[4/3]">
-                </div>
+            <!-- =========================
+                 HERO
+            ========================== -->
 
-                <!-- Emergency Helpline Card -->
-                <div id="helpline" class="bg-white dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
-                    <h3 class="font-bold text-base text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-bolt text-amber-500"></i> দ্রুত সহায়তা (Quick Helplines)
-                    </h3>
-                    
-                    <div class="space-y-3">
-                        <a href="tel:1930" class="flex items-center justify-between p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-100 dark:border-red-900/50 hover:bg-red-100 transition">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg bg-red-500 text-white flex items-center justify-center font-bold">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">সাইবার হেল্পলাইন</h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400">জাতীয় সরকারি নম্বর</p>
-                                </div>
+            <section class="hero-section">
+
+                <div class="container">
+
+                    <div class="hero-layout">
+
+
+                        <!-- LEFT CONTENT -->
+                        <div class="hero-content">
+
+                            <div class="hero-heading">
+
+                                <h1>
+                                    আপনার যে কোনো
+                                    <br>
+
+                                    <span>ডিজিটাল সমস্যার</span>
+                                    <br>
+
+                                    <strong>সহজ ও কার্যকর সমাধান</strong>
+                                </h1>
+
                             </div>
-                            <span class="font-black text-red-600 dark:text-red-400 text-lg">1930</span>
+
+
+                            <p class="hero-description">
+
+                                ধাপে ধাপে গাইড, স্মার্ট সমাধান এবং নিরাপত্তা টুল —
+                                সবকিছু এক জায়গায়, সম্পূর্ণ বিনামূল্যে।
+
+                            </p>
+
+
+                            <!-- Hero Stats -->
+
+                            <div class="hero-highlights">
+
+                                <div class="highlight-item">
+
+                                    <div class="highlight-icon">
+                                        ◈
+                                    </div>
+
+                                    <div>
+                                        <strong>সহজ সমাধান</strong>
+                                        <span>ধাপে ধাপে</span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="highlight-item">
+
+                                    <div class="highlight-icon">
+                                        ✦
+                                    </div>
+
+                                    <div>
+                                        <strong>বিশ্বস্ত ও</strong>
+                                        <span>কার্যকর সমাধান</span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="highlight-item">
+
+                                    <div class="highlight-icon">
+                                        ♧
+                                    </div>
+
+                                    <div>
+                                        <strong>১০০% ফ্রি</strong>
+                                        <span>ব্যবহার উপযোগী</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- CENTER VISUAL -->
+
+                        <div class="hero-visual">
+
+                            <div class="visual-glow"></div>
+
+
+                            <!-- Floating cards -->
+
+                            <div class="floating-card fc-one">
+                                <span>▧</span>
+                            </div>
+
+                            <div class="floating-card fc-two">
+                                🔒
+                            </div>
+
+                            <div class="floating-card fc-three">
+                                ◌
+                            </div>
+
+
+                            <!-- Illustration -->
+
+                            <div class="person-illustration">
+
+                                <div class="person-head"></div>
+
+                                <div class="person-body">
+
+                                    <div class="person-shirt"></div>
+
+                                    <div class="phone">📱</div>
+
+                                    <div class="laptop">
+                                        <div class="laptop-screen"></div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Background graphics -->
+
+                            <div class="graphic graph-one">
+                                ▦
+                            </div>
+
+                            <div class="graphic graph-two">
+                                ▤
+                            </div>
+
+                            <div class="graphic graph-three">
+                                🔐
+                            </div>
+
+                            <div class="connection-line line-one"></div>
+                            <div class="connection-line line-two"></div>
+
+                        </div>
+
+
+                        <!-- QUICK HELP -->
+
+                        <aside class="quick-help">
+
+                            <div class="quick-help-header">
+                                <h3>দ্রুত সহায়তা</h3>
+                            </div>
+
+
+                            <div class="quick-help-list">
+
+
+                                <a href="#" class="quick-item">
+
+                                    <div class="quick-icon emergency">
+                                        ☎
+                                    </div>
+
+                                    <div>
+                                        <strong>ইমার্জেন্সি হেল্পলাইন</strong>
+                                        <span>
+                                            জরুরি সাহায্যের জন্য কল করুন
+                                            <b>1930</b>
+                                        </span>
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="quick-item">
+
+                                    <div class="quick-icon safety">
+                                        🛡
+                                    </div>
+
+                                    <div>
+                                        <strong>সাইবার ক্রাইম রিপোর্ট</strong>
+                                        <span>
+                                            অনলাইনে অভিযোগ জানান
+                                        </span>
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="quick-item">
+
+                                    <div class="quick-icon danger">
+                                        🔗
+                                    </div>
+
+                                    <div>
+                                        <strong>সন্দেহজনক লিংক চেক করুন</strong>
+                                        <span>
+                                            ফিশিং ও স্ক্যাম যাচাই করুন
+                                        </span>
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="quick-item">
+
+                                    <div class="quick-icon account">
+                                        👤
+                                    </div>
+
+                                    <div>
+                                        <strong>অ্যাকাউন্ট হ্যাকড?</strong>
+                                        <span>
+                                            দ্রুত অ্যাকাউন্ট রিকভার করুন
+                                        </span>
+                                    </div>
+
+                                </a>
+
+
+                            </div>
+
+
+                            <button class="all-tools-btn">
+                                সব টুলস দেখুন
+                            </button>
+
+                        </aside>
+
+
+                    </div>
+
+
+                    <!-- =========================
+                         PROBLEM SEARCH
+                    ========================== -->
+
+                    <section class="problem-search">
+
+                        <div class="search-title">
+
+                            <span class="search-icon">
+                                ⌕
+                            </span>
+
+                            <h2>
+                                আপনার কি সমস্যা হচ্ছে? আমরা সাহায্য করব।
+                            </h2>
+
+                        </div>
+
+
+                        <div class="search-box-row">
+
+                            <input
+                                type="text"
+                                id="problemInput"
+                                placeholder="যেমন: ফেসবুক লগইন হচ্ছে না, OTP আসছে না, মোবাইল স্লো হচ্ছে..."
+                            >
+
+                            <button id="searchBtn">
+                                খুঁজুন
+                            </button>
+
+                        </div>
+
+
+                        <div class="popular-searches">
+
+                            <span>জনপ্রিয় সমস্যা:</span>
+
+                            <button>ফেসবুক লগইন সমস্যা</button>
+                            <button>OTP আসছে না</button>
+                            <button>ফোন স্লো হচ্ছে</button>
+                            <button>অ্যাকাউন্ট হ্যাকড</button>
+                            <button>নেট ধীরে চলছে</button>
+
+                        </div>
+
+                    </section>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CATEGORY SECTION
+            ========================== -->
+
+            <section class="categories-section">
+
+                <div class="container">
+
+                    <div class="category-grid">
+
+
+                        <!-- Facebook -->
+
+                        <article class="category-card">
+
+                            <div class="category-top">
+
+                                <div class="category-icon facebook-icon">
+                                    f
+                                </div>
+
+                                <div>
+                                    <h3>ফেসবুক সমস্যা</h3>
+                                    <p>
+                                        লগইন, হ্যাক, পাসওয়ার্ড,
+                                        পেজ ও প্রোফাইল সমস্যা
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <button>
+                                সমাধান দেখুন
+                            </button>
+
+                        </article>
+
+
+                        <!-- Mobile -->
+
+                        <article class="category-card">
+
+                            <div class="category-top">
+
+                                <div class="category-icon mobile-icon">
+                                    📱
+                                </div>
+
+                                <div>
+                                    <h3>মোবাইল ও সিম</h3>
+                                    <p>
+                                        মোবাইল স্লো, সিম, নেটওয়ার্ক,
+                                        ব্যাটারি ও অন্যান্য সমস্যা
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <button>
+                                সমাধান দেখুন
+                            </button>
+
+                        </article>
+
+
+                        <!-- Google -->
+
+                        <article class="category-card">
+
+                            <div class="category-top">
+
+                                <div class="category-icon google-icon">
+                                    M
+                                </div>
+
+                                <div>
+                                    <h3>গুগল ও ইমেইল</h3>
+                                    <p>
+                                        Gmail, অ্যাকাউন্ট রিকভারি,
+                                        পাসওয়ার্ড ও ভেরিফিকেশন
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <button>
+                                সমাধান দেখুন
+                            </button>
+
+                        </article>
+
+
+                        <!-- Banking -->
+
+                        <article class="category-card">
+
+                            <div class="category-top">
+
+                                <div class="category-icon banking-icon">
+                                    ₹
+                                </div>
+
+                                <div>
+                                    <h3>ব্যাংকিং ও পেমেন্ট</h3>
+                                    <p>
+                                        UPI, ব্যাংক, OTP, ফ্রড
+                                        ও অনলাইন পেমেন্ট সমস্যা
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <button>
+                                সমাধান দেখুন
+                            </button>
+
+                        </article>
+
+
+                        <!-- Social -->
+
+                        <article class="category-card">
+
+                            <div class="category-top">
+
+                                <div class="category-icon social-icon">
+                                    ●—●
+                                </div>
+
+                                <div>
+                                    <h3>সোশ্যাল মিডিয়া</h3>
+                                    <p>
+                                        Instagram, WhatsApp, YouTube,
+                                        Snapchat ও অন্যান্য
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <button>
+                                সমাধান দেখুন
+                            </button>
+
+                        </article>
+
+
+                        <!-- Security -->
+
+                        <article class="category-card">
+
+                            <div class="category-top">
+
+                                <div class="category-icon security-icon">
+                                    🛡
+                                </div>
+
+                                <div>
+                                    <h3>সাইবার নিরাপত্তা</h3>
+                                    <p>
+                                        স্ক্যাম, ফিশিং, হ্যাক,
+                                        প্রাইভেসি ও নিরাপত্তা
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <button>
+                                সমাধান দেখুন
+                            </button>
+
+                        </article>
+
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 EASY SOLUTIONS
+            ========================== -->
+
+            <section class="easy-solutions">
+
+                <div class="container">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <h2>সহজ সমাধান</h2>
+                            <p>
+                                সবচেয়ে বেশি হওয়া ডিজিটাল সমস্যাগুলোর সমাধান
+                            </p>
+                        </div>
+
+                        <a href="#">
+                            সব দেখুন →
                         </a>
 
-                        <a href="https://cybercrime.gov.in" target="_blank" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-200/60 dark:border-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold">
-                                    <i class="fa-solid fa-globe"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">সাইবার ক্রাইম পোর্টাল</h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400">cybercrime.gov.in</p>
-                                </div>
+                    </div>
+
+
+                    <div class="solution-grid">
+
+
+                        <article class="solution-card blue-card">
+
+                            <div class="solution-content">
+
+                                <span>ফেসবুক সমস্যা সমাধান</span>
+
+                                <h3>
+                                    লগইন সমস্যা ও
+                                    অ্যাকাউন্ট রিকভারি
+                                </h3>
+
+                                <small>3 Steps</small>
+
+                                <button>
+                                    শুরু করুন
+                                </button>
+
                             </div>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400"></i>
-                        </a>
+
+                            <div class="solution-art">
+                                f
+                            </div>
+
+                        </article>
+
+
+                        <article class="solution-card pink-card">
+
+                            <div class="solution-content">
+
+                                <span>অ্যাকাউন্ট নিরাপত্তা</span>
+
+                                <h3>
+                                    হ্যাক হওয়া
+                                    অ্যাকাউন্ট উদ্ধার
+                                </h3>
+
+                                <small>4 Steps</small>
+
+                                <button>
+                                    শুরু করুন
+                                </button>
+
+                            </div>
+
+                            <div class="solution-art">
+                                🔒
+                            </div>
+
+                        </article>
+
+
+                        <article class="solution-card green-card">
+
+                            <div class="solution-content">
+
+                                <span>OTP না আসলে</span>
+
+                                <h3>
+                                    কি করবেন?
+                                </h3>
+
+                                <small>5 Steps</small>
+
+                                <button>
+                                    শুরু করুন
+                                </button>
+
+                            </div>
+
+                            <div class="solution-art">
+                                💬
+                            </div>
+
+                        </article>
+
+
+                        <article class="solution-card orange-card">
+
+                            <div class="solution-content">
+
+                                <span>সিম / নেটওয়ার্ক</span>
+
+                                <h3>
+                                    নেটওয়ার্ক
+                                    সমস্যা সমাধান
+                                </h3>
+
+                                <small>4 Steps</small>
+
+                                <button>
+                                    শুরু করুন
+                                </button>
+
+                            </div>
+
+                            <div class="solution-art">
+                                📶
+                            </div>
+
+                        </article>
+
+
+                        <article class="solution-card purple-card">
+
+                            <div class="solution-content">
+
+                                <span>ব্যাংকিং সমস্যা</span>
+
+                                <h3>
+                                    ব্যাংক থেকে টাকা
+                                    কেটে গেছে?
+                                </h3>
+
+                                <small>6 Steps</small>
+
+                                <button>
+                                    শুরু করুন
+                                </button>
+
+                            </div>
+
+                            <div class="solution-art">
+                                🏦
+                            </div>
+
+                        </article>
+
+
+                        <article class="solution-card indigo-card">
+
+                            <div class="solution-content">
+
+                                <span>স্ক্যাম ও ফিশিং</span>
+
+                                <h3>
+                                    স্ক্যাম ও ফিশিং
+                                    থেকে বাঁচুন
+                                </h3>
+
+                                <small>5 Steps</small>
+
+                                <button>
+                                    শুরু করুন
+                                </button>
+
+                            </div>
+
+                            <div class="solution-art">
+                                ⚠
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+        <!-- =========================
+             DESKTOP FOOTER STRIP
+        ========================== -->
+
+        <section class="desktop-footer-strip">
+
+            <div class="footer-strip-inner">
+
+                <div class="footer-feature">
+                    <span>◖</span>
+
+                    <div>
+                        <strong>24/7 সহায়তা</strong>
+                        <small>আপনার সমস্যার সমাধানে</small>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
 
-    <!-- SEARCH SECTION -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg">
-            <div class="max-w-3xl">
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 flex items-center gap-2">
-                    <i class="fa-solid fa-magnifying-glass"></i> আপনার কি সমস্যা হচ্ছে? আমরা সাহায্য করব।
-                </h3>
-                <p class="text-blue-100 text-xs sm:text-sm mb-5">
-                    নিচে সমস্যার নাম লিখুন (যেমন: Facebook, OTP, Bank, Hacked)
-                </p>
+                <div class="footer-divider"></div>
 
-                <div class="flex flex-col sm:flex-row gap-2">
-                    <div class="relative flex-1">
-                        <input type="text" id="searchInput" onkeyup="filterServices()" 
-                               placeholder="যেমন: ফেসবুক অ্যাকাউন্ট লক, OTP আসছে না..." 
-                               class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-inner font-medium">
-                        <i class="fa-solid fa-search absolute left-4 top-4 text-slate-400"></i>
+
+                <div class="footer-feature">
+                    <span>♢</span>
+
+                    <div>
+                        <strong>বিশ্বস্ত সমাধান</strong>
+                        <small>সঠিক তথ্য ও গাইডলাইন</small>
                     </div>
-                    <button onclick="filterServices()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-md">
-                        খুঁজুন
-                    </button>
                 </div>
 
-                <div class="mt-4 flex flex-wrap items-center gap-2 text-xs">
-                    <span class="text-blue-200">জনপ্রিয় সার্চ:</span>
-                    <button onclick="setSearch('ফেসবুক')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white transition">ফেসবুক সমস্যা</button>
-                    <button onclick="setSearch('OTP')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white transition">OTP আসছে না</button>
-                    <button onclick="setSearch('হ্যাক')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white transition">অ্যাকাউন্ট হ্যাক</button>
-                    <button onclick="setSearch('ব্যাংক')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full text-white transition">ব্যাঙ্কিং ও পেমেন্ট</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CATEGORIES -->
-    <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div class="mb-6">
-            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">আপনার প্রয়োজনীয় সহায়তা ক্যাটাগরি</h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400">যে সমস্যায় পড়েছেন, সেই ক্যাটাগরিতে ক্লিক করুন</p>
-        </div>
+                <div class="footer-divider"></div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <!-- Facebook Card -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
-                <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl font-bold mb-4">
-                    <i class="fa-brands fa-facebook"></i>
-                </div>
-                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">ফেসবুক সমস্যা</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">লগইন, হ্যাকড অ্যাকাউন্ট, পাসওয়ার্ড রিসেট ও প্রোফাইল লক।</p>
-                <button onclick="openGuide('facebook')" class="w-full py-2.5 rounded-xl bg-blue-50 dark:bg-slate-700 text-blue-600 dark:text-blue-300 font-bold text-sm hover:bg-blue-600 hover:text-white transition">
-                    সমাধান দেখুন
-                </button>
-            </div>
 
-            <!-- Mobile Card -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
-                <div class="w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-2xl font-bold mb-4">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                </div>
-                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">মোবাইল ও সিম</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">সিম হারানো, নেটওয়ার্ক সমস্যা, OTP না আসা ও ফোন গরম হওয়া।</p>
-                <button onclick="openGuide('mobile')" class="w-full py-2.5 rounded-xl bg-cyan-50 dark:bg-slate-700 text-cyan-600 dark:text-cyan-300 font-bold text-sm hover:bg-cyan-600 hover:text-white transition">
-                    সমাধান দেখুন
-                </button>
-            </div>
+                <div class="footer-feature">
+                    <span>◉</span>
 
-            <!-- Gmail Card -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
-                <div class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 flex items-center justify-center text-2xl font-bold mb-4">
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">জিমেইল ও ইমেইল</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">জিমেইল রিকভারি, ২-স্টেপ ভেরিফিকেশন কোড না আসা।</p>
-                <button onclick="openGuide('gmail')" class="w-full py-2.5 rounded-xl bg-red-50 dark:bg-slate-700 text-red-600 dark:text-red-300 font-bold text-sm hover:bg-red-600 hover:text-white transition">
-                    সমাধান দেখুন
-                </button>
-            </div>
-
-            <!-- Banking Card -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
-                <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl font-bold mb-4">
-                    <i class="fa-solid fa-building-columns"></i>
-                </div>
-                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">ব্যাঙ্কিং ও পেমেন্ট</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">UPI জালিয়াতি, ব্যাংক অ্যাকাউন্ট থেকে ভুলবশত টাকা কাটা।</p>
-                <button onclick="openGuide('banking')" class="w-full py-2.5 rounded-xl bg-emerald-50 dark:bg-slate-700 text-emerald-600 dark:text-emerald-300 font-bold text-sm hover:bg-emerald-600 hover:text-white transition">
-                    সমাধান দেখুন
-                </button>
-            </div>
-
-            <!-- Social Card -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
-                <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-2xl font-bold mb-4">
-                    <i class="fa-solid fa-share-nodes"></i>
-                </div>
-                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">সোশ্যাল মিডিয়া</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">হোয়াটসঅ্যাপ হ্যাক প্রতিরোধ, ইনস্টাগ্রাম পাসওয়ার্ড ফিক্স।</p>
-                <button onclick="openGuide('social')" class="w-full py-2.5 rounded-xl bg-purple-50 dark:bg-slate-700 text-purple-600 dark:text-purple-300 font-bold text-sm hover:bg-purple-600 hover:text-white transition">
-                    সমাধান দেখুন
-                </button>
-            </div>
-
-            <!-- Cyber Security Card -->
-            <div class="service-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
-                <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-2xl font-bold mb-4">
-                    <i class="fa-solid fa-shield-virus"></i>
-                </div>
-                <h4 class="font-extrabold text-lg text-slate-900 dark:text-white mb-1">সাইবার নিরাপত্তা</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">ভুয়া বা সন্দেহজনক লিঙ্ক চেনা, স্ক্যাম কল প্রতিরোধ।</p>
-                <button onclick="openGuide('phishing')" class="w-full py-2.5 rounded-xl bg-amber-50 dark:bg-slate-700 text-amber-600 dark:text-amber-300 font-bold text-sm hover:bg-amber-600 hover:text-white transition">
-                    সমাধান দেখুন
-                </button>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- STEP BY STEP MODAL (POPUP) -->
-    <div id="guideModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white dark:bg-slate-800 w-full max-w-2xl rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
-            
-            <div class="p-5 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm">
-                        <i class="fa-solid fa-shield-check"></i>
+                    <div>
+                        <strong>আপনার প্রাইভেসি সুরক্ষিত</strong>
+                        <small>আপনার তথ্য সুরক্ষিত থাকবে</small>
                     </div>
-                    <h3 id="modalTitle" class="font-bold text-lg text-slate-900 dark:text-white">সমস্যার সমাধান গাইড</h3>
                 </div>
-                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+
+
+                <div class="footer-divider"></div>
+
+
+                <div class="footer-feature">
+                    <span>◉</span>
+
+                    <div>
+                        <strong>সহজ ও দ্রুত</strong>
+                        <small>যেকোনো সমস্যার সহজ সমাধান</small>
+                    </div>
+                </div>
+
+
+                <div class="footer-divider"></div>
+
+
+                <div class="footer-feature">
+                    <span>◌</span>
+
+                    <div>
+                        <strong>সম্পূর্ণ বিনামূল্যে</strong>
+                        <small>কোনো চার্জ ছাড়াই ব্যবহার করুন</small>
+                    </div>
+                </div>
+
             </div>
 
-            <div id="modalBody" class="p-6 overflow-y-auto space-y-4 text-slate-700 dark:text-slate-200 text-sm">
-            </div>
+        </section>
 
-            <div class="p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 flex justify-between items-center text-xs text-slate-500 dark:text-slate-400">
-                <span>সাইবারকেয়ার ফ্রি গাইড সেবা</span>
-                <button onclick="closeModal()" class="px-5 py-2 bg-slate-800 text-white dark:bg-slate-100 dark:text-slate-900 font-bold rounded-xl">
-                    বন্ধ করুন
-                </button>
-            </div>
 
-        </div>
+        <!-- =========================
+             MOBILE BOTTOM NAV
+        ========================== -->
+
+        <nav class="mobile-bottom-nav">
+
+            <a href="#" class="active">
+                <span>⌂</span>
+                <small>হোম</small>
+            </a>
+
+            <a href="#">
+                <span>⌕</span>
+                <small>সার্চ</small>
+            </a>
+
+            <a href="#">
+                <span>♙</span>
+                <small>ইমার্জেন্সি</small>
+            </a>
+
+            <a href="#">
+                <span>▱</span>
+                <small>শিখুন</small>
+            </a>
+
+            <a href="#">
+                <span>♙</span>
+                <small>প্রোফাইল</small>
+            </a>
+
+        </nav>
+
+
     </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs text-center">
-        <p class="text-white font-bold text-base mb-2"><i class="fa-solid fa-shield-halved text-blue-500"></i> সাইবারকেয়ার (CyberCare)</p>
-        <p>© CyberCare. All Rights Reserved. | সম্পূর্ণ বিনামূল্যে ব্যবহারের জন্য উন্মুক্ত।</p>
-    </footer>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        // Dark mode
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        themeToggleBtn.addEventListener('click', () => {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                themeIcon.className = 'fa-solid fa-moon';
-            } else {
-                document.documentElement.classList.add('dark');
-                themeIcon.className = 'fa-solid fa-sun text-amber-400';
-            }
-        });
+    <script src="script.js"></script>
 
-        // Search
-        function filterServices() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.service-card');
-            cards.forEach(card => {
-                card.style.display = card.innerText.toLowerCase().includes(query) ? "block" : "none";
-            });
-        }
-        function setSearch(term) {
-            document.getElementById('searchInput').value = term;
-            filterServices();
-        }
-
-        // Guides Data
-        const guidesData = {
-            'facebook': {
-                title: "ফেসবুক সমস্যার সমাধান",
-                steps: [
-                    { step: "১. পাসওয়ার্ড ভুলে গেলে", desc: "facebook.com/login/identify তে যান এবং আপনার ইমেইল/নম্বর দিয়ে সার্চ করুন।" },
-                    { step: "২. অ্যাকাউন্ট হ্যাক হলে", desc: "facebook.com/hacked ওয়েবসাইটে যান এবং পদক্ষেপ অনুসরণ করুন।" }
-                ],
-                warning: "কারো সাথে OTP বা পাসওয়ার্ড শেয়ার করবেন না।"
-            },
-            'mobile': {
-                title: "মোবাইল ও সিম সমাধান",
-                steps: [
-                    { step: "১. OTP না আসলে", desc: "মোবাইল রিস্টার্ট দিন এবং মেসেজ ইনবক্সের জায়গা খালি করুন।" },
-                    { step: "২. সিম হারিয়ে গেলে", desc: "দ্রুত কাস্টমার কেয়ারে কল দিয়ে সিমটি ব্লক করান।" }
-                ]
-            },
-            'banking': {
-                title: "ব্যাঙ্কিং জালিয়াতির সমাধান",
-                steps: [
-                    { step: "১. তাৎক্ষণিক কল", desc: "১৯৩০ নম্বরে কল করে কমপ্লেইন ফাইল করুন।" },
-                    { step: "২. কার্ড ব্লক", desc: "ব্যাংকের অ্যাপ থেকে এটিএম কার্ড ও ইউপিআই ব্লক করুন।" }
-                ]
-            }
-        };
-
-        function openGuide(key) {
-            const guide = guidesData[key] || guidesData['facebook'];
-            document.getElementById('modalTitle').innerText = guide.title;
-            let html = '<div class="space-y-3">';
-            guide.steps.forEach(s => {
-                html += `<div class="p-3 bg-slate-100 dark:bg-slate-700/60 rounded-xl">
-                            <h5 class="font-bold text-blue-600 dark:text-blue-400 text-xs mb-1">${s.step}</h5>
-                            <p class="text-xs">${s.desc}</p>
-                         </div>`;
-            });
-            if(guide.warning) {
-                html += `<div class="p-3 bg-red-50 text-red-700 text-xs rounded-xl font-medium">⚠️ ${guide.warning}</div>`;
-            }
-            html += '</div>';
-            document.getElementById('modalBody').innerHTML = html;
-            document.getElementById('guideModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('guideModal').classList.add('hidden');
-        }
-    </script>
 </body>
 </html>
